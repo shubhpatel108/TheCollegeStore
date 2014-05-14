@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
 	devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-									:first_name, :last_name
+									:first_name, :last_name, :mobile
   # attr_accessible :title, :body
+
+  has_many :books
 
 	def self.find_for_google_oauth2(auth)
 	  where(auth.slice(:provider, :authid)).first_or_create do |user|
