@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 									:first_name, :last_name, :mobile
   # attr_accessible :title, :body
 
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  
   has_many :books
   belongs_to :college
 
