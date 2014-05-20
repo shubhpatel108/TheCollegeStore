@@ -9,6 +9,7 @@ gem 'mysql'
 gem 'devise'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
+gem 'client_side_validations'
 
 
 # Gems used only for assets and not required

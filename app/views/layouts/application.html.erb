@@ -4,12 +4,11 @@
   <title>TheCollegeStore</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery", "rails.validations" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-<%= link_to "Sign in with Gmail", user_omniauth_authorize_path(:google_oauth2) %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <%= yield %>

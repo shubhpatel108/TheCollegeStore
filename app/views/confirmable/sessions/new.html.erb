@@ -1,8 +1,8 @@
 <h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), :validate => true) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true, :validate => {:uniqueness => false} %></div>
+  <%= f.email_field :email, autofocus: true %></div>
 
   <div><%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
@@ -14,4 +14,4 @@
   <div><%= f.submit "Sign in" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "confirmable/shared/links" %>
