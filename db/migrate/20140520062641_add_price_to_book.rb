@@ -1,9 +1,9 @@
 class AddPriceToBook < ActiveRecord::Migration
   def up
-  	add_column :users, :price, :integer
+  	add_column :books, :price, :integer
   end
 
 	def down
-  	remove_column :users, :price
+  	remove_column :books, :price
   end  
 end
