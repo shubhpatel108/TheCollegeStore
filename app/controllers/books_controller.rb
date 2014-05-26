@@ -9,4 +9,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def search
+  	@query = params[:query]
+  	@results = current_user.goodreads_search(@query)
+  end
+
 end
