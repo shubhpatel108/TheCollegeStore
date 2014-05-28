@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-									:first_name, :last_name, :mobile
+									:first_name, :last_name, :mobile, :college_id
   # attr_accessible :title, :body
 
   validates :email, presence: true, uniqueness: true
