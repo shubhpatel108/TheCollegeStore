@@ -1,5 +1,0 @@
-<%= form_for student, url: {controller: "devise/registrations", action: "create"}, html: {class: "student_form"} do |f| %>
-  <%= f.email_field :email, placeholder: 'Email' %>
-	<%= f.password_field :password, autocomplete: "off", placeholder: 'password' %>
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
