@@ -1,22 +1,21 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def person_category
-  	@type = params[:type]
-  	if @type == "student"
-			redirect_to action: "student_form"
-		elsif @type == "city_vendor"	
-			respond_to do |format|
-		   	format.js
-		  end
-		end
-  end
+	def select_college
+		@college_id = params[:college_id]
+		cookies[:college_id] = @college_id
+		$college_name = College.where(:id => cookies[:college_id].to_s).first
+  	redirect_to :controller => "books", :action => "index"
+	end
 
-  def student_form
-  	@student = User.new
-  	respond_to do |format|
-  		format.js
-  	end
-  end
+	def check_cookies
+		if cookies[:college_id].nil?
+			@colleges = College.all
+			render :partial => 'shared/person_category_form'
+		else
+			$college_name = College.where(:id => cookies[:college_id].to_s).first
+			redirect_to :controller => "books", :action => "index"
+		end
+	end
 
 end
