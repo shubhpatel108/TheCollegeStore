@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+  validates :mobile, presence: true,
+					:numericality => true,
+                 	:length => { :minimum => 10, :maximum => 15 }
+  validates :first_name, :last_name, :presence => true
   
   has_many :books
   belongs_to :college
