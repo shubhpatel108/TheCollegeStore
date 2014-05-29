@@ -4,7 +4,7 @@ TheCollegeStore::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"}
   get '/search', to: 'books#search', as: :search
   get '/person_category', to: 'application#person_category'
-  get '/select_college', to: 'application#select_college'
+  post '/application/select_college'
   devise_scope :user do
     get 'register', to: 'devise/registrations#new', as: :register
     get 'login', to: 'devise/sessions#new', as: :login
