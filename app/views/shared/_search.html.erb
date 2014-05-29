@@ -1,4 +1,11 @@
 <form action="/search">
-  <input type="search" name="query" placeholder="Search by ISBN/Title/Author" style= "width: 200px;"><br>
+  <input type="search" name="query" placeholder="Search by ISBN/Title/Author" style= "width: 200px;" id="autocomplete" title="type &quot;a&quot;"><br>
   <input type="submit" style="display: none;">
 </form>
+
+<script type="text/javascript">	
+	var availableTags = <%= raw book_names.to_json %>;
+	$( "#autocomplete" ).autocomplete({
+			source: availableTags
+		});
+</script>

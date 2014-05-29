@@ -2,6 +2,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    $book_names = @books.map(&:title)
   end
 
   def new
