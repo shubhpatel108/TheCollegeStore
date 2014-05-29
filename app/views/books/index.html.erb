@@ -12,9 +12,11 @@
 		<td><%=book.title%></td>
 		<td><%=book.author%></td>		
 		<td><%=book.publisher%></td>
-		<td><%=book.price%></td>
+		<td> <%= link_to "Edit", edit_book_path(book) %> </td>
 	</tr>
 	<% end %>
 	
+	<p><%= link_to "Add a new book", '/books/new' %></p>
 </tbody></table>
 </div>
+

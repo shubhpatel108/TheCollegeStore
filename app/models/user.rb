@@ -7,11 +7,15 @@ class User < ActiveRecord::Base
 	devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-									:first_name, :last_name, :mobile
+									:first_name, :last_name, :mobile, :college_id
   # attr_accessible :title, :body
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+  validates :mobile, presence: true,
+					:numericality => true,
+                 	:length => { :minimum => 10, :maximum => 15 }
+  validates :first_name, :last_name, :presence => true
   
   has_many :books
   belongs_to :college
@@ -37,5 +41,10 @@ class User < ActiveRecord::Base
 	    user.last_name = auth.info.last_name
 	  end
 	end
+
+  def goodreads_search(query)
+  	search = $gr_client.search_books(query)
+  	search.results.work
+  end
 
 end

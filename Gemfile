@@ -11,6 +11,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'client_side_validations'
+gem 'goodreads'
 
 
 # Gems used only for assets and not required

@@ -3,8 +3,9 @@
 <head>
   <title>TheCollegeStore</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css"%>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery", "rails.validations" %>
+  <%= javascript_include_tag "jquery", "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,7 +13,7 @@
 <header>
 	<% if user_signed_in? %>
   		<div>
-			<span>Welcome, <%= link_to "#{current_user.first_name} + " " + #{current_user.last_name}", edit_user_registration_path %></span>
+			<span>Welcome, <%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path %></span>
 			<%= link_to "Log out", destroy_user_session_path, method: :delete %>
 		</div>
 	<%else%>
@@ -21,9 +22,11 @@
 		<%= link_to "Log In", new_user_session_path%>
 		</div>
 	<%end%>
+	<%= $college_name.name %>
 </header>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
 <%= yield %>
 
 </body>

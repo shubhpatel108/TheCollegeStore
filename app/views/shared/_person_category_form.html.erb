@@ -1,0 +1,21 @@
+<div id="student_entry">
+	<%= link_to_function "Student", 'add_college()'%>
+</div>
+
+<div id="add_college" style="display:none;">
+	<%= form_tag(:controller => 'application', :action => 'select_college') do %>
+		<%= select_tag "college_id", options_from_collection_for_select(@colleges, "id", "name") %>
+		<%= submit_tag "Go"%>
+	<%end%>
+</div>
+
+<div id="vendor_entry">
+	<%= link_to "City vendor", controller: "application", action: "person_category", type: "city_vendor"%>
+</div>
+
+<script type="text/javascript">
+	function add_college()
+	{
+		document.getElementById("add_college").style.display = "block";
+	}
+</script>
