@@ -5,18 +5,20 @@
 		<th>Name of the book</th>
 		<th>Author</th>		
 		<th>Publisher</th>
-		<th>Price</th>
+		<th>Edition</th>
+		<th>Edit</th>
 	</tr>
-	<% @books.each do |book| %>
+	<% $books.each do |book| %>
 	<tr>
 		<td><%=book.title%></td>
 		<td><%=book.author%></td>		
 		<td><%=book.publisher%></td>
+		<td><%=book.edition%></td>
 		<td> <%= link_to "Edit", edit_book_path(book) %> </td>
 	</tr>
 	<% end %>
 	
-	<p><%= link_to "Add a new book", '/books/new' %></p>
+	<p><%= link_to "Sell", '/books/new' %></p>
 </tbody></table>
 </div>
 
