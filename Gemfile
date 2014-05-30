@@ -7,6 +7,7 @@ gem 'rails', '3.2.16'
 
 gem 'mysql'
 gem 'devise'
+gem 'gibbon'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'client_side_validations'
