@@ -6,4 +6,5 @@ class Book < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :college
+  belongs_to :book_group
 end
