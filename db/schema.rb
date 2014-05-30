@@ -11,12 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140528112304) do
+ActiveRecord::Schema.define(:version => 20140530135412) do
 
-  create_table "books", :force => true do |t|
+  create_table "book_groups", :force => true do |t|
     t.string   "title",      :null => false
     t.string   "author"
     t.string   "publisher"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "books", :force => true do |t|
     t.integer  "edition"
     t.string   "isbn"
     t.datetime "created_at", :null => false
@@ -24,6 +29,9 @@ ActiveRecord::Schema.define(:version => 20140528112304) do
     t.integer  "user_id"
     t.integer  "college_id"
     t.integer  "price"
+    t.string   "publisher"
+    t.string   "author"
+    t.string   "title"
   end
 
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
