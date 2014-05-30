@@ -2,7 +2,11 @@ TheCollegeStore::Application.routes.draw do
   root to: 'application#check_cookies'
   get "emailapi/index"
   post "emailapi/subscribe" => 'emailapi#subscribe'
-  resources :books
+  resources :books do
+    collection do
+      post 'request_seller'
+    end
+  end
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"}
   get '/search', to: 'books#search', as: :search
   get '/person_category', to: 'application#person_category'
