@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     @book = Book.new(params[:book])
     if @book.save
       flash[:success] = "Book is saved for selling purpose."
-      redirect_to index_path
+      redirect_to :root
     else
       render 'new'
     end
@@ -52,6 +52,12 @@ class BooksController < ApplicationController
 
   def sell
     @book = Book.new
+  end
+
+  def request_seller
+    email = params[:seller_email]
+    BookMailer.request_seller(email).deliver
+    redirect_to :root
   end
 
 end
