@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
-    $book_names = @books.map(&:title)
+    $books = Book.all
+    $book_names = $books.map(&:title)
   end
 
   def new
@@ -32,9 +32,26 @@ class BooksController < ApplicationController
     end
   end
 
-  def search
+  def main_search
   	@query = params[:query]
-  	@results = current_user.goodreads_search(@query)
+    @results = Book.where(["title like ? or author like ? or isbn like ?", "%#{@query}%", "%#{@query}%", "%#{@query}%"])
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def sell_autofill
+    titl = params[:book_title]
+    if not titl.empty?
+      @est_book = Book.where(["title like ?", "%#{@query}%"]).first
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def sell
+    @book = Book.new
   end
 
 end

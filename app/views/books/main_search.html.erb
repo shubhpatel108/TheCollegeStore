@@ -1,4 +1,5 @@
 <!-- Temporary Code for rendering the all results, will soon be changed -->
-<%= @results.each do |book| %>
-<%= book %>
+<% @results.each do |book| %>
+<%= book.title %>
+<%= book.author %>
 <%end%>

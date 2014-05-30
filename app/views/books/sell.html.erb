@@ -1,0 +1,21 @@
+<div style="display:none;">
+	<%= form_tag( '/books/sell/autofill' , {:remote => true , :method => :post , :id => "title_form"}) do %>
+	          <td><%= text_field_tag "book_title" %></td>
+	<%end%>
+</div>
+
+<div id="other_half">
+<%= render partial: 'shared/sell_book_form', :locals => {:book => @book}%>
+</div>
+
+<script type="text/javascript">
+	var b_n = <%= raw $book_names.to_json %>;
+	$( "#sell_title" ).autocomplete({
+			source: b_n
+		});
+
+	$("#sell_title").blur(function() {
+		document.getElementById("book_title").value = document.getElementById("sell_title").value
+	  $("#title_form").submit();
+		});
+</script>
