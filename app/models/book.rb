@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  attr_accessible :title, :author, :publisher, :edition, :isbn
+  attr_accessible :edition, :isbn
   validates :title, presence: true
   validates :author, presence: true
   validates :edition, presence: true

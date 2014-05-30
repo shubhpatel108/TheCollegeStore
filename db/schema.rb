@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140530135412) do
+ActiveRecord::Schema.define(:version => 20140530140612) do
 
   create_table "book_groups", :force => true do |t|
     t.string   "title",      :null => false
@@ -29,9 +29,6 @@ ActiveRecord::Schema.define(:version => 20140530135412) do
     t.integer  "user_id"
     t.integer  "college_id"
     t.integer  "price"
-    t.string   "publisher"
-    t.string   "author"
-    t.string   "title"
   end
 
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
