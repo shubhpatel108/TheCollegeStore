@@ -38,7 +38,7 @@ class BooksController < ApplicationController
 
   def main_search
   	@query = params[:query]
-    @results = Book.where(["title like ? or author like ? or isbn like ?", "%#{@query}%", "%#{@query}%", "%#{@query}%"])
+    @results = BookGroup.where(["title like ? or author like ?", "%#{@query}%", "%#{@query}%"])
     respond_to do |format|
       format.html
     end
@@ -47,7 +47,7 @@ class BooksController < ApplicationController
   def sell_autofill
     titl = params[:book_title]
     if not titl.empty?
-      @est_book = Book.where(["title like ?", "%#{@query}%"]).first
+      @est_book = BookGroup.where(["title like ?", "%#{@query}%"]).first
     end
     respond_to do |format|
       format.js
