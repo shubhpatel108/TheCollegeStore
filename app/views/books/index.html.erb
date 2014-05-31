@@ -13,12 +13,8 @@
 		<td><%=book.title%></td>
 		<td><%=book.author%></td>		
 		<td><%=book.publisher%></td>
-		<td><%=book.books.length%></td>
+		<td><%=book.stock%></td>
 		<td><%= link_to "details", book_detail_path(book) %> </td>
-		<%= form_tag(:action=>'request_seller') do %>
-			<td><%= email_field(:seller_email, {:controller=>'books', :action=>'request_seller'}) %></td>
-			<td><%= submit_tag "Email"%></td>
-		<% end %>
 	</tr>
 	<% end %>
 	

@@ -3,6 +3,10 @@ class BooksController < ApplicationController
   def index
     $book_groups = BookGroup.all
     $book_names = $book_groups.map(&:title)
+    college_id = cookies[:college_id]
+    $book_groups.each do |group|
+        group[:stock] = group.books.where(:college_id => college_id).count
+    end
   end
 
   def new
