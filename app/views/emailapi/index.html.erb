@@ -1,0 +1,6 @@
+<h1>Get TheCollegeStore newsletter!</h1>
+<p>Give us your email and get updated about our bookshelf.</p>
+<%= form_tag(:controller=>'emailapi', :action=>'subscribe') do %>
+   <%= email_field(:email, :address, {id: "email", placeholder: "email address"}) %>
+   <%= submit_tag("Sign me up!") %>
+<% end %>

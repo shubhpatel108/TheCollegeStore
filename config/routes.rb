@@ -1,8 +1,14 @@
 TheCollegeStore::Application.routes.draw do
   root to: 'application#check_cookies'
-  resources :books
+  get "emailapi/index"
+  post "emailapi/subscribe" => 'emailapi#subscribe'
+  resources :books do
+    collection do
+      post 'request_seller'
+    end
+  end
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"}
-  get '/search', to: 'books#search', as: :search
+  get '/search', to: 'books#main_search', as: :search
   get '/person_category', to: 'application#person_category'
   post '/application/select_college'
   devise_scope :user do
@@ -10,6 +16,10 @@ TheCollegeStore::Application.routes.draw do
     get 'login', to: 'devise/sessions#new', as: :login
     get 'logout', to: 'devise/sessions#destroy', as: :logout
   end
+  get '/books/sell/new_book', to: 'books#sell'
+  post '/books/sell/autofill', to: 'books#sell_autofill'
+  resources :book_groups
+  get '/book_groups/details/:id', to: 'book_groups#details', as: :book_detail
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

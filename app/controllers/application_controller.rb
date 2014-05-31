@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 		@college_id = params[:college_id]
 		cookies[:college_id] = @college_id
 		$college_name = College.where(:id => cookies[:college_id].to_s).first
+	    $book_names = $books.map(&:title)
   	redirect_to :controller => "books", :action => "index"
 	end
 

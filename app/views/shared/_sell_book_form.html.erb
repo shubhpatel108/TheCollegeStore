@@ -1,0 +1,21 @@
+<h1>Sell a Book</h1>
+<%= form_for book do |f| %>
+	<p>
+		<%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title' %>
+	</p>
+	<p>
+		<%= f.text_field :author, :placeholder => "Author", id: 'sell_author' %>
+	</p>
+	<p>
+		<%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher' %>
+	</p>
+	<p>
+		<%= f.number_field :edition, :placeholder => "Edition" %>
+	</p>
+	<p>
+		<%= f.text_field :isbn, :placeholder => "ISBN" %>
+	</p>
+	<p>
+		<%= f.button "Submit Book" %> 
+	</p>
+<% end %>
