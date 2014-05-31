@@ -32,6 +32,10 @@ GEM
     bcrypt (3.1.7)
     builder (3.0.4)
     client_side_validations (3.2.6)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -99,6 +103,11 @@ GEM
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     polyglot (0.3.4)
     rack (1.4.5)
     rack-cache (1.2)
@@ -163,6 +172,7 @@ DEPENDENCIES
   mysql
   omniauth-facebook
   omniauth-google-oauth2
+  paperclip (~> 4.1)
   rails (= 3.2.16)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

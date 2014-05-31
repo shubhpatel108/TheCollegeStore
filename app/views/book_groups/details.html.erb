@@ -1,6 +1,7 @@
 <h4><%= @book_group.title%></h4>
 <p><%= @book_group.author%><p>
 <p><%= @book_group.publisher%></p>
+<%= image_tag @book_group.image.url %>
 
 <% @details.each do |book, user| %>
 <table>
