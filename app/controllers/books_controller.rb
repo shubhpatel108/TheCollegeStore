@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
 
   def index
-    $books = Book.all
-    $book_names = $books.map(&:title)
+    $book_groups = BookGroup.all
+    $book_names = $book_groups.map(&:title)
   end
 
   def new
