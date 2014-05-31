@@ -7,17 +7,22 @@ class BookGroupsController < ApplicationController
 
   def create
     @book_group = BookGroup.new(params[:book_group])
-    @old_book_group = BookGroup.where(title: @book_group.title, author: @book_group.author, publisher: @book_group.publisher)
-    if not @old_book_group.empty?
+    @old_book_group = BookGroup.where(title: @book_group.title, author: @book_group.author, publisher: @book_group.publisher).first
+    if not @old_book_group.nil?
       @book = Book.new(params[:book_group][:books_attributes]['0'])
       @book.user_id = current_user.id
       @book.college_id = current_user.college_id
-      @book.save!
-      @old_book_group.first.books << @book
+      @book.save
+      @old_book_group.books << @book
+      @old_book_group.save
       flash[:notice] = "your Book is added!"
       redirect_to :root
     else
       if @book_group.save
+        @new_book = @book_group.books.last
+        @new_book.user_id = current_user.id
+        @new_book.college_id = current_user.college_id
+        @new_book.save
         flash[:notice] = "your Book is added!"
         redirect_to :root
       else
