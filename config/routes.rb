@@ -19,6 +19,7 @@ TheCollegeStore::Application.routes.draw do
   get '/books/sell/new_book', to: 'books#sell'
   post '/books/sell/autofill', to: 'books#sell_autofill'
   resources :book_groups
+  get '/book_groups/details/:id', to: 'book_groups#details', as: :book_detail
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
