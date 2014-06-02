@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_filter :check_college, :only => [:index, :main_search]
 
   def index
     $book_groups = BookGroup.all
@@ -64,4 +65,10 @@ class BooksController < ApplicationController
     redirect_to :root
   end
 
+  private
+  def check_college
+    if cookies[:college_id].nil? || cookies[:college_name].nil?
+      redirect_to controller: 'application', action: 'check_cookies'
+    end
+  end
 end
