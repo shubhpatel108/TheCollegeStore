@@ -1,20 +1,28 @@
-<h1>Sell a Book</h1>
-<%= form_for book do |f| %>
+<%= form_for book_group do |f| %>
 	<p>
+		<%= f.label :title%> <br />
 		<%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title' %>
 	</p>
 	<p>
+		<%= f.label :author%> <br />
 		<%= f.text_field :author, :placeholder => "Author", id: 'sell_author' %>
 	</p>
 	<p>
+		<%= f.label :publisher%> <br />
 		<%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher' %>
 	</p>
-	<p>
-		<%= f.number_field :edition, :placeholder => "Edition" %>
-	</p>
-	<p>
-		<%= f.text_field :isbn, :placeholder => "ISBN" %>
-	</p>
+	<%= f.fields_for :books do |builder| %>
+		<p>
+			<%= builder.label :edition%> <br />
+			<%= builder.number_field :edition, :placeholder => "Edition" %>
+		</p>
+		<p>
+			<%= builder.label :isbn%> <br />
+			<%= builder.text_field :isbn, :placeholder => "ISBN" %>
+		</p>
+	<%end%>
+	<%= f.label :Image %> <br />
+	<%= f.file_field :image %>
 	<p>
 		<%= f.button "Submit Book" %> 
 	</p>
