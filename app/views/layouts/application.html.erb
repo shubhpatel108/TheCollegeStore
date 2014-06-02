@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css"%>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery", "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
+  <%= javascript_include_tag "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -24,8 +24,10 @@
 	<%end%>
 	<%= cookies[:college_name] %>
 </header>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div id ="notices">
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+</div>
 <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
 <%= yield %>
 
