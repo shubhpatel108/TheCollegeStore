@@ -3,7 +3,7 @@
 </div>
 
 <div id="add_college" style="display:none;">
-	<%= form_tag(:controller => 'application', :action => 'select_college') do %>
+	<%= form_tag('/application/select_college', method: "get") do %>
 		<%= select_tag "college_id", options_from_collection_for_select(@colleges, "id", "name") %>
 		<%= submit_tag "Go"%>
 	<%end%>
