@@ -22,7 +22,7 @@
 		<%= link_to "Log In", new_user_session_path%>
 		</div>
 	<%end%>
-	<%= $college_name.name %>
+	<%= cookies[:college_name] %>
 </header>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
