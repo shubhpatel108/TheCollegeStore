@@ -1,0 +1,5 @@
+<% if not books.empty?%>
+<% books.each do |b|%>
+<%=b[:group].title%>, <%=b[:group].author%>, <%=b[:group].publisher%>, <%= b.edition%></br>
+<%end%>
+<%end%>

@@ -29,6 +29,9 @@
 	<p class="alert"><%= alert %></p>
 </div>
 <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+<%= link_to "Show Cart", show_cart_path, remote: true%>
+<div id="cart-content">
+</div>
 <%= yield %>
 
 </body>

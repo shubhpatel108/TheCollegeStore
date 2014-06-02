@@ -21,6 +21,7 @@ TheCollegeStore::Application.routes.draw do
   resources :book_groups
   get '/book_groups/details/:id', to: 'book_groups#details', as: :book_detail
   get '/add_item/:id', to: 'cart#add_item', as: :add_item
+  get '/cart/show', to: 'cart#show_cart', as: :show_cart
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
