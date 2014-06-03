@@ -1,1 +1,1 @@
-$('#notices').append('<p>Your book has successfully been added to the cart!<p>')
+$('#notices').append('<p><%= escape_javascript(@message)%><p>')
