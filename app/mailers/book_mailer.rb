@@ -1,10 +1,13 @@
 class BookMailer < ActionMailer::Base
-  default from: "valayvaidya28@gmail.com"
+  default from: "no_reply@tcs.com"
 
-  def request_seller(email,message)
-  	@email = email
-  	@message = message
-  	mail(:to=>email,:subject=>"Urgent::Request to buy your book")
+  def request_seller(s_ids, buyer, message)
+	@sellers = User.where(:id => s_ids)
+	@seller_emails = @sellers.collect(&:email).join(",")
+	@message = message
+	@buyer_email = buyer.email
+	@buyer_name = buyer.first_name + " " + buyer.last_name  	
+  	mail(:to=>@seller_emails,:subject=>"Request to buy your book | TheCollegeStore")
   end
 
 end

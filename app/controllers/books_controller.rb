@@ -61,9 +61,9 @@ class BooksController < ApplicationController
   end
 
   def request_seller
-    email = params[:seller_email]
+    s_ids = params[:seller_ids]
     message = params[:message]
-    BookMailer.request_seller(email, message).deliver
+    BookMailer.request_seller(s_ids, current_user, message).deliver
     redirect_to :root
   end
 

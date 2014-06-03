@@ -9,3 +9,12 @@
 <% end %>
 
 Total:<%=@total%>
+
+<p>Message the seller(s):</p>
+<%= form_tag(request_seller_books_path) do %>
+	<td><%= text_area_tag :message %></td>
+	<% @seller_ids.each do |i| %>
+    <%= hidden_field_tag "seller_ids[]", i %>
+	<% end %>
+	<td><%= submit_tag "Send"%></td>
+<% end %>

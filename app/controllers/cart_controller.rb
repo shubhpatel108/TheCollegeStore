@@ -41,6 +41,7 @@ class CartController < ApplicationController
     @books = Book.where(:id => session[:cart])
     groups = @books.map(&:book_group)
     users = @books.map(&:user)
+    @seller_ids = users.map(&:id)
     @total = 0
     done = @books.zip(groups, users)
     done.each do |b, g, u|
