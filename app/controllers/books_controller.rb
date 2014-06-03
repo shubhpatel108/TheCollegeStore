@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_filter :check_college, :only => [:index, :main_search]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :sell_autofill]
 
   def index
     @book_groups = BookGroup.all
