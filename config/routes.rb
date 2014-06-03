@@ -16,6 +16,11 @@ TheCollegeStore::Application.routes.draw do
     get 'login', to: 'devise/sessions#new', as: :login
     get 'logout', to: 'devise/sessions#destroy', as: :logout
   end
+  resources :colleges do
+    collection do
+      post 'request_admin_to_add_college'
+    end
+  end
   get '/books/sell/new_book', to: 'books#sell'
   post '/books/sell/autofill', to: 'books#sell_autofill'
   resources :book_groups

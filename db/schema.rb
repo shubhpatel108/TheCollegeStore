@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20140531030804) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "price"
   end
 
   add_index "users", ["college_id"], :name => "index_users_on_college_id"
