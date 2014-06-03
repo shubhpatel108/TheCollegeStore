@@ -4,4 +4,5 @@
 			<%=b[:group].title%>, <%=b[:group].author%>, <%=b[:group].publisher%>, <%= b.edition%>,<%= link_to "remove", remove_item_path(b.id), remote: true%></br>
 		</div>
 	<%end%>
+<p><%= link_to "Checkout", checkout_path %></p>
 <%end%>

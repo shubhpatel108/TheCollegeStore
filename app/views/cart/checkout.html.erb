@@ -1,0 +1,11 @@
+<% @books.each do |book| %>
+	<tr>
+		<td><%=book.info.title%></td>
+		<td><%=book.info.author%></td>		
+		<td><%=book.info.publisher%></td>
+		<td><%=book.price%></td>
+		<td><%=book.user.first_name%> <%=book.user.last_name%></td>
+	</tr>
+<% end %>
+
+Total:<%=@total%>

@@ -36,4 +36,18 @@ class CartController < ApplicationController
       format.js
     end
   end
+
+  def checkout
+    @books = Book.where(:id => session[:cart])
+    groups = @books.map(&:book_group)
+    users = @books.map(&:user)
+    @total = 0
+    done = @books.zip(groups, users)
+    done.each do |b, g, u|
+      b[:info] = g
+      b[:user] = u
+      @total += b.price
+    end
+    session[:cart] = nil
+  end
 end

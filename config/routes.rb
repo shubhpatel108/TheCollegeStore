@@ -28,6 +28,7 @@ TheCollegeStore::Application.routes.draw do
   get '/add_item/:id', to: 'cart#add_item', as: :add_item
   get '/cart/show', to: 'cart#show_cart', as: :show_cart
   get '/cart/remove_item/:id', to: 'cart#remove_item', as: :remove_item
+  get '/cart/checkout', to: 'cart#checkout', as: :checkout
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
