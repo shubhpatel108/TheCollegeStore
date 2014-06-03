@@ -49,6 +49,7 @@ class CartController < ApplicationController
       b[:user] = u
       @total += b.price
     end
+    BookMailer.buyer_invoice(current_user, @books).deliver
     session[:cart] = nil
   end
 end

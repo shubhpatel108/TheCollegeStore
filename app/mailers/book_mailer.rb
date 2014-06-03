@@ -10,4 +10,10 @@ class BookMailer < ActionMailer::Base
   	mail(:to=>@seller_emails,:subject=>"Request to buy your book | TheCollegeStore")
   end
 
+  def buyer_invoice(seller, books)
+  	@email = seller.email
+  	@name = seller.first_name + " " + seller.last_name
+  	@books = books
+  	mail(:to=>@email,:subject=>"Books purchased by you | TheCollegeStore")
+  end
 end
