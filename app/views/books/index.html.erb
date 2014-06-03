@@ -16,8 +16,9 @@
 		<td><%=book.edition%></td>
 		<td><%= link_to "Edit", edit_book_path(book) %> </td>
 		<%= form_tag(:action=>'request_seller') do %>
-			<td><%= email_field(:seller_email, {:controller=>'books', :action=>'request_seller'}) %></td>
-			<td><%= submit_tag "Email"%></td>
+			<td><%= text_field_tag :message %>
+			<td><%= email_field_tag :seller_email %></td>
+			<td><%= submit_tag "Send"%></td>
 		<% end %>
 	</tr>
 	<% end %>
