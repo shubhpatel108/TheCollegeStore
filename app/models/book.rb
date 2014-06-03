@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
-  attr_accessible :edition, :isbn
-  validates :edition, presence: true
+  attr_accessible :edition, :isbn, :price
+  validates :price, presence: true, :numericality => true
+  validates :edition, :numericality => true
 
   belongs_to :user
   belongs_to :college

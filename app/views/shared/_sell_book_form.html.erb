@@ -1,4 +1,4 @@
-<%= form_for book_group do |f| %>
+<%= form_for book_group, :validate => true do |f| %>
 	<p>
 		<%= f.label :title%> <br />
 		<%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title' %>
@@ -12,6 +12,10 @@
 		<%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher' %>
 	</p>
 	<%= f.fields_for :books do |builder| %>
+		<p>
+			<%= builder.label :price %> <br />
+			<%= builder.number_field :price, :placeholder => "Price" %>
+		</p>
 		<p>
 			<%= builder.label :edition%> <br />
 			<%= builder.number_field :edition, :placeholder => "Edition" %>
