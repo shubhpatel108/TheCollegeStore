@@ -11,20 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140528112304) do
+ActiveRecord::Schema.define(:version => 20140531030804) do
 
-  create_table "books", :force => true do |t|
+  create_table "book_groups", :force => true do |t|
     t.string   "title",      :null => false
     t.string   "author"
     t.string   "publisher"
-    t.integer  "edition"
-    t.string   "isbn"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-    t.integer  "college_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
+  add_index "book_groups", ["author"], :name => "index_book_groups_on_author"
+  add_index "book_groups", ["title"], :name => "index_book_groups_on_title"
+
+  create_table "books", :force => true do |t|
+    t.integer  "edition"
+    t.string   "isbn"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+    t.integer  "college_id"
+    t.integer  "price"
+    t.integer  "book_group_id"
+  end
+
+  add_index "books", ["book_group_id"], :name => "index_books_on_book_group_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
 

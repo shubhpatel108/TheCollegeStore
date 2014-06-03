@@ -5,25 +5,20 @@
 		<th>Name of the book</th>
 		<th>Author</th>		
 		<th>Publisher</th>
-		<th>Edition</th>
-		<th>Edit</th>
+		<th>Stock</th>
+		<th>Details</th>
 	</tr>
-	<% $books.each do |book| %>
+	<% $book_groups.each do |book| %>
 	<tr>
 		<td><%=book.title%></td>
 		<td><%=book.author%></td>		
 		<td><%=book.publisher%></td>
-		<td><%=book.edition%></td>
-		<td><%= link_to "Edit", edit_book_path(book) %> </td>
-		<%= form_tag(:action=>'request_seller') do %>
-			<td><%= text_field_tag :message %>
-			<td><%= email_field_tag :seller_email %></td>
-			<td><%= submit_tag "Send"%></td>
-		<% end %>
+		<td><%=book.stock%></td>
+		<td><%= link_to "details", book_detail_path(book) %> </td>
 	</tr>
 	<% end %>
 	
-	<p><%= link_to "Sell", '/books/new' %></p>
+	<p><%= link_to "Sell", '/book_groups/new' %></p>
 </tbody></table>
 </div>
 
