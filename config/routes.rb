@@ -1,5 +1,8 @@
 TheCollegeStore::Application.routes.draw do
   root to: 'application#check_cookies'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   get "emailapi/index"
   post "emailapi/subscribe" => 'emailapi#subscribe'
   resources :books do
