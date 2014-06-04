@@ -47,4 +47,7 @@ class User < ActiveRecord::Base
   	search.results.work
   end
 
+  def daiictian?
+  	self.college_id == 1
+  end
 end

@@ -10,16 +10,25 @@ TheCollegeStore::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"}
   get '/search', to: 'books#main_search', as: :search
   get '/person_category', to: 'application#person_category'
-  post '/application/select_college'
+  get '/application/select_college', to: 'application#select_college'
   devise_scope :user do
     get 'register', to: 'devise/registrations#new', as: :register
     get 'login', to: 'devise/sessions#new', as: :login
     get 'logout', to: 'devise/sessions#destroy', as: :logout
   end
+  resources :colleges do
+    collection do
+      post 'request_admin_to_add_college'
+    end
+  end
   get '/books/sell/new_book', to: 'books#sell'
   post '/books/sell/autofill', to: 'books#sell_autofill'
   resources :book_groups
   get '/book_groups/details/:id', to: 'book_groups#details', as: :book_detail
+  get '/add_item/:id', to: 'cart#add_item', as: :add_item
+  get '/cart/show', to: 'cart#show_cart', as: :show_cart
+  get '/cart/remove_item/:id', to: 'cart#remove_item', as: :remove_item
+  get '/cart/checkout', to: 'cart#checkout', as: :checkout
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

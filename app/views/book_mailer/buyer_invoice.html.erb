@@ -1,0 +1,12 @@
+<h2> Hello <%= @name %>, </h2>
+<h1> Thanks for purchasing Book(s) from TheCollegeStore </h1>
+<h3> List of Books:</h3>
+<% @books.each do |book| %>
+	<tr>
+		<td><%=book.info.title%></td>
+		<td><%=book.info.author%></td>		
+		<td><%=book.info.publisher%></td>
+		<td><%=book.price%></td>
+		<td><%=book.user.first_name%> <%=book.user.last_name%></td>
+	</tr></br>
+<% end %>

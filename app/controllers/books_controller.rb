@@ -1,8 +1,14 @@
 class BooksController < ApplicationController
+  before_filter :check_college, :only => [:index, :main_search]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :sell_autofill]
 
   def index
-    $book_groups = BookGroup.all
-    $book_names = $book_groups.map(&:title)
+    @book_groups = BookGroup.all
+    $book_names = @book_groups.map(&:title)
+    college_id = cookies[:college_id]
+    @book_groups.each do |group|
+        group[:stock] = group.books.where(:college_id => college_id).count
+    end
   end
 
   def new
@@ -34,7 +40,7 @@ class BooksController < ApplicationController
 
   def main_search
   	@query = params[:query]
-    @results = Book.where(["title like ? or author like ? or isbn like ?", "%#{@query}%", "%#{@query}%", "%#{@query}%"])
+    @results = BookGroup.where(["title like ? or author like ?", "%#{@query}%", "%#{@query}%"])
     respond_to do |format|
       format.html
     end
@@ -43,7 +49,7 @@ class BooksController < ApplicationController
   def sell_autofill
     titl = params[:book_title]
     if not titl.empty?
-      @est_book = Book.where(["title like ?", "%#{@query}%"]).first
+      @est_book = BookGroup.where(["title like ?", "%#{titl}%"]).first
     end
     respond_to do |format|
       format.js
@@ -55,9 +61,16 @@ class BooksController < ApplicationController
   end
 
   def request_seller
-    email = params[:seller_email]
-    BookMailer.request_seller(email).deliver
+    s_ids = params[:seller_ids]
+    message = params[:message]
+    BookMailer.request_seller(s_ids, current_user, message).deliver
     redirect_to :root
   end
 
+  private
+  def check_college
+    if cookies[:college_id].nil? || cookies[:college_name].nil?
+      redirect_to controller: 'application', action: 'check_cookies'
+    end
+  end
 end

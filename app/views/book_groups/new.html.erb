@@ -1,29 +1,24 @@
-<h1>Add a Book</h1>
-<%= form_for @book_group do |f| %>
-	<p>
-		<%= f.label :title%> <br />
-		<%= f.text_field :title %>
-	</p>
-	<p>
-		<%= f.label :author%> <br />
-		<%= f.text_field :author %>
-	</p>
-	<p>
-		<%= f.label :publisher%> <br />
-		<%= f.text_field :publisher %>
-	</p>
-	<%= f.fields_for :books do |builder| %>
-		<p>
-			<%= builder.label :edition%> <br />
-			<%= builder.number_field :edition %>
-		</p>
-		<p>
-			<%= builder.label :isbn%> <br />
-			<%= builder.text_field :isbn %>
-		</p>
+<div style="display:none;">
+	<%= form_tag( '/books/sell/autofill' , {:remote => true , :method => :post , :id => "title_form"}) do %>
+	          <td><%= text_field_tag "book_title" %></td>
 	<%end%>
-	<%= f.file_field :image %>
-	<p>
-		<%= f.button "Submit Book" %> 
-	</p>
-<% end %>
+</div>
+
+<div id="sell_book_form">
+	<%= render partial: 'shared/sell_book_form', :locals => {:book_group => @book_group, :books => :books}%>
+</div>
+
+
+
+
+<script type="text/javascript">
+	var b_n = <%= raw $book_names.to_json %>;
+	$( "#sell_title" ).autocomplete({
+			source: b_n
+		});
+
+	$("#sell_title").blur(function() {
+		document.getElementById("book_title").value = document.getElementById("sell_title").value
+	  $("#title_form").submit();
+		});
+</script>

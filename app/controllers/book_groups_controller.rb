@@ -1,4 +1,5 @@
 class BookGroupsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create]
   
   def new
   	@book_group = BookGroup.new
@@ -33,7 +34,7 @@ class BookGroupsController < ApplicationController
 
   def details
     @book_group = BookGroup.where(:id => params[:id]).first
-    @books = @book_group.books
+    @books = @book_group.books.where(:college_id => cookies[:college_id])
     @owners = []
     @books.each do |b|
       @owners << b.user
