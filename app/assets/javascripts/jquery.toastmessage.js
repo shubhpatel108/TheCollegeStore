@@ -165,7 +165,7 @@
 function FlashNotice(notice_type, message){
     $().toastmessage('showToast', {
         text     : message,
-        sticky   : true,
+        sticky   : false,
         position : 'top-right',
         type     : notice_type,
         closeText: '',
