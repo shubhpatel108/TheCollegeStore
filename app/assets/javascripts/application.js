@@ -13,3 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+//for flash messages
+var notice= '<%= flash[:notice] %>'
+var success= '<%= flash[:success] %>'
+var warning= '<%= flash[:warning] %>'
+var error= '<%= flash[:error] %>'
+if(notice)
+	FlashNotice("notice", notice);
+else if(success)
+	FlashNotice("success", success);
+else if(warning)
+	FlashNotice("warning", warning);
+else if(error)
+	FlashNotice("notice", error);
