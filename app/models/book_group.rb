@@ -10,6 +10,7 @@ class BookGroup < ActiveRecord::Base
   has_many :books, :dependent => :destroy
   accepts_nested_attributes_for :books
   before_create :set_image_name
+  belongs_to :category
 
   def set_image_name
   	if not image_file_name.nil?

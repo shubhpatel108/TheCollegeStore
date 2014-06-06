@@ -1,3 +1,4 @@
 var elem = document.getElementById("cart_item_<%=@book_id%>}");
 elem.parentNode.removeChild(elem);
-$('#notices').append('<p>Successfully removed!<p>')
+$('#notices').append('<p>Successfully removed!<p>');
+FlashNotice("success", "Book is removed!");

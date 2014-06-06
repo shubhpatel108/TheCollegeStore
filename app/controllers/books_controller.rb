@@ -64,12 +64,14 @@ class BooksController < ApplicationController
     s_ids = params[:seller_ids]
     message = params[:message]
     BookMailer.request_seller(s_ids, current_user, message).deliver
-    redirect_to :root
+    flash[:notice] = "Your mail has been sent, seller(s) will soon respond you."
+    redirect_to :books
   end
 
   private
   def check_college
     if cookies[:college_id].nil? || cookies[:college_name].nil?
+      flash[:warning] = "You need to choose your College!"
       redirect_to controller: 'application', action: 'check_cookies'
     end
   end
