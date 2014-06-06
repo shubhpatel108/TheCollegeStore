@@ -16,17 +16,18 @@ class BookGroupsController < ApplicationController
       @book.save
       @old_book_group.books << @book
       @old_book_group.save
-      flash[:notice] = "your Book is added!"
-      redirect_to :root
+      flash[:success] = "Your Book is added!"
+      redirect_to :books
     else
       if @book_group.save
         @new_book = @book_group.books.last
         @new_book.user_id = current_user.id
         @new_book.college_id = current_user.college_id
         @new_book.save
-        flash[:notice] = "your Book is added!"
-        redirect_to :root
+        flash[:success] = "Your Book is added!"
+        redirect_to :books
       else
+        flash[:error] = "Something went wrong! Please try again"
         render :action => 'new'
       end
     end

@@ -50,6 +50,7 @@ class CartController < ApplicationController
       @total += b.price
     end
     BookMailer.buyer_invoice(current_user, @books).deliver
+    flash[:success] = "You have successfully checked out!"
     session[:cart] = nil
   end
 end
