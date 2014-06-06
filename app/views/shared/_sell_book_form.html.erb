@@ -11,6 +11,10 @@
 		<%= f.label :publisher%> <br />
 		<%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher' %>
 	</p>
+	<p>
+		<%= f.label :category%> <br />
+		<%= f.collection_select :category_id, Category.all, :id, :name%> <br />
+	</p>
 	<%= f.fields_for :books do |builder| %>
 		<p>
 			<%= builder.label :price %> <br />

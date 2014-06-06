@@ -11,6 +11,7 @@ class BookGroup < ActiveRecord::Base
   accepts_nested_attributes_for :books
   before_create :set_image_name
   belongs_to :category
+  attr_accessible :category_id
 
   def set_image_name
   	if not image_file_name.nil?
