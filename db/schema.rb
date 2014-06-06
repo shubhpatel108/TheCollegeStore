@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140606082108) do
+ActiveRecord::Schema.define(:version => 20140606084414) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(:version => 20140606082108) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "category_id"
   end
 
   add_index "book_groups", ["author"], :name => "index_book_groups_on_author"
+  add_index "book_groups", ["category_id"], :name => "index_book_groups_on_category_id"
   add_index "book_groups", ["title"], :name => "index_book_groups_on_title"
 
   create_table "books", :force => true do |t|
@@ -79,9 +81,7 @@ ActiveRecord::Schema.define(:version => 20140606082108) do
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
 
   create_table "categories", :force => true do |t|
-    t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "name"
   end
 
   create_table "colleges", :force => true do |t|
