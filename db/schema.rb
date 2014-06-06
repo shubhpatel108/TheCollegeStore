@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140604071151) do
+ActiveRecord::Schema.define(:version => 20140606082108) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,6 +77,12 @@ ActiveRecord::Schema.define(:version => 20140604071151) do
   add_index "books", ["book_group_id"], :name => "index_books_on_book_group_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "colleges", :force => true do |t|
     t.string   "name",       :null => false
