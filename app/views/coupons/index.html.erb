@@ -1,0 +1,17 @@
+<div>
+
+<table>
+	<tbody><tr>
+		<th>Coupon Code</th>
+		<th>Pick</th>
+	</tr>
+	<% @coupons.each do |coupon| %>
+	<tr>
+		<td><%=coupon.code%></td>
+		<td><%= link_to "Pick", add_coupon_path(coupon.id), :remote => true %> </td>
+	</tr>
+	<% end %>
+	
+</tbody></table>
+</div>
+

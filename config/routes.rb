@@ -32,6 +32,9 @@ TheCollegeStore::Application.routes.draw do
   get '/cart/show', to: 'cart#show_cart', as: :show_cart
   get '/cart/remove_item/:id', to: 'cart#remove_item', as: :remove_item
   get '/cart/checkout', to: 'cart#checkout', as: :checkout
+  get '/coupons', to: 'coupons#index', as: :coupons
+  get '/coupons/add_coupon/:id', to: 'coupons#add_coupon', as: :add_coupon
+  get '/coupons/remove_coupon/:id', to: 'coupons#remove_coupon', as: :remove_coupon
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

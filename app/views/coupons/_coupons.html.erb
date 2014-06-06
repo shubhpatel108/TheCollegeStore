@@ -1,0 +1,11 @@
+<% if not session[:coupons].nil? %>
+	<% session[:coupons].each do |coupon|%>
+	<div id="picked_coupons">
+		<div id="cart_coupon_<%=coupon%>">
+			<%=coupon%>
+			<%= link_to "remove", remove_coupon_path(coupon), :remote => true %>
+		<% end %>
+		</div>
+
+		</div>
+<% end %>

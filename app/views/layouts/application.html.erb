@@ -28,6 +28,9 @@
 <%= link_to "Show Cart", show_cart_path, remote: true%>
 <div id="cart-content">
 </div>
+<div id="selected-coupons">
+<%= render :partial => 'coupons/coupons'%>
+</div>
 <%= yield %>
 
   <script>
