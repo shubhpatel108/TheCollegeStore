@@ -27,14 +27,35 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @book_group = @book.book_group
   end
 
   def update
-    @book = Book.find(params[:id])
-    if @book.update_attributes(params[:book])
-      redirect_to :root
+    all = params
+    @book = Book.find(all[:id])
+    @bg = @book.book_group
+    @book_group = @book.book_group
+    if not @book.update_attributes(:edition => all[:edition], :isbn => all[:isbn], :price => all[:price])
+      flash[:error] = "Something is wrong! Try again."
+      render 'edit'
     else
-      render "edit"
+      if @bg.title!=all[:title] or @bg.author!=all[:author] or @bg.publisher!=all[:publisher]
+          @old_book_group = BookGroup.where(title: all[:title], author: all[:author], publisher: all[:publisher]).first
+        if not @old_book_group.nil?
+          @old_book_group.books << @book
+          @book.book_group = @old_book_group
+          @book.save
+          @old_book_group.save
+        else
+          @new_bg = BookGroup.create(:title => all[:title], :author => all[:author], :publisher => all[:publisher])
+          @new_bg.books << @book
+          @book.book_group_id = @new_bg.id
+          @book.save
+          @new_bg.save
+        end
+      end
+        flash[:success] = "Your Book's information has been updated!"
+        redirect_to :books
     end
   end
 

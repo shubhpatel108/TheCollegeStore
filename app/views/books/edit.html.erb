@@ -1,27 +1,12 @@
 <h2> Edit a Book! </h2>
 
-<%= form_for @book do |f| %>
-	<p>
-		<%= f.label :title%> <br />
-		<%= f.text_field :title %>
-	</p>
-	<p>
-		<%= f.label :author%> <br />
-		<%= f.text_field :author %>
-	</p>
-	<p>
-		<%= f.label :publisher%> <br />
-		<%= f.text_field :publisher %>
-	</p>
-	<p>
-		<%= f.label :edition%> <br />
-		<%= f.number_field :edition %>
-	</p>
-	<p>
-		<%= f.label :isbn%> <br />
-		<%= f.text_field :isbn %>
-	</p>
-	<p>
-		<%= f.button "Update" %> 
-	</p>
-<% end %>
+<%= form_tag({controller: "books", action:"update" }, {:method => :put,:id => "book_edit_form"}) do %>
+	<%= text_field_tag "title", @book_group.title %>
+	<%= text_field_tag "author", @book_group.author %>
+	<%= text_field_tag "publisher", @book_group.publisher %>
+	<%= collection_select :category, :id, Category.all, :id, :name %>
+	<%= number_field_tag "edition", @book.edition %>
+	<%= number_field_tag "price", @book.price %>
+	<%= text_field_tag "isbn", @book.isbn %>
+	<%= submit_tag "Update" %>
+<%end%>
