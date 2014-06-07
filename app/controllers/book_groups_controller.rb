@@ -43,4 +43,12 @@ class BookGroupsController < ApplicationController
     @details = @books.zip(@owners)
   end
 
+  def category_books
+    @c_id = params[:id]
+    @category = Category.where(:id => @c_id)
+    @books = BookGroup.where(:category_id => @c_id)
+    respond_to do |format|
+      format.js
+    end
+  end
 end

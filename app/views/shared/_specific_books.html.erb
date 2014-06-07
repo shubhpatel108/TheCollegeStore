@@ -1,0 +1,20 @@
+<div>
+
+<table>
+	<tbody><tr>
+		<th>Name of the book</th>
+		<th>Author</th>		
+		<th>Publisher</th>
+		<th>Details</th>
+	</tr>
+	<% books.each do |book| %>
+	<tr>
+		<td><%=book.title%></td>
+		<td><%=book.author%></td>		
+		<td><%=book.publisher%></td>
+		<td><%= link_to "details", book_detail_path(book) %> </td>
+	</tr>
+	<% end %>
+	</tbody></table>
+</div>
+

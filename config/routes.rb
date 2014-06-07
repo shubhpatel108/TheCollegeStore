@@ -35,6 +35,7 @@ TheCollegeStore::Application.routes.draw do
   get '/coupons', to: 'coupons#index', as: :coupons
   get '/coupons/add_coupon/:id', to: 'coupons#add_coupon', as: :add_coupon
   get '/coupons/remove_coupon/:id', to: 'coupons#remove_coupon', as: :remove_coupon
+  get '/book_groups/category/:id', to: 'book_groups#category_books', as: :category_books
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

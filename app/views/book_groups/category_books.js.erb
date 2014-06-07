@@ -1,0 +1,2 @@
+$('#sub-heading').html('Books for <%=escape_javascript( @category.name)%>');
+$('#page-body').html('<%=escape_javascript(render :partial => "shared/specific_books", :locals => {:books => @books})%>');
