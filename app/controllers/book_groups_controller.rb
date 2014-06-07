@@ -45,7 +45,7 @@ class BookGroupsController < ApplicationController
 
   def category_books
     @c_id = params[:id]
-    @category = Category.where(:id => @c_id)
+    @category = Category.where(:id => @c_id).first
     @books = BookGroup.where(:category_id => @c_id)
     respond_to do |format|
       format.js
