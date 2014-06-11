@@ -12,7 +12,7 @@
   <title>TheCollegeStore</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css"%>
-  <%= stylesheet_link_tag    "font-awesome.css", "main_layout", "main_responsive"%>
+  <%= stylesheet_link_tag    "font-awesome.css", "main_layout", "main_responsive", "search-bar"%>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
   <%= csrf_meta_tags %>
@@ -97,19 +97,21 @@
   <div id="content">
     <div class="fixed-heading">
   <div class="grid-container grid-parent">
-    <div class="primary-heading">
+    
 
+    <div class="primary-heading">
+      
       <div class="global-secondary-nav">
         <ul>
 
-  <% if user_signed_in? %>
-      <div>
+        <% if user_signed_in? %>
+            <div>
       
-    </div>
-  <%else%>
-    <div>
-    </div>
-  <%end%>
+            </div>
+        <%else%>
+            <div>
+            </div>
+        <%end%>
   
           <div class="public-nav">
             <li class="support">
@@ -118,35 +120,57 @@
               <li>
                 <a>
                 <% if user_signed_in? %>
-                  <span><%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path %></span>
+                  <span><%= link_to "#{current_user.first_name}", edit_user_registration_path %></span>
                 <%end%>
+              
                    <span><%= cookies[:college_name] %></span></a>
+              
               </li>
+              <% if !user_signed_in? %>
               <li>
                 <%= link_to "Log In", new_user_session_path, {:class=>"button button-primary"}%>
               </li>
               <li>
                 <%= link_to "Register", new_user_registration_path, {:class=>"button button-primary"}%>
               </li>
+              <%end%>
           </div>
         </ul>
+
       </div>
 
-      <a id="featurette-1" class="trigger-mobile-shelf" data-featurette="mobile-shelf"><span class="icon icon-hamburger"></span></a>
-      <h1>
-  TheCollegeStore
-</h1>
+
+      <a id="featurette-1" class="trigger-mobile-shelf" data-featurette="mobile-shelf">
+
+        <span class="icon icon-hamburger">
+
+
+        </span></a>
+      <div>
+        <h1>
+            TheCollegeStore
+        </h1>
+        
+          <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+      </div>
+      
+      
 
       <!-- Loading Spinner -->
       <span class="loading-spinner"><span></span></span>
 
     </div>
+
   </div>
 
   
 
 </div>
-<div class="heading-pocket"></div>
+<div class="heading-pocket">
+
+   
+
+</div>
 
     
 
@@ -181,7 +205,6 @@
   </div>
 </div>
 
-<%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
 <div id="cart-content">
 </div>
 <div id="selected-coupons">

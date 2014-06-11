@@ -21,6 +21,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.fa-color white{
+  color:white;
+}
 .fa-color_grey{
   color: grey;
 }
