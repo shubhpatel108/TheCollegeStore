@@ -1,0 +1,290 @@
+.book{
+	background-color: white;
+	width: 76%;
+	height: 250px;
+	padding-left: 2%;
+	border-radius: 10px;
+	margin-left: 13px;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+.description{
+	background-color: white;
+	width: 76%;
+	height: 300px;
+	padding-left: 3%;
+	border-radius: 5px;
+	margin-left: 5px;
+
+}
+
+.sellerslist{
+background-color: white;
+width:76%;
+height: relative;
+padding-left: 2%;
+border-radius: 10px;
+margin-top: 10px;
+margin-left: 13px;
+display: table;
+
+}
+
+.bookname{
+
+	font-size: 3.0em;
+	padding-left: 0%;
+	font-style: solid;
+	color: black;
+
+}
+
+.bookattr{
+
+	float: left;
+	padding-top: 12px;
+}
+
+.mainimg {
+	width: 180px;
+	border : 1px solid;
+}
+
+.details{
+
+	padding-left: 8%;
+	float: left;
+	padding-top: 2%;
+}
+
+.author {
+
+	font-size: 2.0em;
+	padding-top: 2%;
+	margin-top: 3px;
+}
+
+
+.publisher {
+
+	font-size: 2.0em;
+	padding-top: 3%;
+	margin-top: 3px;
+	margin-left: -2px;
+}
+
+.sellers {
+
+	font-size: 2.0em;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	margin-top: 1px;
+	margin-bottom: -15px;
+
+}
+
+.wishbtn{
+
+	padding-top: 5%;
+	margin-left: -2px;
+}
+
+
+
+.link2link {
+
+	height:250px;
+	padding-left: 10%;
+	float: right;
+	width: 60px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+
+}
+
+.writereview{
+
+	
+	padding-top: 105px;
+	color: black;
+	font-size: 2.0em;
+	margin-left: -45px;
+
+
+}
+
+.topic-bullet{
+
+	font-size: 1.5em;
+}
+
+.cate {
+
+	font-size: 2.0em;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	background-color: #EAEAEA;
+	border-radius: 5px;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.dim{
+
+	margin-left: -35px;
+	margin-top: 105px;
+
+
+}
+
+.listtitle{
+
+	font-size: 3.0em;
+	padding-left: 0%;
+	padding-top: 20px;
+	font-style: solid;
+	color:  grey ;
+	border-bottom: 1px solid;
+	width: 910px;
+	padding-bottom: 5px;
+
+}
+
+
+.cartoption {
+	font-size: 1em;
+	margin-top: 0%;
+	margin-left: 20px;
+	margin-top: -0.75%;
+	float: left;
+	padding: 1% 1% 1% 1%;
+}
+
+
+.bookinfo {
+	margin-top: 15px;
+font-size: 1.5em;
+
+
+}
+
+
+.sellerlogo{
+
+	float: left;
+	width: 50px;
+	margin-top: 1%;
+	float: left;
+
+}
+
+.sellername {
+	font-size: 2.0em;
+	margin-top: 1%;
+	margin-left: 30px;
+	margin-right:10px;
+	float: left;
+	min-width: 90px;
+	padding: 0% 2% 2% 2%;
+}
+
+.catlink{
+margin-top: -6px;
+margin-right: 0px;
+margin-left: -3px;
+	
+}
+
+.ratetag {
+	background-color: #9D8Ac7;
+	border-radius: 5px;
+	width: 65px;
+	height: 5px;
+	padding: 1% 2% 2% 1%;
+	color: black;
+	margin-top: 0%;
+	float: left;
+	font-size: 2.0em;
+	margin-left: 40px;
+
+}
+
+.rate{
+
+font-size: 2em;
+padding: 2%;
+background-color: #DEDEDE;
+border-radius: 5px;
+width: 100px;
+height: 10px;
+margin-left: 95px;
+
+
+
+}
+
+.cartbutton {
+
+font-weight: bold;
+padding: 2px 20px;
+background: none repeat scroll 0% 0% #3F8ABF;
+color: #FFF !important;
+font-size: 8px;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+cursor: pointer;
+text-decoration: none;
+text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+border-width: 1px 1px 3px !important;
+border-style: solid;
+border-color: #326E99;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+display: inline-block;
+vertical-align: middle;
+border-radius: 5px;
+box-sizing: border-box;
+box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.1) inset;
+float: right;
+
+}
+
+.cartbutton-primary {
+
+
+	background-color:white !important;
+	border-color: white !important;
+}
+
+.subsign {
+
+	font-size: 1em;
+}
+
+.sellerdetail {
+
+	max-width:97%;
+}
+
+.listelement
+{
+    list-style-type: none;
+    margin-top: 30px;
+
+
+}
+
+
+
+/*style sheet for tab */
+
+  /* Example Styles for Demo */
+    .etabs { margin: 0; padding: 0; }
+    .tab { display: inline-block; zoom:1; *display:inline; background: #eee; border: solid 1px #999; border-bottom: none; -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; }
+    .tab a { font-size: 14px; line-height: 2em; display: block; padding: 0 10px; outline: none; }
+    .tab a:hover { text-decoration: underline; }
+    .tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #666; }
+    .tab a.active { font-weight: bold; }
+    .tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }
+    .panel-container { margin-bottom: 10px; }
