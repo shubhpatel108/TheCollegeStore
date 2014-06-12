@@ -51,6 +51,12 @@ display: table;
 	border : 1px solid;
 }
 
+img{
+
+	width: 170px;
+	height: 220px;
+
+}
 .details{
 
 	padding-left: 8%;
