@@ -1,23 +1,102 @@
-<h4><%= @book_group.title%></h4>
-<p><%= @book_group.author%><p>
-<p><%= @book_group.publisher%></p>
-<%= image_tag @book_group.image.url %>
 
-<% @details.each do |book, user| %>
-<table>
-	<tbody><tr>
-		<td>Edition</td>
-		<th>Price</th>
-		<th>Edit</th>
-		<th>User</th>
-		<th>Buy</th>
-	</tr>
-	<tr>
-		<td><%= book.edition %></td>
-		<td><%= book.price %></td>
-		<td><%= link_to "Edit", edit_book_path(book) %> </td>
-		<td><%= user.first_name %></td>
-		<td><%= link_to "add to cart", add_item_path(book.id), :remote => true %></td>
-	</tr>
-</tbody></table>
-<%end%>
+<head>
+  <%= stylesheet_link_tag "bookdetails", "main_layout","font-awesome.css", "search-bar"%>
+</head>
+<body>
+<div class="book" >
+
+  <div >
+      <p class="titlebox"> </p>
+  </div>
+
+    <div class="bookattr">
+        <%= image_tag @book_group.image.url, {:class=>"maining"} %>
+
+  </div>
+  <div class="details">
+      <p class="bookname"><%= @book_group.title%></p> 
+      <p class="author"><i class="fa fa-user fa-4x fa-color_grey" style="font-size:1.0em ;padding-right:5px;"></i>Author: <%= @book_group.author%></p>
+      <p class="publisher"><i class="fa fa-empire fa-4x fa-color_grey" style="font-size:1.0em ;padding-right:5px;"></i>Publisher: <%= @book_group.publisher%> </p>
+      
+      <a href="#userlist"><p class="sellers"><%= @details.count%> sellers avalaible </p></a>
+      
+      <br><br>
+      <br>
+
+      <div class="catlink">
+      
+      <a class="cate">Computer Science</a>
+    </div>
+  <div class="wishbtn">
+    <a href="#" class="button button-primary">Add to wishlist</a>
+  </div>
+</div>
+
+  <a class="link2link" style="background-color:#1F40E7"> </a>
+
+  
+ </div>
+
+
+
+ <br> </br>
+ <br> </br>
+
+
+
+ 
+
+<!-- div tag for descrption and review -->
+
+
+</div>
+<br><br><br><br>
+ <div id="userlist" class="sellerslist"  >
+
+    <div class="tablecontent">
+
+          <div class="listtitle">
+                Avaliable Sellers:
+          </div>
+
+          <br>
+
+          <ul class="listofsellers">
+
+              <% @details.each do |book, user| %>
+
+              <li class="listelement">
+                  <div class="sellerdetail">
+                        
+                        <div class="sellerlogo">
+                            <i class="fa fa-user fa-2x fa-color_grey"></i>
+                        </div>
+                        <div class="sellername"><%= user.first_name %></div>
+
+                        <div class="sellername">
+                          <i class="fa fa-bookmark fa-color_grey" ></i>     <%= book.edition %>rd edition
+                        </div>
+
+                        <div class="sellername">
+                          <i class="fa fa-phone fa-color_grey subsign"></i>
+                            <%= user.mobile %>
+                        </div> 
+                        <div class="sellername">
+                         <i class="fa fa-rupee fa-color_grey subsign"></i>
+                             <%= book.price %>
+                         </div>
+                        <div class="cartoption"> 
+                         <a href="/add_item/:id" class="cartbutton cartbutton-primary" name="Add to cart"> <div>
+                            <i class="fa fa-shopping-cart fa-3x fa-color_grey"></i>
+                          </div>
+                        </a>
+                        </div>
+                   </div> 
+              </li>
+              <br><br><br>
+          <% end %>
+        </div>
+    </div>
+  </div>
+
+</body>

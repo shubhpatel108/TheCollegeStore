@@ -1,0 +1,93 @@
+.block {
+  width: 200px;
+  margin: 0px 75px 15px;
+}
+
+.btn-fb-login {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background-image: -moz-linear-gradient(top, #3B5998 0%, #3B5998 100%);
+  background-image: -webkit-linear-gradient(top, #3B5998 0%, #3B5998 100%);
+  background-image: linear-gradient(to bottom, #3B5998 0%, #3B5998 100%);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+
+.btn-fb-login:hover {
+  background-image: -moz-linear-gradient(top, #476bb6 0%, #476bb6 100%);
+  background-image: -webkit-linear-gradient(top, #476bb6 0%, #476bb6 100%);
+  background-image: linear-gradient(to bottom, #476bb6 0%, #476bb6 100%);
+}
+.btn-fb-login .icon {
+  background: url(fb.png) no-repeat;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  float: left;
+  margin: 4px 1px;
+}
+.btn-fb-login .title {
+  font-size: 1.355em;
+  text-align: center;
+  color: #fff;
+  line-height: 40px;
+  float: left;
+  padding: 0 12px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px 0 0 rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.btn-gp-login {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background-image: -moz-linear-gradient(top, #dd4b39 0%, #dd4b39 100%);
+  background-image: -webkit-linear-gradient(top, #dd4b39 0%, #dd4b39 100%);
+  background-image: linear-gradient(to bottom, #dd4b39 0%, #dd4b39 100%);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.btn-gp-login {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background-image: -moz-linear-gradient(top, #d34837 0%, #d34837 100%);
+  background-image: -webkit-linear-gradient(top, #d34837 0%, #d34837 100%);
+  background-image: linear-gradient(to bottom, #d34837 0%, #d34837 100%);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+
+.btn-gp-login:hover {
+  background-image: -moz-linear-gradient(top, #ea503d 0%, #ea503d 100%);
+  background-image: -webkit-linear-gradient(top, #ea503d 0%, #ea503d 100%);
+  background-image: linear-gradient(to bottom, #ea503d 0%, #ea503d 100%);
+}
+.btn-gp-login .icon {
+  /*background: url(https://developers.google.com/+/images/branding/sign-in-buttons/Red-signin_Short_base_44dp.png) no-repeat;*/
+  background-image: url(g+32.png);
+  width: 26px;
+  height: 32px;
+  display: inline-block;
+  float: left;
+  margin: 5px 4px;
+}
+.btn-gp-login .title {
+  font-size: 1.355em;
+  text-align: center;
+  color: #fff;
+  line-height: 40px;
+  float: left;
+  padding: 0 20px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px 0 0 rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}

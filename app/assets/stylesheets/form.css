@@ -1,0 +1,337 @@
+
+/* text-based popup styling */
+.white-popup {
+  position: relative;
+  background: #282830;
+  padding: 25px;
+  width: auto;
+  max-width: 700px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+h2 { margin: 0; }
+
+a {
+  color: #999;
+  text-decoration: none;
+}
+
+a:hover { color: #1dabb8; }
+
+fieldset {
+  border: none;
+  margin: 0;
+}
+
+.field {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.field:focus {
+  outline: none;
+}
+
+.field .field-submit { cursor: pointer; }
+
+.clearfix { *zoom: 1; }
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; 
+}
+.clearfix:after { clear: both; }
+
+
+#login-form {
+  margin: 25px auto;
+  width: 600px;
+  border-radius: 5px 5px 5px 5px;
+  border-color: #111;
+}
+
+#login-form h2 {
+  background-color: #282830;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 14px;
+  padding: 0 20px 20px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 560px;
+}
+
+#login-form fieldset {
+  background: #fff;
+  border-width: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  border-color: #111;
+  padding: 20px;
+  position: relative;
+  border:1px solid;
+}
+
+#login-form fieldset:before {
+  background-color: #fff;
+  content: "";
+  height: 8px;
+  left: 50%;
+  margin: -4px 0 0 -4px;
+  position: absolute;
+  top: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 8px;
+}
+
+#login-form .field {
+  font-size: 10px;
+  float: left;
+}
+
+#login-form .field .field-email,
+#login-form .field .field-passwd {
+  border: 1px solid #dcdcdc;
+  padding: 12px 10px;
+  width: 260px;
+  height: 40px;
+}
+
+#login-form .field .field-email{
+  border-radius: 3px 3px 3px 3px;
+  margin-top: 10px;
+}
+
+#login-form .field .field-passwd{
+  border-radius: 3px 3px 3px 3px;
+  margin-top: 10px;
+}
+
+#login-form .field .field-submit {
+  border: none;
+  background: #1760BF;
+  border-radius: 3px;
+  color: #fff;
+  float: right;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 12px 20px;
+}
+
+#login-form .field .field-submit:hover { background: #198d98; } 
+
+
+#login-form .pull-left{
+  float: left;
+  margin-top: 25px;
+}
+
+#login-form img{
+  max-width: 15px;
+  vertical-align: middle;
+  border: 0;
+  float: left;
+  margin-left: 20px;
+  /*margin-top: 20px;*/
+}
+
+#login-form .right{
+  width: 300px;
+  float: right;
+  margin-top: -170px;
+  text-align: center;
+}
+
+#login-form .right-up{
+  width: 300px;
+  float: right;
+  margin-top: -285px;
+  text-align: center;
+}
+
+#login-form .remember{
+  margin-top: 20px;
+  margin-bottom: 20px; 
+}
+
+.chkbox{
+  float: left;
+}
+
+
+#login-form footer {
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+/* ++++++++++++++++++++++++++++++++++SIGN UP++++++++++++++++++++++++++++++++++++++++++++++++*/
+#login-form-signup {
+  margin: 25px auto;
+  width: 600px;
+  border-radius: 5px 5px 5px 5px;
+  border-color: #111;
+}
+
+#login-form-signup h2 {
+  background-color: #282830;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 14px;
+  padding: 0 20px 20px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 560px;
+}
+
+#login-form-signup fieldset {
+  background: #fff;
+  border-width: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  border-color: #111;
+  padding: 0px 20px 20px 20px;
+  position: relative;
+  border:1px solid;
+}
+
+#login-form-signup fieldset:before {
+  background-color: #fff;
+  content: "";
+  height: 8px;
+  left: 50%;
+  margin: -4px 0 0 -4px;
+  position: absolute;
+  top: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 8px;
+}
+
+#login-form-signup .field  {
+  font-size: 10px;
+  float: left;
+}
+
+#login-form-signup .field .field-email
+#login-form-signup .field .field-passwd
+#login-form-signup .field .field-text {
+  border: 1px solid #dcdcdc;
+  padding: 12px 10px;
+  width: 260px;
+  height: 40px;
+}
+
+#login-form-signup .field .field-email {
+  border-radius: 3px 3px 3px 3px;
+  margin-top: 10px;
+}
+
+#login-form-signup .field .field-passwd {
+  border-radius: 3px 3px 3px 3px;
+  margin-top: 10px;
+}
+
+#login-form-signup .field .field-text {
+  border-radius: 3px 3px 3px 3px;
+  margin-top: 10px;
+}
+
+#login-form-signup .field .field-submit {
+  border: none;
+  background: #1760BF;
+  border-radius: 3px;
+  color: #fff;
+  float: left;
+  width: 260px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 12px 20px;
+}
+
+#login-form-signup .field .field-submit:hover { background: #198d98; }
+
+#login-form-signup .pull-left{
+  float: left;
+  margin-top: 25px;
+}
+
+#login-form-signup img{
+  max-width: 15px;
+  margin-top: 70px;
+  vertical-align: middle;
+  border: 0;
+  float: left;
+  margin-left: 20px;
+  /*margin-top: 20px;*/
+}
+
+#login-form-signup .right{
+  width: 300px;
+  float: right;
+  margin-top: -285px;
+  text-align: center;
+}
+
+#login-form-signup footer {
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+.info {
+  background: #e5e5e5;
+  border-radius: 50%;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  margin: 0 10px 0 0;
+  text-align: center;
+  width: 20px;
+}
+
+
+/*------------ preview styles ----------------*/
+html {
+  font-family: "Calibri", "Trebuchet MS", "Helvetica", sans-serif;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+a,
+a:visited {
+  color: #1760BF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c00;
+}
+
+.links li {
+  margin-bottom: 5px;
+}
+
+h4 {
+  margin: 0px 0 0 0;
+}
+
+.bottom-text {
+  margin-top: 40px;
+  border-top: 2px solid #CCC;
+}
+.bottom-text a {
+  border-bottom: 1px solid #CCC;
+}
+.bottom-text p {
+  max-width: 650px;
+}

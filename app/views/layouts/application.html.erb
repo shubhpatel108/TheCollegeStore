@@ -1,31 +1,289 @@
 <!DOCTYPE html>
-<html>
+
+<html class="no-js" lang="en"><!--<![endif]-->
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>TheCollegeStore</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css"%>
+  <%= stylesheet_link_tag    "font-awesome.css", "main_layout", "main_responsive", "search-bar"%>
+  <%= stylesheet_link_tag    "form.css", "magnific-popup.css" %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
   <%= csrf_meta_tags %>
-</head>
-<body>
+<!-- ----- STYLE (ANIMATION) FOR FORM POPUP -------->
+  <style type="text/css">
+    .mfp-3d-unfold {
+      /* start state */
+      /* animate in */
+      /* animate out */
+    }
+    .mfp-3d-unfold .mfp-content {
+      perspective: 2000px;
+    }
+    .mfp-3d-unfold .mfp-with-anim {
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+      transform-style: preserve-3d;
+      transform: rotateY(-60deg);
+    }
+    .mfp-3d-unfold.mfp-bg {
+      opacity: 0;
+      transition: all 0.5s;
+    }
+    .mfp-3d-unfold.mfp-ready .mfp-with-anim {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+    .mfp-3d-unfold.mfp-ready.mfp-bg {
+      opacity: 0.3;
+    }
+    .mfp-3d-unfold.mfp-removing .mfp-with-anim {
+      transform: rotateY(60deg);
+      opacity: 0;
+    }
+    .mfp-3d-unfold.mfp-removing.mfp-bg {
+      opacity: 0;
+    }
+  </style>
+<!------------- STYLE ENDS ------------------- -->
 
-<header>
-	<% if user_signed_in? %>
-  		<div>
-			<span>Welcome, <%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path %></span>
-			<%= link_to "Log out", destroy_user_session_path, method: :delete %>
-		</div>
-	<%else%>
-		<div>
-		<%= link_to "Register", new_user_registration_path%>
-		<%= link_to "Log In", new_user_session_path%>
-		</div>
-	<%end%>
-	<%= cookies[:college_name] %>
-</header>
-<%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
-<%= link_to "Show Cart", show_cart_path, remote: true%>
+<!------------- JAVASCRIPT FOR REGISTRATION FORMS ------------------- -->
+<%= javascript_include_tag "popup_window"%>
+<%= javascript_include_tag "prefixfree" %>
+<!------------- JS ENDS ------------------- -->
+
+</head>
+
+<body id="library" class="gecko new-gecko">
+  
+<div id="shelf">
+  <ul class="global-nav">
+    <li>
+      <a href="#" class="">
+        <i class=""></i>
+        <span class="nav-tooltip">Home</span>
+      </a>
+    </li>
+
+      <li>
+        <a href="/books" class="">
+          <i class="fa fa-home fa-4x fa-color_grey"></i>
+          <span class="nav-tooltip">Home</span>
+        </a>      
+      </li>
+      <li>
+        <a href="#" class="">
+          <i class="fa fa-user fa-4x fa-color_grey"></i>
+          <span class="nav-tooltip">My Profile </span>
+        </a>      
+      </li>
+      <li>
+        <a href="https://www.facebook.com/thecollegestore.co.in" class="">
+          <span class="fa fa-facebook fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Facebook</span>
+        </a>      
+      </li>
+      <li>
+        <a href="#" class="">
+           <span class="fa fa-android fa-4x fa-color_grey"></span>
+           <span class="nav-tooltip">Android App</span>
+        </a>      
+      </li>
+      <li>
+        <a href="#" class="">
+          <span class="fa fa-book fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Orders</span>
+        </a>      
+      </li>
+      <li>
+        <a href="#" class="">
+            <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
+            <span class="nav-tooltip">Wish List</span>
+        </a>      
+      </li>
+      <li>
+        <a href="/cart/show" class="" data-remote="true">
+          <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Cart</span>
+        </a>      
+      </li>
+      <li>
+        <a href="#" class="">
+            <span class="fa fa-phone fa-4x fa-color_grey"></span>
+            <span class="nav-tooltip">Contact Us</span>
+        </a>      
+      </li>
+    <% if user_signed_in? %>
+      <li>
+        <a href="/logout" class="">
+            <span class="fa fa-sign-out fa-4x fa-color_grey"></span>
+            <span class="nav-tooltip">Log out</span>
+        </a>      
+      </li>
+    <% end %>
+    </div>
+  </ul>
+  <a class="trigger-shelf shelf-opener"><span class="icon icon-open-shelf"></span></a>
+</div>
+
+<div id="content">
+  <div class="fixed-heading">
+  <div class="grid-container grid-parent">
+    <div class="primary-heading">
+      <div class="global-secondary-nav">
+        <ul id="inline-popups">
+          <div class="public-nav">
+            <li class="support">              
+            </li>
+              <li>
+                <a>
+                <% if user_signed_in? %>
+                  <span><%= link_to "#{current_user.first_name}", edit_user_registration_path %></span>
+                <%end%>
+                   <span><%= cookies[:college_name] %></span></a>
+              </li>
+              <% if !user_signed_in? %>
+                <li>     
+                  <a href="#test-popup" data-effect="mfp-3d-unfold" class="button button-primary">Login</a>
+                </li>
+                <li>
+                  <a href="#test-popup-signup" data-effect="mfp-3d-unfold" class="button button-primary">Register</a>
+                </li>
+              <%end%>
+          </div>
+        </ul>
+      </div>
+
+      <a id="featurette-1" class="trigger-mobile-shelf" data-featurette="mobile-shelf">
+        <span class="icon icon-hamburger">
+        </span></a>
+
+      <div>
+        <h1>
+            TheCollegeStore
+        </h1>
+          <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+      </div>
+      <!-- Loading Spinner -->
+      <span class="loading-spinner"><span></span></span>
+    </div>
+  </div>
+</div>
+
+<div class="heading-pocket">
+</div>
+    
+
+<div id="featurette-2" class="grid-container featurette" data-featurette="library-index">
+  <div style="position: fixed; left: 1085.8px; right: auto; width: 250.2px;" class="grid-20 push-80 fixed-sidebar">
+    <div style="height: 603px;" class="scroll-mask">
+      <div class="scroll-container">
+         <div class="content-filter">
+
+
+
+      <div class="filters-container">
+        <div id="topics-expander" class="form-group">
+          <h4><a>Topics <span class="icon icon-chevron-down"></span></a></h4>
+          <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
+            <li><a class="selected" data-filter-value="">All Categories</a></li>
+                
+            <% $categories.each do |c|%>
+            <li>
+              <p><%= link_to "#{c.name}", category_books_path(c.id), {:remote => true}%></p>
+            </li>
+            <% end %>
+            </li>
+          </ul>
+        </div>
+
+        </div>
+      </div>
+      <%= javascript_include_tag "main_layout_js" %>
+    </div>
+
+  </div>
+</div>
+<!------------------------- CODE FOR LOGIN FORM ----------- -->
+<div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+  <div id="login-form">
+    <h2>welcome back</h2>
+    <fieldset>
+      <%= form_for(User.new, url: session_path(:user), :validate => true) do |f| %>
+      <div class="pull-left">
+      <div class="field">
+        <div >
+        <%= f.email_field :email, autofocus: true, :placeholder => "Email ID", :class => "field-email", :validate => {:uniqueness => false} %>
+        </div>
+        <div>
+          <%= f.password_field :password, autocomplete: "off", :class=>"field-passwd", :placeholder => "Password" %>
+          </div>
+        <%= f.submit "Sign in", :class => "field-submit" %>
+
+        <footer class="clearfix">
+          <% if Devise.mappings[:user].rememberable? -%>
+          <div class="remember"><%= f.check_box :remember_me, :class => "chkbox"%><%= f.label :remember_me%></div>
+        <% end -%>
+        </footer>
+        </div>
+      </div>
+      <div class="middle">
+        <%= image_tag ("OrSeperator.png") %>
+        
+      </div>
+      <% end %> 
+      <div class="right">
+        <%= render :partial => "devise/shared/links_signin", :locals => {:resource_name => :user, :resource_class => User.new} %> 
+      </div>
+    </fieldset>
+  </div>
+</div>
+<!---------------------------------- LOGIN FORM ENDS ---------------------->
+
+<!---------------------------------- CODE FOR SIGN-UP FORM ---------------------->
+<div id="test-popup-signup" class="white-popup mfp-with-anim mfp-hide">
+  <div id="login-form-signup">
+    <h2>get started</h2>
+    <fieldset>
+      <%= form_for(User.new, url: registration_path(:user), :validate => true) do |f| %>
+       
+        <div class="pull-left">
+        <div class="field">
+        <div>
+        <%= f.text_field :first_name, autofocus: true, :class =>"field-text", :placeholder => "First Name" %></div>
+
+        <div>
+        <%= f.text_field :last_name, :class =>"field-text", :placeholder => "Last Name" %></div>
+
+        <div>
+        <%= f.email_field :email, :class => "field-email", :placeholder => "Email ID" %></div>
+
+        <div>
+        <%= f.password_field :password, autocomplete: "off", :class =>"field-passwd", :placeholder => "Password" %></div>
+
+        <div>
+        <%= f.text_field :mobile, :class =>"field-text", :placeholder => "Mobile Number" %></div>
+        <div>
+        <%= f.hidden_field :college_id, :value=> cookies[:college_id] %></div>
+        <div><%= f.submit "Sign up", :class => "field-submit" %></div>
+        </div>
+        </div>
+      <% end %>
+      <div class="middle">
+        <%= image_tag ("OrSeperator.png") %>
+      </div>
+      <div class="right">
+        <%= render :partial => "devise/shared/links_signup", :locals => {:resource_name => :user, :resource_class => User.new} %> 
+      </div>
+    </fieldset>
+  </div>
+</div>
+<!---------------------------------- SIGN-UP FORM ENDS ---------------------->
+
 <div id="cart-content">
 </div>
 <div id="selected-coupons">
@@ -33,29 +291,30 @@
 </div>
 <div id="sub-heading">
 </div>
-<div id="category-bar">
-	<% $categories.each do |c|%>
-		<p><%= link_to "#{c.name}", category_books_path(c.id), {:remote => true}%></p>
-	<% end %>
-</div>
 <div id="page-body">
-	<%= yield %>
+  <%= yield %>
 </div>
+
+<!---------------------------- JAVASCRIPT FOR LOGIN-REGISTRATION FORMS -------------------->
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "inline_popup.js"%>
+<!---------------------------------- JAVASCRIPT ENDS ---------------------->
+
   <script>
-  	//for flash messages
-  	var notice= '<%= flash[:notice] %>'
-	var success= '<%= flash[:success] %>'
-	var warning= '<%= flash[:warning] %>'
-	var error= '<%= flash[:error] %>'
-	if(notice)
-		FlashNotice("notice", notice);
-	else if(success){
-		FlashNotice("success", success);
-	}
-	else if(warning)
-		FlashNotice("warning", warning);
-	else if(error)
-		FlashNotice("notice", error);
+    //for flash messages
+    var notice= '<%= flash[:notice] %>'
+    var success= '<%= flash[:success] %>'
+    var warning= '<%= flash[:warning] %>'
+    var error= '<%= flash[:error] %>'
+    if(notice)
+      FlashNotice("notice", notice);
+    else if(success){
+      FlashNotice("success", success);
+    }
+    else if(warning)
+      FlashNotice("warning", warning);
+    else if(error)
+      FlashNotice("notice", error);
   </script>
 </body>
 </html>
