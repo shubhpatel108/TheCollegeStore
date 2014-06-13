@@ -13,6 +13,9 @@ class BookGroup < ActiveRecord::Base
   belongs_to :category
   attr_accessible :category_id
 
+  has_many :wishlists, :dependent => :destroy,
+                       :foreign_key => "book_group_id"
+  has_many :wishers, :through => :wishlists, :source => :wisher
   def set_image_name
   	if not image_file_name.nil?
 	  	extension = File.extname(image_file_name).downcase
