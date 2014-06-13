@@ -1,0 +1,5 @@
+// FlashNotice('success', 'Successfully removed from your Wishlist!');
+var wish_anchor = document.getElementById('remove_from_wishlist'); 
+wish_anchor.innerHTML = "Add to Wishlist";
+wish_anchor.setAttribute("id", "add_to_wishlist");
+wish_anchor.href = "/wishlist/add/<%= escape_javascript(@bg_id)%>";

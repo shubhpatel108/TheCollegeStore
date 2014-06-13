@@ -40,6 +40,13 @@ class BookGroupsController < ApplicationController
     @books.each do |b|
       @owners << b.user
     end
+    @wished = false
+    if user_signed_in?
+      w = Wishlist.where(:book_group_id => @book_group.id, :user_id => current_user.id).first
+      if not w.nil?
+        @wished = true
+      end
+    end
     @details = @books.zip(@owners)
   end
 

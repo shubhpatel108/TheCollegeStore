@@ -28,7 +28,11 @@
       <a class="cate">Computer Science</a>
     </div>
   <div class="wishbtn">
-    <a href="#" class="button button-primary">Add to wishlist</a>
+    <% if @wished %>
+      <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+    <% else %>
+      <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+    <% end %>
   </div>
 </div>
 
