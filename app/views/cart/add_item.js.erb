@@ -1,2 +1,4 @@
-$('#notices').append('<p><%= escape_javascript(@message)%><p>')
-FlashNotice("success", "Book is successfully added to the cart!");
+// $('#notices').append('<p><%= escape_javascript(@message)%><p>')
+// FlashNotice("success", "Book is successfully added to the cart!");
+var count = document.getElementById('cart-item-count');
+count.innerHTML = "<%= session[:cart].count%>";

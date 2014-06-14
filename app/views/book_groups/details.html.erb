@@ -90,7 +90,7 @@
                              <%= book.price %>
                          </div>
                         <div class="cartoption"> 
-                         <a href="/add_item/:id" class="cartbutton cartbutton-primary" name="Add to cart"> <div>
+                         <a href="/add_item/<%= book.id%>" class="cartbutton cartbutton-primary" name="Add to cart" data-remote=true> <div>
                             <i class="fa fa-shopping-cart fa-3x fa-color_grey"></i>
                           </div>
                         </a>

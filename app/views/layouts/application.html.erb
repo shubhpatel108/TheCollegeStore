@@ -108,6 +108,12 @@
       <li>
         <a href="/cart/show" class="" data-remote="true">
           <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
+          <div id="cart-count-wrapper"><span id="cart-item-count">
+          <% if session[:cart].nil? %>
+          0
+          <% else%>
+          <%= session[:cart].count%>
+          <%end%></span></div>
           <span class="nav-tooltip">Cart</span>
         </a>      
       </li>

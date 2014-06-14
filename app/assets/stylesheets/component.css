@@ -1,3 +1,25 @@
+#cart-count-wrapper
+{
+	min-height: 16px;
+	max-height: 18px;
+	max-width: 18px;
+    position: relative;
+    background:#0080FF;
+    top: -55px;
+    right: -30px;
+    border-radius: 50%;
+    color:#ffffff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#cart-item-count
+{
+	position: relative;
+	top: -15px;
+}
+
 .global-grid {
 	padding: 0px;
 	max-width: 984px;
