@@ -1,0 +1,190 @@
+/*
+984px grid system ~ Core CSS.
+4 Columns ~ Margin left: 10px ~ Margin right: 10px
+
+Based on the 960.gs grid system - http://960.gs/
+by Nathan Smith
+
+Created by the Grid System Generator - v1.04
+Learn more ~ http://www.gridsystemgenerator.com/
+*/
+
+/*
+Forces backgrounds to span full width,
+even if there is horizontal scrolling.
+Increase this if your layout is wider.
+
+Note: IE6 works fine without this fix.
+*/
+
+/* =Containers
+--------------------------------------------------------------------------------*/
+.container_4
+{
+	margin-left: none;
+	font-family: monospace
+	
+	width: 995px;
+	margin-top: 20px;
+	margin-left:13px;
+	margin-right: 4px;
+	padding-bottom: 10px;
+	word-wrap:break-word;
+	border-radius: 5px;
+}
+
+.divfloat {
+	float: left;
+	margin-left:10px;
+}
+
+/* =Grid >> Global
+--------------------------------------------------------------------------------*/
+
+.grid_1{
+	display: inline;
+	float: left;
+	margin-left: -4px;
+	margin-right: 10px;
+}
+
+
+
+.grid_2,
+.grid_3,
+.grid_4 {
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.push_1, .pull_1,
+.push_2, .pull_2,
+.push_3, .pull_3 {
+	position: relative;
+}
+
+/* =Grid >> Children (Alpha ~ First, Omega ~ Last)
+--------------------------------------------------------------------------------*/
+.alpha {margin-left: 0;}
+.omega {margin-right: 0;}
+
+/* =Grid >> 4 Columns
+--------------------------------------------------------------------------------*/
+.container_4 .grid_1 {width: 226px;}
+.container_4 .grid_2 {width: 472px;}
+.container_4 .grid_3 {width: 718px;}
+.container_4 .grid_4 {width: 964px;}
+
+/* =Prefix Extra Space >> 4 Columns
+--------------------------------------------------------------------------------*/
+.container_4 .prefix_1 {
+	padding-left: 246px;
+	margin-top: -326px;
+}
+
+.container_4 .prefix_2 {
+	padding-left: 492px;
+	margin-top: -326px;
+}
+
+.container_4 .prefix_3 {
+	padding-left: 738px;
+	margin-top: -326px;
+}
+
+/* =Suffix Extra Space >> 4 Columns
+--------------------------------------------------------------------------------*/
+.container_4 .suffix_1 {padding-right: 246px;}
+.container_4 .suffix_2 {padding-right: 492px;}
+.container_4 .suffix_3 {padding-right: 738px;}
+
+/* `Push Space >> 4 Columns
+--------------------------------------------------------------------------------*/
+.container_4 .push_1 {left: 246px;}
+.container_4 .push_2 {left: 492px;}
+.container_4 .push_3 {left: 738px;}
+
+/* `Pull Space >> 4 Columns
+--------------------------------------------------------------------------------*/
+.container_4 .pull_1 {left: -246px;}
+.container_4 .pull_2 {left: -492px;}
+.container_4 .pull_3 {left: -738px;}
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+.clearfix:before,
+.clearfix:after {
+	content: "\0020";
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.clearfix:after {
+	clear: both;
+}
+/*
+The following zoom:1 rule is specifically for IE6 + IE7.
+Move to separate stylesheet if invalid CSS is a problem.
+*/
+.clearfix {
+	zoom: 1;
+}
+
+
+a {
+	color: #333;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+.container_4 h1 {
+	font-family: Georgia, serif;
+	font-weight: normal;
+	text-align: center;
+}
+.container_4 h2 {
+	padding: 20px 0 0;
+	font-family: Georgia, serif;
+	font-weight: normal;
+	text-align: center;
+}
+.container_4 p {
+
+overflow: hidden;
+text-align: left;
+font-size: 2.5em;
+margin-left: 20px;
+
+padding-bottom: 5px;
+}
+.container_4 {
+	background-color:#fff;
+	margin-top: 40px;
+	background-repeat: repeat-y;
+	overflow: auto;
+	max-height: 2000px;
+}
+
+.innertitle {
+padding-top: 25px;
+width: 994px;
+margin-top: 0px;
+
+}
+}
