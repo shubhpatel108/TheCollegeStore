@@ -1,0 +1,195 @@
+.global-grid {
+	padding: 0px;
+	max-width: 984px;
+	margin-left: 10px;
+	list-style: none;
+	text-align: center;
+}
+
+.grid-li {
+	display: inline-block;
+	width: 236px;
+	margin: 0;
+	padding-left: 8px;
+	padding-top: 15px;
+	text-align: left;
+	position: relative;
+
+}
+
+.global-grid figure {
+	margin-left: 12px;
+	position: relative;
+}
+
+.global-grid figure img {
+	width: 175px;
+	height: 230px;
+	display: block;
+	position: relative;
+	margin-bottom: 3%;
+	border-top:1px solid;
+}
+
+.global-grid figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-left: 10px;
+	background: #2c3f52;
+	color: white;
+}
+
+.global-grid figcaption h4 {
+	margin-top: 2%;
+
+	padding: 0;
+	
+}
+
+.global-grid figcaption span:before {
+	content: 'by ';
+
+}
+
+.global-grid figcaption a {
+	text-align: center;
+	padding: 5px 10px;
+	border-radius: 2px;
+	display: inline-block;
+	background:white;
+	color: #fff;
+}
+
+
+/* Caption Style 3 */
+.cs-style-3 figure {
+	overflow: hidden;
+}
+
+.cs-style-3 figure .img-book {
+	-webkit-transition: -webkit-transform 0.4s;
+	-moz-transition: -moz-transform 0.4s;
+	transition: transform 0.4s;
+	
+	max-height: 285px;
+	border-radius: 5px;
+}
+
+.no-touch .cs-style-3 figure:hover .img-book,
+.cs-style-3 figure.cs-hover .img-book {
+	
+
+	-webkit-transform: translateY(-50px);
+	-moz-transform: translateY(-50px);
+	-ms-transform: translateY(-50px);
+	transform: translateY(-50px);
+}
+
+
+.cs-style-3 figcaption {
+	height: 102px;
+	width: 175px;
+	top: auto;
+	bottom: 0;
+	opacity: 0;
+	border-radius: 5px;
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+	transition: transform 0.4s, opacity 0.1s 0.3s;
+
+}
+
+.no-touch .cs-style-3 figure:hover figcaption,
+.cs-style-3 figure.cs-hover figcaption {
+	opacity: 1;
+	background: !important;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	transform: translateY(0px);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+	transition: transform 0.4s, opacity 0.1s;
+}
+
+.cs-style-3 figcaption a {
+position: absolute;
+bottom: 20px;
+right: 10px;
+width: 50px;
+font-size: 1.5em;
+height: 20px;
+}
+
+a, a :visited {
+	color: white;
+	text-decoration: none;
+}
+
+.book-name {
+
+	width:167px;
+	height: 46px;
+	background-color: #2c3f52;
+	padding-top: 3px;
+	padding-left: 10px;
+	font-color: white;
+	font-size: 2.0em;
+	padding-bottom: 1%;
+	border-radius: 5px;
+	text-decoration: none;
+}
+.font-decor{
+
+	text-decoration: none;
+	font-color:white;
+}
+
+.font-decor :hover{
+
+	font-color:white;
+	text-decoration: none;
+}
+.book-name1 {
+
+	width:100%;
+	background-color: #2c3f52;
+	font-size: 1.125em;
+}
+
+
+
+.author-name{
+
+	margin-top: 5%;
+	font-size: 1.25em;
+}
+
+.link-style {
+
+	margin-top:2%;
+}
+
+.book-price {
+
+	font-size: 2.0em;
+}
+
+@media screen and (max-width: 31.5em) {
+	.global-grid {
+		padding: 10px 10px 100px 10px;
+	}
+	.global-grid li {
+		width: 100%;
+		min-width: 300px;
+	}
+}
+
