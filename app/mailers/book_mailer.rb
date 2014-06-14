@@ -16,4 +16,12 @@ class BookMailer < ActionMailer::Base
   	@books = books
   	mail(:to=>@email,:subject=>"Books purchased by you | TheCollegeStore")
   end
+
+  def notify_wishers(bg)
+    u_ids = Wishlist.where(:book_group_id => bg.id).map(&:user_id)
+    wishers = User.where(:id => u_ids)
+    @wisher_emails = wishers.collect(&:email).join(",")
+    @book = bg
+    mail(:to=>@wisher_emails, :subject => "#{bg.title} is recently added by a seller")
+  end
 end

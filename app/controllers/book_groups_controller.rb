@@ -16,6 +16,7 @@ class BookGroupsController < ApplicationController
       @book.save
       @old_book_group.books << @book
       @old_book_group.save
+      BookMailer.notify_wishers(@old_book_group).deliver
       flash[:success] = "Your Book is added!"
       redirect_to :books
     else
