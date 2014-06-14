@@ -194,7 +194,10 @@
                 
             <% $categories.each do |c|%>
             <li>
-              <p><%= link_to "#{c.name}", category_books_path(c.id), {:remote => true}%></p>
+              <a href="/book_groups/category/<%=c.id%>" data-remote=true>
+                <span><%= c.name%><span>
+                <span class="cat-book-count"><b><%= c.total_books%></b></span>
+                </a>
             </li>
             <% end %>
             </li>
