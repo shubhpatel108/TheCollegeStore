@@ -47,6 +47,7 @@ class CartController < ApplicationController
     done.each do |b, g, u|
       b[:info] = g
       b[:user] = u
+      b.buyer_id = current_user.id
       @total += b.price
     end
     BookMailer.buyer_invoice(current_user, @books).deliver
