@@ -13,6 +13,7 @@ class BooksController < ApplicationController
     college_id = cookies[:college_id]
     @book_groups.each do |group|
         group[:stock] = group.books.where(:college_id => college_id).count
+        group[:min_price] = group.books.map(&:price).min
     end
   end
 
@@ -67,6 +68,10 @@ class BooksController < ApplicationController
   def main_search
   	@query = params[:query]
     @results = BookGroup.where(["title like ? or author like ?", "%#{@query}%", "%#{@query}%"])
+    @results.each do |b|
+      b[:min_price] = b.books.map(&:price).min
+      b[:stock] = b.books(&:college_id).count(cookies[:college_id])
+    end
     respond_to do |format|
       format.html
     end
