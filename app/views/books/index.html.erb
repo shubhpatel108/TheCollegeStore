@@ -1,27 +1,15 @@
-<head>
-
-  <%= stylesheet_link_tag   "grid_layout", "font-awesome.css", "main_layout", "main_responsive", "search-bar", "file", "component","default", "application" %>
-
-</head>
-
-<body>
-
-
 <div class="container_4">
     <div class="innertitle">
         <p>Popular In Your College</p>
     </div>
     <div class="no-touch">
-
       <ul class="grid cs-style-3">
-
       <% @book_groups.each do |book| %>
         <li class="divfloat">
           <figure>
             <div class="img-book">
-              <%= image_tag ('temp.jpg')%>
+              <%= image_tag book.image.url %>
             </div>
-
             <figcaption>
             <table class="book-grid">
                 <tr>
@@ -37,8 +25,9 @@
                 <tr>
                   <td class="book-price">
                     <center>
+                      starting from 
                       <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                      starting from...<%=book.min_price%>
+                      <%=book.min_price%>
                     </center>
                   </td>
                 </tr>
@@ -63,13 +52,11 @@
             </figcaption>
           </figure>
         </li>
-
         <% end %>
         </ul>
     </div>
   <!-- </div> -->
 </div>
-</body>
 ==========================================
 <p><%= link_to "Sell", '/book_groups/new' %></p>
 =========================================
