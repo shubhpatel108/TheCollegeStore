@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140613102055) do
+ActiveRecord::Schema.define(:version => 20140615100916) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -74,9 +74,11 @@ ActiveRecord::Schema.define(:version => 20140613102055) do
     t.integer  "book_group_id"
     t.boolean  "sold",          :default => false
     t.boolean  "reserved",      :default => false
+    t.integer  "buyer_id"
   end
 
   add_index "books", ["book_group_id"], :name => "index_books_on_book_group_id"
+  add_index "books", ["buyer_id"], :name => "index_books_on_buyer_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
 
