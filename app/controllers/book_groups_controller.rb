@@ -59,4 +59,11 @@ class BookGroupsController < ApplicationController
       format.js
     end
   end
+
+  def all_categories
+    @categories = Category.all
+    respond_to do |format|
+      format.html
+    end
+  end
 end

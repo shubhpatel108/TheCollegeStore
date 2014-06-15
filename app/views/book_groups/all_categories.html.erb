@@ -1,0 +1,19 @@
+<div class="container_4">
+    <div class="innertitle">
+        <p>Key Categories</p>
+    </div>
+
+    <% @categories.each do |cat| %>
+      <div class="view view-tenth">
+       <%= image_tag "category/#{cat.image_name}", :class => 'image-cat'%>  
+       <div class="mask">
+          <h2 class="cat_title"><%=cat.name%></h2>
+          <p class="cat_descrip">Programming Language and System </p>
+          <%= link_to "Books", category_books_path(cat.id), :remote => true, :class => 'button'%>
+       </div>
+       <div class="category-name">
+          <%=cat.name%>
+       </div>
+      </div>
+    <% end %>
+</div>

@@ -36,6 +36,7 @@ TheCollegeStore::Application.routes.draw do
   get '/coupons/add_coupon/:id', to: 'coupons#add_coupon', as: :add_coupon
   get '/coupons/remove_coupon/:id', to: 'coupons#remove_coupon', as: :remove_coupon
   get '/book_groups/category/:id', to: 'book_groups#category_books', as: :category_books
+  get '/book_groups/categories/all', to: 'book_groups#all_categories', as: :all_categories
   
   get '/wishlist/add/:id', to: 'wishlists#add', as: :add_to_wishlist
   get '/wishlist/remove/:id', to: 'wishlists#remove', as: :remove_to_wishlist
