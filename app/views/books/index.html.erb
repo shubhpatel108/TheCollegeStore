@@ -8,21 +8,14 @@
 
 
 <div class="container_4">
-
-
     <div class="innertitle">
-
         <p>Popular In Your College</p>
     </div>
-
-
-
-
-<!-- <div class="grid_1 suffix_3" style="float:left;"> -->
     <div class="no-touch">
 
       <ul class="grid cs-style-3">
 
+      <% @book_groups.each do |book| %>
         <li class="divfloat">
           <figure>
             <div class="img-book">
@@ -32,28 +25,33 @@
             <figcaption>
             <table class="book-grid">
                 <tr>
-                  <td class="book-name1" style="font-size:2.0em;">
-                    Introduction to Algorithms
+                  <td class="book-name1">
+                    <center><%=book.title%></center>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="book-author">
+                    <%=book.author%>
                   </td>
                 </tr>
                 <tr>
                   <td class="book-price">
                     <center>
                       <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                      Rs 265
+                      starting from...<%=book.min_price%>
                     </center>
                   </td>
                 </tr>
                 <tr class="link-style">
                   <td>
                     <center>
-                      <a href="http://google.com">Details</a>
+                      <%= link_to "Details", book_detail_path(book) %>
                     </center>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    5 Sellers
+                    <%=book.stock%> Sellers
                   </td>
                 </tr>
                 <tr>
@@ -66,35 +64,12 @@
           </figure>
         </li>
 
+        <% end %>
         </ul>
     </div>
   <!-- </div> -->
 </div>
 </body>
 ==========================================
-
-<div>
-
-<table>
-	<tbody><tr>
-		<th>Name of the book</th>
-		<th>Author</th>		
-		<th>Publisher</th>
-		<th>Stock</th>
-		<th>Details</th>
-	</tr>
-	<% @book_groups.each do |book| %>
-	<tr>
-		<td><%=book.title%></td>
-		<td><%=book.author%></td>		
-		<td><%=book.publisher%></td>
-		<td><%=book.stock%></td>
-		<td><%= link_to "details", book_detail_path(book) %> </td>
-	</tr>
-	<% end %>
-	
-	<p><%= link_to "Sell", '/book_groups/new' %></p>
-</tbody></table>
-</div>
-
+<p><%= link_to "Sell", '/book_groups/new' %></p>
 =========================================

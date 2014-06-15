@@ -147,6 +147,16 @@ table.book-grid tr td{
 	padding: 5px 0;
 }
 
+table.book-grid .book-author
+{
+	font-size: 12px;
+}
+
+table.book-grid
+{
+	width: 100%;
+}
+
 @media screen and (max-width: 31.5em) {
 	.global-grid {
 		padding: 10px 10px 100px 10px;
