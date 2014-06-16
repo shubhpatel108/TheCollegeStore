@@ -15,6 +15,8 @@ class BooksController < ApplicationController
         group[:stock] = group.books.where(:college_id => college_id).count
         group[:min_price] = group.books.map(&:price).min
     end
+    @latest = @book_groups.sort_by {|b| b[:updated_at]}.reverse!.slice(0..3)
+    @popular = @book_groups.sort_by {|b| b[:stock]}.reverse!.slice(0..3)
   end
 
   def new
