@@ -49,6 +49,11 @@ margin-left: 85%;
 
 }
 
+.linklist a{
+  color: #999;
+  text-decoration: none;
+}
+
 .linklist a:visited {
 	text-decoration: none;
 	color: inherit;
