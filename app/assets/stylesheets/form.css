@@ -10,14 +10,6 @@
   margin: 0 auto;
 }
 
-a {
-  color: #999;
-  text-decoration: none;
-}
-
-a:hover { color: #1dabb8; }
-
-
 .field {
   border: none;
   font-family: inherit;
@@ -302,6 +294,15 @@ a:hover { color: #1dabb8; }
 
 
 /*------------ preview styles ----------------*/
+a,
+a:visited {
+  color: #1760BF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c00;
+}
 
 .links li {
   margin-bottom: 5px;
