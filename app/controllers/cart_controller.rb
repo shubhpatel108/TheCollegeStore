@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  before_filter :check_user, :only => [:checkout]
   def add_item
     book_id = params[:id]
     book = Book.where(:id => book_id).first
@@ -53,5 +54,14 @@ class CartController < ApplicationController
     BookMailer.buyer_invoice(current_user, @books).deliver
     flash[:success] = "You have successfully checked out!"
     session[:cart] = nil
+  end
+
+  private
+  def check_user
+    if user_signed_in?
+      redirect_to '/coupons'
+    else
+      render :template => '/guests/selection'
+    end
   end
 end

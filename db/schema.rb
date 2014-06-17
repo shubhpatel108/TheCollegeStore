@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140615132117) do
+ActiveRecord::Schema.define(:version => 20140616123507) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20140615132117) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "full_name"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -74,9 +75,11 @@ ActiveRecord::Schema.define(:version => 20140615132117) do
     t.integer  "book_group_id"
     t.boolean  "sold",          :default => false
     t.boolean  "reserved",      :default => false
+    t.integer  "admin_user_id"
     t.integer  "buyer_id"
   end
 
+  add_index "books", ["admin_user_id"], :name => "index_books_on_admin_user_id"
   add_index "books", ["book_group_id"], :name => "index_books_on_book_group_id"
   add_index "books", ["buyer_id"], :name => "index_books_on_buyer_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
@@ -103,6 +106,16 @@ ActiveRecord::Schema.define(:version => 20140615132117) do
   end
 
   add_index "coupons", ["user_id"], :name => "index_coupons_on_user_id"
+
+  create_table "guests", :force => true do |t|
+    t.string   "first_name",               :default => "", :null => false
+    t.string   "last_name",                :default => "", :null => false
+    t.string   "email",                    :default => "", :null => false
+    t.string   "mobile",     :limit => 20
+    t.integer  "college_id"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                           :default => "", :null => false

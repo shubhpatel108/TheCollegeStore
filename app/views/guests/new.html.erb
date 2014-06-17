@@ -1,0 +1,21 @@
+<h2>Guest Checkout</h2>
+
+<%= form_for @guest do |f| %>
+<div><%= f.label :first_name %><br />
+  <%= f.text_field :first_name, autofocus: true %></div>
+
+  <div><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :mobile %><br />
+	<%= f.text_field :mobile %></div>
+	
+	<%= f.hidden_field :college_id, :value=> cookies[:college_id] %>
+  <div>
+		<%= f.button "Proceed" %> 
+  </div>
+</div>
+<% end %>
