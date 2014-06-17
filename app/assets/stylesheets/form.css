@@ -10,20 +10,6 @@
   margin: 0 auto;
 }
 
-h2 { margin: 0; }
-
-a {
-  color: #999;
-  text-decoration: none;
-}
-
-a:hover { color: #1dabb8; }
-
-fieldset {
-  border: none;
-  margin: 0;
-}
-
 .field {
   border: none;
   font-family: inherit;
@@ -44,7 +30,6 @@ fieldset {
   display: table; 
 }
 .clearfix:after { clear: both; }
-
 
 #login-form {
   margin: 25px auto;
@@ -148,11 +133,13 @@ fieldset {
   text-align: center;
 }
 
-#login-form .right-up{
-  width: 300px;
-  float: right;
-  margin-top: -285px;
-  text-align: center;
+#login-form .link,
+#login-form .link:visited{
+  color: #1760BF;
+}
+
+#login-form .link:hover{
+  color: #c00;
 }
 
 #login-form .remember{
@@ -280,6 +267,15 @@ fieldset {
   text-align: center;
 }
 
+#login-form-signup .link,
+#login-form-signup .link:visited{
+  color: #1760BF;
+}
+
+#login-form-signup .link:hover{
+  color: #c00;
+}
+
 #login-form-signup footer {
   font-size: 12px;
   margin-top: 16px;
@@ -298,31 +294,9 @@ fieldset {
 
 
 /*------------ preview styles ----------------*/
-html {
-  font-family: "Calibri", "Trebuchet MS", "Helvetica", sans-serif;
-}
-
-h3 {
-  margin-top: 0;
-  font-size: 24px;
-}
-
-a,
-a:visited {
-  color: #1760BF;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #c00;
-}
 
 .links li {
   margin-bottom: 5px;
-}
-
-h4 {
-  margin: 0px 0 0 0;
 }
 
 .bottom-text {

@@ -18,21 +18,9 @@
 </div>
 
 <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), :class => "link" %><br />
 <% end -%>
 
 <%- if Devise.mappings[:user].lockable? && Devise.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), :class => "link" %><br />
 <% end -%>
-
-<!-- <div class="block">
-                <div class="btn-fb-login">
-                  <span class="icon icon-fb"></span>
-                  <a href="#" class="title">Login with Facebook</a>
-                </div>
-                <br />
-                <div class="btn-gp-login">
-                  <span class="icon icon-gp"></span>
-                  <a href="#" class="title">Login with Google</a>
-                </div>
-            </div> -->

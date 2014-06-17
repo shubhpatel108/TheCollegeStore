@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20140615132117) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "full_name"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -74,9 +75,11 @@ ActiveRecord::Schema.define(:version => 20140615132117) do
     t.integer  "book_group_id"
     t.boolean  "sold",          :default => false
     t.boolean  "reserved",      :default => false
+    t.integer  "admin_user_id"
     t.integer  "buyer_id"
   end
 
+  add_index "books", ["admin_user_id"], :name => "index_books_on_admin_user_id"
   add_index "books", ["book_group_id"], :name => "index_books_on_book_group_id"
   add_index "books", ["buyer_id"], :name => "index_books_on_buyer_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
