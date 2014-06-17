@@ -10,6 +10,14 @@
   margin: 0 auto;
 }
 
+a {
+  color: #999;
+  text-decoration: none;
+}
+
+a:hover { color: #1dabb8; }
+
+
 .field {
   border: none;
   font-family: inherit;
