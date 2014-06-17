@@ -1,30 +1,20 @@
 .coupon-container {
-
 	background:white;
 	width: 984px;
 	max-height: 1500px;
 	margin-top: 25px;
 	border-radius: 5px;
 	overflow: auto;
-
-
-
 }
 
 .coupan_head {
-
-font-size: 2.25em;
-margin-top: 0;
-padding-top: 15px;
-margin-left: 20px;
+	font-size: 2.25em;
+	margin-top: 0;
+	padding-top: 15px;
+	margin-left: 20px;
 }
 
-
-
-
-
 .coupon-box {
-
 	height: 300px;
 	width: 220px;
 	padding-top: 10px;
@@ -36,7 +26,6 @@ margin-left: 20px;
 }
 
 .image-box {
-
 	height: 135px;
 	width: 200px;
 	margin-left: 10px;
@@ -44,47 +33,42 @@ margin-left: 20px;
 }
 
 .set-image {
-width: 200px;
-height: 135px;
-padding: 0;
+	width: 200px;
+	height: 135px;
+	padding: 0;
 }
 
-.coupon-perks {
-
-	
+.coupon-perks {	
 font-size: 1.5em;
+color: #000;
 margin-top: 20px;
 margin-left: 10px;
 }
 
 .coupon-terms {
-
 	font-size: 1.2em;
 	margin-top: 20px;
 	margin-left: 10px;
 }
 
 .coupon-save {
-
 	font-size: 1.1em;
 	margin-top: 20px;
 	margin-left: 15px;
 }
 
 .save-money {
-
 	font-size: 1.6em;
 	margin-left: 10px;
 }
 
 .expiry-date {
-margin-left: 100px;
-margin-top: 33px;
-font-size: 1.25em;
+	margin-left: 100px;
+	margin-top: 33px;
+	font-size: 1.25em;
 }
 
 .pickbtn {
-
 	margin-top: -13px;
 	margin-left: 63px;
 }
@@ -101,9 +85,6 @@ font-size: 1.25em;
 	background:linear-gradient(to bottom, #1abb9c 5%, #1abb9c 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#42c3cc', endColorstr='#0688fa',GradientType=0);
 	background-color:#1abb9c;
-	
-	
-	
 	border:1px solid #1abb9c;
 	display:inline-block;
 	cursor:pointer;
@@ -128,6 +109,7 @@ font-size: 1.25em;
 	background-color:white;
 	color:#1abb9c;
 }
+
 .myButton:active {
 	position:relative;
 	top:1px;
@@ -135,7 +117,6 @@ font-size: 1.25em;
                 
 
 .know_more {
-
 	font-size: 1.2em;
 	margin-top: 15px;
 	margin-left: 10px;
