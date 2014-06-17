@@ -105,8 +105,8 @@
             <span class="nav-tooltip">Wish List</span>
         </a>      
       </li>
-      <li>
-        <a href="/cart/show" class="" data-remote="true">
+      <li class="inline-popups">
+        <a href="/cart/show" class="" data-remote="true"  data-effect="mfp-3d-unfold">
           <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
           <div id="cart-count-wrapper"><span id="cart-item-count">
           <% if session[:cart].nil? %>
@@ -115,7 +115,7 @@
           <%= session[:cart].count%>
           <%end%></span></div>
           <span class="nav-tooltip">Cart</span>
-        </a>      
+        </a>
       </li>
       <li>
         <a href="#" class="">
@@ -141,7 +141,7 @@
   <div class="grid-container grid-parent">
     <div class="primary-heading">
       <div class="global-secondary-nav">
-        <ul id="inline-popups">
+        <ul class="inline-popups">
           <div class="public-nav">
             <li class="support">              
             </li>
@@ -158,9 +158,6 @@
                 </li>
                 <li>
                   <a href="#test-popup-signup" data-effect="mfp-3d-unfold" class="button button-primary">Register</a>
-                </li>
-                <li>
-                  <a href="#cart-popup" data-effect="mfp-3d-unfold" class="button button-primary">Cart</a>
                 </li>
               <%end%>
           </div>
@@ -296,7 +293,6 @@
 </div>
 <!---------------------------------- SIGN-UP FORM ENDS ---------------------->
 <div id="cart-popup" class="white-popup mfp-with-anim mfp-hide">
-    <!-- <link href="lsogin.css" rel="stylesheet"> -->
   <div class="popup-head"> Cart </div>
   <div class="totalamount">
     <div class="table-heading">

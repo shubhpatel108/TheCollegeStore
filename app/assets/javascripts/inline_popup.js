@@ -4,7 +4,7 @@
     __bindToLinks();
 
     // Inline popups
-$('#inline-popups').magnificPopup({
+$('.inline-popups').magnificPopup({
   delegate: 'a',
   removalDelay: 500, //delay removal by X to allow out-animation
   callbacks: {
