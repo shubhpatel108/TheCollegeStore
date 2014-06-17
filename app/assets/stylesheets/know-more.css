@@ -5,71 +5,95 @@
   width: auto;
   max-width: 650px;
   border-radius: 5px;
-  height: 500px;
   margin: 0 auto;
 }
-.click-popup .info-heading {
-	font-size : 1.25em;
+
+.info-content {
+  margin: auto;
+  width: 620px;
+  border-radius: 5px 5px 5px 5px;
+  border-color: #111;
 }
 
-.click-popup .left-part {
+.info-content .info-heading {
+	font-size : 2.25em;
+	color: black;
+}
+
+.info-content .left-part {
 	width: 375px;
+	height: 380px;
 	border-right: 1px solid;
 	border-color: grey;
 	float:left;
 }
 
-.click-popup .coupon-details {
-	margin-top: 25px;
-	font-size: 1.3em;
+.info-content .coupon-details {
+	margin-top: 0px;
+	font-size: 1.8em;
+	color: #555555;
 }
 
-.click-popup .coupon-cond {
+.info-content .coupon-cond {
+	margin-top: 15px;
+	margin-left: 5px;
+	width: 220px;
+	font-size: 1.2em;
+	color: #999999;
+	text-transform: uppercase;
+	border: 1px solid #cccccc;
+}
+
+/*.info-content .cond-box {
+	width: 220px;
+	max-width: 280px;
+	height: 18px;
+	background-color :#cccccc;
+}*/
+
+.info-content .avaliable-at {
+	font-size: 1.8em;
 	margin-top: 20px;
-	font-size: 1.1em;
+	width: 375px;
+	border-top: 1px solid #cccccc;
+	padding-top: 10px;
+	color: #555555;
 }
 
-.click-popup .cond-box {
-	width: 250px;
-	background-color :grey;
-}
-
-.click-popup .avaliable-at {
-font-size: 1.2em;
-margin-top: 20px;
-width: 360px;
-border-top: 1px solid;
-padding-top: 5px;
-}
-
-.click-popup .store-address {
-	font-size : 1.01em;
-	margin-top: 20px;
+.info-content .store-address {
+	font-size : 1.30em;
+	width: 280px;
+	color: #fff;
 	margin-left: 5px;
 	margin-top: 5px;
 }
 
-.click-popup .address-bg {
+.info-content .address-bg {
 	background-color:grey;
 	width:280px;
 }
 
- .click-popup .terms-head{
-
-	font-size:1.3em;
+.info-content .terms-head{
+	border-top: 1px solid #cccccc;
+	font-size:1.8em;
+	padding-top: 10px;
 	margin-top: 20px;
+	color: #555555
 }
 
-.click-popup .terms-content{
+.info-content .terms-content{
 	width: 325px;
 }
 
-.click-popup .term-points {
-	font-size:0.9em;
+.info-content .term-points {
+	font-size: 1.2em;
+	margin-top: 10px;
+	margin-left: 15px;
 }
 
-.click-popup .image-attr {
+.info-content .image-attr {
 	width: 200px;
-	margin-left: 50px;
-	margin-top: 35px;
+	height: inherit;
+	margin-left: 40px;
+	margin-top: 0px;
 }
