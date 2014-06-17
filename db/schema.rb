@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140615132117) do
+ActiveRecord::Schema.define(:version => 20140616123507) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -106,6 +106,16 @@ ActiveRecord::Schema.define(:version => 20140615132117) do
   end
 
   add_index "coupons", ["user_id"], :name => "index_coupons_on_user_id"
+
+  create_table "guests", :force => true do |t|
+    t.string   "first_name",               :default => "", :null => false
+    t.string   "last_name",                :default => "", :null => false
+    t.string   "email",                    :default => "", :null => false
+    t.string   "mobile",     :limit => 20
+    t.integer  "college_id"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                           :default => "", :null => false
