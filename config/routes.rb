@@ -40,6 +40,7 @@ TheCollegeStore::Application.routes.draw do
   
   get '/wishlist/add/:id', to: 'wishlists#add', as: :add_to_wishlist
   get '/wishlist/remove/:id', to: 'wishlists#remove', as: :remove_to_wishlist
+  resources :guests
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
