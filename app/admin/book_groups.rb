@@ -1,4 +1,12 @@
 ActiveAdmin.register BookGroup do
+
+	index do 
+		column :title                     
+	    column :author   
+	    column :publisher         
+	    default_actions                   
+  end              
+
   form do |f|                         
     f.inputs "BookGroup Details" do       
       f.input :title                  
