@@ -1,31 +1,123 @@
-<div id="student_entry">
-	<%= link_to_function "Student", 'add_college()'%>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Choose Category</title>
+	<style>
+		#dropElem {
+		    display: none;
+		    position: absolute;
+		    top: 0;
+		    border-radius: 10px 10px 10px 10px;
+		    box-shadow: 0 0 25px 5px #999;
+		    padding: 20px;
+		    background: #fff;
+		}
+		#shadowElem {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-color: black;
+		    opacity: 0.3;
+		}
+		#dropContent {
+		    position: relative;
+		}
+		#dropClose {
+		    position: absolute;
+		    z-index: 99999;
+		    cursor: pointer;
+		    top: -32px;
+		    right: -30px;
+		    padding: 5px;
+		    background-color: black;
+		    border-radius: 6px 6px 6px 6px;
+		    color: #fff;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		var shadow = $('<div id="shadowElem"></div>');
+        var speed = 1000;
+        $(document).ready(function () {
+            $('body').prepend(shadow);
+        });
+        $(window).load(function () {
+            screenHeight = $(window).height();
+            screenWidth = $(window).width();
+            elemWidth = $('#dropElem').outerWidth(true);
+            elemHeight = $('#dropElem').outerHeight(true);
+
+            leftPosition = (screenWidth / 2) - (elemWidth / 2);
+            topPosition = (screenHeight / 2) - (elemHeight / 2);
+            //console.log(screenHeight);
+
+            $('#dropElem').css({
+                'left': leftPosition + 'px',
+                    'top': -elemHeight + 'px'
+            });
+            $('#dropElem').show().animate({
+                'top': topPosition
+            }, speed);
+
+            shadow.animate({
+                'opacity': 0.7
+            }, speed);
+
+            $('#dropClose').click(function () {
+                shadow.animate({
+                    'opacity': 0
+                }, speed);
+                $('#dropElem').animate({
+                    'top': -elemHeight + 'px'
+                }, speed, function () {
+                    shadow.remove();
+                    $(this).remove();
+                });
+                //shadow.remove();
+            });
+        });
+	</script>
+</head>
+<body>
+<div id="dropElem">
+    <div id="dropContent">
+        <!-- <div id="dropClose">X</div> -->
+		<div id="student_entry">
+			<%= link_to_function "Student", 'add_college()'%>
+		</div>
+
+		<div id="add_college" style="display:none;">
+			<%= form_tag('/application/select_college', method: "get") do %>
+				<%= select_tag "college_id", options_from_collection_for_select(@colleges, "id", "name") %>
+				<%= submit_tag "Go"%>
+			<%end%>
+			Didn't find your college? Ask admin to add your college.
+			<div id="college_entry">
+				<%= link_to_function "Add your college", 'request_admin()' %>
+			</div>
+
+
+			<div id="request_admin" style="display:none;">
+				<%= form_tag(:controller=>'colleges', :action=>'request_admin_to_add_college') do %>
+					<%= text_field_tag :college_name, '',:placeholder => "Enter your college" %>
+					<%= email_field_tag :email,'', :placeholder => "Enter your email id" %>
+					<%= submit_tag "Send" %>
+				<% end %>
+			</div>
+		</div>
+
+		<div id="vendor_entry">
+			<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
+		</div>
+ 	</div>
 </div>
 
-<div id="add_college" style="display:none;">
-	<%= form_tag('/application/select_college', method: "get") do %>
-		<%= select_tag "college_id", options_from_collection_for_select(@colleges, "id", "name") %>
-		<%= submit_tag "Go"%>
-	<%end%>
-	Didn't find your college? Ask admin to add your college.
-	<div id="college_entry">
-		<%= link_to_function "Add your college", 'request_admin()' %>
-	</div>
+</body>
+</html>
 
-	<div id="request_admin" style="display:none;">
-	<%= form_tag(:controller=>'colleges', :action=>'request_admin_to_add_college') do %>
-		<%= text_field_tag :college_name, '',:placeholder => "Enter your college" %>
-		<%= email_field_tag :email,'', :placeholder => "Enter your email id" %>
-		<%= submit_tag "Send" %>
-	<% end %>
 
-</div>
-
-</div>
-
-<div id="vendor_entry">
-	<%= link_to "City vendor", city_vendor_login_path %>
-</div>
 
 <script type="text/javascript">
 	function add_college()
