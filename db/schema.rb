@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140616123507) do
+ActiveRecord::Schema.define(:version => 20140620074834) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20140616123507) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "full_name"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -75,11 +74,9 @@ ActiveRecord::Schema.define(:version => 20140616123507) do
     t.integer  "book_group_id"
     t.boolean  "sold",          :default => false
     t.boolean  "reserved",      :default => false
-    t.integer  "admin_user_id"
     t.integer  "buyer_id"
   end
 
-  add_index "books", ["admin_user_id"], :name => "index_books_on_admin_user_id"
   add_index "books", ["book_group_id"], :name => "index_books_on_book_group_id"
   add_index "books", ["buyer_id"], :name => "index_books_on_buyer_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
@@ -88,6 +85,20 @@ ActiveRecord::Schema.define(:version => 20140616123507) do
   create_table "categories", :force => true do |t|
     t.string "name"
     t.string "image_name"
+  end
+
+  create_table "city_vendors", :force => true do |t|
+    t.string   "vendor_name",            :default => "", :null => false
+    t.string   "mobile",                 :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "city",                   :default => "", :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "password_hash",          :default => "", :null => false
+    t.string   "password_salt",          :default => "", :null => false
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   create_table "colleges", :force => true do |t|

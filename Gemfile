@@ -16,8 +16,7 @@ gem 'goodreads'
 gem "paperclip", "~> 4.1"
 gem 'activeadmin'
 gem 'meta_search', '>=1.1.0.pre'
-
-
+gem "bcrypt-ruby", :require => "bcrypt"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

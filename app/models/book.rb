@@ -5,6 +5,7 @@ class Book < ActiveRecord::Base
   attr_accessible :reserved, :sold, :buyer_id
 
   belongs_to :user
+  belongs_to :city_vendor
   belongs_to :college
   belongs_to :book_group
 end
