@@ -11,9 +11,14 @@ class BookGroupsController < ApplicationController
     @old_book_group = BookGroup.where(title: @book_group.title, author: @book_group.author, publisher: @book_group.publisher).first
     if not @old_book_group.nil?
       @book = Book.new(params[:book_group][:books_attributes]['0'])
-      @book.user_id = current_user.id
-      @book.college_id = current_user.college_id
-      @book.save
+      if not session[:city_vendor_id].nil?
+        @new_book.user_id = session[:city_vendor_id]
+        @new_book.save
+      else
+        @new_book.user_id = current_user.id
+        @new_book.college_id = current_user.college_id
+        @new_book.save
+      end
       @old_book_group.books << @book
       @old_book_group.save
       BookMailer.notify_wishers(@old_book_group).deliver
@@ -22,9 +27,14 @@ class BookGroupsController < ApplicationController
     else
       if @book_group.save
         @new_book = @book_group.books.last
-        @new_book.user_id = current_user.id
-        @new_book.college_id = current_user.college_id
-        @new_book.save
+        if not session[:city_vendor_id].nil?
+          @new_book.user_id = session[:city_vendor_id]
+          @new_book.save
+        else
+          @new_book.user_id = current_user.id
+          @new_book.college_id = current_user.college_id
+          @new_book.save
+        end
         flash[:success] = "Your Book is added!"
         redirect_to :books
       else
@@ -36,6 +46,7 @@ class BookGroupsController < ApplicationController
 
   def details
     @book_group = BookGroup.where(:id => params[:id]).first
+    @book_category = @book_group.category.name
     @books = @book_group.books.where(:college_id => cookies[:college_id])
     @owners = []
     @books.each do |b|
