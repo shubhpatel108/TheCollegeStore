@@ -2,9 +2,10 @@ ActiveAdmin.register BookGroup do
 
 	index do 
 		column :title                     
-	    column :author   
-	    column :publisher         
-	    default_actions                   
+    column :author
+    column :publisher
+    column :category
+    default_actions                   
   end              
 
   form do |f|                         
@@ -12,11 +13,15 @@ ActiveAdmin.register BookGroup do
       f.input :title                  
       f.input :author               
       f.input :publisher
+      f.input :category
     end
     f.inputs "Image" do                               
       f.file_field :image
   	end
   	f.has_many :books, :new_record => false do |b|
+      b.input :user
+      b.input :college
+      b.input :isbn
   		b.input :price
   		b.input :edition
   	end
