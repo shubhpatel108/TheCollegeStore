@@ -1,0 +1,22 @@
+<h2>Vendor Sign Up</h2>
+
+<%= form_for @city_vendor do |f| %>
+<div><%= f.label :vendor_name %><br />
+  <%= f.text_field :vendor_name, autofocus: true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :mobile %><br />
+	<%= f.text_field :mobile %></div>
+
+  <div><%= f.label :city %><br />
+  <%= f.text_field :city %></div>
+  <div>
+		<%= f.button "Sign up" %> 
+  </div>
+</div>
+<% end %>

@@ -2,7 +2,12 @@ TheCollegeStore::Application.routes.draw do
   root to: 'application#check_cookies'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
+  get '/city_vendors/login', to: 'city_vendors#login', as: :city_vendor_login
+  get '/city_vendors/logout', to: 'city_vendors#logout', as: :city_vendors_logout
+  post '/city_vendors/login', to: 'city_vendors#auth', as: :city_vendor_authenticate
+  resources :city_vendors
+  get '/city_vendors/new_password', to: 'city_vendors#new_password', as: :reset_password
+  post '/city_vendors/new_password', to: 'city_vendors#reset_password', as: :reset_password
   get "emailapi/index"
   post "emailapi/subscribe" => 'emailapi#subscribe'
   resources :books do
@@ -40,6 +45,9 @@ TheCollegeStore::Application.routes.draw do
   
   get '/wishlist/add/:id', to: 'wishlists#add', as: :add_to_wishlist
   get '/wishlist/remove/:id', to: 'wishlists#remove', as: :remove_to_wishlist
+  get '/wishlist/show', to: 'wishlists#show', as: :wishlist
+  get '/city_vendors/sell', to: 'book_groups#new', as: :city_vendor_sell
+  post '/city_vendors/sell', to: 'book_groups#create'
   resources :guests
   # The priority is based upon order of creation:
   # first created -> highest priority.

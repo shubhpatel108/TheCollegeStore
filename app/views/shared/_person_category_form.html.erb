@@ -98,6 +98,7 @@
 				<%= link_to_function "Add your college", 'request_admin()' %>
 			</div>
 
+
 			<div id="request_admin" style="display:none;">
 				<%= form_tag(:controller=>'colleges', :action=>'request_admin_to_add_college') do %>
 					<%= text_field_tag :college_name, '',:placeholder => "Enter your college" %>
@@ -108,7 +109,7 @@
 		</div>
 
 		<div id="vendor_entry">
-			<%= link_to "City vendor", controller: "application", action: "person_category", type: "city_vendor"%>
+			<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
 		</div>
  	</div>
 </div>

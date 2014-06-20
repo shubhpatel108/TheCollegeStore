@@ -1,0 +1,114 @@
+<div class="links new">
+  <%= form_tag(vendor_sell_path , {:remote => true , :method => :post , :id => "drop_links_form"}) do %>
+
+    <%= hidden_field_tag "repo_name" %>
+    <%= text_area_tag "all_links" , nil , style: "display:none;" %>
+    <div id = "text_box_records">
+<!-- -->
+    </div>
+      <tr><td><a href="#" id="add_this" class="btn btn-success">AddBox</a></td></tr>
+      <tr><td><%= submit_tag "Drop Links" , :class => "btn btn-info" , :id => "drop_links"%></td></tr>
+  <%end%>
+</div> 
+
+------------------------------------------ 
+
+<div class = "links new">
+<%= form_for book_group, :validate => true, :remote => true, html: {id: => "drop_links_form"}  do |f| %>
+	<p>
+		<%= f.label :title%> <br />
+		<%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title' %>
+	</p>
+	<p>
+		<%= f.label :author%> <br />
+		<%= f.text_field :author, :placeholder => "Author", id: 'sell_author' %>
+	</p>
+	<p>
+		<%= f.label :publisher%> <br />
+		<%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher' %>
+	</p>
+	<p>
+		<%= f.label :category%> <br />
+		<%= f.collection_select :category_id, Category.all, :id, :name%> <br />
+	</p>
+	<%= f.fields_for :books do |builder| %>
+		<p>
+			<%= builder.label :price %> <br />
+			<%= builder.number_field :price, :placeholder => "Price" %>
+		</p>
+		<p>
+			<%= builder.label :edition%> <br />
+			<%= builder.number_field :edition, :placeholder => "Edition" %>
+		</p>
+		<p>
+			<%= builder.label :isbn%> <br />
+			<%= builder.text_field :isbn, :placeholder => "ISBN" %>
+		</p>
+	<%end%>
+	<%= f.label :Image %> <br />
+	<%= f.file_field :image %>
+	<p>
+		<tr><td><a href="#" id="add_this" class="btn btn-success">AddBox</a></td></tr>
+      <tr><td><%= submit_tag "Drop Links" , :class => "btn btn-info" , :id => "drop_links"%></td></tr>
+	</p>
+<% end %>
+</div>
+
+---------------------------------------------------
+
+<script type="text/javascript">
+jQuery(document).ready( function () {
+  $("#text_box_records").append("<tr><td><%= escape_javascript(text_field_tag 'text_0' , nil , placeholder: 'Drop Link' )%></td><td><a href='#' id = 'X_0' class='remove_it to_create_link label label-default'> X</a></td></tr>");
+  $("#X_0").css({ display: "none" });
+  var total_open_counter = 1;
+  var i = 0;
+  $("#add_this").click( function() {
+    $("#text_box_records").append("<tr><td><%= escape_javascript(text_field_tag 'default_link_id' , nil , placeholder: 'Drop Link' )%></td><td><a href='#' id = 'default_X_id' class='remove_it to_create_link label label-default'> X</a></td></tr>");
+    i = i +1 ;
+    var str = i.toString().match(/[0-9]+/)[0]
+    $('#default_link_id').attr('id', "text_" + str);
+    $('#default_X_id').attr('id', "X_" + str);
+    console.log($('#text_' + i.toString()));
+    $('#text_' + i.toString()).focus();
+    total_open_counter += 1;
+    if(total_open_counter == 1){
+      $("a[id^='X_']").css({ display: "none" });
+    }
+    else{
+         $("a[id^='X_']").css({ display: "visible" });
+    }
+    return false;
+  });
+  $('#text_box_records').on( 'click' , '.remove_it.to_create_link' , function() {
+     // console.log(this.id);
+    $(this).parent().parent().remove();
+    total_open_counter -= 1;
+    if(total_open_counter == 1){
+      $("a[id^='X_']").css({ display: "none" });
+    }
+    else{
+         $("a[id^='X_']").css({ display: "visible" });
+    }    
+    
+    return false;
+  });
+
+  $("#drop_links_form").submit(function() {
+     console.log("Ok.. Now I am Submitted!!!!");
+     var all_links_to_submit = "";
+     var x = 0;
+     for(x=0; x<= i ; x++){
+       var add_link = $("#text_" + x.toString()).val()
+       if(add_link){
+        all_links_to_submit = all_links_to_submit + add_link + "\n"
+       }
+       console.log("Adding: " + add_link + "\n");
+     }
+    $('#' + 'all_links').val("");
+    $("#all_links").val( all_links_to_submit ) ;
+    $('#catch_all_links').val( $('#catch_all_links').val() + all_links_to_submit ) ;
+    console.log("Final : \n" +  $("#all_links").val() );
+    return true;
+  });
+});
+</script> 

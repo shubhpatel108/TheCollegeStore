@@ -1,0 +1,16 @@
+<h2>Vendor Sign In</h2>
+
+<%= form_for city_vendor_authenticate_path do |f| %>
+ <div><%= f.label :email %><br />
+ <%= f.email_field :email %></div>
+
+ <div><%= f.label :password %><br />
+ <%= f.password_field :password %></div>
+ <div>
+ 	<%= link_to "Forgot Password", reset_password_path %>
+ </div>
+<div>
+	<%= f.button "Sign in" %> 
+</div>
+
+<% end %>

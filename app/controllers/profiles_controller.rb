@@ -5,7 +5,6 @@ class ProfilesController < ApplicationController
   	if not @user.nil?
 	  		@my_books = Book.where(:user_id => @user.id)
 	  	if @user == current.user
-	  		@my_wishes = Wishlist.where(:user_id => @user.id).map(&:book_group_id)
 	  		@bought = Book.where(:seller_id => @user.id)
 	  		@bought.each do |b|
 	  			b[:info] = b.book_group
