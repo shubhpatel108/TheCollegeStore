@@ -22,4 +22,8 @@ class WishlistsController < ApplicationController
 			format.js
 		end
 	end
+
+	def show
+	  @my_wishes = Wishlist.where(:user_id => current_user.id).map(&:book_group_id)
+	end
 end
