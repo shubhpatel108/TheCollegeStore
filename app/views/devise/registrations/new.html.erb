@@ -2,25 +2,32 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :validate => true) do |f| %>
   <%= devise_error_messages! %>
+  <table>
 
-	<div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></div>
+	<tr>
+    <td><%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name' %></td>
+  </tr>
 
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
+  <tr>
+    <td><%= f.text_field :last_name, :placeholder => 'Last Name' %></td>
+  </tr>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <tr>
+    <td><%= f.email_field :email, :placeholder => 'Email' %></td>
+  </tr>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <tr>
+    <td><%= f.password_field :password, :placeholder => 'Password', autocomplete: "off" %></td>
+  </tr>
 
-  <div><%= f.label :mobile %><br />
-	<%= f.text_field :mobile %></div>
+  <tr>
+    <td><%= f.text_field :mobile, :placeholder => 'Mobile' %></td>
+  </tr>
 	
-	<%= f.hidden_field :college_id, :value=> cookies[:college_id] %></div>
+	<tr><td><%= f.hidden_field :college_id, :value=> cookies[:college_id] %></td></tr>
 
-  <div><%= f.submit "Sign up" %></div>
+  <tr><td><%= f.submit "Sign up" %></td></tr>
+  <table>
 <% end %>
 
 <%= render "devise/shared/links" %>

@@ -2,33 +2,46 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></div>
-
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <table>
+    <tr>
+      <!-- <td><%= f.label :first_name %></td> -->
+      <td><%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true %></td>
+    </tr>
+    <tr>
+      <!-- <td><%= f.label :last_name %></td> -->
+      <td><%= f.text_field :last_name, :placeholder => 'Last Name' %></td>
+    </tr>
+    <tr>
+      <!-- <td><%= f.label :email %></td> -->
+      <td><%= f.email_field :email,  :placeholder => 'Email' %></td>
+    </tr>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <tr><td>Currently waiting confirmation for: <%= resource.unconfirmed_email %></tr></td>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+    <tr>
+      <!-- <td><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></td> -->
+      <td><%= f.password_field :password, :placeholder => 'New Password', autocomplete: "off" %></td>
+    </tr>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <tr>
+      <!-- <td><%= f.label :password_confirmation %></td> -->
+      <td><%= f.password_field :password_confirmation, :placeholder => 'Confirm New Password', autocomplete: "off" %></td>
+    </tr>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+    <tr>
+      <!-- <td><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></tr> -->
+      <td><%= f.password_field :current_password, :placeholder => 'Current Password To Save Changes', autocomplete: "off" %></td>
+    </tr>
 
-  <div><%= f.label :mobile %> <i>(so that we can update you when your book sells off)</i><br />
-    <%= f.text_field :mobile %></div>
+    <tr>
+      <!-- <td><%= f.label :mobile %> <i>(so that we can update you when your book sells off)</i></td> -->
+      <td><%= f.text_field :mobile,  :placeholder => 'Mobile' %></td>
+    </tr>
 
-  <div><%= f.submit "Update" %></div>
+    <tr><td><%= f.submit "Update" %></td></tr>
+  </table>
 <% end %>
 
 <h3>Cancel my account</h3>

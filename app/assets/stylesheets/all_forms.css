@@ -1,0 +1,32 @@
+input.text, input.email, input.password, textarea.form-element, input[type='text'], input[type='email'], input[type='password'] {
+background: #e8ebed;
+margin: 0;
+font-size: 1.4em;
+color: #8d9aa5;
+width: 100%;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+padding: 11px 15px 12px;
+outline: 0;
+border: 2px solid #e8ebed;
+-webkit-appearance: none;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-shadow: 0;
+-moz-box-shadow: 0;
+box-shadow: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-transition: 0.2s;
+-moz-transition: 0.2s;
+-o-transition: 0.2s;
+transition: 0.2s;
+}
+
+input.text:focus, input.email:focus, input.password:focus, textarea.form-element:focus, input[type='text']:focus, input[type='email']:focus, input[type='password']:focus {
+background: #fff;
+border-color: #d4d9dd;
+}
