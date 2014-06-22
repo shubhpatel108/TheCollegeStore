@@ -49,6 +49,8 @@ TheCollegeStore::Application.routes.draw do
   get '/city_vendors/sell', to: 'book_groups#new', as: :city_vendor_sell
   post '/city_vendors/sell', to: 'book_groups#create'
   resources :guests
+
+  get "our/our_team"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
