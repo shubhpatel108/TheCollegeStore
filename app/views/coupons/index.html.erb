@@ -14,6 +14,16 @@
   </table>
 </div>
 
+<script type="text/javascript">
+  search_bar = document.getElementById('main_search_bar');
+  search_bar.parentNode.removeChild(search_bar);
+  top_bar = document.getElementById('top_bar');
+  var newdiv = document.createElement('div');
+  newdiv.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
+  newdiv.id = "top-coupon-bar";
+  top_bar.appendChild(newdiv);
+</script>
+
 <div class="coupon-container">
     <div class= "coupan_head">
       Select your Coupon
