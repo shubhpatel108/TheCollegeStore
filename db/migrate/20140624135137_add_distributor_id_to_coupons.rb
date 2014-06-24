@@ -1,11 +1,13 @@
 class AddDistributorIdToCoupons < ActiveRecord::Migration
   def up
-  	add_column :coupons, :distributor_id, :integer
-  	add_index :coupons, :distributor_id
+    create_table :coupons_users do |t|
+    	t.integer "coupon_id", 		:null => false
+    	t.integer "user_id", 		:null => false
+    end
+    add_index :coupons_users, ["user_id", "coupon_id"]
   end
 
   def down
-  	remove_index :coupons, :distributor_id
-  	remove_column :coupons, :distributor_id
+  	drop_table :coupons_users
   end
 end
