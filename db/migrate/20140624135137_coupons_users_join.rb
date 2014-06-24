@@ -1,4 +1,4 @@
-class AddDistributorIdToCoupons < ActiveRecord::Migration
+class CouponsUsersJoin < ActiveRecord::Migration
   def up
     create_table :coupons_users do |t|
     	t.integer "coupon_id", 		:null => false
