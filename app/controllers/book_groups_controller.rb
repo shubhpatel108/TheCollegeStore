@@ -66,6 +66,11 @@ class BookGroupsController < ApplicationController
     @c_id = params[:id]
     @category = Category.where(:id => @c_id).first
     @books = BookGroup.where(:category_id => @c_id)
+    college_id = cookies[:college_id]
+    @books.each do |group|
+        group[:stock] = group.books.where(:college_id => college_id).count
+        group[:min_price] = group.books.map(&:price).min
+    end
     respond_to do |format|
       format.js
     end
