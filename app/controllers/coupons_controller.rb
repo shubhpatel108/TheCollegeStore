@@ -2,6 +2,9 @@ class CouponsController < ApplicationController
 
   def index
     @coupons = Coupon.all
+    @coupons.each do |c|
+      c[:distributor] = c.distributor
+    end
   end
 
   def add_coupon
