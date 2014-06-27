@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   
   has_many :books
   belongs_to :college
-  has_many :coupons
+  has_and_belongs_to_many :coupons
 	has_many :wishlists, :dependent => :destroy,
                        :foreign_key => "user_id"
   has_many :wishes, :through => :wishlists, :source => :wish

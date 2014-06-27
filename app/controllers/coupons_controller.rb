@@ -2,6 +2,9 @@ class CouponsController < ApplicationController
 
   def index
     @coupons = Coupon.all
+    @coupons.each do |c|
+      c[:distributor] = c.distributor
+    end
   end
 
   def add_coupon
@@ -10,7 +13,7 @@ class CouponsController < ApplicationController
     if not @coupon.nil?
       if not @coupon.distributed
         @coupon.distributed = true
-        @coupon.user_id = current_user.id
+        @coupon.users << current_user
         @coupon.save!
         session[:coupons] ||= []
         session[:coupons] << @coupon.id
@@ -30,6 +33,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.where(:id => c_id).first
     if not @coupon.nil?
       @coupon.distributed = false
+      @coupon.users.delete(current_user)
       @coupon.save
       session[:coupons].delete(@coupon.id)
       respond_to do |format|

@@ -12,7 +12,6 @@
 		<%= link_to_function "Add your college", 'request_admin()' %>
 	</div>
 
-
 	<div id="request_admin" style="display:none;">
 		<%= form_tag(:controller=>'colleges', :action=>'request_admin_to_add_college') do %>
 			<%= text_field_tag :college_name, '',:placeholder => "Enter your college" %>

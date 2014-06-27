@@ -1,11 +1,61 @@
-<% if not session[:coupons].nil? %>
-	<% session[:coupons].each do |coupon|%>
-	<div id="picked_coupons">
-		<div id="cart_coupon_<%=coupon%>">
-			<%=coupon%>
-			<%= link_to "remove", remove_coupon_path(coupon), :remote => true %>
-		<% end %>
-		</div>
+<style type="text/css">
+	#sel_coupon_wrapper
+	{
+		height: 34px;
+		width: 400px;
+		overflow: hidden;
+		border: 1px gray solid;
+		border-radius: 10px;
+		left-margin: -250px;
+		float: left;
+		box-shadow: 2px 2px 1px #888888;
+		background: white;
+		padding: 5px;
+	}
 
+	.coupon_thumb
+	{
+		box-shadow: 0px 0px 2px #888888;
+		border-radius: 10%;
+		height: 32px;
+		width: 32px;
+		margin-top: 3px;
+		margin-left: 5px;
+		float: left;
+	}
+
+	#remove-coupon
+	{
+		min-height: 12px;
+		max-height: 13px;
+		max-width: 12px;
+	    position: relative;
+	    background:#0080FF;
+	    top: 10px;
+	    right: -22px;
+	    border-radius: 50%;
+	    color:#ffffff;
+	    text-align: center;
+	    font-size: 12px;
+	    font-weight: bold;
+	    color: white;
+	    margin-top: -12px;
+	}
+
+</style>
+
+<div id="sel_coupon_wrapper">
+	<% if not session[:coupons].nil? %>
+		<% session[:coupons].each do |coupon|%>
+		<div id="cart_coupon_<%=coupon%>" class="each_coupon">
+			<div class="coupon_thumb">
+			<div id="remove-coupon"><%= link_to "x", remove_coupon_path(coupon), :remote => true %></div>
+			<%= image_tag('coupon_thumb.jpg', size:'30x30') %>
+			</div>
 		</div>
-<% end %>
+		<% end %>
+	<% else %>
+		<p>No coupon selected</p>
+	<% end %>
+</div>
+

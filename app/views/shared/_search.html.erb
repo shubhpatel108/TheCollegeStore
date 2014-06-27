@@ -1,8 +1,8 @@
 <head>
   <%= stylesheet_link_tag "search-bar"%>
 </head>
-<div style="float:right; padding-top: 15px; margin-right: 10%;">
-	<form class="form-wrapper cf" style="width=auto;" action="/search">
+<div id="top_bar" style="float:right; padding-top: 15px; margin-right: 10%;">
+	<form id="main_search_bar" class="form-wrapper cf" style="width=auto;" action="/search">
   		<input type="text" name="query" placeholder="Search by ISBN/Title/Author" id="autocomplete" style="height:40px; border-radius: 4px 0px 0px 4px" required>
   		<button style="float:left;"type="submit">Search</button>
 	</form>
