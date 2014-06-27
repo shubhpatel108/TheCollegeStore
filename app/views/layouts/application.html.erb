@@ -77,10 +77,12 @@
         </a>      
       </li>
       <li>
-        <a href="#" class="">
+      <% if user_signed_in? %>
+        <a href="/<%=current_user.first_name%>/<%=current_user.id%>" class="">
           <i class="fa fa-user fa-4x fa-color_grey"></i>
           <span class="nav-tooltip">My Profile </span>
-        </a>      
+        </a>
+      <% end -%>      
       </li>
       <li>
         <a href="https://www.facebook.com/thecollegestore.co.in" class="">
@@ -379,11 +381,11 @@
       <div class="heading" style="color:white;">
         TheCollegeStore
       </div>
-      <a href="our_team" style="text-decoration:none;"><div class="innertext"> Our Team </div></a>
+      <a href="/our_team" style="text-decoration:none;"><div class="innertext"> Our Team </div></a>
       <br>
       <a href="" style="text-decoration:none;"><div class="innertext"> About us </div></a>
       <br>
-      <a href="contact_us" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
+      <a href="/contact_us" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
       <br>
       <a href="#" style="text-decoration:none;"><div class="innertext"> Privacy Policy </div></a>
       <br>
