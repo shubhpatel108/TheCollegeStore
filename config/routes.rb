@@ -53,6 +53,12 @@ TheCollegeStore::Application.routes.draw do
   get "/our_team", to: 'our#our_team'
   get "/contact_us", to: 'our#contact_us'
   post "/send", to: 'our#send_mail'
+  get "/privacy_policy", to: 'our#privacy_policy'
+  get '/disclaimer', to: 'our#disclaimer'
+  get '/terms', to: 'our#terms'
+  get '/about_us', to: 'our#about_us'
+
+  get '/:first_name/:id', to: 'profiles#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

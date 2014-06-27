@@ -8,13 +8,28 @@ class OurController < ApplicationController
 
   end
 
+  def terms
+  	
+  end
+
+  def about_us
+  	
+  end
+
+  def disclaimer
+  	
+  end
+
+  def privecy_policy
+  	
+  end
+
   def send_mail
   	name = params[:Name]
   	email = params[:Email]
-  	subject = params[:Subject]
   	message = params[:Message]
 
-  	ContactUsMailer.email_us(name, email, subject, message).deliver
+  	ContactUsMailer.email_us(name, email, message).deliver
   	redirect_to '/', notice: 'Your message has successfully sent, we will contact you soon.'
   end
 

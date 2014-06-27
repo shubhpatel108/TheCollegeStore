@@ -383,18 +383,15 @@
       </div>
       <a href="/our_team" style="text-decoration:none;"><div class="innertext"> Our Team </div></a>
       <br>
-      <a href="" style="text-decoration:none;"><div class="innertext"> About us </div></a>
+      <a href="/about_us" style="text-decoration:none;"><div class="innertext"> About us </div></a>
       <br>
       <a href="/contact_us" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
       <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Privacy Policy </div></a>
+      <a href="/privacy_policy" style="text-decoration:none;"><div class="innertext"> Privacy Policy </div></a>
       <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Disclaimer </div></a>
+      <a href="/disclaimer" style="text-decoration:none;"><div class="innertext"> Disclaimer </div></a>
       <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a>
-      
-      
-
+      <a href="/terms" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a>
     </div>
 
 </div>
@@ -403,25 +400,13 @@
     <div class="linklist">
 
       <div class="heading" style="color:white;">
-        TheCollegeStore
+        Categories
       </div>
             <% $categories.each do |c|%>
               <a href="/book_groups/category/<%=c.id%>" style="text-decoration:none;" data-remote=true>
                 <div class="innertext"><%= c.name%></div>
                 </a><br>
             <% end %>
-      <!-- <a href="#" style="text-decoration:none;"><div class="innertext"> About us </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Privacy Policy </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Disclaimer </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a> -->
-      
-      
-
     </div>
 
 </div>
