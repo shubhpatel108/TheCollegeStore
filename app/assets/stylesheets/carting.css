@@ -2,6 +2,16 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 
+.cart-white-popup {
+  position: relative;
+  background: #282830;
+  padding: 25px;
+  width: auto;
+  max-width: 800px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
 
 .headtable {
   font-size:1.5em; 
@@ -19,7 +29,6 @@ margin-top: 0px;
 color: #A7A1AE;
 text-align: center;
 padding-bottom: 20px;
-margin-top: -15px;
 }
 
 
@@ -56,7 +65,6 @@ margin-top: -15px;
 }
 
 .container_table td, .container_table th {
-	  padding-bottom: 2%;
 	  padding-top: 2%;
   padding-left:2%;  
 
@@ -77,6 +85,7 @@ margin-top: -15px;
 }
 
 .container_table td:first-child {
+    padding-top: inherit;
 	  color: #A7A1AE;
 }
 
@@ -131,7 +140,7 @@ margin-top: -15px;
 
   width: 100%;
   height: 45px;
-  background-color :#F5F5DA ;
+  background-color :#cccccc ;
   
 
 }
@@ -139,15 +148,16 @@ margin-top: -15px;
 .amounthead {
 
   font-size: 1.5em;
+  font-weight: bold;
   padding-top: 12px;
-  margin-left: 150px; 
+  margin-left: 135px; 
   color:black;
 }
 
 .header-attr-1 {
 
   font-size: 1.3em;
-  
+  font-weight: bold;
   margin-left: 170px; 
   margin-top: 12px;
   color:black;
@@ -159,18 +169,18 @@ margin-top: -15px;
 
   font-size: 1.3em;
   margin-top: 12px;
-  margin-left: 215px; 
+  margin-left: 190px; 
   color:black;
   float: left;
-  
+  font-weight: bold;
   
 }
 
 .header-attr-3 {
 
   font-size: 1.3em;
-  
-  margin-left: 185px; 
+  font-weight: bold;
+  margin-left: 115px; 
   color:black;
   float: left;
   margin-top: 12px;
@@ -180,8 +190,8 @@ margin-top: -15px;
 .header-attr-4 {
 
   font-size: 1.3em;
-  
-  margin-left: 125px; 
+  font-weight: bold;
+  margin-left: 115px; 
   color:black;
   float: left;
   margin-top: 12px;
@@ -190,7 +200,7 @@ margin-top: -15px;
 
 .totalprice {
 
-  margin-left: 450px;
+  margin-left: 220px;
 
 }
 
