@@ -22,25 +22,11 @@
                     <%=book.author%>
                   </td>
                 </tr>
-                <tr>
-                  <td class="book-price">
-                    <center>
-                      starting from 
-                      <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                      <%=book.min_price%>
-                    </center>
-                  </td>
-                </tr>
                 <tr class="link-style">
                   <td>
                     <center>
                       <%= link_to "Details", book_detail_path(book) %>
                     </center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <%=book.stock%> Sellers
                   </td>
                 </tr>
                 <tr>

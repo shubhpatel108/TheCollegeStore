@@ -25,6 +25,7 @@ class WishlistsController < ApplicationController
 	end
 
 	def show
-	  @my_wishes = Wishlist.where(:user_id => current_user.id).map(&:book_group_id)
+	  @w_ids = Wishlist.where(:user_id => current_user.id).map(&:book_group_id)
+	  @my_wishes = BookGroup.where(:id => @w_ids)
 	end
 end
