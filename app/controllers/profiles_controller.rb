@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+	before_filter :authenticate_user!
+	
 	def show
 	id = current_user.id
 	user_name = current_user.first_name.strip
