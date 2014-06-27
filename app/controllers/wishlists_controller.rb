@@ -1,4 +1,5 @@
 class WishlistsController < ApplicationController
+	before_filter :authenticate_user!
 	def add
 		@bg_id = params[:id]
 		if not @bg_id.nil?
