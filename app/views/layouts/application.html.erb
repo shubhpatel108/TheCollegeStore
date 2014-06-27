@@ -406,8 +406,12 @@
       <div class="heading" style="color:white;">
         TheCollegeStore
       </div>
-
-      <a href="#" style="text-decoration:none;"><div class="innertext"> About us </div></a>
+            <% $categories.each do |c|%>
+              <a href="/book_groups/category/<%=c.id%>" style="text-decoration:none;" data-remote=true>
+                <div class="innertext"><%= c.name%></div>
+                </a><br>
+            <% end %>
+      <!-- <a href="#" style="text-decoration:none;"><div class="innertext"> About us </div></a>
       <br>
       <a href="#" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
       <br>
@@ -415,7 +419,7 @@
       <br>
       <a href="#" style="text-decoration:none;"><div class="innertext"> Disclaimer </div></a>
       <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a>
+      <a href="#" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a> -->
       
       
 
