@@ -43,6 +43,7 @@ class CartController < ApplicationController
     groups = @books.map(&:book_group)
     users = @books.map(&:user)
     @seller_ids = users.map(&:id)
+    @coupons = Coupon.where(:id => session[:coupons])
     @total = 0
     done = @books.zip(groups, users)
     done.each do |b, g, u|
@@ -51,16 +52,14 @@ class CartController < ApplicationController
       b.buyer_id = current_user.id
       @total += b.price
     end
-    BookMailer.buyer_invoice(current_user, @books).deliver
+    BookMailer.buyer_invoice(current_user, @books, @coupons).deliver
     flash[:success] = "You have successfully checked out!"
     session[:cart] = nil
   end
 
   private
   def check_user
-    if user_signed_in?
-      redirect_to '/coupons'
-    else
+    if not user_signed_in?
       render :template => '/guests/selection'
     end
   end

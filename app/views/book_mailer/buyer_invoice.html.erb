@@ -3,10 +3,16 @@
 <h3> List of Books:</h3>
 <% @books.each do |book| %>
 	<tr>
-		<td><%=book.info.title%></td>
-		<td><%=book.info.author%></td>		
-		<td><%=book.info.publisher%></td>
-		<td><%=book.price%></td>
-		<td><%=book.user.first_name%> <%=book.user.last_name%></td>
+		<td><%=book.info.title%></td><br>
+		<td><%=book.info.author%></td>	<br>	
+		<td><%=book.info.publisher%></td><br>
+		<td><%=book.price%></td><br>
+		<td><%=book.user.first_name%> <%=book.user.last_name%></td><br>
 	</tr></br>
+<% end %>
+
+<% @coupons.each do |c|%>
+	<tr>
+		<td> <%= c.code %></td><br>
+	</tr>
 <% end %>

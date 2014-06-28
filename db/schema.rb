@@ -113,10 +113,12 @@ ActiveRecord::Schema.define(:version => 20140626152754) do
     t.boolean  "distributed",    :default => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.integer  "user_id"
     t.integer  "distributor_id"
   end
 
   add_index "coupons", ["distributor_id"], :name => "index_coupons_on_distributor_id"
+  add_index "coupons", ["user_id"], :name => "index_coupons_on_user_id"
 
   create_table "coupons_users", :force => true do |t|
     t.integer "coupon_id", :null => false
