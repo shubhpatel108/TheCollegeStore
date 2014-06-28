@@ -1,13 +1,13 @@
-<div class="links">
-	<div class="inline-popups">
-        <a href="#cart-popup" data-effect="mfp-3d-unfold"> cart </a>	
-	</div>
-</div>
+
 <% if not books.empty?%>
 	<% books.each do |b|%>
 		<div id="cart_item_<%=b.id%>}">
 			<%=b[:group].title%>, <%=b[:group].author%>, <%=b[:group].publisher%>, <%= b.edition%>,<%= link_to "remove", remove_item_path(b.id), remote: true%></br>
 		</div>
 	<%end%>
+<% if user_signed_in? %>
+<p><%= link_to "proceed", coupons_path %></p>
+<% else %>
 <p><%= link_to "Checkout", checkout_path %></p>
+<% end %>
 <%end%>
