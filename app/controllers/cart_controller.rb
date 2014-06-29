@@ -50,6 +50,7 @@ class CartController < ApplicationController
       b[:info] = g
       b[:user] = u
       b.buyer_id = current_user.id
+      b.save
       @total += b.price
     end
     BookMailer.buyer_invoice(current_user, @books, @coupons).deliver
