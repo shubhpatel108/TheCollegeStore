@@ -3,7 +3,7 @@ class BookMailer < ActionMailer::Base
 
   def request_seller(s_ids, buyer, message, bookdetail)
 	@sellers = User.where(:id => s_ids)
-	@seller_emails = @sellers.collect(&:email).join(",")
+	@seller_emails = @sellers.map(&:email)
 	@message = message
   @bookdetail = bookdetail
 	@buyer_email = buyer.email

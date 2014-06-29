@@ -96,7 +96,13 @@ class BooksController < ApplicationController
   def request_seller
     s_ids = params[:seller_ids]
     message = params[:message]
-    BookMailer.request_seller(s_ids, current_user, message).deliver
+    s_ids.each do |s|
+      book_details = Book.where(:user_id => s, :buyer_id=> current_user.id, :reserved => true)
+      book_details.each do |b|
+        b[:info] = b.book_group
+      end
+      BookMailer.request_seller(s, current_user, message, book_details).deliver
+    end
     flash[:notice] = "Your mail has been sent, seller(s) will soon respond you."
     redirect_to :books
   end

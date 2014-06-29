@@ -4,3 +4,51 @@
 <%= @message %>
 <h3> Please respond back. His email address is </h3>
 <%= @buyer_email %>
+
+<div class="container_4">
+    <div class="innertitle">
+        <p>books are bought.</p>
+    </div>
+    <div class="no-touch">
+      <ul class="grid cs-style-3">
+      <% @bookdetail.each do |book| %>
+        <li class="divfloat">
+          <figure>
+            <div class="img-book">
+              <%= image_tag book.info.image.url %>
+            </div>
+            <figcaption>
+            <table class="book-grid">
+                <tr>
+                  <td class="book-name1">
+                    <center><%=book.info.title%></center>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="book-author">
+                    <%=book.info.author%>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                  	<%= book.price%>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                  	<%= book.edition%>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                  	<%= book.isbn%>
+                  </td>
+                </tr>
+              </table>
+            </figcaption>
+          </figure>
+        </li>
+        <% end %>
+        </ul>
+    </div>
+</div>
