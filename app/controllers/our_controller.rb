@@ -26,7 +26,7 @@ class OurController < ApplicationController
   	subject = params[:Subject]
   	message = params[:Message]
 
-  	ContactUsMailer.email_us(name, email, subject, message).deliver
+  	ContactUsMailer.email_us(name, email, message).deliver
   	redirect_to '/', notice: 'Your message has successfully sent, we will contact you soon.'
   end
 
