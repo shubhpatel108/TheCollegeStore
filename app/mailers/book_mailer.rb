@@ -15,6 +15,9 @@ class BookMailer < ActionMailer::Base
   	@email = seller.email
   	@name = seller.first_name + " " + seller.last_name
   	@books = books
+    @books.each do |b|
+      b[:info] = b.book_group
+    end
     @coupons = coupons
   	mail(:to=>@email,:subject=>"Books purchased by you | TheCollegeStore")
   end
