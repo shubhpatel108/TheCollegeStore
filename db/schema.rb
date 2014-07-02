@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140702064539) do
+ActiveRecord::Schema.define(:version => 20140702081852) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20140702064539) do
     t.boolean  "reserved",      :default => false
     t.integer  "admin_user_id"
     t.integer  "buyer_id"
+    t.boolean  "by_guest",      :default => false
   end
 
   add_index "books", ["admin_user_id"], :name => "index_books_on_admin_user_id"
