@@ -7,9 +7,9 @@ class GuestsController < ApplicationController
 	def create
 		@guest = Guest.new(params[:guest])
 		if @guest.save
-			session[:email] = @guest.email
+			session[:guest] = @guest
 			session[:college_id] = @guest.college_id
-			redirect_to '/coupons'
+			redirect_to checkout_path
 		else
 			redirect_to '/new_guest'
 		end
