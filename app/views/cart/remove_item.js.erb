@@ -1,6 +1,10 @@
-var elem = document.getElementById("cart_item_<%=@book_id%>}");
+var elem = document.getElementById("cart_item_<%=@book_id%>");
 elem.parentNode.removeChild(elem);
 // $('#notices').append('<p>Successfully removed!<p>');
 // FlashNotice("success", "Book is removed!");
 var count = document.getElementById('cart-item-count');
 count.innerHTML = "<%= session[:cart].count%>";
+var price = document.getElementById('cart-total-price');
+price.innerHTML = "<%= session[:cart_total] %>";
+
+$('#cart-content').html('<%=escape_javascript( render :partial => "cart/cart", :locals => {:books => session[:cart]})%>')

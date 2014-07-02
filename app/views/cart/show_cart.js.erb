@@ -1,1 +1,1 @@
-$('#cart-content').html('<%=escape_javascript( render :partial => "cart/cart", :locals => {:books => @books})%>')
+$('#cart-content').html('<%=escape_javascript( render :partial => "cart/cart", :locals => {:books => session[:cart]})%>')

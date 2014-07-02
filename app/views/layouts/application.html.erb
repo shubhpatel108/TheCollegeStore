@@ -109,7 +109,7 @@
         </a>      
       </li>
       <li class="inline-popups">
-        <a href="/cart/show" class="" data-remote="true" data-effect="mfp-3d-unfold">
+        <a href="#cart-popup" class="" data-remote="true" data-effect="mfp-3d-unfold">
           <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
           <div id="cart-count-wrapper"><span id="cart-item-count">
           <% if session[:cart].nil? %>
@@ -293,73 +293,8 @@
   </div>
 </div>
 <!---------------------------------- SIGN-UP FORM ENDS ---------------------->
-
-<!------------------------------ CART POPUP STARTS -------------------------->
-
-<div id="cart-popup" class="cart-white-popup mfp-with-anim mfp-hide">
-  <div class="popup-head"> Cart </div>
-  <div class="totalamount">
-    <div class="table-heading">
-        <div class="header-attr-1">Book</div>
-        <div class="header-attr-2"> Seller</div>
-        <div class="header-attr-3"> Price</div>
-        <div class="header-attr-4"> Remove</div>
-    </div>
-  </div>
-
-  <div class="maintable">
-  <table class="container_table">
-    <tbody>
-      <tr>
-        <td style="width: 300px;">
-          <img src="1.jpg" class="item-image"/>
-          <div style="margin-top:20px; color:black; font-size: 15px;">
-          <div class="book-title"> Introdiction to Algorithms</div>
-          <div class="cart-author">Author : H. Cormen </div>
-          <div class="cart-edition"> Edition : 2nd</div>
-          </div>
-        </td>
-        <td style="font-size: 12px; text-align: center; padding: 0px;">
-         <div> Jayant Pareek </div>
-         <div> DA-IICT </div>
-        </td>
-        <td style="font-size: 15px; text-align: center; padding: 0px;">Rs.315</td>
-        <td> <img src="cartout1.png" class="cartout-img"/> </td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td style="width: 300px;">
-          <img src="1.jpg" class="item-image"/>
-          <div style="margin-top:20px; color:black; font-size: 15px;">
-          <div class="book-title"> Introdiction to Algorithms</div>
-          <div class="cart-author">Author : H. Cormen </div>
-          <div class="cart-edition"> Edition : 2nd</div>
-          </div>
-        </td>
-        <td style="font-size: 12px; text-align: center; padding: 0px;">
-         <div> Jayant Pareek </div>
-         <div> DA-IICT </div>
-        </td>
-        <td style="font-size: 15px; text-align: center; padding: 0px;">Rs.315</td>
-        <td> <img src="cartout1.png" class="cartout-img"/> </td>
-      </tr>
-    </tbody>
-  </table>
-
-  </div>
-  <div class="totalamount">
-      <div class="amounthead">
-            Total Estimated Amount
-            <span class="totalprice"> Rs. 945 </span>
-      </div>
-  </div>
-  <div class="checkoutbtn">
-  </div>
-</div>
-<!------------------------------ CART-popup ENDS ---------------------------->
-
 <div id="cart-content">
+  <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
 </div>
 <div id="sub-heading">
 </div>

@@ -5,6 +5,13 @@
 		<td><%=book.info.publisher%></td>
 		<td><%=book.price%></td>
 		<td><%=book.user.first_name%> <%=book.user.last_name%></td>
+		<td>
+			<%if book.err %>
+				Sorry, This book was recently booked by someone else
+			<%else%>
+				Order Placed!
+			<%end%>
+		</td>
 	</tr>
 <% end %>
 

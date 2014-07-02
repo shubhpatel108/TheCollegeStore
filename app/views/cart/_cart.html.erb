@@ -1,13 +1,49 @@
+<div id="cart-popup" class="cart-white-popup mfp-with-anim mfp-hide">
+  <div class="popup-head"> Cart </div>
+  <div class="totalamount">
+    <div class="table-heading">
+        <div class="header-attr-1">Book</div>
+        <div class="header-attr-2"> Seller</div>
+        <div class="header-attr-3"> Price</div>
+        <div class="header-attr-4"> Remove</div>
+    </div>
+  </div>
 
-<% if not books.empty?%>
-	<% books.each do |b|%>
-		<div id="cart_item_<%=b.id%>}">
-			<%=b[:group].title%>, <%=b[:group].author%>, <%=b[:group].publisher%>, <%= b.edition%>,<%= link_to "remove", remove_item_path(b.id), remote: true%></br>
-		</div>
+  <div class="maintable">
+  <table class="container_table">
+	<% if not books.nil?%>
+	  	<% books.each do |b|%>
+	    <tbody>
+	      <tr id="cart_item_<%=b.id%>">
+	        <td style="width: 300px;">
+	          <img src="1.jpg" class="item-image"/>
+	          <div style="margin-top:20px; color:black; font-size: 15px;">
+	          <div class="book-title"> <%=b[:group].title%></div>
+	          <div class="cart-author"><%=b[:group].author%></div>
+	          <div class="cart-edition"> Edition : <%= b.edition%></div>
+	          </div>
+	        </td>
+	        <td style="font-size: 12px; text-align: center; padding: 0px;">
+	         <div> <%=b[:user].first_name %></div>
+	        </td>
+	        <td style="font-size: 15px; text-align: center; padding: 0px;">Rs.<%=b.price%></td>
+	        <td><%= link_to "remove", remove_item_path(b.id), remote: true%></td>
+	      </tr>
+	    </tbody>
+		<%end%>
+	<%else%>
+		<p>There are no Books in your cart!</p>
 	<%end%>
-<% if user_signed_in? %>
-<p><%= link_to "proceed", coupons_path %></p>
-<% else %>
-<p><%= link_to "Checkout", checkout_path %></p>
-<% end %>
-<%end%>
+  </table>
+  </div>
+
+  <div class="totalamount">
+      <div class="amounthead">
+            Total Estimated Amount
+            <span class="totalprice" id="cart-total-price"> <% if not session[:cart_total].nil? %><%=session[:cart_total]%><%else%>0<%end%></span>
+      </div>
+  </div>
+  <div class="checkoutbtn">
+	<p><%= link_to "proceed", coupons_path %></p>
+  </div>
+</div>
