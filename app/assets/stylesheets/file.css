@@ -83,3 +83,11 @@ margin-left: 85%;
 filter: grayscale(100%);
 
 }
+
+/*Landing Page CSS : College Selector*/
+ul.college-selector{
+	margin-left: auto;
+	margin-right: auto;
+	width: 36%;
+	list-style-type: none;
+}

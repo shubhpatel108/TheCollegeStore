@@ -30,6 +30,10 @@
   line-height: 0.75em;
   vertical-align: -15%;
 }
+.fa-1x{
+  font-size: 1em;
+}
+
 .fa-2x {
   font-size: 2em;
 }
@@ -37,7 +41,7 @@
   font-size: 3em;
 }
 .fa-4x {
-  font-size: 4em;
+  font-size: 2em;
 }
 .fa-4x:hover {
   color: white;

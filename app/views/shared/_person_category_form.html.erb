@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Choose Category</title>
+	<title>College Store | Buy | Sell | College Books</title>
 	<style>
 		#dropElem {
 		    display: none;
@@ -35,11 +35,116 @@
 		    border-radius: 6px 6px 6px 6px;
 		    color: #fff;
 		}
+
+		/*Landing Page CSS : College Selector*/
+		ul.college-selector{
+			margin-left: auto;
+			margin-right: auto;
+			list-style-type: none;
+		}
+
+		div{
+			margin: 5px;
+		}
+
+		input#college_name, input#email{
+			padding: 10px;
+			width: 100%;
+			font-size: 14px;
+		}
+
+		form{
+			margin: 20px;
+		}
+
+		input[type="submit"].send{
+			width:110%;
+			font-size: 16px;
+			-webkit-appearance: inherit;
+			padding: 7px;
+			background: rgb(207, 67, 67);
+			color: white;
+			border: 0;
+			border-bottom: solid 3px rgb(128, 0, 77);
+			
+		}
+
+		input[type="submit"].go{
+			font-size: 16px;
+			-webkit-appearance: inherit;
+			padding: 7px;
+			background: rgb(207, 67, 67);
+			color: white;
+			border: 0;
+			border-bottom: solid 3px rgb(128, 0, 77);
+			width: 20%;
+			margin: 13px;
+		}
+
+		.col-select{
+		    
+		    overflow:hidden;
+		}
+
+		.col-select select {
+		    
+		    -webkit-appearance: none;
+		    -moz-appearance: none;
+		    appearance: none;
+		    border: none;
+		     background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat right center;
+		    border: solid 2px;
+			padding: 10px;
+			width: 100%;
+			border: 1px solid rgb(166, 166, 166);
+			border-radius: 0;
+			font-size: 14px;
+		}
+
+		.col-select select option{
+			-webkit-appearance: none;
+		    -moz-appearance: none;
+		    appearance: none;
+		    border: solid 2px;
+			padding: 10px;
+			width: 50%;
+		}
+
+		#college_entry a{
+			color: cornflowerblue;
+		}
+
+		table.college-select {
+			width: 70%;
+		}
+
+		div.college-select {
+			text-align: center;
+			width: 70%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		div.col-select {
+			width: 70%;
+			margin-left: auto;
+			margin-right: auto;
+		}		
+
+		/*.double-arrow:after{
+			content: '\25BC';
+			bottom: -1px;
+		}
+
+		.double-arrow:before{
+			content: '\25B2';
+			top: -1px;
+		}*/
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript">
 		var shadow = $('<div id="shadowElem"></div>');
-        var speed = 1000;
+        var speed = 500;
         $(document).ready(function () {
             $('body').prepend(shadow);
         });
@@ -79,39 +184,46 @@
             });
         });
 	</script>
+
 </head>
 <body>
-<div id="dropElem">
+<div id="dropElem" style="width:400px;">
     <div id="dropContent">
         <!-- <div id="dropClose">X</div> -->
-		<div id="student_entry">
-			<%= link_to_function "Student", 'add_college()'%>
-		</div>
+      
+			<!-- <div class="college-select" style="text-align:center"> -->
+				<%= form_tag('/application/select_college', method: "get") do %>
+					<div class="col-select">
+						<%= select_tag "college_id", options_from_collection_for_select(@colleges, "id", "name", :class => 'college-list') %>
+						<i style="float:right; background:grey;" class="double-arrow"></i>
+					</div>
+					<center><%= submit_tag "Go >>", :class => 'go' %></center>
+					
+				<%end%>
+			<!-- </div> -->
+			
+			
+			<p id="college_entry" style="text-align:center">
+				<%= link_to_function "Add Your College", 'request_admin()' %>
+			</p>
 
-		<div id="add_college" style="display:none;">
-			<%= form_tag('/application/select_college', method: "get") do %>
-				<%= select_tag "college_id", options_from_collection_for_select(@colleges, "id", "name") %>
-				<%= submit_tag "Go"%>
-			<%end%>
-			Didn't find your college? Ask admin to add your college.
-			<div id="college_entry">
-				<%= link_to_function "Add your college", 'request_admin()' %>
-			</div>
 
-
-			<div id="request_admin" style="display:none;">
-				<%= form_tag(:controller=>'colleges', :action=>'request_admin_to_add_college') do %>
-					<%= text_field_tag :college_name, '',:placeholder => "Enter your college" %>
-					<%= email_field_tag :email,'', :placeholder => "Enter your email id" %>
-					<%= submit_tag "Send" %>
+			<div id="request_admin" style="display:none; text-align: center">
+				<%= form_tag(:controller=>'colleges', :action=>'request_admin_to_add_college', :id => 'request_admin') do %>
+				<center>
+					<table class="college-select">
+						<tr><td><%= text_field_tag :college_name, '',:placeholder => "Enter your college" %></tr></td>
+						<tr><td><%= email_field_tag :email,'', :placeholder => "Enter your email id" %></td></tr>
+						<tr><td><%= submit_tag "Send", :class => 'send' %></td></tr>
+					</table>
+				</center>
 				<% end %>
 			</div>
-		</div>
+			
 
-		<div id="vendor_entry">
-			<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
-		</div>
- 	</div>
+		
+ 		
+	</div>
 </div>
 
 </body>
@@ -120,12 +232,12 @@
 
 
 <script type="text/javascript">
-	function add_college()
-	{
-		document.getElementById("add_college").style.display = "block";
-	}
 
 	function request_admin(){
 		document.getElementById("request_admin").style.display = "block";
 	}
 </script>
+
+<!-- <li id="vendor_entry">
+				<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
+			</li> -->

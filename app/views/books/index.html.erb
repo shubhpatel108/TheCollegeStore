@@ -10,43 +10,33 @@
             <div class="img-book">
               <%= image_tag book.image.url %>
             </div>
-            <figcaption>
+            <figcaption class=<%= book.id %> id=<%= book.id %>>
             <table class="book-grid">
-                <tr>
+                <tr class="book-grid-main">
                   <td class="book-name1">
-                    <center><%=book.title%></center>
+                    <center><%=link_to book.title, book_detail_path(book) %></center>
+                  </td>
+                </tr>
+                <tr class="book-grid-main">
+                  <td>
+                    <center>                
+                      <span style="font-size:20px; padding:10px">
+                        <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
+                        <span class="book-price"><%=book.min_price%></span>
+                      </span>
+                    </center>
                   </td>
                 </tr>
                 <tr>
                   <td class="book-author">
-                    <%=book.author%>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="book-price">
                     <center>
-                      starting from 
-                      <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                      <%=book.min_price%>
-                    </center>
-                  </td>
-                </tr>
-                <tr class="link-style">
-                  <td>
-                    <center>
-                      <%= link_to "Details", book_detail_path(book) %>
+                      Author : <%=book.author%> | <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
                     </center>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <%=book.stock%> Sellers
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    7 Reviews
-                  </td>
+                  <td><center><span class="button">Add To Cart</span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
+                  
                 </tr>
               </table>
             </figcaption>
@@ -69,43 +59,33 @@
             <div class="img-book">
               <%= image_tag book.image.url %>
             </div>
-            <figcaption>
+            <figcaption class=<%= book.id %> id=<%= book.id %>>
             <table class="book-grid">
-                <tr>
+                <tr class="book-grid-main">
                   <td class="book-name1">
-                    <center><%=book.title%></center>
+                    <center><%=link_to book.title, book_detail_path(book) %></center>
+                  </td>
+                </tr>
+                <tr class="book-grid-main">
+                  <td>
+                    <center>                
+                      <span style="font-size:20px; padding:10px">
+                        <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
+                        <span class="book-price"><%=book.min_price%></span>
+                      </span>
+                    </center>
                   </td>
                 </tr>
                 <tr>
                   <td class="book-author">
-                    <%=book.author%>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="book-price">
                     <center>
-                      starting from 
-                      <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                      <%=book.min_price%>
-                    </center>
-                  </td>
-                </tr>
-                <tr class="link-style">
-                  <td>
-                    <center>
-                      <%= link_to "Details", book_detail_path(book) %>
+                      Author : <%=book.author%> | <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
                     </center>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <%=book.stock%> Sellers
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    7 Reviews
-                  </td>
+                  <td><center><span class="button">Add To Cart</span>  <span class="button">Details</span></center></td>
+                  
                 </tr>
               </table>
             </figcaption>
@@ -118,3 +98,23 @@
 ==========================================
 <p><%= link_to "Sell", '/book_groups/new' %></p>
 =========================================
+
+// <script type="text/javascript">
+
+//   function dragOpen(id){
+    
+
+//     console.log(id);
+//     $('.cs-style-3 figcaption').css({
+//       opacity : 1,
+//   // background: !important;
+//   '-webkit-transform' : 'translateY(0px)',
+//   '-moz-transform' : 'translateY(0px)',
+//   '-ms-transform' : 'translateY(0px)',
+//   transform : 'translateY(0px)',
+//   '-webkit-transition' : '-webkit-transform 0.4s, opacity 0.1s',
+//   '-moz-transition' : '-moz-transform 0.4s, opacity 0.1s',
+//   transition : 'transform 0.4s, opacity 0.1s'
+//     })
+//   }
+// </script>

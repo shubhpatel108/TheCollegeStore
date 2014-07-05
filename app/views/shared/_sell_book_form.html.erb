@@ -1,37 +1,72 @@
-<%= form_for book_group, :validate => true do |f| %>
-	<p>
-		<%= f.label :title%> <br />
-		<%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title' %>
-	</p>
-	<p>
-		<%= f.label :author%> <br />
-		<%= f.text_field :author, :placeholder => "Author", id: 'sell_author' %>
-	</p>
-	<p>
-		<%= f.label :publisher%> <br />
-		<%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher' %>
-	</p>
-	<p>
-		<%= f.label :category%> <br />
-		<%= f.collection_select :category_id, Category.all, :id, :name%> <br />
-	</p>
-	<%= f.fields_for :books do |builder| %>
-		<p>
-			<%= builder.label :price %> <br />
-			<%= builder.number_field :price, :placeholder => "Price" %>
-		</p>
-		<p>
-			<%= builder.label :edition%> <br />
-			<%= builder.number_field :edition, :placeholder => "Edition" %>
-		</p>
-		<p>
-			<%= builder.label :isbn%> <br />
-			<%= builder.text_field :isbn, :placeholder => "ISBN" %>
-		</p>
-	<%end%>
-	<%= f.label :Image %> <br />
-	<%= f.file_field :image %>
-	<p>
-		<%= f.button "Submit Book" %> 
-	</p>
-<% end %>
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+        
+	    	<div class="form-header header-black">
+	        	<h4><i class="fa "></i><center>Book Selling Form</center></h4>
+	        </div><!-- end .form-header section -->
+	        <div class="form-body theme-black">
+
+	<%= form_for book_group do |f| %> 
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'firstname', :class => 'gui-input required' %>
+                <label for="firstname" class="field-icon">
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+                <%= f.text_field :author, :placeholder => "Author", :class => 'gui-input' %>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+                <%= f.text_field :publisher, :placeholder => "Publisher", :class => 'gui-input' %>
+                <label for="firstname" class="field-icon">
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+                <%= f.collection_select :category_id, Category.all, :id, :name %>
+            </label>
+        </div><!-- end section -->
+
+        <%= f.fields_for :books do |builder| %>
+        
+
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+                <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input' %>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+                <%= builder.text_field :edition, :placeholder => "Edition", :class => 'gui-input' %>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+                <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input' %>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="firstname" class="field prepend-icon">
+               <%= f.file_field :image, :class => 'gui-input' %>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            
+                <center><%= f.button "Submit Book", :class => 'button btn-black' %> </center>
+      
+            
+        </div><!-- end section -->
+                
+		<%end%>	
+	<% end %>
+</div>
+</div>
+</div>

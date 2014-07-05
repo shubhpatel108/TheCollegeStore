@@ -2,6 +2,12 @@
 
 <html class="no-js" lang="en"><!--<![endif]-->
 <head>
+<%= stylesheet_link_tag "black.css" %>
+<%= stylesheet_link_tag "smart-forms.css" %>
+  <!-- Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,11 +16,17 @@
   <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css"%>
   <%= stylesheet_link_tag    "font-awesome.css", "main_layout", "main_responsive", "search-bar"%>
   <%= stylesheet_link_tag    "form.css", "magnific-popup.css" %>
+  <%= stylesheet_link_tag    "shreyans.css" %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <%= stylesheet_link_tag    "form.css"%>
+  <%= stylesheet_link_tag    "file.css"%>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
+  <%= javascript_include_tag "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
   <%= csrf_meta_tags %>
+
+  <!-- <%= javascript_include_tag "jquery.validate.js" %> -->
+  
+
 <!-- ----- STYLE (ANIMATION) FOR FORM POPUP -------->
   <style type="text/css">
     .mfp-3d-unfold {
@@ -62,68 +74,74 @@
 <body id="library" class="gecko new-gecko">
   
 <div id="shelf">
+
   <ul class="global-nav">
+    
+    <li>
+      <a href="/books" class="">
+        <i class="fa fa-home fa-4x fa-color_grey"></i>
+        <span class="nav-tooltip">Home</span>
+      </a>      
+    </li>
+    
     <li>
       <a href="#" class="">
-        <i class=""></i>
-        <span class="nav-tooltip">Home</span>
+        <i class="fa fa-user fa-4x fa-color_grey"></i>
+        <span class="nav-tooltip">My Profile </span>
+      </a>      
+    </li>
+    
+    <li>
+      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
+        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Facebook</span>
+      </a>      
+    </li>
+    
+    <li>
+      <a href="#" class="">
+         <span class="fa fa-android fa-4x fa-color_grey"></span>
+         <span class="nav-tooltip">Android App</span>
+      </a>      
+    </li>
+    
+    <li>
+      <a href="#" class="">
+        <span class="fa fa-book fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Orders</span>
+      </a>      
+    </li>
+    
+    <li>
+      <a href="/wishlist/show" class="">
+          <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Wish List</span>
+      </a>      
+    </li>
+    
+    <li class="inline-popups">
+      <a href="/cart/show" class="" data-remote="true"  data-effect="mfp-3d-unfold">
+        <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
+        <div id="cart-count-wrapper">
+          <span id="cart-item-count">
+            <% if session[:cart].nil? %>
+            0
+              <% else%>
+              <%= session[:cart].count%>
+            <%end%>
+          </span>
+        </div>
+        <span class="nav-tooltip">Cart</span>
       </a>
     </li>
-
-      <li>
-        <a href="/books" class="">
-          <i class="fa fa-home fa-4x fa-color_grey"></i>
-          <span class="nav-tooltip">Home</span>
-        </a>      
-      </li>
-      <li>
-        <a href="#" class="">
-          <i class="fa fa-user fa-4x fa-color_grey"></i>
-          <span class="nav-tooltip">My Profile </span>
-        </a>      
-      </li>
-      <li>
-        <a href="https://www.facebook.com/thecollegestore.co.in" class="">
-          <span class="fa fa-facebook fa-4x fa-color_grey"></span>
-          <span class="nav-tooltip">Facebook</span>
-        </a>      
-      </li>
-      <li>
-        <a href="#" class="">
-           <span class="fa fa-android fa-4x fa-color_grey"></span>
-           <span class="nav-tooltip">Android App</span>
-        </a>      
-      </li>
-      <li>
-        <a href="#" class="">
-          <span class="fa fa-book fa-4x fa-color_grey"></span>
-          <span class="nav-tooltip">Orders</span>
-        </a>      
-      </li>
-      <li>
-        <a href="/wishlist/show" class="">
-            <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
-            <span class="nav-tooltip">Wish List</span>
-        </a>      
-      </li>
-      <li class="inline-popups">
-        <a href="/cart/show" class="" data-remote="true"  data-effect="mfp-3d-unfold">
-          <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
-          <div id="cart-count-wrapper"><span id="cart-item-count">
-          <% if session[:cart].nil? %>
-          0
-          <% else%>
-          <%= session[:cart].count%>
-          <%end%></span></div>
-          <span class="nav-tooltip">Cart</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="">
-            <span class="fa fa-phone fa-4x fa-color_grey"></span>
-            <span class="nav-tooltip">Contact Us</span>
-        </a>      
-      </li>
+    
+    <li>
+      <a href="#" class="">
+          <span class="fa fa-phone fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Contact Us</span>
+      </a>      
+    </li>
+    
     <% if user_signed_in? %>
       <li>
         <a href="/logout" class="">
@@ -132,9 +150,10 @@
         </a>      
       </li>
     <% end %>
-    </div>
   </ul>
+  
   <a class="trigger-shelf shelf-opener"><span class="icon icon-open-shelf"></span></a>
+
 </div>
 
 <div id="content">
@@ -148,10 +167,10 @@
             </li>
               <li>
                 <a>
-                <% if user_signed_in? %>
-                  <span><%= link_to "#{current_user.first_name}", edit_user_registration_path %></span>
-                <%end%>
-                   <span><%= cookies[:college_name] %></span></a>
+                  <% if user_signed_in? %>
+                    <span><%= link_to "#{current_user.first_name}", edit_user_registration_path %></span>
+                  <%end%>
+                </a>
               </li>
               <% if !user_signed_in? %>
                 <li>     
@@ -159,6 +178,10 @@
                 </li>
                 <li>
                   <a href="#test-popup-signup" data-effect="mfp-3d-unfold" class="button button-primary">Register</a>
+                </li>
+                <li>
+                  <a><span class="select-college"><%= cookies[:college_name] %></span>
+                    <span><%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
                 </li>
               <%end%>
           </div>
@@ -181,8 +204,8 @@
   </div>
 </div>
 
-<div class="heading-pocket">
-</div>
+<!-- <div class="heading-pocket">
+</div> -->
     
 
 <div id="featurette-2" class="grid-container featurette" data-featurette="library-index">
@@ -353,102 +376,6 @@
 
 
 <!-- Footer -->
-
-<div class="finalfooter">
-<div class="footerwrapper">
-<div class="otherlinks">
-
-    <div class="linklist">
-
-      <div class="heading" style="color:white;">
-        TheCollegeStore
-      </div>
-
-      <a href="#" style="text-decoration:none;"><div class="innertext"> About us </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Privacy Policy </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Disclaimer </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a>
-      
-      
-
-    </div>
-
-</div>
-<div class="otherlinks">
-
-    <div class="linklist">
-
-      <div class="heading" style="color:white;">
-        TheCollegeStore
-      </div>
-
-      <a href="#" style="text-decoration:none;"><div class="innertext"> About us </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Privacy Policy </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Disclaimer </div></a>
-      <br>
-      <a href="#" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a>
-      
-      
-
-    </div>
-
-</div>
-
-
-<div class="otherlinks">
-
-  <div class="linklist">
-
-      <div class="heading" style="color:white">
-        Associated Colleges
-      </div>
-
-      <div class="innertext"> DA-IICT </div>
-      <br>
-      <div class="innertext"> Nirma </div>
-      <br>
-      <div class="innertext">  PDPU </div>
-      <br>
-      <div class="innertext"> IIT-Gandhinagar </div>
-      <br>
-      <div class="innertext"> GNLU </div>
-    
-    </div>
-  </div>
-<div class="linksocial">
-  <div class="linkicons">
-    <div class="inline-floating">
-    <a href="https://www.facebook.com/thecollegestore.co.in"><%=image_tag('Facebook.png')%></a>
-   </div> 
-   <div class="inline-floating">
-   <a href="https://www.google.co.in/?gfe_rd=cr&ei=T02bU925MaTO8geB-oDgDw&gws_rd=ssl"><%= image_tag('Google.png') %></a>
-   </div>
-   <div class="inline-floating">
-   <a href="https://www.twitter.com"><%= image_tag('Twitter.png') %></a>
-   </div>
-  </div>
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
- </div>
 
 
 <!---------------------------- JAVASCRIPT FOR LOGIN-REGISTRATION FORMS -------------------->
