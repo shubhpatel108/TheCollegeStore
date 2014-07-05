@@ -2,3 +2,6 @@
 // FlashNotice("success", "Book is successfully added to the cart!");
 var count = document.getElementById('cart-item-count');
 count.innerHTML = "<%= session[:cart].count%>";
+var price = document.getElementById('cart-total-price');
+price.innerHTML = "<%= session[:cart_total] %>";
+$('#cart-content').html('<%=escape_javascript( render :partial => "cart/cart", :locals => {:books => session[:cart]})%>')

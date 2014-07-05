@@ -1,5 +1,6 @@
 @charset "UTF-8";
-    .CodeMirror{
+
+.CodeMirror{
 font-family:monospace;
     height:300px
 }

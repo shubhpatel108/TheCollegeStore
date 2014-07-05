@@ -134,14 +134,62 @@
         <span class="nav-tooltip">Cart</span>
       </a>
     </li>
-    
+    <li>
+      <a href="/books" class="">
+        <i class="fa fa-home fa-4x fa-color_grey"></i>
+        <span class="nav-tooltip">Home</span>
+      </a>      
+    </li>
+    <li>
+    <% if user_signed_in? %>
+      <a href="/<%=current_user.first_name%>/<%=current_user.id%>" class="">
+        <i class="fa fa-user fa-4x fa-color_grey"></i>
+        <span class="nav-tooltip">My Profile </span>
+      </a>
+    <% end -%>      
+    </li>
+    <li>
+      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
+        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Facebook</span>
+      </a>      
+    </li>
     <li>
       <a href="#" class="">
+         <span class="fa fa-android fa-4x fa-color_grey"></span>
+         <span class="nav-tooltip">Android App</span>
+      </a>      
+    </li>
+    <li>
+      <a href="/my_orders" class="">
+        <span class="fa fa-book fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Orders</span>
+      </a>      
+    </li>
+    <li>
+      <a href="/wishlist/show" class="">
+          <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Wish List</span>
+      </a>      
+    </li>
+    <li class="inline-popups">
+      <a href="#cart-popup" class="" data-remote="true" data-effect="mfp-3d-unfold">
+        <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
+        <div id="cart-count-wrapper"><span id="cart-item-count">
+        <% if session[:cart].nil? %>
+        0
+        <% else%>
+        <%= session[:cart].count%>
+        <%end%></span></div>
+        <span class="nav-tooltip">Cart</span>
+      </a>
+    </li>
+    <li>
+      <a href="contact_us" class="">
           <span class="fa fa-phone fa-4x fa-color_grey"></span>
           <span class="nav-tooltip">Contact Us</span>
       </a>      
     </li>
-    
     <% if user_signed_in? %>
       <li>
         <a href="/logout" class="">
@@ -220,7 +268,7 @@
         <div id="topics-expander" class="form-group">
           <h4><a>Topics <span class="icon icon-chevron-down"></span></a></h4>
           <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
-            <li><a class="selected" data-filter-value="">All Categories</a></li>
+            <li><a href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
                 
             <% $categories.each do |c|%>
             <li>
@@ -230,16 +278,14 @@
                 </a>
             </li>
             <% end %>
-            </li>
           </ul>
         </div>
-
-        </div>
+      </div>
       </div>
       <%= javascript_include_tag "main_layout_js" %>
     </div>
-
   </div>
+</div>
 </div>
 <!------------------------- CODE FOR LOGIN FORM ----------- -->
 <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
@@ -316,55 +362,8 @@
   </div>
 </div>
 <!---------------------------------- SIGN-UP FORM ENDS ---------------------->
-<div id="cart-popup" class="white-popup mfp-with-anim mfp-hide">
-  <div class="popup-head"> Cart </div>
-  <div class="totalamount">
-    <div class="table-heading">
-        <div class="header-attr-1">Book</div>
-        <div class="header-attr-2"> Seller</div>
-        <div class="header-attr-3"> Price</div>
-        <div class="header-attr-4"> Remove</div>
-    </div>
-  </div>
-
-  <div class="maintable">
-  <table class="container_table">
-    <tbody>
-      <tr>
-        <td>
-          <img src="1.jpg" class="item-image"/>
-          <div style="margin-top:20px; color:black;">
-          <div class="book-title"> Introdiction to Algorithms</div>
-          <div class="cart-author">Author : H. Cormen </div>
-          <div class="cart-edition"> Edition : 2nd</div>
-          </div>
-        </td>
-        <td>
-         <div> Jayant Pareek </div>
-         <div> DA-IICT </div>
-        </td>
-        <td>Rs.315</td>
-        <td> <img src="cartout1.png" class="cartout-img"/> </td>
-      </tr>
-    </tbody>
-  </table>
-
-  </div>
-  <div class="totalamount">
-      <div class="amounthead">
-            Total Estimated Amount
-            <span class="totalprice"> Rs. 945 </span>
-      </div>
-  </div>
-  <div class="checkoutbtn">
-  </div>
-</div>
-<!-- Cart-popup Ends -->
-
 <div id="cart-content">
-</div>
-<div id="selected-coupons">
-<%= render :partial => 'coupons/coupons'%>
+  <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
 </div>
 <div id="sub-heading">
 </div>
@@ -377,6 +376,83 @@
 
 <!-- Footer -->
 
+<div class="finalfooter">
+<div class="footerwrapper">
+<div class="otherlinks">
+
+    <div class="linklist">
+
+      <div class="heading" style="color:white;">
+        TheCollegeStore
+      </div>
+      <a href="/our_team" style="text-decoration:none;"><div class="innertext"> Our Team </div></a>
+      <br>
+      <a href="/about_us" style="text-decoration:none;"><div class="innertext"> About us </div></a>
+      <br>
+      <a href="/contact_us" style="text-decoration:none;"><div class="innertext"> Contact us </div></a>
+      <br>
+      <a href="/privacy_policy" style="text-decoration:none;"><div class="innertext"> Privacy Policy </div></a>
+      <br>
+      <a href="/disclaimer" style="text-decoration:none;"><div class="innertext"> Disclaimer </div></a>
+      <br>
+      <a href="/terms" style="text-decoration:none;"><div class="innertext"> Terms and Condition </div></a>
+    </div>
+
+</div>
+<div class="otherlinks">
+
+    <div class="linklist">
+
+      <div class="heading" style="color:white;">
+        Categories
+      </div>
+            <% $categories.each do |c|%>
+              <a href="/book_groups/category/<%=c.id%>" style="text-decoration:none;" data-remote=true>
+                <div class="innertext"><%= c.name%></div>
+                </a><br>
+            <% end %>
+    </div>
+
+</div>
+
+
+<div class="otherlinks">
+
+  <div class="linklist">
+
+      <div class="heading" style="color:white">
+        Associated Colleges
+      </div>
+
+      <div class="innertext"> DA-IICT </div>
+      <br>
+      <div class="innertext"> Nirma </div>
+      <br>
+      <div class="innertext">  PDPU </div>
+      <br>
+      <div class="innertext"> IIT-Gandhinagar </div>
+      <br>
+      <div class="innertext"> GNLU </div>
+    
+    </div>
+  </div>
+<div class="linksocial">
+  <div class="linkicons">
+    <div class="inline-floating">
+    <a href="https://www.facebook.com/thecollegestore.co.in"><%=image_tag('Facebook.png')%></a>
+   </div> 
+   <div class="inline-floating">
+   <a href="https://www.google.co.in/?gfe_rd=cr&ei=T02bU925MaTO8geB-oDgDw&gws_rd=ssl"><%= image_tag('Google.png') %></a>
+   </div>
+   <div class="inline-floating">
+   <a href="https://www.twitter.com"><%= image_tag('Twitter.png') %></a>
+   </div>
+  </div>
+</div>
+
+</div>
+
+</div>
 
 <!---------------------------- JAVASCRIPT FOR LOGIN-REGISTRATION FORMS -------------------->
 <%= javascript_include_tag "jquery.js" %>

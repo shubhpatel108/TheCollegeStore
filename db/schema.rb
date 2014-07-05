@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140620074834) do
+ActiveRecord::Schema.define(:version => 20140702081852) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20140620074834) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "full_name"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -74,9 +75,12 @@ ActiveRecord::Schema.define(:version => 20140620074834) do
     t.integer  "book_group_id"
     t.boolean  "sold",          :default => false
     t.boolean  "reserved",      :default => false
+    t.integer  "admin_user_id"
     t.integer  "buyer_id"
+    t.boolean  "by_guest",      :default => false
   end
 
+  add_index "books", ["admin_user_id"], :name => "index_books_on_admin_user_id"
   add_index "books", ["book_group_id"], :name => "index_books_on_book_group_id"
   add_index "books", ["buyer_id"], :name => "index_books_on_buyer_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
@@ -88,17 +92,14 @@ ActiveRecord::Schema.define(:version => 20140620074834) do
   end
 
   create_table "city_vendors", :force => true do |t|
-    t.string   "vendor_name",            :default => "", :null => false
-    t.string   "mobile",                 :default => "", :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "city",                   :default => "", :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "password_hash",          :default => "", :null => false
-    t.string   "password_salt",          :default => "", :null => false
-    t.string   "auth_token"
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
+    t.string   "vendor_name",   :default => "", :null => false
+    t.string   "mobile",        :default => "", :null => false
+    t.string   "email",         :default => "", :null => false
+    t.string   "city",          :default => "", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "password_hash", :default => "", :null => false
+    t.string   "password_salt", :default => "", :null => false
   end
 
   create_table "colleges", :force => true do |t|
@@ -109,14 +110,28 @@ ActiveRecord::Schema.define(:version => 20140620074834) do
   end
 
   create_table "coupons", :force => true do |t|
-    t.string   "code",                           :null => false
-    t.boolean  "distributed", :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "user_id"
+    t.string   "code",                              :null => false
+    t.boolean  "distributed",    :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "distributor_id"
   end
 
-  add_index "coupons", ["user_id"], :name => "index_coupons_on_user_id"
+  add_index "coupons", ["distributor_id"], :name => "index_coupons_on_distributor_id"
+
+  create_table "coupons_users", :force => true do |t|
+    t.integer "coupon_id", :null => false
+    t.integer "user_id",   :null => false
+  end
+
+  add_index "coupons_users", ["user_id", "coupon_id"], :name => "index_coupons_users_on_user_id_and_coupon_id"
+
+  create_table "distributors", :force => true do |t|
+    t.string "name"
+    t.string "address"
+    t.string "email"
+    t.string "image_name"
+  end
 
   create_table "guests", :force => true do |t|
     t.string   "first_name",               :default => "", :null => false
@@ -127,6 +142,16 @@ ActiveRecord::Schema.define(:version => 20140620074834) do
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                           :default => "", :null => false

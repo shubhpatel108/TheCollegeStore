@@ -1,4 +1,5 @@
 class WishlistsController < ApplicationController
+	before_filter :authenticate_user!
 	def add
 		@bg_id = params[:id]
 		if not @bg_id.nil?
@@ -24,6 +25,7 @@ class WishlistsController < ApplicationController
 	end
 
 	def show
-	  @my_wishes = Wishlist.where(:user_id => current_user.id).map(&:book_group_id)
+	  @w_ids = Wishlist.where(:user_id => current_user.id).map(&:book_group_id)
+	  @my_wishes = BookGroup.where(:id => @w_ids)
 	end
 end

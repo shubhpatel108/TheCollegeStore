@@ -224,12 +224,29 @@
 		
  		
 	</div>
+
+<div id="add_college" style="display:none;">
+	<%= form_tag('/application/select_college', method: "get") do %>
+		<%= select_tag "college_id", options_from_collection_for_select(@colleges, "id", "name") %>
+		<%= submit_tag "Go"%>
+	<%end%>
+	Didn't find your college? Ask admin to add your college.
+	<div id="college_entry">
+		<%= link_to_function "Add your college", 'request_admin()' %>
+	</div>
+
+	<div id="request_admin" style="display:none;">
+		<%= form_tag(:controller=>'colleges', :action=>'request_admin_to_add_college') do %>
+			<%= text_field_tag :college_name, '',:placeholder => "Enter your college" %>
+			<%= email_field_tag :email,'', :placeholder => "Enter your email id" %>
+			<%= submit_tag "Send" %>
+		<% end %>
+	</div>
 </div>
 
-</body>
-</html>
-
-
+<div id="vendor_entry">
+	<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
+</div>
 
 <script type="text/javascript">
 
