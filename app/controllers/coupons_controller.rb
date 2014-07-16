@@ -2,6 +2,9 @@ class CouponsController < ApplicationController
 
   def index
     @coupons = Coupon.all
+    if session[:value_remaining].nil?
+      session[:value_remaining] = session[:cart_total] || 0
+    end
     @coupons.each do |c|
       c[:distributor] = c.distributor
     end
@@ -10,7 +13,9 @@ class CouponsController < ApplicationController
   def add_coupon
     c_id = params[:id]
     @coupon = Coupon.where(:id => c_id).first
+    @coupons = Coupon.all
     if not @coupon.nil?
+        session[:value_remaining] -= @coupon.value
         session[:coupons] ||= []
         session[:coupons] << @coupon.id
         respond_to do |format|
@@ -24,8 +29,10 @@ class CouponsController < ApplicationController
   def remove_coupon
     c_id = params[:id]
     @coupon = Coupon.where(:id => c_id).first
+    @coupons = Coupon.all
     if not @coupon.nil?
-      session[:coupons].delete(@coupon.id)
+      session[:value_remaining] += @coupon.value
+      session[:coupons].delete_at(session[:coupons].index(@coupon.id) || session[:coupons].length)
       respond_to do |format|
         format.js
       end
