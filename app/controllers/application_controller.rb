@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 	def check_cookies
 		if current_user.nil? and cookies[:college_id].nil?
 				@colleges = College.all
-				render :partial => 'shared/person_category_form'
+				render :template => 'shared/sellect_college'
 		elsif not current_user.nil?
 			redirect_to :action => 'select_college', :college_id => current_user.college_id
 		else
