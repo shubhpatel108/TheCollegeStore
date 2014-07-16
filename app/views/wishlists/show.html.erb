@@ -10,29 +10,24 @@
             <div class="img-book">
               <%= image_tag book.image.url %>
             </div>
-            <figcaption>
+            <figcaption class=<%= book.id %> id=<%= book.id %>>
             <table class="book-grid">
-                <tr>
+                <tr class="book-grid-main">
                   <td class="book-name1">
-                    <center><%=book.title%></center>
+                    <center><%=link_to book.title, book_detail_path(book) %></center>
                   </td>
                 </tr>
+                
                 <tr>
                   <td class="book-author">
-                    <%=book.author%>
-                  </td>
-                </tr>
-                <tr class="link-style">
-                  <td>
                     <center>
-                      <%= link_to "Details", book_detail_path(book) %>
+                      Author : <%=book.author%>
                     </center>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    7 Reviews
-                  </td>
+                  <td><center><span class="button"><a class="grid-add-to-cart" href="/add_item/<%= book.id%>">Add To Cart</a></span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
+                  
                 </tr>
               </table>
             </figcaption>

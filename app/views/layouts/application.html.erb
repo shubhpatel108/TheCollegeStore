@@ -2,19 +2,37 @@
 
 <html class="no-js" lang="en"><!--<![endif]-->
 <head>
+<%= stylesheet_link_tag "black.css" %>
+<%= stylesheet_link_tag "smart-forms.css" %>
+  <!-- Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>TheCollegeStore</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application.css" %>
   <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css"%>
   <%= stylesheet_link_tag    "font-awesome.css", "main_layout", "main_responsive", "search-bar"%>
   <%= stylesheet_link_tag    "form.css", "magnific-popup.css" %>
+  <%= stylesheet_link_tag    "shreyans.css" %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <%= stylesheet_link_tag    "form.css"%>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
+  <%= stylesheet_link_tag    "file.css"%>
+
+  
+  <%= javascript_include_tag "smart-form-validations.js" %>
+  <%= javascript_include_tag "jquery.validate.js" %>
+  <%= javascript_include_tag "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "application.js" %>
+<%= javascript_include_tag "main_layout_js.js" %>
+
+  <%= stylesheet_link_tag "search-bar"%>
+
+  
+
 <!-- ----- STYLE (ANIMATION) FOR FORM POPUP -------->
   <style type="text/css">
     .mfp-3d-unfold {
@@ -62,70 +80,64 @@
 <body id="library" class="gecko new-gecko">
   
 <div id="shelf">
+
   <ul class="global-nav">
     <li>
-      <a href="#" class="">
-        <i class=""></i>
+      <a href="/books" class="">
+        <i class="fa fa-home fa-4x fa-color_grey"></i>
         <span class="nav-tooltip">Home</span>
+      </a>      
+    </li>
+    <li>
+      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
+        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Facebook</span>
+      </a>      
+    </li>
+    <li>
+      <a href="#" class="">
+         <span class="fa fa-android fa-4x fa-color_grey"></span>
+         <span class="nav-tooltip">Android App</span>
+      </a>      
+    </li>
+    <% if user_signed_in? %>
+    <li>
+      <a href="/<%=current_user.first_name%>/<%=current_user.id%>" class="">
+        <i class="fa fa-user fa-4x fa-color_grey"></i>
+        <span class="nav-tooltip">My Profile </span>
       </a>
     </li>
-
-      <li>
-        <a href="/books" class="">
-          <i class="fa fa-home fa-4x fa-color_grey"></i>
-          <span class="nav-tooltip">Home</span>
-        </a>      
-      </li>
-      <li>
-      <% if user_signed_in? %>
-        <a href="/<%=current_user.first_name%>/<%=current_user.id%>" class="">
-          <i class="fa fa-user fa-4x fa-color_grey"></i>
-          <span class="nav-tooltip">My Profile </span>
-        </a>
-      <% end -%>      
-      </li>
-      <li>
-        <a href="https://www.facebook.com/thecollegestore.co.in" class="">
-          <span class="fa fa-facebook fa-4x fa-color_grey"></span>
-          <span class="nav-tooltip">Facebook</span>
-        </a>      
-      </li>
-      <li>
-        <a href="#" class="">
-           <span class="fa fa-android fa-4x fa-color_grey"></span>
-           <span class="nav-tooltip">Android App</span>
-        </a>      
-      </li>
-      <li>
-        <a href="/my_orders" class="">
-          <span class="fa fa-book fa-4x fa-color_grey"></span>
-          <span class="nav-tooltip">Orders</span>
-        </a>      
-      </li>
-      <li>
-        <a href="/wishlist/show" class="">
-            <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
-            <span class="nav-tooltip">Wish List</span>
-        </a>      
-      </li>
-      <li class="inline-popups">
-        <a href="#cart-popup" class="" data-remote="true" data-effect="mfp-3d-unfold">
-          <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
-          <div id="cart-count-wrapper"><span id="cart-item-count">
-          <% if session[:cart].nil? %>
-          0
-          <% else%>
-          <%= session[:cart].count%>
-          <%end%></span></div>
-          <span class="nav-tooltip">Cart</span>
-        </a>
-      </li>
-      <li>
-        <a href="contact_us" class="">
-            <span class="fa fa-phone fa-4x fa-color_grey"></span>
-            <span class="nav-tooltip">Contact Us</span>
-        </a>      
-      </li>
+    <% end -%>
+    <li>
+      <a href="/my_orders" class="">
+        <span class="fa fa-book fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Orders</span>
+      </a>      
+    </li>
+    <li>
+      <a href="/wishlist/show" class="">
+          <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Wish List</span>
+      </a>      
+    </li>
+    <li class="inline-popups">
+      <a href="#cart-popup" class="" data-remote="true" data-effect="mfp-3d-unfold">
+        <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
+        <div id="cart-count-wrapper"><span id="cart-item-count">
+        <% if session[:cart].nil? %>
+        0
+        <% else%>
+        <%= session[:cart].count%>
+        <%end%></span></div>
+        <span class="nav-tooltip">Cart</span>
+      </a>
+    </li>
+    <li>
+      <a href="/contact_us" class="">
+          <span class="fa fa-phone fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Contact Us</span>
+      </a>      
+    </li>
     <% if user_signed_in? %>
       <li>
         <a href="/logout" class="">
@@ -134,90 +146,91 @@
         </a>      
       </li>
     <% end %>
-    </div>
   </ul>
-  <a class="trigger-shelf shelf-opener"><span class="icon icon-open-shelf"></span></a>
+  
+  <!-- <a class="trigger-shelf shelf-opener"><span class="icon icon-open-shelf"></span></a> -->
+
 </div>
 
-<div id="content">
-  <div class="fixed-heading">
-  <div class="grid-container grid-parent">
-    <div class="primary-heading">
-      <div class="global-secondary-nav">
-        <ul class="inline-popups">
-          <div class="public-nav">
-            <li class="support">              
-            </li>
-              <li>
-                <a>
+<div id="content-wrap">
+  <div id="header-content">
+  <!-- <div class="fixed-heading"> -->
+    <!-- <div class="grid-container grid-parent"> -->
+      <!-- <div class="primary-heading"> -->
+        <!-- <div class="global-secondary-nav"> -->
+          
+          <!-- <span id="header-title"> -->
+            <div class="logo-div" style="float:left">
+                <%= image_tag("logo.jpg",:class => 'logo') %>
+            </div>
+            <div id="top_bar"></div>
+            <div class="search-bar-header">
+                <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+                <br>
+                <div class="icons">
+                <%= image_tag('Buy-256.png', :class => 'buy-icon header-icon', :style => 'width:75px') %>
+                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:75px'), '/book_groups/new' %>
+              </div>
+            </div>
+            
+            <div class="user-bar-header" style="float:right; padding: 10px">        
+              <ul class="user-list inline-popups">
                 <% if user_signed_in? %>
-                  <span><%= link_to "#{current_user.first_name}", edit_user_registration_path %></span>
-                <%end%>
-                   <span><%= cookies[:college_name] %></span></a>
-              </li>
-              <% if !user_signed_in? %>
-                <li>     
-                  <a href="#test-popup" data-effect="mfp-3d-unfold" class="button button-primary">Login</a>
-                </li>
                 <li>
-                  <a href="#test-popup-signup" data-effect="mfp-3d-unfold" class="button button-primary">Register</a>
+                    <span style="display: -webkit-inline-box;padding: 8px;font-size: 17px;"><%= link_to "#{current_user.first_name}", edit_user_registration_path, :class => 'username-header' %></span>
                 </li>
-              <%end%>
-          </div>
-        </ul>
-      </div>
-
-      <a id="featurette-1" class="trigger-mobile-shelf" data-featurette="mobile-shelf">
-        <span class="icon icon-hamburger">
-        </span></a>
-
-      <div>
-        <h1>
-            TheCollegeStore
-        </h1>
-          <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
-      </div>
-      <!-- Loading Spinner -->
-      <span class="loading-spinner"><span></span></span>
+                <%end%>
+                <% if !user_signed_in? %>
+                  <li>     
+                    <a href="#test-popup" data-effect="mfp-3d-unfold" class="button button-primary">Login</a>
+                  </li>
+                  <li>
+                    <a href="#test-popup-signup" data-effect="mfp-3d-unfold" class="button button-primary">Register</a>
+                  </li>
+                <%end%>
+                 <li>
+                    <a><span class="select-college"><%= cookies[:college_name] %></span>
+                      <span><%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
+                  </li>
+                </ul>
+              </div>
+              
     </div>
   </div>
-</div>
 
-<div class="heading-pocket">
-</div>
     
 
-<div id="featurette-2" class="grid-container featurette" data-featurette="library-index">
-  <div style="position: fixed; left: 1085.8px; right: auto; width: 250.2px;" class="grid-20 push-80 fixed-sidebar">
-    <div style="height: 603px;" class="scroll-mask">
-      <div class="scroll-container">
-         <div class="content-filter">
-
-
-
-      <div class="filters-container">
-        <div id="topics-expander" class="form-group">
-          <h4><a>Topics <span class="icon icon-chevron-down"></span></a></h4>
-          <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
-            <li><a href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
-                
-            <% $categories.each do |c|%>
-            <li>
-              <a href="/book_groups/category/<%=c.id%>" data-remote=true>
-                <span><%= c.name%><span>
-                <span class="cat-book-count"><b><%= c.total_books%></b></span>
-                </a>
-            </li>
-            <% end %>
-          </ul>
+  <div id="featurette-2" class="grid-container featurette" data-featurette="library-index">
+    <div style="right: auto; width: 250.2px;" class="grid-20 push-80 fixed-sidebar">
+      <div style="" class="scroll-mask">
+        <div class="scroll-container">
+          <div class="content-filter">
+            <div class="filters-container">
+              <div id="topics-expander" class="form-group">
+                <h4><a>Topics <span class="icon icon-chevron-down"></span></a></h4>
+                <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
+                  <li><a href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
+                      
+                  <% $categories.each do |c|%>
+                  <li>
+                    <a href="/book_groups/category/<%=c.id%>" data-remote=true>
+                      <span><%= c.name%><span>
+                      <span class="cat-book-count"><b><%= c.total_books%></b></span>
+                      </a>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-      <%= javascript_include_tag "main_layout_js" %>
     </div>
   </div>
-</div>
-</div>
+
+
+
+
 <!------------------------- CODE FOR LOGIN FORM ----------- -->
 <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
   <div id="login-form">
@@ -293,6 +306,8 @@
   </div>
 </div>
 <!---------------------------------- SIGN-UP FORM ENDS ---------------------->
+
+
 <div id="cart-content">
   <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
 </div>
@@ -386,6 +401,23 @@
 </div>
 
 
+
+<!-- Fixed Footer -->
+<div class="fixed-footer" style="display:none; background: rgb(43, 194, 127)">
+  <div style="margin-left: 250px;">
+    <div class="search-bar-footer" style="margin-left: 40px;">
+      <form id="main_search_bar" class="form-wrapper cf" style="width=auto;" action="/search">
+            <input type="text" name="query" placeholder="Search by ISBN/Title/Author" id="autocomplete" style="height:40px; border-radius: 4px 0px 0px 4px; padding: 15px;" required>
+            <button style="float:left;"type="submit">Search</button>
+      </form>
+    </div>
+                <div class="footer-icons">
+                <%= image_tag('Buy-256.png', :class => 'buy-icon header-icon', :style => 'width:50px') %>
+                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:50px'), '/book_groups/new' %>
+              </div>
+            </div>
+</div>
+
 <!---------------------------- JAVASCRIPT FOR LOGIN-REGISTRATION FORMS -------------------->
 <%= javascript_include_tag "jquery.js" %>
 <%= javascript_include_tag "inline_popup.js"%>
@@ -407,5 +439,26 @@
     else if(error)
       FlashNotice("notice", error);
   </script>
+
+  <script>
+$(window).scroll(function () { 
+    //You've scrolled this much:
+       // $('p').text("You've scrolled " + $(window).scrollTop() + " pixels");
+       if($(window).scrollTop() > 150)
+        
+      $('.fixed-footer').css({
+        'display':'inline'
+      });
+
+      if($(window).scrollTop() < 150)
+        
+      $('.fixed-footer').css({
+        'display':'none'
+      });
+
+
+});
+</script>
+
 </body>
 </html>

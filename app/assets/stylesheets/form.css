@@ -294,15 +294,7 @@
 
 
 /*------------ preview styles ----------------*/
-a,
-a:visited {
-  color: #1760BF;
-  text-decoration: none;
-}
 
-a:hover {
-  color: #c00;
-}
 
 .links li {
   margin-bottom: 5px;

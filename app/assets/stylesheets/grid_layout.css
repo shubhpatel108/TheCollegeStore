@@ -169,9 +169,11 @@ a:hover {
 overflow: hidden;
 text-align: left;
 font-size: 2.5em;
-margin-left: 20px;
-
-padding-bottom: 5px;
+padding: 10px 0 10px 30px;
+margin: 0;
+color: rgb(224, 71, 71);
+font-weight: bold;
+font-family: 'Merriweather', serif;
 }
 .container_4 {
 	background-color:#fff;
@@ -182,9 +184,8 @@ padding-bottom: 5px;
 }
 
 .innertitle {
-padding-top: 25px;
-width: 994px;
-margin-top: 0px;
+width: 100%;
+background: rgb(241,251,200);
 
 }
 }

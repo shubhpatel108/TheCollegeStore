@@ -48,11 +48,11 @@
 
 .cs-style-3 figcaption {
 	height: 100%;
-	width: 175px;
+	width: 100%;
 	top: auto;
 	bottom: 0;
 	border-radius: 5px;
-	-webkit-transform: translateY(75%);
+/*	-webkit-transform: translateY(185px);
 	-moz-transform: translateY(100%);
 	-ms-transform: translateY(100%);
 	transform: translateY(100%);
@@ -61,13 +61,13 @@
 	backface-visibility: hidden;
 	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
 	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
-	transition: transform 0.4s, opacity 0.1s 0.3s;
+	transition: transform 0.4s, opacity 0.1s 0.3s;*/
 
 }
 
 .no-touch .cs-style-3 figure:hover figcaption,
 .cs-style-3 figure.cs-hover figcaption {
-	opacity: 1;
+	/*opacity: 1;
 	background: !important;
 	-webkit-transform: translateY(0px);
 	-moz-transform: translateY(0px);
@@ -75,14 +75,12 @@
 	transform: translateY(0px);
 	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
 	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
-	transition: transform 0.4s, opacity 0.1s;
+	transition: transform 0.4s, opacity 0.1s;*/
 }
 
 .cs-style-3 figcaption a {
+font-size: 12px;
 
-width: 50px;
-font-size: 1.5em;
-height: 20px;
 }
 
 a, a :visited {
@@ -136,15 +134,15 @@ margin-top: 15px;
 
 .book-price {
 
-	font-size: 2.0em;
+	font-size: 20px;
 }
 
 table.book-grid tr td, table tr td a{
-	font-size: 14px !important;
+	font-size: 14px;
 }
 
 table.book-grid tr td{
-	padding: 5px 0;
+	padding: 3px 0;
 }
 
 table.book-grid .book-author
@@ -169,9 +167,7 @@ table.book-grid
 
 
 .grid {
-        padding: 0px;
-        max-width: 984px;
-        margin-left: 10px ;
+        padding: px;
         list-style: none;
         text-align: center;
         height: 300px;
@@ -181,20 +177,16 @@ table.book-grid
 
 .grid li {
         display: inline-block;
-        width: 236px;
-        margin: 0;
-        padding-left: 10px;
-        padding-top: 20px;
+        margin: 5px 20px;
+        padding: 20px 10px;
         text-align: left;
         position: relative;
-        height: 235px;
-overflow: hidden;
+		overflow: hidden;
 
 }
 
 .grid figure {
-        margin-left: 12px;
-        position: relative;
+    position: relative;
 }
 
 .grid figure img {
@@ -207,12 +199,7 @@ overflow: hidden;
 }
 
 .grid figcaption {
-        position: absolute;
-
-        left: 0;
-        padding-left: 10px;
-        background: rgba(36,48,64,0.7);
-        color: white;
+        color: #666;
         font-size: 8px;
 }
 
@@ -224,15 +211,34 @@ overflow: hidden;
 }
 
 .grid figcaption span:before {
-        content: 'Author : ';
+        /*content: 'Author : ';*/
 
 }
 
 .grid figcaption a {
         text-align: center;
-        padding: 5px 10px;
-        border-radius: 2px;
+        /*padding: 5px 10px;*/
+        /*border-radius: 2px;*/
         display: inline-block;
-        background: #ed4e6e;
-        color: #fff;
+        /*background: #ed4e6e;*/
+        color: #666;
+        text-decoration: underline;
+}
+
+.grid figcaption a:hover {
+color: black;
+text-decoration: underline;
+}
+
+td.book-name1 {
+font-size: 15px !important;
+}
+
+i.fa.fa-rupee.fa-4x.fa-color_white {
+	
+}
+
+a.button {
+height: auto !important;
+text-decoration: none;
 }
