@@ -189,7 +189,11 @@
                 <%end%>
                  <li>
                     <a><span class="select-college"><%= cookies[:college_name] %></span>
-                      <span><a href="#college-select-popup" data-effect="mfp-3d-unfold"><%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></a></span></a>
+                      <span><a href="#college-select-popup" data-effect="mfp-3d-unfold">
+                      <% if cookies[:college_name].nil? %>
+                        <span style="color:white;">Select your college</span>
+                      <%end%>
+                      <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></a></span></a>
                   </li>
                 </ul>
               </div>
