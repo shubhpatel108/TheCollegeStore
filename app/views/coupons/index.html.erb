@@ -1,11 +1,11 @@
 <script type="text/javascript">
   search_bar = document.getElementById('main_search_bar');
   search_bar.parentNode.removeChild(search_bar);
-  top_bar = document.getElementById('top_bar');
+  top_bar = document.getElementById('search-bar-header');
   var newdiv = document.createElement('div');
   newdiv.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
   newdiv.id = "top-coupon-bar";
-  top_bar.appendChild(newdiv);
+  top_bar.insertBefore(newdiv, top_bar.firstChild);
 </script>
 
 <div class="coupon-container">
