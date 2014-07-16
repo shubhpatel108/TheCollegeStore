@@ -4,46 +4,10 @@
     </div>
     <div class="no-touch">
       <ul class="grid cs-style-3">
-      <% @latest.each do |book| %>
-        <li class="divfloat">
-          <figure>
-            <div class="img-book">
-              <%= image_tag book.image.url %>
-            </div>
-            <figcaption class=<%= book.id %> id=<%= book.id %>>
-            <table class="book-grid">
-                <tr class="book-grid-main">
-                  <td class="book-name1">
-                    <center><%=link_to book.title, book_detail_path(book) %></center>
-                  </td>
-                </tr>
-                <tr class="book-grid-main">
-                  <td>
-                    <center>                
-                      <span style="font-size:20px; padding:10px">
-                        <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                        <span class="book-price"><%=book.min_price%></span>
-                      </span>
-                    </center>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="book-author">
-                    <center>
-                      Author : <%=book.author%> | <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
-                    </center>
-                  </td>
-                </tr>
-                <tr>
-                  <td><center><span class="button"><a class="grid-add-to-cart" href="/add_item/<%= book.id%>">Add To Cart</a></span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
-                  
-                </tr>
-              </table>
-            </figcaption>
-          </figure>
-        </li>
+        <% @latest.each do |book| %>
+          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
         <% end %>
-        </ul>
+      </ul>
     </div>
 </div>
 
@@ -53,65 +17,9 @@
     </div>
     <div class="no-touch">
       <ul class="grid cs-style-3">
-      <% @popular.each do |book| %>
-        <li class="divfloat">
-          <figure>
-            <div class="img-book">
-              <%= image_tag book.image.url %>
-            </div>
-            <figcaption class=<%= book.id %> id=<%= book.id %>>
-            <table class="book-grid">
-                <tr class="book-grid-main">
-                  <td class="book-name1">
-                    <center><%=link_to book.title, book_detail_path(book) %></center>
-                  </td>
-                </tr>
-                <tr class="book-grid-main">
-                  <td>
-                    <center>                
-                      <span style="font-size:20px; padding:10px">
-                        <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                        <span class="book-price"><%=book.min_price%></span>
-                      </span>
-                    </center>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="book-author">
-                    <center>
-                      Author : <%=book.author%> | <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
-                    </center>
-                  </td>
-                </tr>
-                <tr>
-                  <td><center><span class="button">Add To Cart</span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
-                  
-                </tr>
-              </table>
-            </figcaption>
-          </figure>
-        </li>
+        <% @popular.each do |book| %>
+          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
         <% end %>
-        </ul>
+      </ul>
     </div>
 </div>
-
-// <script type="text/javascript">
-
-//   function dragOpen(id){
-    
-
-//     console.log(id);
-//     $('.cs-style-3 figcaption').css({
-//       opacity : 1,
-//   // background: !important;
-//   '-webkit-transform' : 'translateY(0px)',
-//   '-moz-transform' : 'translateY(0px)',
-//   '-ms-transform' : 'translateY(0px)',
-//   transform : 'translateY(0px)',
-//   '-webkit-transition' : '-webkit-transform 0.4s, opacity 0.1s',
-//   '-moz-transition' : '-moz-transform 0.4s, opacity 0.1s',
-//   transition : 'transform 0.4s, opacity 0.1s'
-//     })
-//   }
-// </script>
