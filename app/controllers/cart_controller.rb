@@ -43,7 +43,6 @@ class CartController < ApplicationController
     groups = @books.map(&:book_group)
     users = @books.map(&:user)
     @seller_ids = users.map(&:id)
-    @coupons = Coupon.where(:id => session[:coupons])
     @total = 0
     done = @books.zip(groups, users)
     done.each do |b, g, u|
@@ -64,6 +63,16 @@ class CartController < ApplicationController
         b.save
         b[:err] = false
         @total += b.price
+      end
+    end
+    @coupons = Coupon.where(:id => session[:coupons])
+    @coupons.each do |c|
+      if not c.out_of_stock
+        c.stock -= 1;
+        c.save
+        c[:err] = false
+      else
+        c[:err] = true
       end
     end
     BookMailer.buyer_invoice(current_user || session[:guest], @books, @coupons).deliver
