@@ -189,7 +189,7 @@
                 <%end%>
                  <li>
                     <a><span class="select-college"><%= cookies[:college_name] %></span>
-                      <span><%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
+                      <span><a href="#college-select-popup" data-effect="mfp-3d-unfold"><%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></a></span></a>
                   </li>
                 </ul>
               </div>
@@ -306,7 +306,11 @@
 </div>
 <!---------------------------------- SIGN-UP FORM ENDS ---------------------->
 
-
+<!-- College Select Popup -->
+<div id="college-select-popup" class="white-popup mfp-with-anim mfp-hide">
+  <%= render :partial => "shared/person_category_form"%>
+</div>
+<!-- Ends -->
 <div id="cart-content">
   <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
 </div>
@@ -412,7 +416,7 @@
     </div>
                 <div class="footer-icons">
                 <%= image_tag('Buy-256.png', :class => 'buy-icon header-icon', :style => 'width:50px') %>
-                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:50px'), '/book_groups/new' %>
+                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:50px'), new_book_group_path %>
               </div>
             </div>
 </div>
