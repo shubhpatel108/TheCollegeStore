@@ -11,7 +11,6 @@ gem 'devise'
 gem 'gibbon'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
-gem 'client_side_validations'
 gem 'goodreads'
 gem "paperclip", "~> 4.1"
 gem 'activeadmin'
