@@ -3,7 +3,11 @@ class Coupon < ActiveRecord::Base
   has_and_belongs_to_many :users
   belongs_to :distributor
 
-  def self.out_of_stock
+  def out_of_stock
   	return self.stock==0
+  end
+
+  def applicable(points)
+  	return self.value < points
   end
 end
