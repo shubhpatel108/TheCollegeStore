@@ -38,15 +38,20 @@
       <br>
 
   <div class="wishbtn">
-    <% if @wished %>
-      <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+    <% if user_signed_in? %>
+      <% if @wished %>
+        <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+      <% else %>
+        <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+      <% end %>  
     <% else %>
-      <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
-    <% end %>
+      <a href="/users/sign_in" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+    <% end %>  
+    
   </div>
 </div>
 
-  <a class="link2link" style="background-color:#596ED8"> 
+  <a class="link2link" style="background-color:#596ED8" href="#listtitle"> 
     <%= image_tag "Add-To-Cart.png", :class => 'single-book-add-to-cart' %> 
     <div class="add-to-cart-text">
       Add To Cart
@@ -74,7 +79,7 @@
 
     <div class="tablecontent">
 
-          <div class="listtitle">
+          <div class="listtitle" id="listtitle">
                 Avaliable Sellers:
           </div>
 

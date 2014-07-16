@@ -8,26 +8,26 @@
 
 	<%= form_for book_group do |f| %> 
         <div class="section">
-            <label for="firstname" class="field prepend-icon">
-                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'firstname', :class => 'gui-input required' %>
-                <label for="firstname" class="field-icon">
-        </div><!-- end section -->
-
-        <div class="section">
-            <label for="firstname" class="field prepend-icon">
-                <%= f.text_field :author, :placeholder => "Author", :class => 'gui-input' %>
+            <label for="book_title" class="field prepend-icon">
+                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'book_title', :class => 'gui-input', :name => 'book_title' %>
             </label>
         </div><!-- end section -->
 
         <div class="section">
-            <label for="firstname" class="field prepend-icon">
-                <%= f.text_field :publisher, :placeholder => "Publisher", :class => 'gui-input' %>
-                <label for="firstname" class="field-icon">
+            <label for="author" class="field prepend-icon">
+                <%= f.text_field :author, :placeholder => "Author", :class => 'gui-input', :name => 'author' %>
+            </label>
         </div><!-- end section -->
 
         <div class="section">
-            <label for="firstname" class="field prepend-icon">
-                <%= f.collection_select :category_id, Category.all, :id, :name %>
+            <label for="publisher" class="field prepend-icon">
+                <%= f.text_field :publisher, :placeholder => "Publisher", :class => 'gui-input', :name => 'publisher' %>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="category" class="field prepend-icon">
+                <%= f.collection_select :category_id, Category.all, :id, :name, :name => 'category' %>
             </label>
         </div><!-- end section -->
 
@@ -35,34 +35,31 @@
         
 
         <div class="section">
-            <label for="firstname" class="field prepend-icon">
-                <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input' %>
+            <label for="price" class="field prepend-icon">
+                <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input', :name => 'price' %>
             </label>
         </div><!-- end section -->
 
         <div class="section">
-            <label for="firstname" class="field prepend-icon">
-                <%= builder.text_field :edition, :placeholder => "Edition", :class => 'gui-input' %>
+            <label for="edition" class="field prepend-icon">
+                <%= builder.text_field :edition, :placeholder => "Edition", :class => 'gui-input', :name => 'edition' %>
             </label>
         </div><!-- end section -->
 
         <div class="section">
-            <label for="firstname" class="field prepend-icon">
-                <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input' %>
+            <label for="isbn" class="field prepend-icon">
+                <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input', :name => 'isbn' %>
             </label>
         </div><!-- end section -->
 
         <div class="section">
-            <label for="firstname" class="field prepend-icon">
+            <label for="image" class="field prepend-icon">
                <%= f.file_field :image, :class => 'gui-input' %>
             </label>
         </div><!-- end section -->
 
         <div class="section">
-            
-                <center><%= f.button "Submit Book", :class => 'button btn-black' %> </center>
-      
-            
+            <center><%= f.button "Submit Book", :class => 'button btn-black' %> </center>
         </div><!-- end section -->
                 
 		<%end%>	
@@ -70,3 +67,91 @@
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+    
+    
+        $(function() {
+        
+
+                $( "#new_book_group" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: false,
+                    numberOfMonths: 1,
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                    onClose: function( selectedDate ) {
+                        $( "#checkout" ).datepicker( "option", "minDate", selectedDate );
+                    }
+                });
+                /* @custom validation method (smartCaptcha) 
+                ------------------------------------------------------------------ */
+                    
+                // $.validator.methods.smartCaptcha = function(value, element, param) {
+                //      return value == param;
+                // };
+                        
+                $( "#new_book_group" ).validate({
+                
+                        /* @validation states + elements 
+                        ------------------------------------------- */
+                        
+                        errorClass: "state-error1",
+                        validClass: "state-success1",
+                        errorElement: "em1",
+                        
+                        /* @validation rules 
+                        ------------------------------------------ */
+                            
+                        rules: {
+                                price: {
+                                        required: true
+                                },
+                                book_title: {
+                                        required: true
+                                },                  
+                                category: {
+                                        required: true
+                                }
+                                
+                        },
+                        
+                        /* @validation error messages 
+                        ---------------------------------------------- */
+                            
+                        messages:{
+                                price: {
+                                        required: 'Enter Price'
+                                },
+                                book_title: {
+                                        required: 'Enter Title'
+                                },                  
+                                category: {
+                                        required: 'Select Category'
+                                }
+                                 
+                        },
+
+                        /* @validation highlighting + error placement  
+                        ---------------------------------------------------- */ 
+                        
+                        highlight: function(element, errorClass, validClass) {
+                                $(element).closest('.field').addClass(errorClass).removeClass(validClass);
+                        },
+                        unhighlight: function(element, errorClass, validClass) {
+                                $(element).closest('.field').removeClass(errorClass).addClass(validClass);
+                        },
+                        errorPlacement: function(error, element) {
+                           if (element.is(":radio") || element.is(":checkbox")) {
+                                    element.closest('.option-group').after(error);
+                           } else {
+                                    error.insertAfter(element.parent());
+                           }
+                        }
+                                
+                });     
+        
+        });             
+    
+    
+</script>

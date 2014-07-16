@@ -35,7 +35,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><center><span class="button">Add To Cart</span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
+                  <td><center><span class="button"><a class="grid-add-to-cart" href="/add_item/<%= book.id%>">Add To Cart</a></span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
                   
                 </tr>
               </table>
@@ -84,7 +84,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><center><span class="button">Add To Cart</span>  <span class="button">Details</span></center></td>
+                  <td><center><span class="button">Add To Cart</span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
                   
                 </tr>
               </table>
@@ -95,9 +95,6 @@
         </ul>
     </div>
 </div>
-==========================================
-<p><%= link_to "Sell", '/book_groups/new' %></p>
-=========================================
 
 // <script type="text/javascript">
 

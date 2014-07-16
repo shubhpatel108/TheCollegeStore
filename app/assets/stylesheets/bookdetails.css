@@ -1,11 +1,11 @@
 .book{
 	background-color: white;
-	width: 76%;
+	width: 93%;
 	height: 250px;
 	padding-left: 2%;
 	border-radius: 10px;
 	margin-left: 13px;
-	margin-top: 10px;
+	margin-top: 30px;
 	margin-right: 5px;
 }
 
@@ -21,12 +21,12 @@
 
 .sellerslist{
 background-color: white;
-width:76%;
+width:72%;
 height: relative;
 padding-left: 2%;
 border-radius: 10px;
 margin-top: 10px;
-margin-left: 13px;
+margin-left: 63px;
 display: table;
 
 }

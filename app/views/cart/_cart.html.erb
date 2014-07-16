@@ -5,7 +5,6 @@
         <div class="header-attr-1">Book</div>
         <div class="header-attr-2"> Seller</div>
         <div class="header-attr-3"> Price</div>
-        <div class="header-attr-4"> Remove</div>
     </div>
   </div>
 
@@ -44,6 +43,11 @@
       </div>
   </div>
   <div class="checkoutbtn">
-	<p><%= link_to "proceed", coupons_path %></p>
+	<p>
+		<a href="" class="button">Back</a>
+		<%= link_to "Proceed", coupons_path, :class => 'button' %>
+		
+	</p>
+
   </div>
 </div>

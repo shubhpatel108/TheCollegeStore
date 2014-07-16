@@ -5,7 +5,7 @@
 .cart-white-popup {
   position: relative;
   background: #282830;
-  padding: 25px;
+  padding: 75px;
   width: auto;
   max-width: 800px;
   border-radius: 5px;
@@ -73,11 +73,13 @@ padding-bottom: 20px;
 /* Background-color of the odd rows */
 .container_table tr:nth-child(odd) {
 	  background-color: white;
+    padding:15px;
 }
 
 /* Background-color of the even rows */
 .container_table tr:nth-child(even) {
 	  background-color: white;
+    padding:15px;
 }
 
 .container_table th {
@@ -110,7 +112,7 @@ padding-bottom: 20px;
   width: 100px;
   height: 100px;
   float:left;
-  padding-right: 25px
+  padding: 10px
 }
 
 .cartout-img {
@@ -158,7 +160,7 @@ padding-bottom: 20px;
 
   font-size: 1.3em;
   font-weight: bold;
-  margin-left: 170px; 
+  margin-left: 140px; 
   margin-top: 12px;
   color:black;
   float: left;
@@ -169,7 +171,7 @@ padding-bottom: 20px;
 
   font-size: 1.3em;
   margin-top: 12px;
-  margin-left: 190px; 
+  margin-left: 195px; 
   color:black;
   float: left;
   font-weight: bold;
@@ -205,8 +207,6 @@ padding-bottom: 20px;
 }
 
 .maintable {
-
-  height: 200px;
   overflow: auto;
 }
 
@@ -215,3 +215,8 @@ padding-bottom: 20px;
 .container_table th:nth-child(4) {
 		  display: none;
 	  }
+
+div.checkoutbtn{
+float: right;
+padding: 15px 0;
+}

@@ -1,16 +1,16 @@
 #shelf{
 	background: #384047;
-	width: 25px;
+	width: 30px;
 	position: fixed;
 	padding: 10px;
-	top: 0;
-	left: 0;
-	bottom: 0;
+	top: 150px;
+left: 0;
 	z-index: 501;
 	-webkit-transition-duration: 0.2s;
 	-moz-transition-duration: 0.2s;
 	-o-transition-duration: 0.2s;
 	transition-duration: 0.2s;
+	border-radius: 0 10px 10px 0;
 }
 
 .drop-down-college{
@@ -26,11 +26,18 @@ color: white;
 }
 
 div#page-body{
-	width:98%;
+	width:78%;
+	margin-left: 50px;
 }
 
 div.grid-20.push-80.fixed-sidebar{
-	display: none;
+position: absolute !important;
+top: 40px !important;
+left: none;
+margin-left: 30px !important;
+background: none;
+-webkit-box-shadow: none;
+box-shadow: none;
 }
 
 .book-grid-main{
@@ -41,6 +48,7 @@ div.grid-20.push-80.fixed-sidebar{
 a.button.button-primary {
 background: rgb(235, 89, 89);
 border-color: #995732;
+font-size: 15px;
 }
 
 td.book-name1 a{
@@ -144,4 +152,115 @@ form#new_book_group table tr td input{
 div.book-sell-form-wrap p.title{
 	font-size: 20px;
 	color:grey;
+}
+
+
+/*Header CSS*/
+
+div#content-wrap {
+margin-left: -85px;
+background: #444B5D;
+height:150px;
+}
+
+ul.inline-popups {
+display: inline;
+}
+
+ul.header-list li{
+	display: inline;
+}
+
+ul.user-list li {
+padding: 0 10px;
+}
+
+.username-header{
+	color:white;
+}
+
+/*Book Grid*/
+.grid-add-to-cart{
+	color: white !important;
+text-decoration: none !important;
+}
+
+/*Shopping Cart*/
+
+div.checkoutbtn p a.button{
+	margin: 0 10px;
+}
+
+div.checkoutbtn{
+float: right;
+padding: 15px 0;
+}
+
+/*Logo*/
+
+img.logo{
+	width: 22%;
+margin-left: 100px;
+}
+
+div.logo-div{
+	vertical-align: middle;
+/* margin: 10px; */
+width: 30%;
+position: absolute;
+}
+
+/*search bar*/
+.search-bar-header{
+	width: 32%;
+position: absolute;
+left: 500px;
+}
+
+div.icons{
+	margin: 15px auto;
+width: 60%;
+}
+
+.header-icon{
+	width: 75px;
+margin: 0 25px;
+}
+
+.user-bar-header ul{
+	list-style-type: none;
+display: inline-flex;
+}
+
+/*Fixed Footer*/
+.fixed-footer {
+position: fixed;
+bottom: 0;
+width: 100%;
+padding: 0;
+margin: 0;
+height: 60px;
+display: none;
+left: 0;
+}
+
+.form-wrapper-footer {
+width: 450px;
+padding: 0;
+border-radius: 10px;
+top: 10px;
+position: absolute;
+}
+
+.footer-icons{
+	position: relative;
+width: 19%;
+top: -40px;
+left: 700px;
+padding-top: 5px;
+}
+
+/*Shelf*/
+.global-nav a{
+	margin-bottom: 6px !important;
 }

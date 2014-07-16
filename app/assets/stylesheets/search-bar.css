@@ -17,6 +17,11 @@
     width: 450px;
     padding: 0;
     border-radius: 10px;
+ /*   position: relative;
+top: -19px;
+left: 400px;*/
+top: 10px;
+position: relative;
 }
  
 /* Form text input */
@@ -29,7 +34,8 @@
     font-family:monospace;
     border: 0;
     background: white;
-    border-radius: 3px 0 0 3px;      
+    border-radius: 3px 0 0 3px;
+    font-size: 16px;      
 }
  
 .form-wrapper input:focus {
@@ -72,7 +78,7 @@
 }   
    
 .form-wrapper button:hover{     
-    background: #1F40E7;
+    background: #E71F3F;
 }   
    
 .form-wrapper button:active,
