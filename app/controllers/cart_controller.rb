@@ -10,6 +10,7 @@ class CartController < ApplicationController
       session[:cart] << book
       session[:cart_total] ||= 0
       session[:cart_total] += book.price
+      session[:value_remaining] = session[:cart_total]
       @message = "Your book has been successfully added to the cart!"
     end
     respond_to do |format|
@@ -32,6 +33,7 @@ class CartController < ApplicationController
     @book = Book.where(:id => @book_id).first
     if session[:cart].delete(@book)
       session[:cart_total] -= @book.price
+      session[:value_remaining] = session[:cart_total]
     end
     respond_to do |format|
       format.js
