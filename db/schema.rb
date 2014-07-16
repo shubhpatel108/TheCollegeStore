@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140716093435) do
+ActiveRecord::Schema.define(:version => 20140716101257) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20140716093435) do
     t.datetime "updated_at",                    :null => false
     t.integer  "distributor_id"
     t.integer  "stock",          :default => 0
+    t.integer  "value"
   end
 
   add_index "coupons", ["distributor_id"], :name => "index_coupons_on_distributor_id"
