@@ -1,6 +1,3 @@
-// $('#selected-coupons').append('<%=escape_javascript( @coupon.code )%>');
-// $('#selected-coupons').append('<%=escape_javascript( link_to "Remove", remove_coupon_path(@coupon.id), :remote => true )%>');
-
-
 $('#top-coupon-bar').html('<%= escape_javascript( render :partial => "coupons/coupons")%>');
+$('#all_coupons_wrapper').html('<%= escape_javascript( render :partial => "shared/all_coupons", :locals => {:coupons => @coupons, :value_remaining => session[:value_remaining]})%>');
 FlashNotice('success', 'Successfully added!');
