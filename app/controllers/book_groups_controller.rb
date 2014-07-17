@@ -79,7 +79,7 @@ class BookGroupsController < ApplicationController
   def all_categories
     @categories = Category.all
     respond_to do |format|
-      format.html
+      format.js
     end
   end
 end
