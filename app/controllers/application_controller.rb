@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
 	end
 
 	def check_cookies
-		$book_names = BookGroup.all.map(&:title)
+		@book_groups = BookGroup.all 
+		$book_names = @book_groups.map(&:title)
 	    $categories = Category.all
 	    cat_ids = @book_groups.map(&:category_id)
 	    $categories.each do |cat|
