@@ -19,7 +19,7 @@ class BookGroup < ActiveRecord::Base
   def set_image_name
   	if not image_file_name.nil?
 	  	extension = File.extname(image_file_name).downcase
-	  	self.image.instance_write(:file_name, "#{self.title}#{extension}")
+	  	self.image.instance_write(:file_name, "#{self.title}_#{self.id}#{extension}")
 	  end
   end
 end
