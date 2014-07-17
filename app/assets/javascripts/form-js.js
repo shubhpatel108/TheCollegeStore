@@ -46,6 +46,22 @@ $(function() {
                         "user[password]": {
                             required: true
                         },
+                        "guest[first_name]": {
+                            required: true
+                        },
+                        "guest[last_name]": {
+                            required: true
+                        },
+                        "guest[email]": {
+                            required: true,
+                            email: true
+                        },
+                        "guest[password]": {
+                            required: true
+                        },
+                        "guest[mobile]": {
+                            required: true
+                        },
                         mobile: {
                             required: true,
                             minlength:10,
