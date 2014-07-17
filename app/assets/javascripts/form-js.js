@@ -39,11 +39,11 @@ $(function() {
                         lastname: {
                             required: true
                         },
-                        email: {
+                        "user[email]": {
                             required: true,
                             email: true
                         },
-                        password: {
+                        "user[password]": {
                             required: true
                         },
                         mobile: {
