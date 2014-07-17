@@ -1,20 +1,27 @@
 class CartController < ApplicationController
   before_filter :check_user, :only => [:checkout]
   def add_item
-    book_id = params[:id]
-    book = Book.where(:id => book_id).first
     session[:cart] ||= []
-    if not session[:cart].include? book
-      book[:group] = book.book_group
-      book[:user] = book.user
-      session[:cart] << book
-      session[:cart_total] ||= 0
-      session[:cart_total] += book.price
-      session[:value_remaining] = session[:cart_total]
-      @message = "Your book has been successfully added to the cart!"
-    end
-    respond_to do |format|
-      format.js
+    if session[:cart].count < 5
+      book_id = params[:id]
+      book = Book.where(:id => book_id).first
+      if not session[:cart].include? book
+        book[:group] = book.book_group
+        book[:user] = book.user
+        session[:cart] << book
+        session[:cart_total] ||= 0
+        session[:cart_total] += book.price
+        session[:value_remaining] = session[:cart_total]
+        @message = "Your book has been successfully added to the cart!"
+      end
+      respond_to do |format|
+        format.js
+      end
+    else
+      @message = "Your cart is full, you are allowed to add 5 books at a time!"
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
