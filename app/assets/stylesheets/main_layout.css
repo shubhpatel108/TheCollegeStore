@@ -3459,7 +3459,7 @@ list-style-type:none
 .button,.action{
     font-weight: bold;
     padding: 5px 7px;
-    background: #3f8abf;
+    background: #2DAAA0;
     color: #fff !important;
     font-size: 12px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -8931,7 +8931,8 @@ margin-bottom:15px;
 
 .content-filter{
 background:#fff;
-    padding:15px;
+    
+padding: 0px;
     margin-bottom:30px;
     position:relative;
     z-index:1;
@@ -9007,10 +9008,9 @@ display:block !important
 }
 
 .form-group{
-margin-bottom:15px
-;
-width: 100%;
+margin-bottom: 0px;
 float: right;
+width: 100%;
 }
 
 .form-group:before,.form-group:after{
@@ -9029,15 +9029,20 @@ color: #085FB6;
     position:relative;
     display:block
 ;
-background: red;
+background: rgb(52, 133, 153);
+border-radius: 5px 5px 0 0;
 }
 
 .form-group h4 a{
 white-space:nowrap;
     overflow:hidden;
-    padding:0 15px 15px 0;
+    
+padding: 15px 0 15px 15px;
     text-overflow:ellipsis;
     display:block
+;
+color: white;
+font-size: 20px;
 }
 
 .form-group h4 a:hover{
@@ -9084,8 +9089,8 @@ margin-bottom:0
 
 .filter-list,.nav-list{
 border-top:1px solid #e2e5e8;
-    margin:0 -15px
-}
+    
+margin: 0 0px;}
 
 .filter-list li,.nav-list li{
 list-style-type:none

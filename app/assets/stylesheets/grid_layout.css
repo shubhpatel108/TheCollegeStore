@@ -26,6 +26,7 @@ Note: IE6 works fine without this fix.
 
 
 
+
 .container_4
 {
 	margin-left: none;
@@ -175,7 +176,9 @@ a:hover {
 
 overflow: hidden;
 text-align: left;
-font-size: 2.5em;
+
+
+font-size: 20px;
 padding: 10px 0 10px 30px;
 margin: 0;
 
