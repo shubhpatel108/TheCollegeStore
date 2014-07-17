@@ -33,6 +33,24 @@ $(function() {
                         isbn: {
                             required: true
                         },
+                        "book_group[title]": {
+                            required: true
+                        },
+                        "book_group[author]": {
+                            required: true
+                        },
+                        "book_group[publisher]": {
+                            required:true
+                        },
+                        "book_group[books_attributes][0][price]": {
+                            required: true
+                        },
+                        "book_group[books_attributes][0][edition]": {
+                            required: true
+                        },
+                        "book_group[books_attributes][0][edition]": {
+                            required: true
+                        },
                         firstname: {
                             required: true
                         },
