@@ -94,7 +94,7 @@
                         
                         <td class="sellername">
                           <i class="fa fa-user fa-1x fa-color_grey"></i>
-                          <%= user.first_name %>
+                          <%= user.first_name %> <%= user.last_name %>
                         </td>
 
                         <td class="sellername">
@@ -112,10 +112,14 @@
                           <%= book.price %>
                         </td>
 
-                        <td class="cartoption"> 
-                          <a href="/add_item/<%= book.id%>" class="cartbutton cartbutton-primary" name="Add to cart" data-remote=true> 
-                            <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_grey cart-icon"></i>Add To Cart</button>
-                          </a>
+                        <td class="cartoption">
+                          <%if book.reserved %> 
+                              <button class="add-to-cart-button">Sold</button>
+                          <%else%>
+                            <a href="/add_item/<%= book.id%>" class="cartbutton cartbutton-primary" name="Add to cart" data-remote=true> 
+                              <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_grey cart-icon"></i>Add To Cart</button>
+                            </a>
+                          <%end%>
                         </td>
                   </div> 
                 </tr>
