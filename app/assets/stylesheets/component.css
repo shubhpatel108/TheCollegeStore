@@ -1,16 +1,16 @@
 #cart-count-wrapper
 {
-	min-height: 16px;
-	max-height: 18px;
-	max-width: 18px;
+	min-height: 10px;
+	max-height: 12px;
+	max-width: 12px;
     position: relative;
     background:#0080FF;
-    top: -55px;
-    right: -30px;
+    top: -40px;
+    right: -18px;
     border-radius: 50%;
     color:#ffffff;
     text-align: center;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: bold;
 }
 
