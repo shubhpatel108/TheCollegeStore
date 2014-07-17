@@ -1,4 +1,5 @@
 /* Magnific Popup CSS */
+
 .mfp-bg {
   top: 0;
   left: 0;
@@ -124,7 +125,7 @@ button::-moz-focus-inner {
   height: 44px;
   line-height: 44px;
   position: absolute;
-  right: 0;
+  right: 80px;
   top: 0;
   text-decoration: none;
   text-align: center;

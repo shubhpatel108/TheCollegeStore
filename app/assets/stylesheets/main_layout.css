@@ -3430,8 +3430,8 @@ font-size:14px
 p{
 font-size:14px;
     line-height:1.5;
-    margin-bottom:15px
-}
+    
+margin-bottom: 0px;}
 
 .lead{
 font-size:16px;
@@ -5819,8 +5819,8 @@ margin-bottom:5px
 }
 
 html,body{
-height:100%
-}
+/* height:100%
+ */}
 
 body{
 background: white;
@@ -9046,8 +9046,7 @@ font-size: 20px;
 }
 
 .form-group h4 a:hover{
-color:#8d9aa5
-}
+color: white;}
 
 .form-group h4 a:hover .icon-chevron-down{
 background-position:0 0
@@ -9101,7 +9100,7 @@ border:none
 }
 
 .filter-list a,.filter-list strong,.filter-list .share-options,.nav-list a,.nav-list strong,.nav-list .share-options{
-    border-bottom:1px solid #edeff0;
+    border: 1px solid #edeff0;
     font-size:14px;
     font-weight:bold;
     color:#b2bac2;

@@ -70,9 +70,9 @@ position: relative;
     padding: 0;
     height: 40px;
     width: 110px;
-    font: bold 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
-    background: rgb(61, 155, 147) !important;
+    background: rgb(53, 184, 173) !important;
     border-radius: 0 4px 4px 0;      
     
     cursor: pointer;

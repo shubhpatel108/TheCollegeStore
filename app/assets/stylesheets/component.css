@@ -1,13 +1,16 @@
 #cart-count-wrapper
 {
 	min-height: 10px;
-	max-height: 12px;
-	max-width: 12px;
+	max-height: 15px;
+	max-width: 15px;
     position: relative;
     background:#0080FF;
-    top: -40px;
-    right: -18px;
-    border-radius: 50%;
+    
+	top: -40px;
+    
+	right: -14px;
+    
+	border-radius: 36%;
     color:#ffffff;
     text-align: center;
     font-size: 9px;
@@ -17,7 +20,8 @@
 #cart-item-count
 {
 	position: relative;
-	top: -15px;
+	top: -13px;
+	font-size: 12px;
 }
 
 /* Caption Style 3 */

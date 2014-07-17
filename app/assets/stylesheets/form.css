@@ -1,9 +1,14 @@
 
 /* text-based popup styling */
+
+
+
+
+
+
 .white-popup {
   position: relative;
-  background: #282830;
-  padding: 25px;
+  padding: 0px;
   width: auto;
   max-width: 700px;
   border-radius: 5px;
@@ -236,7 +241,7 @@
   border-radius: 3px;
   color: #fff;
   float: left;
-  width: 260px;
+  width: 242px;
   font-weight: bold;
   margin-top: 20px;
   padding: 12px 20px;
@@ -247,11 +252,12 @@
 #login-form-signup .pull-left{
   float: left;
   margin-top: 25px;
+  margin-right: 8px;
 }
 
 #login-form-signup img{
-  max-width: 15px;
-  margin-top: 70px;
+  /* max-width: 15px; */
+  /* margin-top: 70px; */
   vertical-align: middle;
   border: 0;
   float: left;
@@ -260,10 +266,11 @@
 }
 
 #login-form-signup .right{
-  width: 300px;
+  width: 270px;
   float: right;
-  margin-top: -285px;
+  margin-top: 0;
   text-align: center;
+  margin-top: 15%;
 }
 
 #login-form-signup .link,

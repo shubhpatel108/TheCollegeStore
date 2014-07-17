@@ -76,7 +76,61 @@
 </head>
 
 <body id="library" class="gecko new-gecko">
-  
+
+<div class="header-fixed">
+<div id="content-wrap">
+  <div id="header-content">
+  <!-- <div class="fixed-heading"> -->
+    <!-- <div class="grid-container grid-parent"> -->
+      <!-- <div class="primary-heading"> -->
+        <!-- <div class="global-secondary-nav"> -->
+          
+          <!-- <span id="header-title"> -->
+            <div class="logo-div" style="float:left">
+                <%= image_tag("logo.jpg",:class => 'logo') %>
+            </div>
+            <div id="top_bar"></div>
+            <div class="search-bar-header" id="search-bar-header">
+                <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+                <br>
+                <div class="icons">
+                <%= image_tag('Buy-256.png', :class => 'buy-icon header-icon', :style => 'width:75px') %>
+                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:75px'), '/book_groups/new' %>
+              </div>
+            </div>
+            
+            <div class="user-bar-header" style="padding: 10px 20px; float:right;">        
+              <ul class="user-list inline-popups">
+                <% if user_signed_in? %>
+                <li>
+                    <span style="display: -webkit-inline-box;padding: 8px;font-size: 17px;"><%= link_to "#{current_user.first_name}", edit_user_registration_path, :class => 'username-header' %></span>
+                </li>
+                <%end%>
+                <% if !user_signed_in? %>
+                  <li>     
+                    <a href="#test-popup" data-effect="mfp-3d-unfold" class="button button-primary">Login<i class="fa fa-sign-in fa-padding"></i></a>
+                  </li>
+                  <li>
+                    <a href="#test-popup-signup" data-effect="mfp-3d-unfold" class="button button-primary">Register<i class="fa fa-user fa-padding"></i></a>
+                  </li>
+                <%end%>
+                 <li style="padding: 6px 0;">
+                    <a href="#college-select-popup" data-effect="mfp-3d-unfold">
+                      <span class="select-college"><%= cookies[:college_name] %></span>
+                      <span>
+                        <% if cookies[:college_name].nil? %>
+                          <span style="color:white;">Select your college</span>
+                        <%end%>
+                        <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
+                  </li>
+                </ul>
+              </div>
+              
+    </div>
+  </div>
+</div>
+
+
 <div id="shelf">
 
   <ul class="global-nav">
@@ -149,57 +203,61 @@
   <!-- <a class="trigger-shelf shelf-opener"><span class="icon icon-open-shelf"></span></a> -->
 
 </div>
-<div class="header-fixed">
-<div id="content-wrap">
-  <div id="header-content">
-  <!-- <div class="fixed-heading"> -->
-    <!-- <div class="grid-container grid-parent"> -->
-      <!-- <div class="primary-heading"> -->
-        <!-- <div class="global-secondary-nav"> -->
-          
-          <!-- <span id="header-title"> -->
-            <div class="logo-div" style="float:left">
-                <%= image_tag("logo.jpg",:class => 'logo') %>
-            </div>
-            <div id="top_bar"></div>
-            <div class="search-bar-header" id="search-bar-header">
-                <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
-                <br>
-                <div class="icons">
-                <%= image_tag('Buy-256.png', :class => 'buy-icon header-icon', :style => 'width:75px') %>
-                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:75px'), '/book_groups/new' %>
-              </div>
-            </div>
-            
-            <div class="user-bar-header" style="float:right; padding: 10px">        
-              <ul class="user-list inline-popups">
-                <% if user_signed_in? %>
-                <li>
-                    <span style="display: -webkit-inline-box;padding: 8px;font-size: 17px;"><%= link_to "#{current_user.first_name}", edit_user_registration_path, :class => 'username-header' %></span>
-                </li>
-                <%end%>
-                <% if !user_signed_in? %>
-                  <li>     
-                    <a href="#test-popup" data-effect="mfp-3d-unfold" class="button button-primary">Login</a>
-                  </li>
-                  <li>
-                    <a href="#test-popup-signup" data-effect="mfp-3d-unfold" class="button button-primary">Register</a>
-                  </li>
-                <%end%>
-                 <li>
-                    <a><span class="select-college"><%= cookies[:college_name] %></span>
-                      <span><a href="#college-select-popup" data-effect="mfp-3d-unfold">
-                      <% if cookies[:college_name].nil? %>
-                        <span style="color:white;">Select your college</span>
-                      <%end%>
-                      <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></a></span></a>
-                  </li>
-                </ul>
-              </div>
-              
+
+
+<!-- Video -->
+<style type="text/css">
+    .video-player { margin: 20px; width: 640px; }
+    .video-controls { 
+      background: #dedede; 
+      height: 30px;
+      margin: -4px 0 0;
+      position: relative;
+      width: 640px;
+    }
+    .status { height: 20px; left: 30px; position: absolute; top: 5px; width: 455px; }
+    .bar { background: #a4a4a4; height: 10px; position: relative; top: 5px; }
+    .loaded { background: #bbb; height: 10px; left: 0; position: absolute; top: 0; }
+    .indicator { background: #212121; display: block; height: 10px; left: 0; position: absolute; top: 0; width: 20px; }
+    .play-pause, .volume { 
+      background: url(images/btn-controls.png) no-repeat ;
+      display: block;
+      height: 20px;
+      overflow: hidden;
+      position: absolute;
+      text-indent: -9999px;
+      top: 5px;
+      width: 20px;
+    }
+    .play-pause { left: 5px; }
+    .playing { background-position: 0 -20px; }
+    .volume { background-position: 0 -60px; right: 130px; }
+    .muted { background-position: 0 -40px; }
+    .view-youtube { 
+      color: #000;
+      display: block; 
+      float: right; 
+      font-size: 9px; 
+      line-height: 30px;
+      padding: 0 5px 0 0;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    </style>
+<% if request.original_url=="http://localhost:3000/books" %>
+    <div class="video-entry">
+      <ul style="display:flex">
+        <li style="width:930px">
+          Text Here
+        </li>
+        <li style="margin: 20px; background: black;">
+          <iframe width="400" height="300" src="//www.youtube.com/embed/wt9vaR7iXps?rel=0&theme=light" frameborder="0" allowfullscreen></iframe>
+        </li>
+      </ul>
     </div>
-  </div>
-</div>
+<% end %>
+
+
   <div id="featurette-2" class="grid-container featurette" data-featurette="library-index">
     <div style="right: auto; width: 250.2px;" class="grid-20 push-80 fixed-sidebar">
       <div style="" class="scroll-mask">
@@ -207,7 +265,7 @@
           <div class="content-filter">
             <div class="filters-container">
               <div id="topics-expander" class="form-group">
-                <h4><a>Topics <span class="icon icon-chevron-down"></span></a></h4>
+                <h4><a>Topics <i class="fa fa-angle-down fa-lg"></i></a></h4>
                 <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
                   <li><a id="all_categories_link"href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
                       
@@ -300,7 +358,7 @@
         <%= image_tag ("OrSeperator.png") %>
       </div>
       <div class="right">
-        <%= render :partial => "devise/shared/links_signup", :locals => {:resource_name => :user, :resource_class => User.new} %> 
+        <%= render :partial => "devise/shared/links_signin", :locals => {:resource_name => :user, :resource_class => User.new} %> 
       </div>
     </fieldset>
   </div>
@@ -317,6 +375,10 @@
 </div>
 <div id="sub-heading">
 </div>
+
+
+
+
 <div id="page-body">
   <%= yield %>
 </div>

@@ -5,6 +5,8 @@
 /* FONT PATH
  * -------------------------- */
 
+
+
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
@@ -1320,6 +1322,8 @@
 }
 .fa-arrow-circle-o-right:before {
   content: "\f18e";
+  position: relative;
+  top: 4px;
 }
 .fa-arrow-circle-o-left:before {
   content: "\f190";

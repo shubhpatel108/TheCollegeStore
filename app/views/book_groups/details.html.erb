@@ -1,128 +1,91 @@
-
-<head>
-  <%= stylesheet_link_tag "bookdetails", "main_layout","font-awesome.css", "search-bar"%>
-</head>
-<body>
 <div class="book" >
 
-  <div >
-      <p class="titlebox"> </p>
+  <div class="title-details">
+      <p class="titlebox"><%= @book_group.title %></p>
   </div>
 
-    <div class="bookattr">
-        <%= image_tag @book_group.image.url, {:class=>"mainimg"} %>
-
+  <div class="bookattr">
+      <%= image_tag @book_group.image.url, {:class=>"mainimg"} %>
   </div>
+  
   <div class="details">
     <table class="single-book">
+       
       <tr>
-        <td class="bookname">
-          <%= @book_group.title%>
-          <!-- <div class="catlink">
-           <a class="cate"><%= @book_category %></a>
-          </div> -->
-        </td>
-
-        
-      </tr> 
-      <tr>
-        <td class="author"><i class="fa fa-user fa-4x fa-color_grey" style="font-size:1.0em ;padding-right:5px;"></i>Author: <%= @book_group.author%></td>
+        <td class="author"><i class="fa fa-user fa-4x fa-color_black" style="font-size:1.0em ;padding-right:5px;"></i>Author: <%= @book_group.author%></td>
       </tr>
       <tr>
-      <td class="publisher"><i class="fa fa-empire fa-4x fa-color_grey" style="font-size:1.0em ;padding-right:5px;"></i>Publisher: <%= @book_group.publisher%> </td>
+      <td class="publisher"><i class="fa fa-empire fa-4x fa-color_black" style="font-size:1.0em ;padding-right:5px;"></i>Publisher: <%= @book_group.publisher%> </td>
       </tr>
     </table>
-      <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers avalaible </p></a>
-      
-      <br><br>
-      <br>
+    <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers avalaible </p></a>
 
-  <div class="wishbtn">
-    <% if user_signed_in? %>
-      <% if @wished %>
-        <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+    <div class="wishbtn">
+      <% if user_signed_in? %>
+        <% if @wished %>
+          <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+        <% else %>
+          <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+        <% end %>  
       <% else %>
-        <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+        <a href="/users/sign_in" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
       <% end %>  
-    <% else %>
-      <a href="/users/sign_in" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
-    <% end %>  
-    
+      
+    </div>
   </div>
-</div>
 
-  <a class="link2link" style="background-color:#596ED8" href="#listtitle"> 
+  <a class="link2link" style="background-color:rgb(64, 148, 141) !important" href="#listtitle"> 
     <%= image_tag "Add-To-Cart.png", :class => 'single-book-add-to-cart' %> 
     <div class="add-to-cart-text">
       Add To Cart
     </div>
-  </a>
-
+  </a>  
   
- </div>
-
-
-
- <br> </br>
- <br> </br>
-
-
-
- 
-
+</div>
 <!-- div tag for descrption and review -->
 
+<div id="userlist" class="sellerslist">
+  <div class="tablecontent">
 
-</div>
-<br><br><br><br>
- <div id="userlist" class="sellerslist">
-
-    <div class="tablecontent">
-
-          <div class="listtitle" id="listtitle">
-                Avaliable Sellers:
-          </div>
-
-          <br>
-
-          
-            <table class="listofsellers">    
-              <% @details.each do |book, user| %>
-
-              <tr class="listelement">
-                  <div class="sellerdetail">
-                        
-                        <td class="sellername">
-                          <i class="fa fa-user fa-1x fa-color_grey"></i>
-                          <%= user.first_name %>
-                        </td>
-
-                        <td class="sellername">
-                          <i class="fa fa-bookmark fa-color_grey" ></i>     
-                          <%= book.edition %>rd edition
-                        </td>
-
-                        <td class="sellername">
-                          <i class="fa fa-phone fa-color_grey subsign"></i>
-                          <%= user.mobile %>
-                        </td>
-
-                        <td class="sellername">
-                          <i class="fa fa-rupee fa-color_grey subsign"></i>
-                          <%= book.price %>
-                        </td>
-
-                        <td class="cartoption"> 
-                          <a href="/add_item/<%= book.id%>" class="cartbutton cartbutton-primary" name="Add to cart" data-remote=true> 
-                            <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_grey cart-icon"></i>Add To Cart</button>
-                          </a>
-                        </td>
-                  </div> 
-                </tr>
-              <% end %>
-            </table>
-          
+    <div class="listtitle" id="listtitle">
+          Avaliable Sellers:
     </div>
-  </div>
+    
+      <table class="listofsellers">    
+        <% @details.each do |book, user| %>
 
-</body>
+        <tr class="listelement">
+          <div class="sellerdetail">
+            <td class="sellername">
+              <i class="fa fa-user fa-1x fa-color_black"></i>
+              <%= user.first_name %>
+            </td>
+
+            <td class="edition">
+              <i class="fa fa-bookmark fa-color_black" ></i>     
+              <%= book.edition %>rd edition
+            </td>
+
+            <td class="mobile">
+              <i class="fa fa-phone fa-color_black subsign"></i>
+              <%= user.mobile %>
+            </td>
+
+            <td class="price">
+              <i class="fa fa-rupee fa-color_black subsign"></i>
+              <%= book.price %>
+            </td>
+
+            <td class="cartoption"> 
+              <a href="/add_item/<%= book.id%>" class="" name="Add to cart" data-remote=true> 
+                <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_white cart-icon"></i>Add To Cart</button>
+              </a>
+            </td>
+          </div> 
+        </tr>
+      <% end %>
+    </table>
+          
+  </div>
+</div>
+

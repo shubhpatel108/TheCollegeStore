@@ -7,6 +7,11 @@
 
 /* Roboto google font import 
 --------------------------------------- */
+
+
+
+
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 html, body{
@@ -43,7 +48,7 @@ html, body{
 
 .smart-container{
 	background:#fff;
-	margin:50px auto;	
+	margin: 50px auto;	
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
@@ -349,7 +354,7 @@ html, body{
 .smart-forms .select > select::-ms-expand { display: none; }
 .smart-forms .select:before, 
 .smart-forms .select:after {
-    content: '';
+    /* content: ''; */
     position: absolute;
     pointer-events: none;
 	z-index:15;
@@ -370,12 +375,12 @@ html, body{
 
 .smart-forms .select .arrow {
 	position: absolute;
-	top: 9px;
-	right: 5px;
+	top: 2px;
+	right: 2px;
 	width: 24px;
-	height: 24px;
-	background:#F2F4FA;
-	color:#B5C1C7;
+	height: 38px;
+	/* background:#F2F4FA; */
+	/* color:#B5C1C7; */
 	pointer-events:none;
 	z-index:16;
 }
@@ -390,7 +395,7 @@ html, body{
 	left:6px;
 }
 
-.smart-forms .select .arrow:before { content:'\25BC'; bottom:4px; }
+.smart-forms .select .arrow:before { /* content:'\25BC'; */ /* bottom: 10px; */}
 .smart-forms .select .double:after { content:'\25B2'; top:-1px;  }
 .smart-forms .select .double:before { content:'\25BC'; bottom:-1px; }
 .smart-forms .select-multiple select { 
@@ -674,7 +679,8 @@ html, body{
 	line-height: 1;
 	font-size:15px; 
     cursor: pointer;
-	padding: 0 18px;
+	
+    padding: 0 18px;
 	text-align: center;
 	vertical-align: top;
 	display: inline-block;
@@ -689,7 +695,7 @@ html, body{
 .smart-forms a.button, 
 .smart-forms span.button, 
 .smart-forms label.button { line-height: 42px; text-decoration: none; }
-.smart-forms .button i{ font-size:14px; }
+.smart-forms .button i{ font-size: 18px;}
 .smart-forms .button-list .button{ margin-bottom:5px; }
 
 /* @primary button theme
