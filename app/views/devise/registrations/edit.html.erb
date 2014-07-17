@@ -1,51 +1,79 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= javascript_include_tag "jquery.validate.js" %>
+<%= stylesheet_link_tag "smart-forms.css" %>
+<%= javascript_include_tag "form-js.js" %>
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+      
+      <div class="form-header header-black">
+          <h4><i class="fa "></i><center>Edit <%= resource_name.to_s.humanize %></center></h4>
+      </div>
+      
+      <div class="form-body theme-black">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class =>'smart-form' }) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <table>
-    <tr>
-      <!-- <td><%= f.label :first_name %></td> -->
-      <td><%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true %></td>
-    </tr>
-    <tr>
-      <!-- <td><%= f.label :last_name %></td> -->
-      <td><%= f.text_field :last_name, :placeholder => 'Last Name' %></td>
-    </tr>
-    <tr>
-      <!-- <td><%= f.label :email %></td> -->
-      <td><%= f.email_field :email,  :placeholder => 'Email' %></td>
-    </tr>
+          <div class="section">
+            <label for="firstname" class="field prepend-icon">
+              <%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true, :class => 'gui-input', :name=>'firstname' %>
+            </label>
+          </div><!-- end section -->
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <tr><td>Currently waiting confirmation for: <%= resource.unconfirmed_email %></tr></td>
-  <% end %>
+          <div class="section">
+            <label for="lastname" class="field prepend-icon">
+              <%= f.text_field :last_name, :placeholder => 'Last Name', :class => 'gui-input', :name => 'lastname' %>
+            </label>
+          </div><!-- end section -->
 
-    <tr>
-      <!-- <td><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></td> -->
-      <td><%= f.password_field :password, :placeholder => 'New Password', autocomplete: "off" %></td>
-    </tr>
+          <div class="section">
+            <label for="email" class="field prepend-icon">
+              <%= f.email_field :email,  :placeholder => 'Email', :class => 'gui-input', :name => 'email' %>
+            </label>
+          </div><!-- end section -->
 
-    <tr>
-      <!-- <td><%= f.label :password_confirmation %></td> -->
-      <td><%= f.password_field :password_confirmation, :placeholder => 'Confirm New Password', autocomplete: "off" %></td>
-    </tr>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+          <% end %>
 
-    <tr>
-      <!-- <td><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></tr> -->
-      <td><%= f.password_field :current_password, :placeholder => 'Current Password To Save Changes', autocomplete: "off" %></td>
-    </tr>
+          <div class="section">
+            <label for="newpassword" class="field prepend-icon">
+              <%= f.password_field :password, :placeholder => 'New Password', autocomplete: "off", :class => 'gui-input newpassword', :name=>'newpassword', :validates => false %>
+            </label>
+          </div><!-- end section -->
 
-    <tr>
-      <!-- <td><%= f.label :mobile %> <i>(so that we can update you when your book sells off)</i></td> -->
-      <td><%= f.text_field :mobile,  :placeholder => 'Mobile' %></td>
-    </tr>
+          <div class="section">
+            <label for="newpassword-confirm" class="field prepend-icon">
+              <%= f.password_field :password_confirmation, :placeholder => 'Confirm New Password', autocomplete: "off", :class => 'gui-input', :name=>'newpasswordconfirm'  %>
+            </label>
+          </div><!-- end section -->
 
-    <tr><td><%= f.submit "Update" %></td></tr>
-  </table>
-<% end %>
+          <div class="section">
+            <label for="current-password" class="field prepend-icon">
+              <%= f.password_field :current_password, :placeholder => 'Current Password To Save Changes', autocomplete: "off", :class => 'gui-input', :name=>'currentpassword' %>
+            </label>
+          </div><!-- end section -->
 
-<h3>Cancel my account</h3>
+          <div class="section">
+            <label for="mobile" class="field prepend-icon">
+              <%= f.text_field :mobile,  :placeholder => 'Mobile', :class => 'gui-input', :name=>'mobile' %>
+            </label>
+          </div><!-- end section --> 
+        
+          <div class="section">
+          <center>
+             <%= link_to "Back", :back, :class =>'button btn-black' %>
+            <%= f.submit "Update", :class => 'button btn-black' %> 
+          </center>
+        </div><!-- end section -->
+      <% end %>
+      <hr>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <div style="text-align:center">
+      <h3>Cancel my account</h3>
 
-<%= link_to "Back", :back %>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => 'button btn-black' %></p>
+
+      
+    </div>
+
+</div>
+</div>
+</div>

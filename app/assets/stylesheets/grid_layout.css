@@ -19,6 +19,13 @@ Note: IE6 works fine without this fix.
 
 /* =Containers
 --------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
 .container_4
 {
 	margin-left: none;
@@ -26,7 +33,7 @@ Note: IE6 works fine without this fix.
 	
 	width: 995px;
 	margin-top: 20px;
-	margin-left:13px;
+	margin-left: 50px;
 	margin-right: 4px;
 	padding-bottom: 10px;
 	word-wrap:break-word;
@@ -171,12 +178,14 @@ text-align: left;
 font-size: 2.5em;
 padding: 10px 0 10px 30px;
 margin: 0;
-color: rgb(224, 71, 71);
+
+
+color: white;
 font-weight: bold;
 font-family: 'Merriweather', serif;
 }
 .container_4 {
-	background-color:#fff;
+	background-color: #fbfaf6;
 	margin-top: 40px;
 	background-repeat: repeat-y;
 	overflow: auto;
@@ -185,7 +194,7 @@ font-family: 'Merriweather', serif;
 
 .innertitle {
 width: 100%;
-background: rgb(241,251,200);
+background: rgb(52, 133, 153);
 
 }
 }

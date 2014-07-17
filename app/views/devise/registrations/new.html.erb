@@ -1,3 +1,6 @@
+<%= javascript_include_tag "jquery.validate.js" %>
+<%= stylesheet_link_tag "smart-forms.css" %>
+<%= javascript_include_tag "form-js.js" %>
 <div class="smart-wrap">
     <div class="smart-forms smart-container wrap-3">
       
@@ -7,7 +10,7 @@
       
       <div class="form-body theme-black">
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class=>'smart-form'}) do |f| %>
 
         <div class="section">
           <label for="firstname" class="field prepend-icon">
@@ -58,107 +61,4 @@
   </div>
 </div>
 
-<script type="text/javascript">
-    
-    
-        $(function() {
-        
 
-                
-                /* @custom validation method (smartCaptcha) 
-                ------------------------------------------------------------------ */
-                    
-                // $.validator.methods.smartCaptcha = function(value, element, param) {
-                //      return value == param;
-                // };
-                        
-                $( "#new_user" ).validate({
-                
-                        /* @validation states + elements 
-                        ------------------------------------------- */
-                        
-                        errorClass: "state-error1",
-                        validClass: "state-success1",
-                        errorElement: "em1",
-                        
-                        /* @validation rules 
-                        ------------------------------------------ */
-                            
-                        rules: {
-                                email: {
-                                        required: true,
-                                        email: true
-                                },
-                                
-                                firstname:{
-                                  required: true,
-                                },
-
-                                lastname:{
-                                  required: true,
-                                }
-
-                                password:{
-                                  required: true,
-                                  minlength: 6,
-                                  maxlength: 16           
-                                }
-
-                                mobile:{
-                                  required:true,
-                                }
-                                
-                        },
-                        
-                        /* @validation error messages 
-                        ---------------------------------------------- */
-                            
-                        messages:{
-                                email: {
-                                        required: 'Please Enter the Email',
-                                        email: 'The text entered is not an Email'
-                                }
-                                
-                                firstname:{
-                                  required: 'Enter First Name'
-                                }
-
-                                lastname: {
-                                  required: 'Enter Last Name'
-                                }
-
-                                mobile: {
-                                  required: 'Enter Mobile Number'
-                                }
-
-                                :password {
-                                  required: 'Please Enter Password',
-                                  minlength: 'Password should be minimum of 6 characters',
-                                  maxlength: 'Password cannot be longer than 16 characters'
-                                }
-                                 
-                        },
-
-                        /* @validation highlighting + error placement  
-                        ---------------------------------------------------- */ 
-                        
-                        highlight: function(element, errorClass, validClass) {
-                                $(element).closest('.field').addClass(errorClass).removeClass(validClass);
-                        },
-                        unhighlight: function(element, errorClass, validClass) {
-                                $(element).closest('.field').removeClass(errorClass).addClass(validClass);
-                        },
-                        errorPlacement: function(error, element) {
-                           if (element.is(":radio") || element.is(":checkbox")) {
-                                    element.closest('.option-group').after(error);
-                           } else {
-                                    error.insertAfter(element.parent());
-                           }
-                        }
-                                
-                });     
-        
-        });             
-    
-    
-</script>

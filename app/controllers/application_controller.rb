@@ -6,11 +6,16 @@ class ApplicationController < ActionController::Base
 		c_name = College.where(:id => c_id).first.name
 		cookies[:college_id] = c_id
 		cookies[:college_name] = c_name
-    $book_names = BookGroup.all.map(&:title)
-  	redirect_to :controller => "books", :action => "index"
+	  	redirect_to :controller => "books", :action => "index"
 	end
 
 	def check_cookies
+		$book_names = BookGroup.all.map(&:title)
+	    $categories = Category.all
+	    cat_ids = @book_groups.map(&:category_id)
+	    $categories.each do |cat|
+	      cat[:total_books] = cat_ids.count(cat.id)
+	    end
 		if current_user.nil? and cookies[:college_id].nil?
 				@colleges = College.all
 				render :template => 'shared/sellect_college'

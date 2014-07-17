@@ -1,20 +1,12 @@
-<div class="block">
-	<div class="btn-fb-login">
-	<span class="icon icon-fb"></span>
+<div>
 <%- if Devise.mappings[:user].omniauthable? %>
-    <%= link_to "Sign in with #{Devise.omniauth_providers[0].to_s.titleize}", omniauth_authorize_path(resource_name, Devise.omniauth_providers[0]), :class => "title" %><br />  
+    <%= link_to image_tag('fblogin.png',:style=>"width:200px"), omniauth_authorize_path(resource_name, Devise.omniauth_providers[0]), :class => "title" %>
 <% end -%>
-	</div>
-</div>
 
-
-<div class="block">
-	<div class="btn-gp-login">
-	<span class="icon icon-gp"></span>
 <%- if Devise.mappings[:user].omniauthable? %>
-    <%= link_to "Login with Google", omniauth_authorize_path(resource_name, Devise.omniauth_providers[1]), :class => "title" %><br />  
+    <%= link_to image_tag('g+login.png', :style=>"width:210px;
+margin:0 0 0 15px; height:50px;"), omniauth_authorize_path(resource_name, Devise.omniauth_providers[1]), :class => "title" %> 
 <% end -%>
-	</div>
 </div>
 
 <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>

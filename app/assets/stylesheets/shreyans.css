@@ -46,9 +46,9 @@ box-shadow: none;
 }
 
 a.button.button-primary {
-background: rgb(235, 89, 89);
-border-color: #995732;
-font-size: 15px;
+background: rgb(53, 184, 173);
+border-color: rgb(27, 165, 153);
+font-size: 17px;
 }
 
 td.book-name1 a{
@@ -159,8 +159,8 @@ div.book-sell-form-wrap p.title{
 
 div#content-wrap {
 margin-left: -85px;
-background: #444B5D;
-height:150px;
+background: #E4E4E4;
+height: 58px;
 }
 
 ul.inline-popups {
@@ -201,6 +201,7 @@ padding: 15px 0;
 img.logo{
 	width: 22%;
 margin-left: 100px;
+	display: none;
 }
 
 div.logo-div{
