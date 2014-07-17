@@ -2,8 +2,7 @@
 
 <html class="no-js" lang="en"><!--<![endif]-->
 <head>
-<%= stylesheet_link_tag "black.css" %>
-<%= stylesheet_link_tag "smart-forms.css" %>
+  <%= stylesheet_link_tag "black.css" %>
   <!-- Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
@@ -22,13 +21,13 @@
   <%= stylesheet_link_tag    "file.css"%>
 
   
-  <%= javascript_include_tag "smart-form-validations.js" %>
   <%= javascript_include_tag "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag "application.js" %>
-<%= javascript_include_tag "main_layout_js.js" %>
+<%= javascript_include_tag "main_layout_js.js","additional-methods.js" %>
 
   <%= stylesheet_link_tag "search-bar"%>
+
 
   
 
@@ -201,8 +200,6 @@
     </div>
   </div>
 
-    
-
   <div id="featurette-2" class="grid-container featurette" data-featurette="library-index">
     <div style="right: auto; width: 250.2px;" class="grid-20 push-80 fixed-sidebar">
       <div style="" class="scroll-mask">
@@ -328,7 +325,7 @@
 
 
 <!-- Footer -->
-
+<div class="footer-wrapper">
 <div class="finalfooter">
 <div class="footerwrapper">
 <div class="otherlinks">
@@ -406,7 +403,7 @@
 </div>
 
 </div>
-
+</div>
 
 
 <!-- Fixed Footer -->

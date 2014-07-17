@@ -118,7 +118,6 @@
 }
 
 #login-form img{
-  max-width: 15px;
   vertical-align: middle;
   border: 0;
   float: left;
@@ -127,7 +126,7 @@
 }
 
 #login-form .right{
-  width: 300px;
+  width: 265px;
   float: right;
   margin-top: -170px;
   text-align: center;

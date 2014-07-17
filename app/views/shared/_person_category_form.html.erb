@@ -1,16 +1,36 @@
-<div id="add_college">
+
+<script type="text/javascript">
+	function request_admin(){
+		console.log('hello');
+		// document.getElementById("request_admin").style.display = "block";
+		$('#request_admin').css({
+			display: 'block',
+			background:'red'
+		});
+	}
+</script>
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+      
+      <div class="form-header header-black">
+          <h4><i class="fa "></i><center>Select Your College</center></h4>
+      </div>
+
+	<div class="form-body theme-black">
 	<%= form_tag('/application/select_college', method: "get") do %>
-		<div class="col-select">
+		<div class="section">
+			 <label class="field select">
 			<%= select_tag "college_id", options_from_collection_for_select(College.all, "id", "name", :class => 'college-list') %>
 			<i style="float:right; background:grey;" class="double-arrow"></i>
+			</label>
 		</div>
-		<center><%= submit_tag "Go >>", :class => 'go' %></center>
+		<center><%= submit_tag "Go >>", :class => 'button btn-black' %></center>
 		
 	<%end%>
 	<p id="college_entry" style="text-align:center">
 		<%= link_to_function "Not in the list?", 'request_admin()' %>
+		<button onclick="request_admin()">Test</button>
 	</p>
-</div>
 <div id="request_admin" style="display:none; text-align: center">
 	<%= form_tag(:controller=>'/colleges', :action=>'request_admin_to_add_college') do %>
 	<center>
@@ -26,9 +46,7 @@
 <div id="vendor_entry">
 	<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
 </div>
+</div>
+</div>
+</div>
 
-<script type="text/javascript">
-	function request_admin(){
-		document.getElementById("request_admin").style.display = "block";
-	}
-</script>

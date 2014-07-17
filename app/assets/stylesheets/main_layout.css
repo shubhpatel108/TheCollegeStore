@@ -1891,7 +1891,7 @@ clear:both
 }
 
 .grid-container{
-max-width:1430px;
+    max-width:1430px;
     position:relative
 }
 
@@ -3600,13 +3600,12 @@ background:#f0f2f4 !important;
 }
 
 .button-primary:hover{
-background:#DA4545!important;
-border-color:#DA4545!important;
+background: rgb(61, 155, 147) !important;
+border-color: rgb(53, 184, 173) !important;
 }
 
 .button-primary:active{
-background:#47c86d !important
-}
+background: rgb(61, 155, 147) !important;}
 
 .button-secondary,.uploader .action{
 background-color:#c6ccd2 !important;
@@ -5824,7 +5823,7 @@ height:100%
 }
 
 body{
-background:#edeff0;
+background: white;
     font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size:62.5%;
     color:#8d9aa5;
@@ -9009,6 +9008,9 @@ display:block !important
 
 .form-group{
 margin-bottom:15px
+;
+width: 100%;
+float: right;
 }
 
 .form-group:before,.form-group:after{
@@ -9022,9 +9024,12 @@ clear:both
 
 .form-group h4{
 font-size:14px;
-    color:#b2bac2;
+    
+color: #085FB6;
     position:relative;
     display:block
+;
+background: red;
 }
 
 .form-group h4 a{
@@ -9091,7 +9096,6 @@ border:none
 }
 
 .filter-list a,.filter-list strong,.filter-list .share-options,.nav-list a,.nav-list strong,.nav-list .share-options{
-background:#f9fafa;
     border-bottom:1px solid #edeff0;
     font-size:14px;
     font-weight:bold;
