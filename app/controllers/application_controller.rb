@@ -27,4 +27,10 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+  private
+  def check_user
+    if not user_signed_in? and (session[:guest].nil?)
+      render :template => '/guests/selection'
+    end
+  end
 end

@@ -90,10 +90,4 @@ class CartController < ApplicationController
     session[:cart_total] = 0
   end
 
-  private
-  def check_user
-    if not user_signed_in? and (session[:guest].nil?)
-      render :template => '/guests/selection'
-    end
-  end
 end
