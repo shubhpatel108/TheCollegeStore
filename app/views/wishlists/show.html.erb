@@ -4,36 +4,9 @@
     </div>
     <div class="no-touch">
       <ul class="grid cs-style-3">
-      <% @my_wishes.each do |book| %>
-        <li class="divfloat">
-          <figure>
-            <div class="img-book">
-              <%= image_tag book.image.url %>
-            </div>
-            <figcaption class=<%= book.id %> id=<%= book.id %>>
-            <table class="book-grid">
-                <tr class="book-grid-main">
-                  <td class="book-name1">
-                    <center><%=link_to book.title, book_detail_path(book) %></center>
-                  </td>
-                </tr>
-                
-                <tr>
-                  <td class="book-author">
-                    <center>
-                      Author : <%=book.author%>
-                    </center>
-                  </td>
-                </tr>
-                <tr>
-                  <td><center><span class="button"><a class="grid-add-to-cart" href="/add_item/<%= book.id%>">Add To Cart</a></span>  <span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
-                  
-                </tr>
-              </table>
-            </figcaption>
-          </figure>
-        </li>
+        <% @my_wishes.each do |book| %>
+          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
         <% end %>
-        </ul>
+      </ul>
     </div>
 </div>

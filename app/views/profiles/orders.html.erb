@@ -4,47 +4,9 @@
     </div>
     <div class="no-touch">
       <ul class="grid cs-style-3">
-      <% @ordered.each do |book| %>
-        <li class="divfloat">
-          <figure>
-            <div class="img-book">
-              <%= image_tag book.info.image.url %>
-            </div>
-            <figcaption>
-            <table class="book-grid">
-                <tr>
-                  <td class="book-name1">
-                    <center><%=book.info.title%></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="book-author">
-                    <%=book.info.author%>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    price: 
-                    <%= book.price%>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    edition: 
-                    <%= book.edition%>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    isbn: 
-                    <%= book.isbn%>
-                  </td>
-                </tr>
-              </table>
-            </figcaption>
-          </figure>
-        </li>
+        <% @ordered.each do |book| %>
+          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
         <% end %>
-        </ul>
+      </ul>
     </div>
 </div>

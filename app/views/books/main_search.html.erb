@@ -4,56 +4,9 @@
     </div>
     <div class="no-touch">
       <ul class="grid cs-style-3">
-      <% @results.each do |book| %>
-        <li class="divfloat">
-          <figure>
-            <div class="img-book">
-              <%= image_tag book.image.url %>
-            </div>
-            <figcaption>
-            <table class="book-grid">
-                <tr>
-                  <td class="book-name1">
-                    <center><%=book.title%></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="book-author">
-                    <%=book.author%>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="book-price">
-                    <center>
-                      starting from 
-                      <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-                      <%=book.min_price%>
-                    </center>
-                  </td>
-                </tr>
-                <tr class="link-style">
-                  <td>
-                    <center>
-                      <%= link_to "Details", book_detail_path(book) %>
-                    </center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <%=book.stock%> Sellers
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    7 Reviews
-                  </td>
-                </tr>
-              </table>
-            </figcaption>
-          </figure>
-        </li>
+        <% @results.each do |book| %>
+          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
         <% end %>
-        </ul>
+      </ul>
     </div>
-  <!-- </div> -->
 </div>
