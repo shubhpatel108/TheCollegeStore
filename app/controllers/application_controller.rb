@@ -33,4 +33,14 @@ class ApplicationController < ActionController::Base
       render :template => '/guests/selection'
     end
   end
+
+  def is_cart_empty
+	if session[:cart].nil?
+		redirect_to :back
+	elsif session[:cart].empty?
+		redirect_to :back
+	end
+	rescue ActionController::RedirectBackError
+		redirect_to root_path
+  end
 end

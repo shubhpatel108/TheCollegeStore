@@ -1,4 +1,5 @@
 class CouponsController < ApplicationController
+  before_filter :is_cart_empty
 
   def index
     @coupons = Coupon.all

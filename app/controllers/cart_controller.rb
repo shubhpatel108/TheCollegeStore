@@ -1,5 +1,6 @@
 class CartController < ApplicationController
   before_filter :check_user, :only => [:checkout]
+  before_filter :is_cart_empty, :only => [:checkout, :remove_item]
   def add_item
     session[:cart] ||= []
     if session[:cart].count < 5
