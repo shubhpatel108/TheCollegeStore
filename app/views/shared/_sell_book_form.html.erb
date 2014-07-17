@@ -13,25 +13,25 @@
 	<%= form_for book_group,:html=> {:class => 'smart-form' } do |f| %> 
         <div class="section">
             <label for="book_title" class="field prepend-icon">
-                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'book_title', :class => 'gui-input', :name => 'book_title' %>
+                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title', :class => 'gui-input'%>
             </label>
         </div><!-- end section -->
 
         <div class="section">
             <label for="author" class="field prepend-icon">
-                <%= f.text_field :author, :placeholder => "Author", :class => 'gui-input', :name => 'author', :presence => false %>
+                <%= f.text_field :author, :placeholder => "Author", id: 'sell_author', :class => 'gui-input', :presence => false %>
             </label>
         </div><!-- end section -->
 
         <div class="section">
             <label for="publisher" class="field prepend-icon">
-                <%= f.text_field :publisher, :placeholder => "Publisher", :class => 'gui-input', :name => 'publisher' %>
+                <%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher', :class => 'gui-input'%>
             </label>
         </div><!-- end section -->
 
         <div class="section">
             <label for="category" class="field prepend-icon">
-                <%= f.collection_select :category_id, Category.all, :id, :name, :name => 'category' %>
+                <%= f.collection_select :category_id, Category.all, :id, :name%>
             </label>
         </div><!-- end section -->
 
@@ -40,19 +40,19 @@
 
         <div class="section">
             <label for="price" class="field prepend-icon">
-                <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input', :name => 'price' %>
+                <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input'%>
             </label>
         </div><!-- end section -->
 
         <div class="section">
             <label for="edition" class="field prepend-icon">
-                <%= builder.text_field :edition, :placeholder => "Edition", :class => 'gui-input', :name => 'edition' %>
+                <%= builder.text_field :edition, :placeholder => "Edition", :class => 'gui-input'%>
             </label>
         </div><!-- end section -->
 
         <div class="section">
             <label for="isbn" class="field prepend-icon">
-                <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input', :name => 'isbn' %>
+                <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input'%>
             </label>
         </div><!-- end section -->
 

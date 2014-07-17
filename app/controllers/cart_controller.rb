@@ -1,5 +1,6 @@
 class CartController < ApplicationController
   before_filter :check_user, :only => [:checkout]
+  before_filter :is_cart_empty, :only => [:checkout, :remove_item]
   def add_item
     session[:cart] ||= []
     if session[:cart].count < 5
@@ -90,10 +91,4 @@ class CartController < ApplicationController
     session[:cart_total] = 0
   end
 
-  private
-  def check_user
-    if not user_signed_in? and (session[:guest].nil?)
-      render :template => '/guests/selection'
-    end
-  end
 end

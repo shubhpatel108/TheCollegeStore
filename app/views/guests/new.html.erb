@@ -1,21 +1,43 @@
-<h2>Guest Checkout</h2>
-
-<%= form_for @guest do |f| %>
-<div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></div>
-
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :mobile %><br />
-	<%= f.text_field :mobile %></div>
-	
-	<%= f.hidden_field :college_id, :value=> cookies[:college_id] %>
-  <div>
-		<%= f.button "Proceed" %> 
+<%= javascript_include_tag "form-js.js", "jquery.validate.js" %>
+<%= stylesheet_link_tag "smart-forms.css" %>
+<div class="smart-wrap">
+  <div class="smart-forms smart-container wrap-3">
+    <div class="form-header header-black">
+        <h4><i class="fa "></i><center>Guest Checkout</center></h4>
+    </div>
+    <div class="form-body theme-black">
+      <%= form_for(@guest, :html => {:class=>'smart-form'}) do |f| %>
+        <div class="section">
+          <label for="firstname" class="field prepend-icon">
+            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'gui-input', :name=>'guest[first_name]' %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="lastname" class="field prepend-icon">
+              <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'gui-input',:name=>"guest[last_name]" %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="email" class="field prepend-icon">
+            <%= f.email_field :email, :placeholder => 'Email', :class=>'gui-input',:name=>"guest[email]" %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="mobile" class="field prepend-icon">
+            <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'gui-input',:name=>"guest[mobile]" %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="email" class="field prepend-icon">
+            <%= f.hidden_field :college_id, :value=> cookies[:college_id] %>
+          </label>
+        </div>
+        <div class="section">
+          <center>
+            <%= f.submit "Proceed", :class => 'button btn-black' %> 
+          </center>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-<% end %>

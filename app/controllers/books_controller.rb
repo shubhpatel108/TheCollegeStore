@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     @book_groups = BookGroup.all
     college_id = cookies[:college_id]
     @book_groups.each do |group|
-        group[:stock] = group.books.where(:college_id => college_id).count
+        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).count
         group[:min_price] = group.books.map(&:price).min
     end
     @latest = @book_groups.sort_by {|b| b[:updated_at]}.reverse!.slice(0..3)
@@ -65,8 +65,9 @@ class BooksController < ApplicationController
   	@query = params[:query]
     @results = BookGroup.where(["title like ? or author like ?", "%#{@query}%", "%#{@query}%"])
     @results.each do |b|
-      b[:min_price] = b.books.map(&:price).min
-      b[:stock] = b.books(&:college_id).count(cookies[:college_id])
+      temp_books = b.books
+      b[:min_price] = temp_books.map(&:price).min
+      b[:stock] = temp_books.where(:college_id => cookies[:college_id], :reserved => false).count
     end
     respond_to do |format|
       format.html
@@ -76,7 +77,7 @@ class BooksController < ApplicationController
   def sell_autofill
     titl = params[:book_title]
     if not titl.empty?
-      @est_book = BookGroup.where(["title like ?", "%#{titl}%"]).first
+      @est_book = BookGroup.where(["title like ?", "#{titl}"]).first
     end
     respond_to do |format|
       format.js

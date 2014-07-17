@@ -47,7 +47,7 @@ class BookGroupsController < ApplicationController
   def details
     @book_group = BookGroup.where(:id => params[:id]).first
     @book_category = @book_group.category.name
-    @books = @book_group.books.where(:college_id => cookies[:college_id])
+    @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved)
     @owners = []
     @books.each do |b|
       @owners << b.user

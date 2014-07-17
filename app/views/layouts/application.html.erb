@@ -293,34 +293,7 @@
 <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
   <div id="login-form">
     <h2>welcome back</h2>
-    <fieldset>
-      <%= form_for(User.new, url: session_path(:user), :validate => true) do |f| %>
-      <div class="pull-left">
-      <div class="field">
-        <div >
-        <%= f.email_field :email, autofocus: true, :placeholder => "Email ID", :class => "field-email", :validate => {:uniqueness => false} %>
-        </div>
-        <div>
-          <%= f.password_field :password, autocomplete: "off", :class=>"field-passwd", :placeholder => "Password" %>
-          </div>
-        <%= f.submit "Sign in", :class => "field-submit" %>
-
-        <footer class="clearfix">
-          <% if Devise.mappings[:user].rememberable? -%>
-          <div class="remember"><%= f.check_box :remember_me, :class => "chkbox"%><%= f.label :remember_me%></div>
-        <% end -%>
-        </footer>
-        </div>
-      </div>
-      <div class="middle">
-        <%= image_tag ("OrSeperator.png") %>
-        
-      </div>
-      <% end %> 
-      <div class="right">
-        <%= render :partial => "devise/shared/links_signin", :locals => {:resource_name => :user, :resource_class => User.new} %> 
-      </div>
-    </fieldset>
+    <%= render :partial => "shared/login" %>
   </div>
 </div>
 <!---------------------------------- LOGIN FORM ENDS ---------------------->

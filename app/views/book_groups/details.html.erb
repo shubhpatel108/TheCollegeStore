@@ -40,20 +40,15 @@
       Add To Cart
     </div>
   </a>  
-  
 </div>
-<!-- div tag for descrption and review -->
 
-<div id="userlist" class="sellerslist">
-  <div class="tablecontent">
-
-    <div class="listtitle" id="listtitle">
-          Avaliable Sellers:
-    </div>
-    
+ <div id="userlist" class="sellerslist">
+    <div class="tablecontent">
+      <div class="listtitle" id="listtitle">
+            Avaliable Sellers:
+      </div>
       <table class="listofsellers">    
         <% @details.each do |book, user| %>
-
         <tr class="listelement">
           <div class="sellerdetail">
             <td class="sellername">
@@ -62,8 +57,8 @@
             </td>
 
             <td class="edition">
-              <i class="fa fa-bookmark fa-color_black" ></i>     
-              <%= book.edition %>rd edition
+              <i class="fa fa-bookmark fa-color_grey" ></i>     
+              <%= book.edition %><span class="superscript"><%=superscript(book.edition)%></span>
             </td>
 
             <td class="mobile">
@@ -85,7 +80,6 @@
         </tr>
       <% end %>
     </table>
-          
   </div>
 </div>
 
