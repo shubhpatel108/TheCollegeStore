@@ -1,0 +1,91 @@
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: #384047;
+    position: relative;
+    z-index: 1;
+}
+
+
+footer > ul {
+    list-style: none outside none;
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow: hidden;
+    padding: 25px 0;
+    position: relative;
+    width: 95%;
+}
+
+footer > ul .footer_main {
+    float: left;
+    padding: 20px 15px;
+    width: 28.3%;
+
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+footer > ul .footer_social {
+    float: left;
+    padding: 20px 15px;
+    width: 10%;
+
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+footer > ul .footer_main {
+    padding-left: 0;
+}
+footer > ul .footer_social{
+    padding-right: 0;
+}
+footer > ul li .text {
+    color: #999;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 85px;
+    position: relative;
+    text-align: justify;
+    font-weight: bold;
+}
+
+.text h4 {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.text a {
+    border-bottom: 1px dotted transparent;
+    color: #999;
+    font-weight: bold;
+}
+.text a:hover {
+    border-color: #999;
+}
+
+
+@media screen and (max-width: 835px)  {
+    footer > ul .footer_main,.footer_social {
+        float:none;
+        width:auto;
+    }
+}
+
+
+
+/*Landing Page CSS : College Selector*/
+ul.college-selector{
+	margin-left: auto;
+	margin-right: auto;
+	width: 36%;
+	list-style-type: none;
+}
