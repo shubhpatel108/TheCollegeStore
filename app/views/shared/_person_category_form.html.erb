@@ -5,7 +5,7 @@
 		// document.getElementById("request_admin").style.display = "block";
 		$('#request_admin').css({
 			display: 'block',
-			background:'red'
+			'padding-top': '15px'
 		});
 	}
 </script>
@@ -13,7 +13,7 @@
     <div class="smart-forms smart-container wrap-3">
       
       <div class="form-header header-black">
-          <h4><i class="fa "></i><center>Select Your College</center></h4>
+          <h4><center><i class="fa fa-building"></i>Select Your College</center></h4>
       </div>
 
 	<div class="form-body theme-black">
@@ -35,9 +35,35 @@
 	<%= form_tag(:controller=>'/colleges', :action=>'request_admin_to_add_college') do %>
 	<center>
 		<table class="college-select">
-			<tr><td><%= text_field_tag :college_name, '',:placeholder => "Enter your college" %></td></tr>
-			<tr><td><%= email_field_tag :email,'', :placeholder => "Enter your email id" %></td></tr>
-			<tr><td><%= submit_tag "Send", :class => 'send' %></td></tr>
+			<tr>
+				<td>
+					<div class="section">
+			 			<label class="field prepend-icon">
+							<%= text_field_tag :college_name, '',:placeholder => "Enter your college", :class=>'gui-input' %>
+							<label class="field-icon"><i class="fa fa-bank"></i></label>
+						</label>
+					</div>
+
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="section">
+			 			<label class="field prepend-icon">
+							<%= email_field_tag :email,'', :placeholder => "Enter your email id", :class=>'gui-input' %>
+							<label class="field-icon"><i class="fa fa-envelope"></i></label>
+						</label>
+					</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<div class="section">
+						<center><%= submit_tag "Send", :class => 'button btn-black' %></center>
+					</div>
+				</td>
+			</tr>
 		</table>
 	</center>
 	<% end %>
