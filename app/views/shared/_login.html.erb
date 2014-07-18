@@ -1,21 +1,18 @@
-<%= javascript_include_tag "form-js.js", "jquery.validate.js" %>
-<%= stylesheet_link_tag "smart-forms.css" %>
 <div class="smart-wrap">
     <div class="smart-forms smart-container wrap-3">
       
       <div class="form-header header-black">
-          <h4><i class="fa "></i><center>Sign In</center></h4>
+          <h4><center><i class="fa fa-sign-in"></i>Sign In</center></h4>
       </div>
       
       <div class="form-body theme-black">
 
-		<%= form_for(User.new, url: session_path(:user), :validate => true, :html => {:class => "smart-form"}) do |f| %>
+		<%= form_for(User.new, url: session_path(:user), :validate => true, :html => {:class => "smart-form1"}) do |f| %>
 	  		<div class="section">
           		<label for="email" class="field prepend-icon">
             	<%= f.email_field :email,:placeholder => 'Email', autofocus: true, :validate => {:uniqueness => false}, :class=>'gui-input', :name=>'user[email]' %>
         	  	<label class="field-icon"><i class="fa-user fa"></i></label>
         	  	</label>
-
         	</div><!-- end section -->
 
 	        <div class="section">
@@ -31,11 +28,11 @@
 		    </div>
 		    <% end%>
 		    <div class="section">
-		    	<%= f.submit "Sign in", :class =>'button btn-black' %>
+		    	<center><%= f.submit "Sign in", :class =>'button btn-black' %></center>
 		    </div>
 		<% end %>
 
-<%= render "devise/shared/links_signin" %>
+<center><%= render "devise/shared/links_signin" %></center>
 </div>
 </div>
 </div>

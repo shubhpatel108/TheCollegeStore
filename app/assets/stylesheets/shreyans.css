@@ -189,6 +189,8 @@ padding: 0px 10px;
 
 .username-header{
 	color:white;
+	font-size: 16px; color: rgb(23, 92, 56); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500;
+	text-decoration: underline;
 }
 
 /*Book Grid*/
@@ -325,6 +327,7 @@ font-weight: 600;
 	width: 100%;
 	background: url('/assets/background-main.jpg');
 	margin-top: 59px;
+	-webkit-filter: blur(2px);
 }
 
 div.video-player{
@@ -368,4 +371,82 @@ float: left;
 /* min-width: 190px; */
 padding: 0% 2% 2% 2%;
 width: 136px;
+}
+
+
+td.checkout-td {
+border: 1px solid rgb(185, 185, 185);
+height: 100px;
+}
+
+td#checkout-title{
+    width: 350px;
+
+    vertical-align: middle;
+}
+
+td#checkout-price{
+    width: 100px;
+
+    text-align: center;
+    color: black;
+    padding-top: 20px;
+}
+
+td#checkout-seller{
+    color: black;
+
+    width: 200px;
+    text-align: center;
+}
+
+td#checkout-status{
+    text-align: center;
+    font-size: 25px;
+}
+
+span#checkout-book-name {
+color: black;
+font-size: 16px;
+text-decoration: underline;
+padding: 0 10px;
+position: relative;
+top: 10px;
+}
+
+img.checkout-mainimg {
+width: 50px;
+padding: 0px;
+float: left;
+border: 5px solid rgb(233, 233, 233);
+margin: 10px;
+}
+
+th.checkout-th {
+padding: 10px;
+color: black;
+font-weight: bold;
+}
+
+.cross{
+	text-align: center;
+vertical-align: middle;
+color: red;
+}
+
+.your-order {
+text-align: center;
+padding: 20px;
+}
+
+.seller-message {
+margin-left: 150px;
+margin-top: 20px;
+color: black;
+}
+
+.tick{
+	text-align: center;
+vertical-align: middle;
+color: green;
 }

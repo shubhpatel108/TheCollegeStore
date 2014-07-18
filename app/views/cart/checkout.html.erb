@@ -1,27 +1,55 @@
+<div class="order">
+	<div class="your-order">
+		<h4>Your Order</h4>
+	</div>
+
+<table border="1" style="margin-left: auto; margin-right: auto;">
+	<tr style="background:#f8f8f8;">
+		<th class="checkout-th">Book</th>
+		<th class="checkout-th">Success</th>
+		<th class="checkout-th">Seller</th>
+		<th class="checkout-th">Price</th>
+	</tr>
 <% @books.each do |book| %>
-	<tr>
-		<td><%=book.info.title%></td>
-		<td><%=book.info.author%></td>		
-		<td><%=book.info.publisher%></td>
-		<td><%=book.price%></td>
-		<td><%=book.user.first_name%> <%=book.user.last_name%></td>
-		<td>
-			<%if book.err %>
-				Sorry, This book was recently booked by someone else
-			<%else%>
-				Order Placed!
-			<%end%>
+	
+		<tr>
+			<td id="checkout-title" class="checkout-td">
+				<span id="checkout-book-image"><%= image_tag "/assets/books/#{book.info.image_file_name}", {:class=>"checkout-mainimg"} %></span>
+				<span id="checkout-book-name"><%=book.info.title%></span>
+			</td>
+			<td id="checkout-status" class="checkout-td">
+				<%if book.err %>
+					<i class="fa fa-times cross"></i>
+				<%else%>
+					<i class="fa-check fa tick"></i>
+				<%end%>
+			</td>
+			<td id="checkout-seller" class="checkout-td"><%=book.user.first_name%> <%=book.user.last_name%></td>
+			<td id="checkout-price" class="checkout-td"><i class="fa fa-inr fa-padding"></i><%=book.price%></td>
+		</tr>
+	<% end %>
+	<tr style="background: #f8f8f8; color:black">
+		<td colspan="2">
+		</td>
+		<td colspan="1" style="text-align:center; padding:10px;">
+			Total
+		</td>
+		<td colspan="1" style="text-align:center">
+			<%=@total%>
 		</td>
 	</tr>
-<% end %>
+</table>
+</div>
 
-Total:<%=@total%>
 
-<p>Message the seller(s):</p>
-<%= form_tag(request_seller_books_path) do %>
-	<td><%= text_area_tag :message %></td>
-	<% @seller_ids.each do |i| %>
-    <%= hidden_field_tag "seller_ids[]", i %>
+<div class="seller-message">
+	<p>Message the seller(s):</p>
+	<%= form_tag(request_seller_books_path) do %>
+		<td><%= text_area_tag :message, nil, rows: "10", cols: "50" %></td>
+		<% @seller_ids.each do |i| %>
+	    <%= hidden_field_tag "seller_ids[]", i %>
+		<% end %>
+		<br>
+		<td><%= submit_tag "Send", :class => 'button btn-black'%></td>
 	<% end %>
-	<td><%= submit_tag "Send"%></td>
-<% end %>
+</div>

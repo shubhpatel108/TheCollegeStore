@@ -1,6 +1,5 @@
 $(function() {
-        $( ".smart-form" ).validate({
-        
+        $( ".smart-form2" ).validate({
                 /* @validation states + elements 
                 ------------------------------------------- */
                 
@@ -31,53 +30,6 @@ $(function() {
                             required: true
                         },
                         isbn: {
-                            required: true
-                        },
-                        "book_group[title]": {
-                            required: true
-                        },
-                        "book_group[author]": {
-                            required: true
-                        },
-                        "book_group[publisher]": {
-                            required:true
-                        },
-                        "book_group[books_attributes][0][price]": {
-                            required: true
-                        },
-                        "book_group[books_attributes][0][edition]": {
-                            required: true
-                        },
-                        "book_group[books_attributes][0][edition]": {
-                            required: true
-                        },
-                        firstname: {
-                            required: true
-                        },
-                        lastname: {
-                            required: true
-                        },
-                        "user[email]": {
-                            required: true,
-                            email: true
-                        },
-                        "user[password]": {
-                            required: true
-                        },
-                        "guest[first_name]": {
-                            required: true
-                        },
-                        "guest[last_name]": {
-                            required: true
-                        },
-                        "guest[email]": {
-                            required: true,
-                            email: true
-                        },
-                        "guest[password]": {
-                            required: true
-                        },
-                        "guest[mobile]": {
                             required: true
                         },
                         mobile: {

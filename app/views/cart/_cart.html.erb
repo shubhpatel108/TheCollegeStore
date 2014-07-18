@@ -26,7 +26,7 @@
 	         <div> <%=b[:user].first_name %></div>
 	        </td>
 	        <td style="font-size: 15px; text-align: center; padding: 0px;">Rs.<%=b.price%></td>
-	        <td><%= link_to "remove", remove_item_path(b.id), remote: true%></td>
+	        <td><%= link_to "<i class='fa fa-times'></i>".html_safe, remove_item_path(b.id), remote: true%></td>
 	      </tr>
 	    </tbody>
 		<%end%>

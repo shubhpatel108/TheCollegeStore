@@ -3381,6 +3381,7 @@ border-bottom:1px dotted;
 table{
 border-collapse:collapse;
     border-spacing:0
+;
 }
 
 hr{
@@ -3428,7 +3429,7 @@ font-size:14px
 }
 
 p{
-font-size:14px;
+font-size: 20px;
     line-height:1.5;
     
 margin-bottom: 0px;}
@@ -6377,7 +6378,8 @@ margin:0
 
 .fixed-sidebar{
 background:#edeff0;
-    z-index:200;
+    
+z-index: 0;
     -webkit-box-shadow:-2px 0px 4px 4px #edeff0,10px 0 0 0 #edeff0;
     -moz-box-shadow:-2px 0px 4px 4px #edeff0,10px 0 0 0 #edeff0;
     box-shadow:-2px 0px 4px 4px #edeff0,10px 0 0 0 #edeff0
