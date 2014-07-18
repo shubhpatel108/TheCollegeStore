@@ -38,49 +38,6 @@
 <script type="text/javascript">
   $(function(){
 
-      /*-------------------------------
-
-        GENERAL EXAMPLES
-
-      -------------------------------*/
-
-      // Default usage
-      $('.default_popup').popup();
-
-      // Function for content
-      $('.function_popup').popup({
-        content   : function(){
-          return '<p>'+$(this.ele).attr('title')+'</p>';
-        }
-      });
-
-      // jQuery for content
-      $('.jquery_popup').popup({
-        content   : $('#inline')
-      });
-
-      // HTML for content
-      $('.html_popup').popup({
-        content   : '<h1>This is some HTML</h1>',
-        type    : 'html'
-      });
-
-      // Custom YouTube content
-      $('.youtube_popup').popup({
-        types   : {
-          youtube     : function(content, callback){
-
-            content = '<iframe width="420" height="315" src="'+content+'" frameborder="0" allowfullscreen></iframe>';
-
-            // Don't forget to call the callback!
-            callback.call(this, content);
-
-          }
-        },
-        width       : 420,
-        height        : 315
-      });
-
       // Animated popup
       $('.animated_popup').popup({
         show        : function($popup, $back){
@@ -102,19 +59,23 @@
         }
       });
 
-      // Call ALL the callbacks
-      $('.callback_popup').popup({
-        beforeOpen          : function(type){
-          console.log('beforeOpen -', type);
-        },
-        afterOpen           : function(){
-          console.log('afterOpen');
-        },
-        beforeClose         : function(){
-          console.log('beforeClose');
-        },
-        afterClose          : function(){
-          console.log('afterClose');
+        $('.animated_popup-register').popup({
+        show        : function($popup, $back){
+
+          var plugin = this,
+            center = plugin.getCenter();
+
+          $popup
+            .css({
+              top     : - $popup.children().outerHeight(),
+              left    : center.left,
+              opacity : 1
+            })
+            .animate({top : center.top}, 500, 'easeOutBack', function(){
+              // Call the open callback
+              plugin.o.afterOpen.call(plugin);
+            });
+
         }
       });
 
@@ -134,12 +95,6 @@
 
     });
 
-    /*---------------------
-
-      JQUERY EASING
-
-    */
-
     $.extend($.easing, {
       easeOutBack: function (x, t, b, c, d, s) {
         if (s == undefined) s = 1.70158;
@@ -151,164 +106,6 @@
       }
     });
 
-    /*-------------------------------
-
-      GALLERY SPECIFIC CODE
-
-    -------------------------------*/
-
-    /*---------------------
-
-      SETTINGS
-
-    */
-
-    var gallerySettings = {
-        markup    : '' +
-          '<div class="popup">' +
-            '<div class="popup_wrap">' +
-              '<div class="popup_content"/>' +
-            '</div>' +
-            '<a href="#next">Next</a>' +
-            '<a href="#prev">Previous</a>' +
-          '</div>',
-        // This is a custom variable
-        gallery   : '.popup_gallery',
-        replaced  : function($popup, $back){
-
-          var plugin = this,
-            $wrap = $('.popup_wrap', $popup);
-
-          // Animate the popup to new size
-          $wrap.animate({
-            width   : $wrap.children().children().outerWidth(true),
-            height  : $wrap.children().children().outerHeight(true)
-          }, {
-            duration  : 500,
-            easing    : 'easeOutBack',
-            step    : function(){
-
-              // Need to center the poup on each step
-              $popup
-                .css({
-                  top   : plugin.getCenter().top,
-                  left  : plugin.getCenter().left
-                });
-
-            },
-            complete  : function(){
-
-              // Fade in!
-              $wrap
-                .children()
-                .animate({opacity : 1}, plugin.o.speed, function(){
-                  plugin.center();
-                  plugin.o.afterOpen.call(plugin);
-                });
-
-            }
-          });
-        },
-        show    : function($popup, $back){
-
-          var plugin = this,
-            $wrap = $('.popup_wrap', $popup);
-
-          // Center the plugin
-          plugin.center();
-
-          // Default fade in
-          $popup
-            .animate({opacity : 1}, plugin.o.speed, function(){
-              plugin.o.afterOpen.call(plugin);
-            });
-
-          // Set the inline styles as we animate later
-          $wrap.css({
-            width   : $wrap.outerWidth(true),
-            height  : $wrap.outerHeight(true)
-          });
-
-        },
-        afterClose    : function(){
-          this.currentIndex = undefined;
-        }
-
-      };
-
-    $(function(){
-
-      /*---------------------
-
-        POPUP
-
-      */
-
-      $('.popup_gallery').popup(gallerySettings);
-
-      /*---------------------
-
-        NEXT & PREVIOUS LINKS
-
-      */
-
-      $(document).on('click', '[href="#next"], [href="#prev"]', function(e){
-
-        e.preventDefault();
-
-        var $current = $('.popup_active'),
-          popup = $current.data('popup'),
-          $items = $(popup.o.gallery);
-
-        // If this is the first time
-        // and we don't have a currentIndex set
-        if( popup.currentIndex === undefined ){
-
-          popup.currentIndex = $items.index($current);
-
-        }
-
-        // Fade the current item out
-        $('.'+popup.o.contentClass)
-          .animate({opacity : 0}, 'fast', function(){
-
-            // Get the next index
-            var newIndex = $(e.target).attr('href') === '#next'
-              ? popup.currentIndex + 1
-              : popup.currentIndex - 1;
-
-            // Make sure the index is valid
-            if( newIndex > $items.length -1 ){
-
-              popup.currentIndex = 0;
-
-            }else if( newIndex < 0 ){
-
-              popup.currentIndex = $items.length - 1;
-
-            }else{
-
-              popup.currentIndex = newIndex;
-
-            }
-
-            // Get the new current link
-            $current = $($items[popup.currentIndex]);
-
-            // Load the content
-            popup.open($current.attr('href'), undefined, $current[0]);
-
-          });
-
-      });
-
-    });
-
-    /*---------------------
-
-      JQUERY EASING
-
-    */
 
     $.extend($.easing, {
       easeOutBack: function (x, t, b, c, d, s) {
@@ -360,7 +157,7 @@
                     <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
                   </li>
                   <li>
-                    <a href="#cool-popup-register" class="animated_popup button button-primary">Register<i class="fa fa-user fa-padding"></i></a>
+                    <a href="#cool-popup-register" class="animated_popup-register button button-primary">Register<i class="fa fa-user fa-padding"></i></a>
                   </li>
                 <%end%>
                  <li style="padding: 6px 0;">
@@ -448,51 +245,8 @@
       </li>
     <% end %>
   </ul>
-  
-  <!-- <a class="trigger-shelf shelf-opener"><span class="icon icon-open-shelf"></span></a> -->
-
 </div>
 
-
-<!-- Video -->
-<style type="text/css">
-    .video-player { margin: 20px; width: 640px; }
-    .video-controls { 
-      background: #dedede; 
-      height: 30px;
-      margin: -4px 0 0;
-      position: relative;
-      width: 640px;
-    }
-    .status { height: 20px; left: 30px; position: absolute; top: 5px; width: 455px; }
-    .bar { background: #a4a4a4; height: 10px; position: relative; top: 5px; }
-    .loaded { background: #bbb; height: 10px; left: 0; position: absolute; top: 0; }
-    .indicator { background: #212121; display: block; height: 10px; left: 0; position: absolute; top: 0; width: 20px; }
-    .play-pause, .volume { 
-      background: url(images/btn-controls.png) no-repeat ;
-      display: block;
-      height: 20px;
-      overflow: hidden;
-      position: absolute;
-      text-indent: -9999px;
-      top: 5px;
-      width: 20px;
-    }
-    .play-pause { left: 5px; }
-    .playing { background-position: 0 -20px; }
-    .volume { background-position: 0 -60px; right: 130px; }
-    .muted { background-position: 0 -40px; }
-    .view-youtube { 
-      color: #000;
-      display: block; 
-      float: right; 
-      font-size: 9px; 
-      line-height: 30px;
-      padding: 0 5px 0 0;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    </style>
 <% if request.original_url=="http://localhost:3000/books" %>
     <div class="video-entry">
       <ul style="display:flex">
@@ -545,8 +299,7 @@
 <!---------------------------------- LOGIN FORM ENDS ---------------------->
 
 <!---------------------------------- CODE FOR SIGN-UP FORM ---------------------->
-<div id="cool-popup-register" class="white-popup mfp-with-anim mfp-hide">
-  <div id="login-form-signup">
+<div id="cool-popup-register" style="display:none;">
     <h2>get started</h2>
     <fieldset>
       <%= form_for(User.new, url: registration_path(:user), :validate => true) do |f| %>
@@ -580,7 +333,6 @@
         <%= render :partial => "devise/shared/links_signin", :locals => {:resource_name => :user, :resource_class => User.new} %> 
       </div>
     </fieldset>
-  </div>
 </div>
 <!---------------------------------- SIGN-UP FORM ENDS ---------------------->
 
