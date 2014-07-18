@@ -14,6 +14,10 @@ class CartController < ApplicationController
         session[:cart_total] += book.price
         session[:value_remaining] = session[:cart_total]
         @message = "Your book has been successfully added to the cart!"
+        @m_type = "success"
+      else
+        @message = "This Book is already present in your cart!"
+        @m_type = "notice"
       end
       respond_to do |format|
         format.js
@@ -42,6 +46,11 @@ class CartController < ApplicationController
     if session[:cart].delete(@book)
       session[:cart_total] -= @book.price
       session[:value_remaining] = session[:cart_total]
+      @message = "Your book has been successfully remove to the cart!"
+      @m_type = "success"
+    else
+      @message = "This Book is not present in your cart!"
+      @m_type = "error"
     end
     respond_to do |format|
       format.js

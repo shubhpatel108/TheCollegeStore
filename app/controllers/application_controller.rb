@@ -23,24 +23,27 @@ class ApplicationController < ActionController::Base
 		elsif not current_user.nil?
 			redirect_to :action => 'select_college', :college_id => current_user.college_id
 		else
-			redirect_to :controller => "books", :action => "index"
+			redirect_to :books
 		end
 	end
 
   private
   def check_user
     if not user_signed_in? and (session[:guest].nil?)
+      flash[:error] = "Please Sign in or checkout as Guest"
       render :template => '/guests/selection'
     end
   end
 
   def is_cart_empty
 	if session[:cart].nil?
+		flash[:warning] = "Your cart is Empty!"
 		redirect_to :back
 	elsif session[:cart].empty?
+		flash[:warning] = "Your cart is Empty!"
 		redirect_to :back
 	end
 	rescue ActionController::RedirectBackError
-		redirect_to root_path
+		redirect_to :books
   end
 end

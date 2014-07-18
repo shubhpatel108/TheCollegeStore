@@ -8,7 +8,7 @@
  * Released under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  */
-
+$(document).ready(function () {
 (function($) {
 
 $.extend($.fn, {
@@ -1229,3 +1229,4 @@ $.format = $.validator.format;
 		}
 	});
 }(jQuery));
+});

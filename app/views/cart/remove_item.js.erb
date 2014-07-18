@@ -1,7 +1,6 @@
 var elem = document.getElementById("cart_item_<%=@book_id%>");
 elem.parentNode.removeChild(elem);
-// $('#notices').append('<p>Successfully removed!<p>');
-// FlashNotice("success", "Book is removed!");
+FlashNotice("<%= @m_type %>", "<%= @message %>");
 var count = document.getElementById('cart-item-count');
 count.innerHTML = "<%= session[:cart].count%>";
 var price = document.getElementById('cart-total-price');
