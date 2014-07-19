@@ -63,7 +63,7 @@
               <ul class="user-list inline-popups">
                 <% if user_signed_in? %>
                 <li>
-                    <span style="display: -webkit-inline-box;padding: 10px;font-size: 17px;"><%= link_to "#{current_user.first_name}", edit_user_registration_path, :class => 'username-header' %></span>
+                    <span style="display: -webkit-inline-box;padding: 10px;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
                 </li>
                 <%end%>
                 <% if !user_signed_in? %>
