@@ -7,17 +7,17 @@
       
       <div class="form-body theme-black">
 
-		<%= form_for(User.new, url: session_path(:user), :validate => true, :html => {:class => "smart-form1"}) do |f| %>
+		<%= form_for(User.new, url: session_path(:user), :validate => true, :html => {:class => "smart-form"}) do |f| %>
 	  		<div class="section">
           		<label for="email" class="field prepend-icon">
-            	<%= f.email_field :email,:placeholder => 'Email', autofocus: true, :validate => {:uniqueness => false}, :class=>'gui-input', :name=>'user[email]' %>
+            	<%= f.email_field :email,:placeholder => 'Email', autofocus: true, :validate => {:uniqueness => false}, :class=>'gui-input' %>
         	  	<label class="field-icon"><i class="fa-user fa"></i></label>
         	  	</label>
         	</div><!-- end section -->
 
 	        <div class="section">
 	          <label for="password" class="field prepend-icon">
-	            <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'gui-input', :name=>'user[password]'%>
+	            <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'gui-input' %>
 	            <label class="field-icon"><i class="fa-lock fa"></i></label>
 	          </label>
 	        </div><!-- end section -->

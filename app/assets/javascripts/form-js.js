@@ -1,5 +1,5 @@
-$(function() {
-        $( ".smart-form2" ).validate({
+$('.smart-form').each(function() {
+        $(this).validate({
                 /* @validation states + elements 
                 ------------------------------------------- */
                 
@@ -45,7 +45,34 @@ $(function() {
                         },
                         currentpassword: {
                             required: true
-                        }                        
+                        },
+                        "book_group[title]": {
+                            required: true,
+                        },
+                        "book_group[author]": {
+                            required: true,
+                        },
+                        "book_group[publisher]": {
+                            required: true,
+                        },
+                        "book_group[books_attributes][0][price]": {
+                            required: true,
+                        },
+                        "user[email]": {
+                            required: true,
+                        },
+                        "user[password]": {
+                            required: true,
+                        },
+                        "user[first_name]": {
+                            required: true,
+                        },
+                        "user[last_name]": {
+                            required: true,
+                        },
+                        "user[mobile]": {
+                            required: true,
+                        }
                 },
                 
                 /* @validation error messages 

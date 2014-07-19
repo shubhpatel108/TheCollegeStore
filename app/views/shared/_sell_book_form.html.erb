@@ -6,10 +6,10 @@
 	        </div><!-- end .form-header section -->
 	        <div class="form-body theme-black">
 
-	<%= form_for book_group,:html=> {:class => 'smart-form2' } do |f| %> 
+	<%= form_for book_group,:html=> {:class => 'smart-form' } do |f| %> 
         <div class="section">
             <label for="book_title" class="field prepend-icon">
-                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title', :class => 'gui-input', :name=>'book_title'%>
+                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title', :class => 'gui-input' %>
             <label>
                 <i class="fa fa-book field-icon"></i>
             </label>
@@ -18,7 +18,7 @@
 
         <div class="section">
             <label for="author" class="field prepend-icon">
-                <%= f.text_field :author, :placeholder => "Author", id: 'sell_author', :class => 'gui-input', :presence => false, :name=>'author' %>
+                <%= f.text_field :author, :placeholder => "Author", id: 'sell_author', :class => 'gui-input', :presence => false %>
                 <label>
                     <i class="fa fa-user field-icon"></i>
                 </label>
@@ -27,7 +27,7 @@
 
         <div class="section">
             <label for="publisher" class="field prepend-icon">
-                <%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher', :class => 'gui-input', :name=>'publisher'%>
+                <%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher', :class => 'gui-input' %>
                 <label>
                     <i class="fa fa-bookmark field-icon"></i>
                 </label>

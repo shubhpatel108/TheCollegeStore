@@ -27,10 +27,9 @@
 
   <!-- Validations -->
 <%= javascript_include_tag  "jquery.js" %>
-<%= javascript_include_tag "jquery.validate.js" %>
+<%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
 <%= stylesheet_link_tag "smart-forms.css" %>
 <%= javascript_include_tag "additional-methods.js" %>
-<%= javascript_include_tag "form-js.js" %>
 
 <!-- POpup -->
 <%= stylesheet_link_tag "popup.css" %>
@@ -207,70 +206,26 @@
     </div>
   </div>
 
-<!------------------------- CODE FOR LOGIN FORM ----------- -->
+<!-- All Popup -->
 <div style="display:none">
+  <div id="college-select-popup" >
+    <%= render :partial => "shared/person_category_form"%>
+  </div>
+  <div id="cart-content">
+    <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
+  </div>
   <div id="cool-popup">
     <%= render :partial => "shared/login" %>
   </div>
+  <div id="cool-popup-register">
+    <%= render :partial => "shared/register" %>
+  </div>
 </div>
-
-<!---------------------------------- LOGIN FORM ENDS ---------------------->
-
-<!---------------------------------- CODE FOR SIGN-UP FORM ---------------------->
-<div id="cool-popup-register" style="display:none;">
-    <h2>get started</h2>
-    <fieldset>
-      <%= form_for(User.new, url: registration_path(:user), :validate => true) do |f| %>
-       
-        <div class="pull-left">
-        <div class="field">
-        <div>
-        <%= f.text_field :first_name, autofocus: true, :class =>"field-text", :placeholder => "First Name" %></div>
-
-        <div>
-        <%= f.text_field :last_name, :class =>"field-text", :placeholder => "Last Name" %></div>
-
-        <div>
-        <%= f.email_field :email, :class => "field-email", :placeholder => "Email ID" %></div>
-
-        <div>
-        <%= f.password_field :password, autocomplete: "off", :class =>"field-passwd", :placeholder => "Password" %></div>
-
-        <div>
-        <%= f.text_field :mobile, :class =>"field-text", :placeholder => "Mobile Number" %></div>
-        <div>
-        <%= f.hidden_field :college_id, :value=> cookies[:college_id] %></div>
-        <div><%= f.submit "Sign up", :class => "field-submit" %></div>
-        </div>
-        </div>
-      <% end %>
-      <div class="middle">
-        <%= image_tag ("OrSeperator.png") %>
-      </div>
-      <div class="right">
-        <%= render :partial => "devise/shared/links_signin", :locals => {:resource_name => :user, :resource_class => User.new} %> 
-      </div>
-    </fieldset>
-</div>
-<!---------------------------------- SIGN-UP FORM ENDS ---------------------->
-
-<!-- College Select Popup -->
-<div id="college-select-popup" style="display:none;">
-  <%= render :partial => "shared/person_category_form"%>
-</div>
-<!-- Ends -->
-<div id="cart-content" style="display:none">
-  <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
-</div>
-<div id="sub-heading">
-</div>
-
+<!-- ends -->
 
 <div id="page-body">
   <%= yield %>
 </div>
-
-
 
 
 <!-- Footer -->
@@ -412,6 +367,6 @@ $(window).scroll(function () {
 
 });
 </script>
-
+<%= javascript_include_tag "form-js.js" %>
 </body>
 </html>

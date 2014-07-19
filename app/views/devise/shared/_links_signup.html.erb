@@ -1,18 +1,18 @@
 <div>
 <%- if Devise.mappings[:user].omniauthable? %>
-    <%= link_to image_tag('fblogin.png',:style=>"width:250px"), omniauth_authorize_path(resource_name, Devise.omniauth_providers[0]), :class => "title" %>
+    <%= link_to image_tag('fblogin.png',:style=>"width:250px"), omniauth_authorize_path(:user, Devise.omniauth_providers[0]), :class => "title" %>
 <% end -%>
 
 <%- if Devise.mappings[:user].omniauthable? %>
     <%= link_to image_tag('g+login.png', :style=>"width:260px;
-margin:0 0 0 15px; height:60px;"), omniauth_authorize_path(resource_name, Devise.omniauth_providers[1]), :class => "title" %> 
+margin:0 0 0 15px; height:60px;"), omniauth_authorize_path(:user, Devise.omniauth_providers[1]), :class => "title" %> 
 <% end -%>
 </div>
 
 <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), :class => "link" %><br />
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:user), :class => "link" %><br />
 <% end -%>
 
 <%- if Devise.mappings[:user].lockable? && Devise.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), :class => "link" %><br />
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(:user), :class => "link" %><br />
 <% end -%>
