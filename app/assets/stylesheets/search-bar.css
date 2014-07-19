@@ -1,66 +1,16 @@
-.cf:before, .cf:after{
-    content:"";
-    display:table;
-}
- 
+
 .cf:after{
     clear:both;
 }
  
-.cf{
-    zoom:1;
-} 
 
 
 /* Form wrapper styling */
-.form-wrapper {
-    width: 450px;
-    padding: 0;
-    border-radius: 10px;
- /*   position: relative;
-top: -19px;
-left: 400px;*/
-top: 10px;
-position: relative;
-}
+
  
 /* Form text input */
  
-.form-wrapper input {
-    width: 320px;
-    height: 20px;
-    padding: 10px 5px;
-    float: left;    
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    border: 0;
-    background: white;
-    border-radius: 3px 0 0 3px;
-    font-size: 16px;      
-}
- 
-.form-wrapper input:focus {
-    outline: 0;
-    background: white;
-    box-shadow: 0 0 5px rgba(49, 87, 236, 0.8) inset;
-}
- 
-.form-wrapper input::-webkit-input-placeholder {
-   color: #999;
-   font-weight: normal;
-   font-style: italic;
-}
- 
-.form-wrapper input:-moz-placeholder {
-    color: #999;
-    font-weight: normal;
-    font-style: italic;
-}
- 
-.form-wrapper input:-ms-input-placeholder {
-    color: #999;
-    font-weight: normal;
-    font-style: italic;
-} 
+
 
 .form-wrapper button {
     overflow: visible;

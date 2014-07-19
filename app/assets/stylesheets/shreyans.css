@@ -20,12 +20,7 @@ left: 0;
 	top: 5px;
 }
 
-span.select-college {
-font-size: 16px;
-color: rgb(23, 92, 56);
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-weight: 500;
-}
+
 
 div#page-body{
 	width: 73%;
@@ -51,12 +46,7 @@ left: 1112.796875px !important;
 	color: #666;
 }
 
-a.button.button-primary {
-background: rgb(48, 148, 139) !important;
-border-color: rgb(27, 165, 153);
-font-size: 17px;
-padding: 9px;
-}
+
 
 td.book-name1 a{
 	font-size: 15px !important;
@@ -172,31 +162,13 @@ div.book-sell-form-wrap p.title{
 
 /*Header CSS*/
 
-div#content-wrap {
-margin-left: -85px;
-background: #E4E4E4;
-height: 58px;
-position: absolute;
-top: 0;
-width: 106%;
-}
+
 
 ul.inline-popups {
-display: inline;
 }
 
 ul.header-list li{
 	display: inline;
-}
-
-ul.user-list li {
-padding: 0px 10px;
-}
-
-.username-header{
-	color:white;
-	font-size: 16px; color: rgb(23, 92, 56); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500;
-	text-decoration: underline;
 }
 
 /*Book Grid*/
@@ -216,43 +188,9 @@ float: right;
 padding: 15px 0;
 }
 
-/*Logo*/
 
-img.logo{
-	width: 22%;
-margin-left: 100px;
-	display: none;
-}
 
-div.logo-div{
-	vertical-align: middle;
-/* margin: 10px; */
-width: 30%;
-position: absolute;
-}
 
-/*search bar*/
-.search-bar-header{
-	width: 32%;
-position: absolute;
-left: 500px;
-}
-
-div.icons{
-	margin: 15px auto;
-width: 60%;
-	display: none;
-}
-
-.header-icon{
-	width: 75px;
-margin: 0 25px;
-}
-
-.user-bar-header ul{
-	list-style-type: none;
-display: inline-flex;
-}
 
 /*Fixed Footer*/
 .fixed-footer {
@@ -297,13 +235,7 @@ cursor: pointer;
 	padding: 0 5px;
 }
 
-.header-fixed{
-	position: fixed;
-width: 100%;
 
-	z-index: 100;
-	top: 0;
-}
 
 
 .go-button{

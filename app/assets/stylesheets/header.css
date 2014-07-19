@@ -1,0 +1,179 @@
+/*search bar*/
+.search-bar-header{
+	width: 32%;
+position: absolute;
+left: 500px;
+}
+
+div.icons{
+	margin: 15px auto;
+width: 60%;
+	display: none;
+}
+
+.header-icon{
+	width: 75px;
+margin: 0 25px;
+}
+
+.user-bar-header ul{
+	list-style-type: none;
+display: inline-flex;
+}
+
+.header-fixed{
+	position: fixed;
+width: 100%;
+
+	z-index: 100;
+	top: 0;
+}
+
+div#content-wrap {
+margin-left: -85px;
+background: #E4E4E4;
+height: 58px;
+position: absolute;
+top: 0;
+width: 106%;
+}
+
+/*Logo*/
+
+img.logo{
+	width: 22%;
+margin-left: 100px;
+	display: none;
+}
+
+div.logo-div{
+	vertical-align: middle;
+/* margin: 10px; */
+width: 30%;
+position: absolute;
+}
+
+/*Search*/
+.form-wrapper {
+    width: 450px;
+    padding: 0;
+    border-radius: 10px;
+ /*   position: relative;
+top: -19px;
+left: 400px;*/
+top: 10px;
+position: relative;
+}
+
+.cf{
+    zoom:1;
+} 
+
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
+ 
+.form-wrapper input {
+    width: 320px;
+    height: 20px;
+    padding: 10px 5px;
+    float: left;    
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    border: 0;
+    background: white;
+    border-radius: 3px 0 0 3px;
+    font-size: 16px;      
+}
+ 
+.form-wrapper input:focus {
+    outline: 0;
+    background: white;
+    box-shadow: 0 0 5px rgba(49, 87, 236, 0.8) inset;
+}
+ 
+.form-wrapper input::-webkit-input-placeholder {
+   color: #999;
+   font-weight: normal;
+   font-style: italic;
+}
+ 
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+ 
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+} 
+
+.form-wrapper button {
+    overflow: visible;
+    float: right;
+    border: 0;
+    position: relative;
+    padding: 0;
+    height: 40px;
+    width: 110px;
+    font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #fff;
+    background: rgb(53, 184, 173) !important;
+    border-radius: 0 4px 4px 0;      
+    
+    cursor: pointer;
+}   
+   
+.form-wrapper button:hover{     
+    background: #E71F3F;
+}   
+   
+.form-wrapper button:active,
+.form-wrapper button:focus{   
+    background: #1F40E7;
+    outline: 0;   
+}
+
+
+ 
+.form-wrapper button:hover:before{
+    border-right-color: #e54040;
+}
+ 
+.form-wrapper button:focus:before,
+.form-wrapper button:active:before{
+        border-right-color: #c42f2f;
+}      
+ 
+.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
+} 
+
+
+/*Right Part - Login Register*/
+ul.user-list li {
+padding: 0px 10px;
+}
+
+a.button.button-primary {
+background: rgb(48, 148, 139) !important;
+border-color: rgb(27, 165, 153);
+font-size: 17px;
+padding: 9px;
+}
+
+.username-header{
+	color:white;
+	font-size: 16px; color: rgb(23, 92, 56); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500;
+	text-decoration: underline;
+}
+
+span.select-college {
+font-size: 16px;
+color: rgb(23, 92, 56);
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-weight: 500;
+}
