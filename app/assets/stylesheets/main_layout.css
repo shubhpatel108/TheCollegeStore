@@ -3389,7 +3389,8 @@ display:block;
     height:1px;
     border:0;
     border-top:1px solid #ccc;
-    margin:1em 0;
+    
+margin: 0;
     padding:0
 }
 
@@ -4436,7 +4437,8 @@ body{
 background: white;
     font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size:62.5%;
-    color:#8d9aa5;
+    
+color: #000000;
     line-height:1;
     -webkit-transition-duration:0.2s;
     -moz-transition-duration:0.2s;

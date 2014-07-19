@@ -14,6 +14,7 @@
 
 
 
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 html, body{
@@ -69,7 +70,7 @@ html, body{
 .wrap-0{ max-width:952px; }
 .wrap-1{ max-width:852px; }
 .wrap-2{ max-width:652px; }
-.wrap-3{ max-width:540px; }
+.wrap-3{ max-width: 540px; }
 
 /* @form helper classes 
 --------------------------------------------------------------- */

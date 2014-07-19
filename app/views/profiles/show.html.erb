@@ -1,9 +1,9 @@
 <div class="container_4">
     <div class="innertitle">
         <p>
-        <i class="fa fa-mortar-board fa-padding"></i><%=@user.first_name%> <%=@user.last_name%><a href="/users/edit">
+        <i class="fa fa-mortar-board fa-padding"></i><%=@user.first_name%> <%=@user.last_name%>
         <% if current_user==@user %>
-        <i class="fa fa-edit fa-padding" style="float:right;color:white;">edit</i></a>
+        <a href="/users/edit"><i class="fa fa-edit fa-padding" style="float:right;color:white;">edit</i></a>
         <%end%>
         </p>
     </div>
