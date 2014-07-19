@@ -5,7 +5,7 @@
 	padding: 10px;
 	top: 150px;
 left: 0;
-	z-index: 501;
+	z-index: 0;
 	-webkit-transition-duration: 0.2s;
 	-moz-transition-duration: 0.2s;
 	-o-transition-duration: 0.2s;
@@ -52,7 +52,7 @@ left: 1112.796875px !important;
 }
 
 a.button.button-primary {
-background: rgb(53, 184, 173);
+background: rgb(48, 148, 139) !important;
 border-color: rgb(27, 165, 153);
 font-size: 17px;
 padding: 9px;
@@ -119,6 +119,7 @@ button.add-to-cart-button{
 	margin-top: -4px;
 	cursor: pointer;
 	padding: 5px;
+	width: 150px;
 }
 
 button.add-to-cart-button:hover {
@@ -333,7 +334,7 @@ font-weight: 600;
 	width: 100%;
 	background: url('/assets/background-main.jpg');
 	margin-top: 59px;
-	-webkit-filter: blur(2px);
+	/* -webkit-filter: blur(2px); */
 }
 
 div.video-player{
@@ -510,4 +511,39 @@ color: black;
 }
 #back-top a:hover span {
   background-color: #777;
+}
+
+/*Sold Button Disabled*/
+button#sold:disabled {
+color: white;
+background: rgba(48, 148, 139,0.5) !important;
+text-align: left;
+padding-left: 17px;
+cursor: default;
+cursor: default;
+}
+
+.table-header{
+	background: #F3EEEE;
+
+	color: rgb(119, 113, 113);
+	font-weight: bold;
+}
+
+.table-header th{
+	padding: 10px;
+}
+
+.cart-title{
+    padding: 10px;	
+}
+
+.cart-table tr td{
+    padding: 10px;
+	
+}
+
+.cart-remove-icon{
+	float: right;
+padding-top: 5px;
 }

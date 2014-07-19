@@ -1,50 +1,53 @@
 <div id="">
-  <div class="popup-head"> Cart </div>
-  <div class="totalamount">
-    <div class="table-heading">
-        <div class="header-attr-1">Book</div>
-        <div class="header-attr-2"> Seller</div>
-        <div class="header-attr-3"> Price</div>
-    </div>
-  </div>
+  <center><h4 class="cart-title"><i class="fa fa-shopping-cart fa-padding"></i>Cart</h4></center>
+  
+	<div>
+		<table class="cart-table" style="width:700px">
+		  	<tr class="table-header">
+		  		<th>Book</th>
+		  		<th>Seller</th>
+		  		<th>Price</th>
+		  	</tr>
+			<% if not books.nil?%>
+			  	<% books.each do |b|%>
+			      <tr id="cart_item_<%=b.id%>" style="border-bottom: 3px solid rgb(234, 235, 223);">
+			        <td style="">
+			          <%= image_tag b[:group].image.url, {:class=>"item-image"} %>
+			          	<%= link_to "<i class='fa fa-times-circle fa-padding cart-remove-icon'></i>".html_safe, remove_item_path(b.id), remote: true%>
+			          	<p class="book-title"> <%=b[:group].title %></p>
+			          	<p class="cart-author"> Author : <%=b[:group].author%></p>
+			          	<p class="cart-edition"> Edition : <%= b.edition%></p>
+			        </td>
+			        <td style="text-align: center; padding: 0px;">
+			        	<%=b[:user].first_name %>
+			        </td>
+			        <td style="text-align: center; padding: 0px;">
+			        	<i class="fa fa-inr fa-padding"></i><%=b.price%>
+			        </td>
+			      </tr>
+				<%end%>
+				<tr>
+					<td>
+					</td>
+					<td colspan="3" style="float:right">
+						Total Estimated Amount
+					</td>
 
-  <div class="maintable">
-  <table class="container_table">
-	<% if not books.nil?%>
-	  	<% books.each do |b|%>
-	    <tbody>
-	      <tr id="cart_item_<%=b.id%>">
-	        <td style="width: 300px;">
-	          <img src="1.jpg" class="item-image"/>
-	          <div style="margin-top:20px; color:black; font-size: 15px;">
-	          <div class="book-title"> <%=b[:group].title%></div>
-	          <div class="cart-author"><%=b[:group].author%></div>
-	          <div class="cart-edition"> Edition : <%= b.edition%></div>
-	          </div>
-	        </td>
-	        <td style="font-size: 12px; text-align: center; padding: 0px;">
-	         <div> <%=b[:user].first_name %></div>
-	        </td>
-	        <td style="font-size: 15px; text-align: center; padding: 0px;">Rs.<%=b.price%></td>
-	        <td><%= link_to "<i class='fa fa-times'></i>".html_safe, remove_item_path(b.id), remote: true%></td>
-	      </tr>
-	    </tbody>
-		<%end%>
-	<%else%>
-		<p>There are no Books in your cart!</p>
-	<%end%>
-  </table>
-  </div>
+					<td style="text-align:center;vertical-align: middle;">
+						<i class="fa fa-inr fa-padding"></i><% if not session[:cart_total].nil? %><%=session[:cart_total]%>
+						<% end %>
+					</td>
+			</tr>
+			<%else%>
+				<p>There are no Books in your cart!</p>
+			<%end%>
+			
+	  </table>
 
-  <div class="totalamount">
-      <div class="amounthead">
-            Total Estimated Amount
-            <span class="totalprice" id="cart-total-price"> <% if not session[:cart_total].nil? %><%=session[:cart_total]%><%else%>0<%end%></span>
-      </div>
-  </div>
-  <div class="checkoutbtn">
-	<p>
-		<%= link_to "Proceed", coupons_path, :class => 'button' %>
-	</p>
-  </div>
+	  <div> 
+	  	<%= link_to "Proceed", coupons_path, :class => 'button' %>
+	  </div>
+	</div>
 </div>
+
+	  
