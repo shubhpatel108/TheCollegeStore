@@ -58,7 +58,7 @@ TheCollegeStore::Application.routes.draw do
   get '/terms', to: 'our#terms'
   get '/about_us', to: 'our#about_us'
 
-  get '/:first_name/:id', to: 'profiles#show'
+  get '/profiles/:first_name-:last_name/:id', to: 'profiles#show'
   get '/my_orders', to: 'profiles#orders'
   # The priority is based upon order of creation:
   # first created -> highest priority.

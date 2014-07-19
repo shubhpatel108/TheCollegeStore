@@ -115,7 +115,7 @@
     </li>
     <% if user_signed_in? %>
     <li>
-      <a href="/<%=current_user.first_name%>/<%=current_user.id%>" class="">
+      <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
         <i class="fa fa-user fa-4x fa-color_grey"></i>
         <span class="nav-tooltip">My Profile </span>
       </a>
