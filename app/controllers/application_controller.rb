@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :initialize_variables
 
 	def select_college
 		c_id = params[:college_id]
@@ -11,12 +12,6 @@ class ApplicationController < ActionController::Base
 
 	def check_cookies
 		@book_groups = BookGroup.all 
-		$book_names = @book_groups.map(&:title)
-	    $categories = Category.all
-	    cat_ids = @book_groups.map(&:category_id)
-	    $categories.each do |cat|
-	      cat[:total_books] = cat_ids.count(cat.id)
-	    end
 		if current_user.nil? and cookies[:college_id].nil?
 				@colleges = College.all
 				render :template => 'shared/sellect_college'
@@ -45,5 +40,20 @@ class ApplicationController < ActionController::Base
 	end
 	rescue ActionController::RedirectBackError
 		redirect_to :books
+  end
+
+  def initialize_variables
+	if $book_names.nil?
+		@book_groups = BookGroup.all
+		$book_names = @book_groups.map(&:title)
+	end
+    if $categories.nil?
+		$categories = Category.all
+		@book_groups = BookGroup.all unless !@book_groups.nil?
+	    cat_ids = @book_groups.map(&:category_id)
+	    $categories.each do |cat|
+	      cat[:total_books] = cat_ids.count(cat.id)
+	    end
+    end
   end
 end
