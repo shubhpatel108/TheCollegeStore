@@ -1,4 +1,4 @@
-<div class="book" >
+<div class="book" onreadystatechange="me()">
 
   <div class="title-details">
       <p class="titlebox"><%= @book_group.title %></p>
@@ -73,7 +73,7 @@
 
             <td class="cartoption">
               <% if  book.reserved %> 
-                <button class="add-to-cart-button">Sold</button>
+                <button type="button" id="sold" class="add-to-cart-button sold" disabled><i class="fa fa-check fa-padding"></i>Sold</button>
               <% else %>
                 <a href="/add_item/<%= book.id%>" class="" name="Add to cart" data-remote=true> 
                   <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_white cart-icon"></i>Add To Cart</button>
@@ -86,4 +86,3 @@
     </table>
   </div>
 </div>
-
