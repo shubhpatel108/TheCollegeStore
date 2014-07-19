@@ -110,14 +110,19 @@ font-size: 22px !important;
 	padding: 2px 10px;
 }
 
-.add-to-cart-button{
-	background: rgb(53, 184, 173);
+button.add-to-cart-button{
+	background: rgb(48, 148, 139) !important;
 	border: none;
 	font-size: 16px;
 	color:white;
 	border-radius: 7px;
 	margin-top: -4px;
 	cursor: pointer;
+	padding: 5px;
+}
+
+button.add-to-cart-button:hover {
+background: rgb(61, 155, 147) !important;
 }
 
 a.cartbutton.cartbutton-primary {
@@ -450,4 +455,60 @@ color: black;
 	text-align: center;
 vertical-align: middle;
 color: green;
+}
+
+i.fa-chevron-circle-up.fa{
+	font-size: 50px;
+color: rgb(92, 92, 92);
+}
+
+/*Back To Top*/
+i.fa-chevron-circle-up.fa:hover{
+color: black;
+}
+
+ #back-top {
+  position: fixed;
+  bottom: 30px;
+  right:0;
+}
+
+#back-top a {
+  width: 108px;
+  display: block;
+  text-align: center;
+  font: 11px/100% Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #bbb;
+
+  /* transition */
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  transition: 1s;
+}
+#back-top a:hover {
+  color: #000;
+}
+
+/* arrow icon (span tag) */
+#back-top span {
+  width: 108px;
+  height: 108px;
+  display: block;
+  margin-bottom: 7px;
+  background: #ddd url(up-arrow.png) no-repeat center center;
+
+  /* rounded corners */
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+
+  /* transition */
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  transition: 1s;
+}
+#back-top a:hover span {
+  background-color: #777;
 }

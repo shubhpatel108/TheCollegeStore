@@ -17,13 +17,11 @@
   <%= stylesheet_link_tag    "form.css", "magnific-popup.css" %>
   <%= stylesheet_link_tag    "shreyans.css" %>
   <%= stylesheet_link_tag    "form.css"%>
-  <%= stylesheet_link_tag    "file.css"%>
-
-  
-  <%= csrf_meta_tags %>
-  <%= javascript_include_tag "main_layout_js.js" %>
-
+  <%= stylesheet_link_tag    "footer.css"%>
   <%= stylesheet_link_tag "search-bar"%>
+  <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag "main_layout_js.js" %>
 
   <!-- Validations -->
 <%= javascript_include_tag  "jquery.js" %>
@@ -37,7 +35,7 @@
 <%= javascript_include_tag "cool-popup.js" %>
 </head>
 
-<body id="library" class="gecko new-gecko">
+<body id="library top" class="gecko new-gecko">
 
 <div class="header-fixed">
 <div id="content-wrap">
@@ -65,7 +63,7 @@
               <ul class="user-list inline-popups">
                 <% if user_signed_in? %>
                 <li>
-                    <span style="display: -webkit-inline-box;padding: 8px;font-size: 17px;"><%= link_to "#{current_user.first_name}", edit_user_registration_path, :class => 'username-header' %></span>
+                    <span style="display: -webkit-inline-box;padding: 10px;font-size: 17px;"><%= link_to "#{current_user.first_name}", edit_user_registration_path, :class => 'username-header' %></span>
                 </li>
                 <%end%>
                 <% if !user_signed_in? %>
@@ -220,13 +218,12 @@
   <div id="cool-popup-register">
     <%= render :partial => "shared/register" %>
   </div>
-</div>
-<!-- ends -->
+</div><!-- ends -->
 
+<!-- Page Body -->
 <div id="page-body">
   <%= yield %>
 </div>
-
 
 <!-- Footer -->
 <div class="footer-wrapper">
@@ -309,28 +306,12 @@
 </div>
 </div>
 
+<p id="back-top">
+  <a href="top"><i class="fa-chevron-circle-up fa"></i></a>
+</p>
 
-<!-- Fixed Footer -->
-<div class="fixed-footer" style="display:none; background: rgb(43, 194, 127)">
-  <div style="margin-left: 250px;">
-    <div class="search-bar-footer" style="margin-left: 40px;">
-      <form id="main_search_bar" class="form-wrapper cf" style="width=auto;" action="/search">
-            <input type="text" name="query" placeholder="Search by ISBN/Title/Author" id="autocomplete" style="height:40px; border-radius: 4px 0px 0px 4px; padding: 15px;" required>
-            <button style="float:left;"type="submit">Search</button>
-      </form>
-    </div>
-                <div class="footer-icons">
-                <%= image_tag('Buy-256.png', :class => 'buy-icon header-icon', :style => 'width:50px') %>
-                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:50px'), new_book_group_path %>
-              </div>
-            </div>
-</div>
-
-<!---------------------------- JAVASCRIPT FOR LOGIN-REGISTRATION FORMS -------------------->
-
-<!---------------------------------- JAVASCRIPT ENDS ---------------------->
+<!-- Toast Message -->
 <%= javascript_include_tag "jquery.toastmessage.js"%>
-
   <script>
     //for flash messages
     var notice= '<%= flash[:notice] %>'
@@ -348,25 +329,10 @@
       FlashNotice("notice", error);
   </script>
 
-  <script>
-$(window).scroll(function () { 
-    //You've scrolled this much:
-       // $('p').text("You've scrolled " + $(window).scrollTop() + " pixels");
-       if($(window).scrollTop() > 150)
-        
-      $('.fixed-footer').css({
-        'display':'inline'
-      });
-
-      if($(window).scrollTop() < 150)
-        
-      $('.fixed-footer').css({
-        'display':'none'
-      });
-
-
-});
-</script>
 <%= javascript_include_tag "form-js.js" %>
+
+<!-- Back To Top -->
+<%= javascript_include_tag "back-to-top.js"%>
+
 </body>
 </html>
