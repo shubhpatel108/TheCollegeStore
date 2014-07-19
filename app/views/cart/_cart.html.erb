@@ -1,14 +1,14 @@
-<div id="">
+<div id="" style="background: white;padding: 30px;">
   <center><h4 class="cart-title"><i class="fa fa-shopping-cart fa-padding"></i>Cart</h4></center>
   
 	<div>
-		<table class="cart-table" style="width:700px">
-		  	<tr class="table-header">
+		<table class="cart-table" style="">
+			<% if not books.nil?%>
+			<tr class="table-header">
 		  		<th>Book</th>
 		  		<th>Seller</th>
 		  		<th>Price</th>
 		  	</tr>
-			<% if not books.nil?%>
 			  	<% books.each do |b|%>
 			      <tr id="cart_item_<%=b.id%>" style="border-bottom: 3px solid rgb(234, 235, 223);">
 			        <td style="">

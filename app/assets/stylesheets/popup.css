@@ -6,6 +6,9 @@
 
 
 
+
+
+
 .popup_back {
 	height: 100%;
 	left: 0;
@@ -39,6 +42,7 @@
 	padding: 5px;
 	right: 5px;
 	top: 0;
+	display: none;
 }
 
 .popup_close:hover {
@@ -51,9 +55,7 @@
 }
 
 div.popup {
-	background: #fff;
 	padding: 25px;
-	box-shadow: 0 3px 10px #222;
 }
 
 .preloader {
