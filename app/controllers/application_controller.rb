@@ -21,9 +21,9 @@ class ApplicationController < ActionController::Base
 				@colleges = College.all
 				render :template => 'shared/sellect_college'
 		elsif not current_user.nil?
-			redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id]
+			redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id], flash: flash
 		else
-			redirect_to :books
+			redirect_to :books, flash: flash
 		end
 	end
 

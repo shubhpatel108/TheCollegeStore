@@ -1,12 +1,67 @@
-<h2> Edit a Book! </h2>
-
-<%= form_tag({controller: "books", action:"update" }, {:method => :put,:id => "book_edit_form"}) do %>
-	<%= text_field_tag "title", @book_group.title %>
-	<%= text_field_tag "author", @book_group.author %>
-	<%= text_field_tag "publisher", @book_group.publisher %>
-	<%= collection_select :category, :id, Category.all, :id, :name %>
-	<%= number_field_tag "edition", @book.edition %>
-	<%= number_field_tag "price", @book.price %>
-	<%= text_field_tag "isbn", @book.isbn %>
-	<%= submit_tag "Update" %>
-<%end%>
+<div class="smart-wrap">
+	<div class="smart-forms smart-container wrap-3">
+			<div class="form-header header-black">
+				<h4><center><i class="fa fa-book"></i>Edit a Book! </center></h4>
+	        </div><!-- end .form-header section -->
+	        <div class="form-body theme-black">
+				<%= form_tag({controller: "books", action:"update" }, {:method => :put,:id => "book_edit_form", :class => "smart-form"}) do %>
+				<div class="section">
+		            <label for="book_title" class="field prepend-icon">
+						<%= text_field_tag "title", @book_group.title, :class => 'gui-input'  %>
+		            <label>
+		                <i class="fa fa-book field-icon"></i>
+		            </label>
+		            </label>
+		        </div>
+		        <div class="section">
+		            <label for="author" class="field prepend-icon">
+						<%= text_field_tag "author", @book_group.author, :class => 'gui-input'  %>
+		                <label>
+		                    <i class="fa fa-user field-icon"></i>
+		                </label>
+		            </label>
+		        </div>
+		        <div class="section">
+		            <label for="publisher" class="field prepend-icon">
+						<%= text_field_tag "publisher", @book_group.publisher, :class => 'gui-input'  %>
+		                <label>
+		                    <i class="fa fa-bookmark field-icon"></i>
+		                </label>
+		            </label>
+		        </div>
+		        <div class="section">
+		            <label for="category" class="field prepend-icon">
+						<%= collection_select :category, :id, Category.all, :id, :name, :class => 'gui-input'  %>
+		            </label>
+		        </div>
+		        <div class="section">
+		            <label for="price" class="field prepend-icon">
+						<%= number_field_tag "price", @book.price, :class => 'gui-input'  %>
+		                <label>
+		                    <i class="fa fa-inr field-icon"></i>
+		                </label>
+		            </label>
+		        </div>
+		        <div class="section">
+		            <label for="edition" class="field prepend-icon">
+						<%= number_field_tag "edition", @book.edition, :class => 'gui-input'  %>
+		                <label>
+		                    <i class="fa fa-bars field-icon"></i>
+		                </label>
+		            </label>
+		        </div>
+		        <div class="section">
+		            <label for="isbn" class="field prepend-icon">
+						<%= text_field_tag "isbn", @book.isbn, :class => 'gui-input'  %>
+		                <label>
+		                    <i class="fa fa-circle-thin field-icon"></i>
+		                </label>
+		            </label>
+		        </div>
+		        <div class="section">
+					<center><%= submit_tag "Update", :class => 'button btn-black' %></center>
+		        </div>
+				<%end%>
+			</div>
+	</div>
+</div>

@@ -26,27 +26,27 @@
 			        </td>
 			      </tr>
 				<%end%>
-				<tr>
-					<td>
-					</td>
-					<td colspan="3" style="float:right">
-						Total Estimated Amount
-					</td>
-
-					<td style="text-align:center;vertical-align: middle;">
-						<i class="fa fa-inr fa-padding"></i>
-						<span id="cart-total-price">
-							<% if not session[:cart_total].nil? %>
-								<%=session[:cart_total]%>
-							<%else%>
-							0
-							<% end %>
-						</span>
-					</td>
-			</tr>
 			<%else%>
 				<p>There are no Books in your cart!</p>
 			<%end%>
+			<tr>
+				<td>
+				</td>
+				<td colspan="3" style="float:right">
+					Total Estimated Amount
+				</td>
+
+				<td style="text-align:center;vertical-align: middle;">
+					<i class="fa fa-inr fa-padding"></i>
+					<span id="cart-total-price">
+						<% if not session[:cart_total].nil? %>
+							<%=session[:cart_total]%>
+						<%else%>
+						0
+						<% end %>
+					</span>
+				</td>
+			</tr>
 			
 	  </table>
 
