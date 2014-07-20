@@ -12,7 +12,8 @@ $('.smart-form').each(function() {
                     
                 rules: {
                         price: {
-                                required: true
+                                required: true,
+                                number: true
                         },
                         book_title: {
                                 required: true
@@ -27,15 +28,18 @@ $('.smart-form').each(function() {
                             required:true
                         },
                         edition: {
-                            required: true
+                            required: true,
+                            number: true
                         },
                         isbn: {
-                            required: true
+                            required: true,
+                            number: true
                         },
                         mobile: {
                             required: true,
                             minlength:10,
-                            maxlength:10
+                            maxlength:10,
+                            number: true,
                         },
                         newpasswordconfirm: {
                             required: function(element){
@@ -57,9 +61,11 @@ $('.smart-form').each(function() {
                         },
                         "book_group[books_attributes][0][price]": {
                             required: true,
+                            number: true,
                         },
                         "user[email]": {
                             required: true,
+                            email: true,
                         },
                         "user[password]": {
                             required: true,
@@ -71,6 +77,38 @@ $('.smart-form').each(function() {
                             required: true,
                         },
                         "user[mobile]": {
+                            required: true,
+                            minlength:10,
+                            maxlength:10,
+                            number: true,
+                        },
+                        "guest[email]": {
+                            required: true,
+                            email: true,
+                        },
+                        "guest[first_name]": {
+                            required: true,
+                        },
+                        "guest[last_name]": {
+                            required: true,
+                        },
+                        "guest[mobile]": {
+                            required: true,
+                            minlength:10,
+                            maxlength:10,
+                            number: true,
+                        },
+                        name: {
+                            required: true,
+                        },
+                        email: {
+                            required: true,
+                            email: true,
+                        },
+                        message: {
+                            required: true,
+                        },
+                        college_name: {
                             required: true,
                         }
                 },

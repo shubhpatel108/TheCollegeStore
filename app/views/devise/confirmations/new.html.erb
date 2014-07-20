@@ -7,15 +7,13 @@
       
       <div class="form-body theme-black">
 
-		<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post,:class=>'smart-form' }) do |f| %>
-
-			<div class="section">
-          		<label for="email" class="field prepend-icon">
-            	<%= f.email_field :email, autofocus: true,:class=>'gui-input', :name=>'email', :placeholder => 'Please Enter Your Email' %>
-        	  	</label>
-        	</div><!-- end section -->
-		  	
-		  	<div class="section">
+			<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post,:class=>'smart-form' }) do |f| %>
+				<div class="section">
+					<label for="email" class="field prepend-icon">
+						<%= f.email_field :email, autofocus: true,:class=>'gui-input', :placeholder => 'Please Enter Your Email' %>
+					</label>
+				</div><!-- end section -->
+				<div class="section">
 		  		<%= f.submit "Resend confirmation instructions", :class=>'button btn-black' %>
 		  	</div>
 		<% end %>

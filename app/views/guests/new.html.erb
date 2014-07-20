@@ -7,22 +7,22 @@
       <%= form_for(@guest, :html => {:class=>'smart-form'}) do |f| %>
         <div class="section">
           <label for="firstname" class="field prepend-icon">
-            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'gui-input', :name=>'guest[first_name]' %>
+            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'gui-input' %>
           </label>
         </div>
         <div class="section">
           <label for="lastname" class="field prepend-icon">
-              <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'gui-input',:name=>"guest[last_name]" %>
+              <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'gui-input' %>
           </label>
         </div>
         <div class="section">
           <label for="email" class="field prepend-icon">
-            <%= f.email_field :email, :placeholder => 'Email', :class=>'gui-input',:name=>"guest[email]" %>
+            <%= f.email_field :email, :placeholder => 'Email', :class=>'gui-input' %>
           </label>
         </div>
         <div class="section">
           <label for="mobile" class="field prepend-icon">
-            <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'gui-input',:name=>"guest[mobile]" %>
+            <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'gui-input' %>
           </label>
         </div>
         <div class="section">

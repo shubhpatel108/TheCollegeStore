@@ -29,45 +29,9 @@
 	<%end%>
 	<p id="college_entry" style="text-align:center">
 		<%= link_to_function "Not in the list?", 'request_admin()' %>
-		
 	</p>
-<div id="request_admin" style="display:none; text-align: center">
-	<%= form_tag(:controller=>'/colleges', :action=>'request_admin_to_add_college') do %>
-	<center>
-		<table class="college-select">
-			<tr>
-				<td>
-					<div class="section">
-			 			<label class="field prepend-icon">
-							<%= text_field_tag :college_name, '',:placeholder => "Enter your college", :class=>'gui-input' %>
-							<label class="field-icon"><i class="fa fa-bank"></i></label>
-						</label>
-					</div>
 
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="section">
-			 			<label class="field prepend-icon">
-							<%= email_field_tag :email,'', :placeholder => "Enter your email id", :class=>'gui-input' %>
-							<label class="field-icon"><i class="fa fa-envelope"></i></label>
-						</label>
-					</div>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<div class="section">
-						<center><%= submit_tag "Send", :class => 'button btn-black' %></center>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</center>
-	<% end %>
-</div>
+	<%= render :partial => "shared/request_form"%>
 
 <div style="text-align:center;" id="vendor_entry">
 	<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
