@@ -24,7 +24,7 @@ left: 0;
 
 div#page-body{
 	width: 73%;
-	margin-left: 100px;
+	margin-left: 10%;
 	margin-top: 100px;
 	height: auto;
 }
@@ -478,4 +478,11 @@ cursor: default;
 .cart-remove-icon{
 	float: right;
 padding-top: 5px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 640px) { 
+.video-entry{
+    display: none;
+}
+
 }
