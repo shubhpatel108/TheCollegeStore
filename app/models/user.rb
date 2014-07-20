@@ -8,14 +8,14 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
 									:first_name, :last_name, :mobile, :college_id,
-									:points, :da_id
+									:points, :da_roll
   # attr_accessible :title, :body
 
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
-  validates :mobile, presence: true,
-					:numericality => true,
-                 	:length => { :minimum => 10, :maximum => 15 }
+  validates :password, presence: true, :on => :create
+  # validates :mobile, presence: true,
+		# 			:numericality => true,
+  #                	:length => { :minimum => 10, :maximum => 15 }
   validates :first_name, :last_name, :presence => true
   
   has_many :books

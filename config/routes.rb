@@ -21,6 +21,7 @@ TheCollegeStore::Application.routes.draw do
   get '/application/select_college', to: 'application#select_college'
   devise_scope :user do
     get 'register', to: 'devise/registrations#new', as: :register
+    post 'update_mobile', to: 'registrations#update_mobile', as: :update_mobile
     get 'login', to: 'devise/sessions#new', as: :login
     get 'logout', to: 'devise/sessions#destroy', as: :logout
   end
