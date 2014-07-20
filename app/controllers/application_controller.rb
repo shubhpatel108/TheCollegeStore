@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
 
 	def select_college
 		c_id = params[:college_id]
-		c_name = College.where(:id => c_id).first.name
+		@college = College.where(:id => c_id).first
+		c_name = @college.name
 		cookies[:college_id] = c_id
 		cookies[:college_name] = c_name
+		if not current_user.nil?
+			current_user.college = @college
+			current_user.save!
+		end
 	  	redirect_to :controller => "books", :action => "index"
 	end
 
@@ -16,7 +21,7 @@ class ApplicationController < ActionController::Base
 				@colleges = College.all
 				render :template => 'shared/sellect_college'
 		elsif not current_user.nil?
-			redirect_to :action => 'select_college', :college_id => current_user.college_id
+			redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id]
 		else
 			redirect_to :books
 		end

@@ -178,7 +178,7 @@ ActiveRecord::Schema.define(:version => 20140720100918) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.integer  "points"
-    t.integer  "da_id"
+    t.integer  "da_roll"
   end
 
   add_index "users", ["college_id"], :name => "index_users_on_college_id"
