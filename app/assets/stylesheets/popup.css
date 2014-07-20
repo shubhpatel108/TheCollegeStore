@@ -21,8 +21,8 @@
 .popup_cont {
 	position: fixed;
 	z-index: 102;
-	left: 350px !important;
-	width: 750px;
+	left: 25% !important;
+	width: 50%;
 }
 
 .preloader {
