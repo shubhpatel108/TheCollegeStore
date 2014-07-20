@@ -21,11 +21,9 @@ class OurController < ApplicationController
   end
 
   def send_mail
-  	name = params[:Name]
-  	email = params[:Email]
-  	subject = params[:Subject]
-  	message = params[:Message]
-
+	name = params[:name]
+	email = params[:email]
+	message = params[:message]
   	ContactUsMailer.email_us(name, email, message).deliver
   	redirect_to '/', notice: 'Your message has successfully sent, we will contact you soon.'
   end
