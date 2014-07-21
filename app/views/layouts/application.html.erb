@@ -19,9 +19,9 @@
   <%= stylesheet_link_tag    "default.css", "grid_layout.css", "know-more.css", "login_with_fb.css" %>
   <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css", "jquery.toastmessage.css"%>
   <%= stylesheet_link_tag    "font-awesome.css", "main_layout", "main_responsive", "search-bar"%>
-  <%= stylesheet_link_tag    "form.css", "magnific-popup.css" %>
+  <%= stylesheet_link_tag    "form.css" %>
+  <%= stylesheet_link_tag    "popup.css" %>
   <%= stylesheet_link_tag    "shreyans.css" %>
-  <%= stylesheet_link_tag    "form.css"%>
   <%= stylesheet_link_tag    "footer.css"%>
   <%= stylesheet_link_tag    "header.css"%>
 
@@ -36,7 +36,7 @@
 <%= javascript_include_tag "additional-methods.js" %>
 
 <!-- POpup -->
-<%= stylesheet_link_tag "popup.css" %>
+
 <%= javascript_include_tag "jquery.popup.min.js" %>
 <%= javascript_include_tag "cool-popup.js" %>
 
@@ -195,7 +195,7 @@
                   <% $categories.each do |c|%>
                   <li>
                     <a  id="category_<%=c.id%>_link" class="category_wise_books" href="/book_groups/category/<%=c.id%>" data-remote=true>
-                      <span><%= c.name%><span>
+                      <span class="cat-name"><%= c.name%></span>
                       <span class="cat-book-count"><b><%= c.total_books%></b></span>
                       </a>
                   </li>
@@ -234,7 +234,7 @@
 <%= render :partial => "shared/footer" %>
 
 <p id="back-top">
-  <a href="top"><i class="fa-chevron-circle-up fa"></i></a>
+  <a href="#top"><i class="fa-chevron-circle-up fa"></i></a>
 </p>
 
 <!-- Toast Message -->

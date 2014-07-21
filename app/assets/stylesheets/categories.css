@@ -1,11 +1,10 @@
 /*for small badges for category book count*/
+
 .cat-book-count {
     background:#BDBDBD;
     position: relative;
-    top: -2px;
     right: -20px;
     min-width:14px;
-    height: 14px;
     color:#ffffff;
     border-radius: 25%;
     padding: 2px;
@@ -15,7 +14,9 @@
     float: right;
 }
 /*end*/
-
+.filter-list a{
+    white-space: normal !important;
+}
 .image-cat {
 
     width: 240px;
@@ -26,7 +27,7 @@
 
 .view {
     width: 240px;
-    height: 250px;
+    height: 275px;
     margin: 10px;
     margin-left: 45px;
     float: left;
@@ -40,7 +41,7 @@
 }
 .view .mask, .view .content {
     width: 240px;
-    height: 250px;
+    height: 275px;
     position: absolute;
     overflow: hidden;
     top: 0;

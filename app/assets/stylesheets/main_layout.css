@@ -5022,7 +5022,7 @@ overflow:hidden
 }
 
 .fixed-sidebar .scroll-container{
-overflow-y:scroll;
+overflow-y: hidden;
     height:100%;
     margin-right:-15px
 }
