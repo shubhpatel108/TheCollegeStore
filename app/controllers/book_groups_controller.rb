@@ -21,6 +21,7 @@ class BookGroupsController < ApplicationController
       end
       @old_book_group.books << @new_book
       @old_book_group.save
+      $categories[$categories.find_index {|i| i.id == @old_book_group.category_id}].total_books += 1
       BookMailer.notify_wishers(@old_book_group).deliver
       flash[:success] = "Your Book is added!"
       redirect_to :books
@@ -35,6 +36,7 @@ class BookGroupsController < ApplicationController
           @new_book.college_id = current_user.college_id
           @new_book.save
         end
+        $categories[$categories.find_index {|i| i.id == @book_group.category_id}].total_books += 1
         flash[:success] = "Your Book is added!"
         redirect_to :books
       else

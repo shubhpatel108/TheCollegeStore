@@ -25,13 +25,13 @@ left: 0;
 div#page-body{
 	width: 73%;
 	margin-left: 6%;
-	margin-top: 50px;
+	margin-top: 75px;
 	height: auto;
 }
 
 div.grid-20.push-80.fixed-sidebar{
 position: absolute !important;
-top: 50px !important;
+top: 75px !important;
 left: none;
 margin-left: 30px !important;
 background: none;

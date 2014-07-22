@@ -51,7 +51,7 @@
 
 .popup_back {
 	cursor: pointer;
-	background-color: #222;
+	background-color: #222 !important;
 }
 
 div.popup {

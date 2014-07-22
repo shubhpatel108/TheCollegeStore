@@ -44,10 +44,12 @@ class BooksController < ApplicationController
       if @bg.title!=all[:title] or @bg.author!=all[:author] or @bg.publisher!=all[:publisher]
           @old_book_group = BookGroup.where(title: all[:title], author: all[:author], publisher: all[:publisher]).first
         if not @old_book_group.nil?
+          $categories[$categories.find_index {|i| i.id == @book.book_group.category_id}].total_books -= 1
           @old_book_group.books << @book
           @book.book_group = @old_book_group
           @book.save
           @old_book_group.save
+          $categories[$categories.find_index {|i| i.id == @old_book_group.category_id}].total_books += 1
         else
           @new_bg = BookGroup.create(:title => all[:title], :author => all[:author], :publisher => all[:publisher])
           @new_bg.books << @book
