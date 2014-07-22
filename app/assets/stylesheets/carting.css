@@ -23,7 +23,6 @@
 }
 
 .popup-head {
-
 font-size: 2em;
 margin-top: 0px;
 color: #A7A1AE;
@@ -108,58 +107,37 @@ padding-bottom: 20px;
 }*/
 
 .item-image{
-
   width: 50px;
-  
-
   height: 63px;
-  
-
   float: left;
-  
-
   padding: 10px;
-
   padding-top: 6px;
-
 }
 
 .cartout-img {
-
   width: 40px;
   height: 40px;
   margin-left: 20px;
-
-
 }
 
 
 .cart-author {
-
   padding-top:1%;
   font-size:0.8em;
 }
 
 .cart-edition {
-
   font-size:0.8em;
-
 }
 
 
 .totalamount {
-
   /* width: 100%; */
-  
-
   /* height: 21px; */
   background-color :#cccccc ;
-  
-
 }
 
 .amounthead {
-
   font-size: 1.5em;
   font-weight: bold;
   padding-top: 12px;
@@ -168,53 +146,43 @@ padding-bottom: 20px;
 }
 
 .header-attr-1 {
-
   font-size: 1.3em;
   font-weight: bold;
   margin-left: 140px; 
   margin-top: 12px;
   color:black;
   float: left;
-  
 }
 
 .header-attr-2 {
-
   font-size: 1.3em;
   margin-top: 12px;
   margin-left: 195px; 
   color:black;
   float: left;
   font-weight: bold;
-  
 }
 
 .header-attr-3 {
-
   font-size: 1.3em;
   font-weight: bold;
   margin-left: 115px; 
   color:black;
   float: left;
   margin-top: 12px;
-  
 }
 
 .header-attr-4 {
-
   font-size: 1.3em;
   font-weight: bold;
   margin-left: 115px; 
   color:black;
   float: left;
   margin-top: 12px;
-  
 }
 
 .totalprice {
-
   margin-left: 220px;
-
 }
 
 .maintable {
@@ -230,4 +198,5 @@ padding-bottom: 20px;
 div.checkoutbtn{
 float: right;
 padding: 15px 0;
+}
 }
