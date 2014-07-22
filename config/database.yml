@@ -23,7 +23,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: tcs_pro.sqlite3
+  adapter: mysql
+  database: tcs_pro.mysql
+  username: 'root'
+  password: 'root'
   pool: 5
   timeout: 5000
