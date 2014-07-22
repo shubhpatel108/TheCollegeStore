@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
   attr_accessible :edition, :isbn, :price, :user_id, :college_id, :book_group_id
   validates :price, presence: true, :numericality => true
-  validates :edition, :numericality => true
+  validates :edition, :numericality => true,:allow_blank => true
   attr_accessible :reserved, :sold, :buyer_id
 
   belongs_to :user
