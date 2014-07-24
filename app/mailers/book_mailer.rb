@@ -1,17 +1,30 @@
 class BookMailer < ActionMailer::Base
-  default from: "no_reply@tcs.com"
+  default from: "sales@thecollegestore.in"
+
+  def load_settings
+    @@smtp_settings = {
+      :address              => "smtp.zoho.com",
+      :port                 => "465",
+      :domain               => "thecollegestore.in",
+      :authentication       => "ssl",
+      :user_name            => "sales@thecollegestore.in",
+      :password             => "sales@tcs"
+    }
+  end
 
   def request_seller(s_ids, buyer, message, bookdetail)
-	@sellers = User.where(:id => s_ids)
-	@seller_emails = @sellers.map(&:email)
-	@message = message
-  @bookdetail = bookdetail
-	@buyer_email = buyer.email
-	@buyer_name = buyer.first_name + " " + buyer.last_name
-  	mail(:to=>@seller_emails,:subject=>"Request to buy your book | TheCollegeStore")
+    load_settings
+    @sellers = User.where(:id => s_ids)
+    @seller_emails = @sellers.map(&:email)
+    @message = message
+    @bookdetail = bookdetail
+    @buyer_email = buyer.email
+    @buyer_name = buyer.first_name + " " + buyer.last_name
+    mail(:to=>@seller_emails,:subject=>"Request to buy your book | TheCollegeStore")
   end
 
   def buyer_invoice(seller, books, coupons)
+    load_settings
   	@email = seller.email
   	@name = seller.first_name + " " + seller.last_name
   	@books = books
@@ -23,6 +36,7 @@ class BookMailer < ActionMailer::Base
   end
 
   def notify_wishers(bg)
+    load_settings
     u_ids = Wishlist.where(:book_group_id => bg.id).map(&:user_id)
     wishers = User.where(:id => u_ids)
     @wisher_emails = wishers.collect(&:email).join(",")
