@@ -27,14 +27,6 @@ $('.smart-form').each(function() {
                         publisher: {
                             required:true
                         },
-                        edition: {
-                            required: true,
-                            number: true
-                        },
-                        isbn: {
-                            required: true,
-                            number: true
-                        },
                         mobile: {
                             required: true,
                             minlength:10,
