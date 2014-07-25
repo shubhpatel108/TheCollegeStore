@@ -51,7 +51,7 @@
   <!-- <div class="fixed-heading"> -->
     <!-- <div class="grid-container grid-parent"> -->
       <!-- <div class="primary-heading"> -->
-        <!-- <div class="global-secondary-nav"> -->
+        <!-- <dgiv class="global-secondary-nav"> -->
           
           <!-- <span id="header-title"> -->
             <div class="logo-div" style="float:left">
@@ -110,38 +110,6 @@
       </a>      
     </li>
     <li>
-      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
-        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
-        <span class="nav-tooltip">Facebook</span>
-      </a>      
-    </li>
-    <li>
-      <a href="#" class="">
-         <span class="fa fa-android fa-4x fa-color_grey"></span>
-         <span class="nav-tooltip">Android App</span>
-      </a>      
-    </li>
-    <% if user_signed_in? %>
-    <li>
-      <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
-        <i class="fa fa-user fa-4x fa-color_grey"></i>
-        <span class="nav-tooltip">My Profile </span>
-      </a>
-    </li>
-    <% end -%>
-    <li>
-      <a href="/my_orders" class="">
-        <span class="fa fa-book fa-4x fa-color_grey"></span>
-        <span class="nav-tooltip">Orders</span>
-      </a>      
-    </li>
-    <li>
-      <a href="/wishlist/show" class="">
-          <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
-          <span class="nav-tooltip">Wish List</span>
-      </a>      
-    </li>
-    <li>
       <a href="#cart-content" class="animated-popup-cart">
         <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
         <div id="cart-count-wrapper"><span id="cart-item-count">
@@ -153,6 +121,38 @@
         <span class="nav-tooltip">Cart</span>
       </a>
     </li>
+    <li>
+      <a href="/book_groups/new" class="">
+         <span class="fa fa-plus-square fa-4x fa-color_grey"></span>
+         <span class="nav-tooltip">Sell a Book</span>
+      </a>      
+    </li>
+    <li>
+      <a href="/wishlist/show" class="">
+          <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
+          <span class="nav-tooltip">Wish List</span>
+      </a>      
+    </li>
+    <li>
+      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
+        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Facebook</span>
+      </a>      
+    </li>
+    <% if user_signed_in? %>
+    <li>
+      <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
+        <i class="fa fa-user fa-4x fa-color_grey"></i>
+        <span class="nav-tooltip">My Profile </span>
+      </a>
+    </li>
+    <li>
+      <a href="/my_orders" class="">
+        <span class="fa fa-truck fa-4x fa-color_grey"></span>
+        <span class="nav-tooltip">Orders</span>
+      </a>      
+    </li>
+    <% end -%>
     <li>
       <a href="/contact_us" class="">
           <span class="fa fa-phone fa-4x fa-color_grey"></span>
