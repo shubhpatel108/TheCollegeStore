@@ -1,14 +1,16 @@
 class CollegeMailer < ActionMailer::Base
 
   def load_setting
-    :address              => "smtp.zoho.com",
-    :port                 => 465,
-    :user_name            => "contact@thecollegestore.in",
-    :password             => "saq1sazx",
-    :authentication       => :login,
-    :ssl                  => true,
-    :tls                  => true,
-    :enable_starttls_auto => true
+    @@smtp_settings = {
+      :address              => "smtp.zoho.com",
+      :port                 => 465,
+      :user_name            => "contact@thecollegestore.in",
+      :password             => "saq1sazx",
+      :authentication       => :login,
+      :ssl                  => true,
+      :tls                  => true,
+      :enable_starttls_auto => true
+    }
   end
 
   def request_admin_to_add_college(email,college_name)
