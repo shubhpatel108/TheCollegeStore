@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
                        :foreign_key => "user_id"
   has_many :wishes, :through => :wishlists, :source => :wish
 	def self.find_for_google_oauth2(auth)
-	  where(auth.slice(:provider, :authid)).first_or_create do |user|
+	  where(auth.slice(:provider, :authid, :email)).first_or_create do |user|
 	    user.provider = auth.provider
 	    user.authid = auth.uid
 	    user.email = auth.info.email
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 	end
 
 	def self.find_for_facebook_oauth(auth)
-	  where(auth.slice(:provider, :authid)).first_or_create do |user|
+	  where(auth.slice(:provider, :authid, :email)).first_or_create do |user|
 	    user.provider = auth.provider
 	    user.authid = auth.uid
 	    user.email = auth.info.email
