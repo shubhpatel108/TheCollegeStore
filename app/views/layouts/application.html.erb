@@ -9,7 +9,7 @@
 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>TheCollegeStore</title>
   <!--<%= stylesheet_link_tag    "application.css" %> -->
@@ -30,216 +30,221 @@
   <%= javascript_include_tag "main_layout_js.js" %>
 
   <!-- Validations -->
-<%= javascript_include_tag  "jquery.js" %>
-<%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
-<%= stylesheet_link_tag "smart-forms.css" %>
-<%= javascript_include_tag "additional-methods.js" %>
+  <%= javascript_include_tag  "jquery.js" %>
+  <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
+  <%= stylesheet_link_tag "smart-forms.css" %>
+  <%= javascript_include_tag "additional-methods.js" %>
 
-<!-- POpup -->
+  <!-- POpup -->
 
-<%= javascript_include_tag "jquery.popup.min.js" %>
-<%= javascript_include_tag "cool-popup.js" %>
+  <%= javascript_include_tag "jquery.popup.min.js" %>
+  <%= javascript_include_tag "cool-popup.js" %>
 
 
 </head>
 
 <body id="library top" class="gecko new-gecko">
 
-<div class="header-fixed">
-<div id="content-wrap">
-  <div id="header-content">
-  <!-- <div class="fixed-heading"> -->
-    <!-- <div class="grid-container grid-parent"> -->
+  <div class="header-fixed">
+    <div id="content-wrap">
+      <!-- <div class="fixed-heading"> -->
+      <!-- <div class="grid-container grid-parent"> -->
       <!-- <div class="primary-heading"> -->
-        <!-- <dgiv class="global-secondary-nav"> -->
-          
-          <!-- <span id="header-title"> -->
-            <div class="logo-div" style="float:left">
-                <%= image_tag("logo.jpg",:class => 'logo') %>
-            </div>
-            <div id="top_bar"></div>
-            <div class="search-bar-header" id="search-bar-header">
-                <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
-                <br>
-                <div class="icons">
-                <%= image_tag('Buy-256.png', :class => 'buy-icon header-icon', :style => 'width:75px') %>
-                <%= link_to image_tag('Sell-256.png', :class => 'sell-icon header-icon', :style => 'width:75px'), '/book_groups/new' %>
-              </div>
-            </div>
-            
-            <div class="user-bar-header" style="padding: 10px 20px; float:right;">        
-              <ul class="user-list inline-popups">
-                <% if user_signed_in? %>
-                <li>
-                    <span style="display: -webkit-inline-box;padding: 10px;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
-                </li>
-                <%end%>
-                <% if !user_signed_in? %>
-                  <li>     
-                    <a href="#cool-popup" class="animated_popup button button-primary">Login<i class="fa fa-sign-in fa-padding"></i></a>
+
+      <!-- <div class="global-secondary-nav"> -->
+
+      <!-- <span id="header-title"> -->
+
+      <!--   LOGO -->
+            <!--<div class="logo-div">
+                  <%= image_tag("logo.png",:class => 'logo') %>
+                </div> -->
+                <a href="#" id="logo"></a>
+                                    <a href="#" id="menu-name">TheCollegeStore</a>
+
+                <nav>
+                  <a href="#" id="menu-icon"><i class="fa fa-bars fa-menu-icon"></i></a>
+                  <ul class="nav-ul">
+                    <li class="nav-li searchbar">
+                      <!--<div id="top_bar"></div>-->
+                      <!--  Search -->
+                      <!--<div class="search-bar-header" id="search-bar-header"> -->
+                      <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+                      <!--</div> -->
+                    </li>
+                    <!-- User -->
+                    <!--<div class="user-bar-header">        -->
+                    <!-- <ul class="user-list inline-popups"> -->
+                    <span class="right-user">
+                    <% if user_signed_in? %>
+                    <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
                     <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
-                  </li>
-                  <li>
-                    <a href="#cool-popup-register" class="animated_popup-register button button-primary">Register<i class="fa fa-user fa-padding"></i></a>
-                  </li>
-                <%end%>
-                 <li style="padding: 6px 0;">
-                    <a href="#college-select-popup" class="animated-popup-college-select">
-                      <span class="select-college"><%= cookies[:college_name] %></span>
-                      <span>
-                        <% if cookies[:college_name].nil? %>
+                    <li class="nav-li">
+                      <span style="display: -webkit-inline-box;display: -moz-inline-stack; padding: 10px;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
+                    </li>
+                    <%end%>
+                    <% if !user_signed_in? %>
+                    <li class="nav-li">     
+                      <a href="#cool-popup" class="animated_popup button button-primary">Login<i class="fa fa-sign-in fa-padding"></i></a>
+                      <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
+                    </li>
+                    <li class="nav-li">
+                      <a href="#cool-popup-register" class="animated_popup-register button button-primary">Register<i class="fa fa-user fa-padding"></i></a>
+                    </li>
+                    <%end%>
+                    <li class="nav-li select-college">
+                      <a href="#college-select-popup" class="animated-popup-college-select">
+                        <span class="select-college"><%= cookies[:college_name] %></span>
+                        <span>
+                          <% if cookies[:college_name].nil? %>
                           <span style="color:white;">Select your college</span>
-                        <%end%>
-                        <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
+                          <%end%>
+                          <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
+                        </li>
+                        </span>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+
+
+                <div id="shelf">
+
+                  <ul class="global-nav">
+                    <li>
+                      <a href="/books" class="">
+                        <i class="fa fa-home fa-4x fa-color_grey"></i>
+                        <span class="nav-tooltip">Home</span>
+                      </a>      
+                    </li>
+                    <li>
+                      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
+                        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
+                        <span class="nav-tooltip">Facebook</span>
+                      </a>      
+                    </li>
+                    <li>
+                      <a href="#" class="">
+                       <span class="fa fa-android fa-4x fa-color_grey"></span>
+                       <span class="nav-tooltip">Android App</span>
+                     </a>      
+                   </li>
+                   <% if user_signed_in? %>
+                   <li>
+                    <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
+                      <i class="fa fa-user fa-4x fa-color_grey"></i>
+                      <span class="nav-tooltip">My Profile </span>
+                    </a>
                   </li>
-                </ul>
-              </div>
-              
-    </div>
-  </div>
-</div>
-
-
-<div id="shelf">
-
-  <ul class="global-nav">
-    <li>
-      <a href="/books" class="">
-        <i class="fa fa-home fa-4x fa-color_grey"></i>
-        <span class="nav-tooltip">Home</span>
-      </a>      
-    </li>
-    <li>
-      <a href="#cart-content" class="animated-popup-cart">
-        <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
-        <div id="cart-count-wrapper"><span id="cart-item-count">
-        <% if session[:cart].nil? %>
-        0
-        <% else%>
-        <%= session[:cart].count%>
-        <%end%></span></div>
-        <span class="nav-tooltip">Cart</span>
-      </a>
-    </li>
-    <li>
-      <a href="/book_groups/new" class="">
-         <span class="fa fa-plus-square fa-4x fa-color_grey"></span>
-         <span class="nav-tooltip">Sell a Book</span>
-      </a>      
-    </li>
-    <li>
-      <a href="/wishlist/show" class="">
-          <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
-          <span class="nav-tooltip">Wish List</span>
-      </a>      
-    </li>
-    <li>
-      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
-        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
-        <span class="nav-tooltip">Facebook</span>
-      </a>      
-    </li>
-    <% if user_signed_in? %>
-    <li>
-      <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
-        <i class="fa fa-user fa-4x fa-color_grey"></i>
-        <span class="nav-tooltip">My Profile </span>
-      </a>
-    </li>
-    <li>
-      <a href="/my_orders" class="">
-        <span class="fa fa-truck fa-4x fa-color_grey"></span>
-        <span class="nav-tooltip">Orders</span>
-      </a>      
-    </li>
-    <% end -%>
-    <li>
-      <a href="/contact_us" class="">
-          <span class="fa fa-phone fa-4x fa-color_grey"></span>
-          <span class="nav-tooltip">Contact Us</span>
-      </a>      
-    </li>
-    <% if user_signed_in? %>
-      <li>
-        <a href="/logout" class="">
-            <span class="fa fa-sign-out fa-4x fa-color_grey"></span>
-            <span class="nav-tooltip">Log out</span>
-        </a>      
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-    <div class="video-entry">
-      <ul style="display:flex">
-        <li style="width:65%">
-          Text Here
-        </li>
-        <li style="margin: 20px; width:30%; background: black;">
-          <iframe width="100%" height="300" src="//www.youtube.com/embed/wt9vaR7iXps?rel=0&theme=light" frameborder="0" allowfullscreen></iframe>
-        </li>
-      </ul>
-    </div>
-
-  <div id="featurette-2" class="grid-container featurette" data-featurette="library-index">
-    <div style="right: auto; width: 250.2px;" class="grid-20 push-80 fixed-sidebar">
-      <div style="" class="scroll-mask">
-        <div class="scroll-container">
-          <div class="content-filter">
-            <div class="filters-container">
-              <div id="topics-expander" class="form-group">
-                <h4><a>Topics <i class="fa fa-angle-down fa-lg"></i></a></h4>
-                <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
-                  <li><a id="all_categories_link"href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
-                      
-                  <% $categories.each do |c|%>
+                  <% end -%>
                   <li>
-                    <a  id="category_<%=c.id%>_link" class="category_wise_books" href="/book_groups/category/<%=c.id%>" data-remote=true>
-                      <span class="cat-name"><%= c.name%></span>
-                      <span class="cat-book-count"><b><%= c.total_books%></b></span>
-                      </a>
+                    <a href="/my_orders" class="">
+                      <span class="fa fa-book fa-4x fa-color_grey"></span>
+                      <span class="nav-tooltip">Orders</span>
+                    </a>      
                   </li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                  <li>
+                    <a href="/wishlist/show" class="">
+                      <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
+                      <span class="nav-tooltip">Wish List</span>
+                    </a>      
+                  </li>
+                  <li>
+                    <a href="#cart-content" class="animated-popup-cart">
+                      <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
+                      <div id="cart-count-wrapper"><span id="cart-item-count">
+                        <% if session[:cart].nil? %>
+                        0
+                        <% else%>
+                        <%= session[:cart].count%>
+                        <%end%></span></div>
+                        <span class="nav-tooltip">Cart</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/contact_us" class="">
+                        <span class="fa fa-phone fa-4x fa-color_grey"></span>
+                        <span class="nav-tooltip">Contact Us</span>
+                      </a>      
+                    </li>
+                    <% if user_signed_in? %>
+                    <li>
+                      <a href="/logout" class="">
+                        <span class="fa fa-sign-out fa-4x fa-color_grey"></span>
+                        <span class="nav-tooltip">Log out</span>
+                      </a>      
+                    </li>
+                    <% end %>
+                  </ul>
+                </div>
 
-<!-- All Popup -->
-<div style="display:none">
-  <div id="college-select-popup" >
-    <%= render :partial => "shared/person_category_form"%>
-  </div>
-  <div id="cart-content">
-    <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
-  </div>
-  <div id="cool-popup">
-    <%= render :partial => "shared/login" %>
-  </div>
-  <div id="cool-popup-register">
-    <%= render :partial => "shared/register" %>
-  </div>
-</div><!-- ends -->
+                <div class="video-entry">
+                  <ul style="display:flex">
+                    <li style="width:65%">
+                      Text Here
+                    </li>
+                    <li style="margin: 20px; width:30%; background: black;">
+                      <iframe width="100%" height="300" src="//www.youtube.com/embed/wt9vaR7iXps?rel=0&theme=light" frameborder="0" allowfullscreen></iframe>
+                    </li>
+                  </ul>
+                </div>
+                
+                  <div class="right-sidebar">
+                    <div style="" class="scroll-mask">
+                      <div class="scroll-container">
+                        <div class="content-filter">
+                          <div class="filters-container">
+                            <div id="topics-expander" class="form-group">
+                              <h4><a>Topics <i class="fa fa-angle-down fa-lg"></i></a></h4>
+                              <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
+                                <li><a id="all_categories_link"href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
+                                <% $categories.each do |c|%>
+                                <li>
+                                  <a  id="category_<%=c.id%>_link" class="category_wise_books" href="/book_groups/category/<%=c.id%>" data-remote=true>
+                                    <span class="cat-name"><%= c.name%></span>
+                                    <span class="cat-book-count"><b><%= c.total_books%></b></span>
+                                  </a>
+                                </li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-<!-- Page Body -->
-<div id="page-body">
-  <%= yield %>
-</div>
+                <!-- All Popup -->
+                <div style="display:none">
+                  <div id="college-select-popup" >
+                    <%= render :partial => "shared/person_category_form"%>
+                  </div>
+                  <div id="cart-content">
+                    <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
+                  </div>
+                  <div id="cool-popup">
+                    <%= render :partial => "shared/login" %>
+                  </div>
+                  <div id="cool-popup-register">
+                    <%= render :partial => "shared/register" %>
+                  </div>
+                </div><!-- ends -->
 
-<!-- Footer -->
-<%= render :partial => "shared/footer" %>
+                <!-- Page Body -->
+                <div id="page-body">
+                  <%= yield %>
+                </div>
 
-<p id="back-top">
-  <a href="#top"><i class="fa-chevron-circle-up fa"></i></a>
-</p>
+                <!-- Footer -->
+                <%= render :partial => "shared/footer" %>
 
-<!-- Toast Message -->
-<%= javascript_include_tag "jquery.toastmessage.js"%>
-  <script>
+                <p id="back-top">
+                  <a href="#top"><i class="fa-chevron-circle-up fa"></i></a>
+                </p>
+
+                <!-- Toast Message -->
+                <%= javascript_include_tag "jquery.toastmessage.js"%>
+                <script>
     //for flash messages
     var notice= '<%= flash[:notice] %>' || '<%=notice%>'
     var success= '<%= flash[:success] %>'
@@ -255,10 +260,20 @@
       FlashNotice("notice", error);
   </script>
 
-<%= javascript_include_tag "form-js.js" %>
-
+  <%= javascript_include_tag "form-js.js" %>
 <!-- Back To Top -->
 <%= javascript_include_tag "back-to-top.js"%>
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-33616834-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 
 </body>
 </html>
