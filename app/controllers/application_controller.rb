@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
 	end
 
 	def check_cookies
-		@book_groups = BookGroup.all 
+		@book_groups = BookGroup.all
+		flash[:notice] = params[:flash] 
 		if current_user.nil? and cookies[:college_id].nil?
 				@colleges = College.all
 				render :template => 'shared/sellect_college'
