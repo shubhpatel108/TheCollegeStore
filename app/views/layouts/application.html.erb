@@ -66,11 +66,9 @@
                   <a href="#" id="menu-icon"><i class="fa fa-bars fa-menu-icon"></i></a>
                   <ul class="nav-ul">
                     <li class="nav-li searchbar">
-                      <!--<div id="top_bar"></div>-->
-                      <!--  Search -->
-                      <!--<div class="search-bar-header" id="search-bar-header"> -->
+                      <div class="search-bar-header" id="search-bar-header"> 
                       <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
-                      <!--</div> -->
+                      </div> 
                     </li>
                     <!-- User -->
                     <!--<div class="user-bar-header">        -->
@@ -178,6 +176,7 @@
                   </ul>
                 </div>
 
+                <%if request.original_url== "http://www.thecollegestore.in" || request.original_url== "http://thecollegestore.in" || request.original_url== "http://localhost:3000/" %>
                 <div class="video-entry">
                   <ul style="display:flex">
                     <li style="width:65%">
@@ -188,6 +187,7 @@
                     </li>
                   </ul>
                 </div>
+                <%end%>
                 
                   <div class="right-sidebar">
                     <div style="" class="scroll-mask">
