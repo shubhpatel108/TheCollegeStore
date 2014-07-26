@@ -66,11 +66,9 @@
                   <a href="#" id="menu-icon"><i class="fa fa-bars fa-menu-icon"></i></a>
                   <ul class="nav-ul">
                     <li class="nav-li searchbar">
-                      <!--<div id="top_bar"></div>-->
-                      <!--  Search -->
-                      <!--<div class="search-bar-header" id="search-bar-header"> -->
+                      <div class="search-bar-header" id="search-bar-header"> 
                       <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
-                      <!--</div> -->
+                      </div> 
                     </li>
                     <!-- User -->
                     <!--<div class="user-bar-header">        -->
@@ -118,41 +116,15 @@
                       </a>      
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/thecollegestore.co.in" class="">
-                        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
-                        <span class="nav-tooltip">Facebook</span>
-                      </a>      
-                    </li>
-                    <li>
-                      <a href="#" class="">
-                       <span class="fa fa-android fa-4x fa-color_grey"></span>
-                       <span class="nav-tooltip">Android App</span>
+                      <a href="/book_groups/new" class="">
+                       <span class="fa fa-plus-square fa-4x fa-color_grey"></span>
+                       <span class="nav-tooltip">Sell a Book</span>
                      </a>      
                    </li>
-                   <% if user_signed_in? %>
-                   <li>
-                    <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
-                      <i class="fa fa-user fa-4x fa-color_grey"></i>
-                      <span class="nav-tooltip">My Profile </span>
-                    </a>
-                  </li>
-                  <% end -%>
-                  <li>
-                    <a href="/my_orders" class="">
-                      <span class="fa fa-book fa-4x fa-color_grey"></span>
-                      <span class="nav-tooltip">Orders</span>
-                    </a>      
-                  </li>
-                  <li>
-                    <a href="/wishlist/show" class="">
-                      <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
-                      <span class="nav-tooltip">Wish List</span>
-                    </a>      
-                  </li>
-                  <li>
-                    <a href="#cart-content" class="animated-popup-cart">
-                      <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
-                      <div id="cart-count-wrapper"><span id="cart-item-count">
+                    <li>
+                      <a href="#cart-content" class="animated-popup-cart">
+                        <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
+                        <div id="cart-count-wrapper"><span id="cart-item-count">
                         <% if session[:cart].nil? %>
                         0
                         <% else%>
@@ -161,6 +133,33 @@
                         <span class="nav-tooltip">Cart</span>
                       </a>
                     </li>
+                   <% if user_signed_in? %>
+                   <li>
+                    <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
+                      <i class="fa fa-user fa-4x fa-color_grey"></i>
+                      <span class="nav-tooltip">My Profile </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/my_orders" class="">
+                      <span class="fa fa-book fa-4x fa-color_grey"></span>
+                      <span class="nav-tooltip">Orders</span>
+                    </a>      
+                  </li>
+                  <% end -%>
+                  <li>
+                    <a href="/wishlist/show" class="">
+                      <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
+                      <span class="nav-tooltip">Wish List</span>
+                    </a>      
+                  </li>
+                    <li>
+                      <a href="https://www.facebook.com/thecollegestore.in" class="">
+                        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
+                        <span class="nav-tooltip">Facebook</span>
+                      </a>
+                    </li>
+
                     <li>
                       <a href="/contact_us" class="">
                         <span class="fa fa-phone fa-4x fa-color_grey"></span>
@@ -178,6 +177,7 @@
                   </ul>
                 </div>
 
+                <%if request.original_url== "http://www.thecollegestore.in/" || request.original_url== "http://thecollegestore.in/" || request.original_url== "http://localhost:3000/" %>
                 <div class="video-entry">
                   <ul style="display:flex">
                     <li style="width:65%">
@@ -188,6 +188,7 @@
                     </li>
                   </ul>
                 </div>
+                <%end%>
                 
                   <div class="right-sidebar">
                     <div style="" class="scroll-mask">
