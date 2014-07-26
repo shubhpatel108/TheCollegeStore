@@ -7,12 +7,13 @@
 }
 
 div#content-wrap {
-    background: #E4E4E4;
+    background: url('/assets/header_image.jpg');
     height: 58px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
+    background-size: 100% 100%;
 }
 
 
@@ -88,7 +89,7 @@ position: relative;
     width: 20%;
     font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
-    background: rgb(53, 184, 173) !important;
+    background: rgb(111,111,111) !important;
     border-radius: 0 4px 4px 0;      
     margin: 0;
     cursor: pointer;
@@ -156,7 +157,7 @@ a.button.button-primary {
 
 span.select-college {
     font-size: 16px;
-    color: rgb(23, 92, 56);
+    color: rgb(106,106,106);
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 500;
 }
@@ -233,6 +234,20 @@ section {
     max-width: 980px;
     position: relative;
     padding: 20px
+}
+
+.right-user li.nav-li {
+padding: 15px;
+font-size: 20px;
+}
+
+a.animated_popup {
+color: rgb(157,30,79);
+padding: 5px;
+}
+
+a.animated_popup-register{
+    color: rgb(106,106,106);   
 } 
 
 

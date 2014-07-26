@@ -7546,7 +7546,8 @@ margin-bottom:15px;
 background:#fff;
     
 padding: 0px;
-    margin-bottom:30px;
+    
+margin-bottom: 0;
     position:relative;
     z-index:1;
     -webkit-border-radius:5px;
@@ -7642,7 +7643,7 @@ color: #085FB6;
     position:relative;
     display:block
 ;
-background: rgb(52, 133, 153);
+background: rgb(134,134,134);
 border-radius: 5px 5px 0 0;
 }
 

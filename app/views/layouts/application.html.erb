@@ -83,11 +83,11 @@
                     <%end%>
                     <% if !user_signed_in? %>
                     <li class="nav-li">     
-                      <a href="#cool-popup" class="animated_popup button button-primary">Login<i class="fa fa-sign-in fa-padding"></i></a>
+                      <a href="#cool-popup" class="animated_popup">Login<i class="fa fa-sign-in fa-padding"></i></a>
                       <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
                     </li>
                     <li class="nav-li">
-                      <a href="#cool-popup-register" class="animated_popup-register button button-primary">Register<i class="fa fa-user fa-padding"></i></a>
+                      <a href="#cool-popup-register" class="animated_popup-register">Register<i class="fa fa-user fa-padding"></i></a>
                     </li>
                     <%end%>
                     <li class="nav-li select-college">
@@ -95,7 +95,7 @@
                         <span class="select-college"><%= cookies[:college_name] %></span>
                         <span>
                           <% if cookies[:college_name].nil? %>
-                          <span style="color:white;">Select your college</span>
+                          <span style="color:rgb(106,106,106);">Select your college</span>
                           <%end%>
                           <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
                         </li>
@@ -178,18 +178,22 @@
                 </div>
 
                 <%if request.original_url== "http://www.thecollegestore.in/" || request.original_url== "http://thecollegestore.in/" || request.original_url== "http://localhost:3000/" %>
-                <div class="video-entry">
-                  <ul style="display:flex">
-                    <li style="width:65%">
-                      Text Here
-                    </li>
-                    <li style="margin: 20px; width:30%; background: black;">
-                      <iframe width="100%" height="300" src="//www.youtube.com/embed/wt9vaR7iXps?rel=0&theme=light" frameborder="0" allowfullscreen></iframe>
-                    </li>
-                  </ul>
-                </div>
+                  <div class="video-entry">
+                    <ul style="display:flex">
+                      <li style="width:65%">
+                      </li>
+                      <li style="margin: 20px; width:30%; margin-top:120px">
+                        <iframe width="300" height="200" src="//www.youtube.com/embed/wt9vaR7iXps?rel=0&theme=light" frameborder="0" allowfullscreen></iframe>
+                      </li>
+                    </ul>
+                  </div>
+                <% else %>
+                  <div style="width:100%; height:200px; background:url('/assets/main_image_other.png'); background-size: 100% 100%; margin-top:58px">
+                  </div>
+
                 <%end%>
                 
+                <%if request.original_url!= "http://www.thecollegestore.in/" && request.original_url!= "http://thecollegestore.in/" && request.original_url!= "http://localhost:3000/" %>
                   <div class="right-sidebar">
                     <div style="" class="scroll-mask">
                       <div class="scroll-container">
@@ -214,7 +218,7 @@
                       </div>
                     </div>
                   </div>
-
+                <% end %>
                 <!-- All Popup -->
                 <div style="display:none">
                   <div id="college-select-popup" >
@@ -273,6 +277,53 @@
 
   ga('create', 'UA-33616834-1', 'auto');
   ga('send', 'pageview');
+
+
+  // JS for book grid header color change
+  $(".latest").hover(function(){
+  $(".latest-title").css({
+      "background-color" : "rgb(170,38,88)",
+    });
+  $('.latest').css({
+      "border-color" : "rgb(170,38,88)",
+      cursor : 'pointer'
+  });
+
+  },function(){
+  $(".latest-title").css("background-color","rgb(185,185,185)");
+  $(".latest").css("border-color","rgb(184,184,184)");
+  });
+
+  // Popular
+  $(".popular").hover(function(){
+  $(".popular-title").css("background-color","rgb(170,38,88)");
+
+  $('.popular').css({
+      "border-color" : "rgb(170,38,88)",
+      cursor : 'pointer'
+  });
+  },function(){
+  $(".popular-title").css("background-color","rgb(185,185,185)");
+  $(".popular").css("border-color","rgb(184,184,184)");
+});
+
+// Header Image Change Script
+
+if(document.URL != "http://www.thecollegestore.in/" && document.URL!= "http://thecollegestore.in/" && document.URL!= "http://localhost:3000/"){
+  $('#content-wrap').css({
+    "background" : "url('/assets/mainpicOtherHeaderTransparency.png')",
+    "background-size" : '100% 100%'
+  });
+  }
+
+if(document.URL == "http://www.thecollegestore.in/" || document.URL== "http://thecollegestore.in/" || document.URL== "http://localhost:3000/"){
+
+    $("#page-body").css("width","90%");
+}else{
+  $("#page-body").css("width","73%");
+}
+  
+
 
 </script>
 

@@ -15,6 +15,8 @@
 
 
 
+
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 html, body{
@@ -51,7 +53,7 @@ html, body{
 
 .smart-container{
 	background:#fff;
-	margin: 50px auto;	
+	margin: 0 auto;	
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
@@ -683,7 +685,7 @@ html, body{
 	font-size:15px; 
     cursor: pointer;
 	
-    padding: 0 18px;
+    padding: 0 0px;
 	text-align: center;
 	vertical-align: top;
 	display: inline-block;
