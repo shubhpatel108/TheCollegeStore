@@ -7,13 +7,13 @@
 }
 
 div#content-wrap {
-    background: url('/assets/header_image.jpg');
     height: 58px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
     background-size: 100% 100%;
+    background: rgba(0,0,0,0.3);
 }
 
 
@@ -46,13 +46,14 @@ position: relative;
     width: 70%;
     height: 20px;
     float: left;    
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "arial";
     border: 0;
     background: white;
     /* border-radius: 3px 0 0 3px; */
     font-size: 16px;      
     position: relative;
     margin: 0;
+    font-style: normal !important;
 }
 
 .form-wrapper input:focus {
@@ -143,21 +144,22 @@ ul.user-list li {
 }
 
 a.button.button-primary {
-    background: rgb(48, 148, 139) !important;
-    border-color: rgb(27, 165, 153);
+    background: #ed4e6e !important;
+    border-color: #DA1E44;
     font-size: 17px;
     padding: 9px;
 }
 
 .username-header{
 	color:white;
-	font-size: 16px; color: rgb(23, 92, 56); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500;
+	font-size: 16px; 
+	color: rgb(65, 65, 65); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500;
 	text-decoration: underline;
 }
 
 span.select-college {
     font-size: 16px;
-    color: rgb(106,106,106);
+    color: rgb(65, 65, 65);
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 500;
 }
@@ -165,12 +167,12 @@ span.select-college {
 #logo{
  
     margin-left: 20px;
+    height: 92px;
     float: left;
     width: 15%; 
-    height: 100px;
-    background: url('logo.png') no-repeat;
-    display: block;
-    background-size: auto 100px;
+    background: url('/assets/logo.png') no-repeat;
+    background-size: 100%;
+    background-position: 0 -25px;
 }
 
 nav {
@@ -215,6 +217,7 @@ a:hover#menu-icon {
 }
  .searchbar{
     width: 40%;
+    margin-left: 16%;
 }
 .right-user{
     float: right;
@@ -237,17 +240,21 @@ section {
 }
 
 .right-user li.nav-li {
-padding: 15px;
+padding: 10px;
 font-size: 20px;
 }
 
 a.animated_popup {
 color: rgb(157,30,79);
 padding: 5px;
+font-family: 'droid sans';
+font-weight: 600;
 }
 
 a.animated_popup-register{
-    color: rgb(106,106,106);   
+    color: rgb(65, 65, 65);   
+    font-family: 'droid sans';
+    font-weight: 600;
 } 
 
 
@@ -315,5 +322,6 @@ margin-left: 25%;
 }
 .searchbar{
     width: 100%;
+    margin-left: 0;
 }
 }

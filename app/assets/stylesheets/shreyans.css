@@ -26,7 +26,6 @@ div#page-body{
 	width: 73%;
 	margin-left: 70px;
 	margin-top: 0;
-	height: auto;
 }
 
 .right-sidebar{
@@ -105,7 +104,7 @@ font-size: 22px !important;
 }
 
 button.add-to-cart-button{
-	background: rgb(48, 148, 139) !important;
+	background: #ed4e6e;
 	border: none;
 	font-size: 16px;
 	color:white;
@@ -117,7 +116,7 @@ button.add-to-cart-button{
 }
 
 button.add-to-cart-button:hover {
-background: rgb(61, 155, 147) !important;
+background: #CE3050;
 }
 
 a.cartbutton.cartbutton-primary {
@@ -268,9 +267,10 @@ font-weight: 600;
 
 .video-entry{
 	width: 100%;
-	background: url('/assets/mainpic.jpg');
-	margin-top: 58px;
+	background: url('/assets/mainfull.png');
+	margin-top: 0;
 	background-size: 100% 100%;
+	height: 488px;
 }
 
 div.video-player{
@@ -291,7 +291,7 @@ margin-right: 10px;
 float: left;
 /* min-width: 190px; */
 padding: 0% 2% 2% 2%;
-width: 100px;
+width: 150px;
 }
 
 td.mobile {

@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 	// hide #back-top first
 	$("#back-top").hide();
+	// $('#back-top').fadeIn();
 	
 	// fade in #back-top
 	$(function () {
@@ -15,11 +16,12 @@ $(document).ready(function(){
 		});
 
 		// scroll body to 0px on click
-		$('#back-top a').click(function () {
-			$('body,html').animate({
+		$('#back-top').click(function () {
+			$('body').animate({
 				scrollTop: 0
 			}, 800);
 			return false;
+			
 		});
 	});
 

@@ -17,6 +17,7 @@
 
 
 
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 html, body{
@@ -699,7 +700,7 @@ html, body{
 .smart-forms .button:active{ color: #1d2938;  }
 .smart-forms a.button, 
 .smart-forms span.button, 
-.smart-forms label.button { line-height: 42px; text-decoration: none; }
+.smart-forms label.button { line-height: 42px; text-decoration: none; padding: 0px 10px;}
 .smart-forms .button i{ font-size: 18px;}
 .smart-forms .button-list .button{ margin-bottom:5px; }
 
