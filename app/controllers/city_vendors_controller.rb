@@ -52,6 +52,7 @@ class CityVendorsController < ApplicationController
 		if @city_vendor.password_reset_sent_at < 2.hours.ago
 			redirect_to new_vendor_password_path, alert: "password reset has expired."
 		elsif @city_vendor.update_attributes(params[:city_vendor])
+			@city_vendor.update_attribute(:password_reset_token, CityVendor.new_auth_token)
 			redirect_to root_url, notice: "Password has been reset."
 		else
 			render :edit
