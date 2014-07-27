@@ -53,13 +53,5 @@ class ApplicationController < ActionController::Base
 		@book_groups = BookGroup.all
 		$book_names = @book_groups.map(&:title)
 	end
-    if $categories.nil?
-		$categories = Category.all
-		@book_groups = BookGroup.all unless !@book_groups.nil?
-	    cat_ids = @book_groups.map(&:category_id)
-	    $categories.each do |cat|
-	      cat[:total_books] = cat_ids.count(cat.id)
-	    end
-    end
   end
 end
