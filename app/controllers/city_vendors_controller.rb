@@ -1,4 +1,11 @@
 class CityVendorsController < ApplicationController
+	before_filter :signed_in_vendor, only: [:edit, :update, :show]
+	before_filter :correct_vendor, only: [:edit, :update]
+
+	def show
+		@city_vendor = CityVendor.find(params[:id])		
+	end	
+
 	def new
 		@city_vendor = CityVendor.new
 	end
@@ -6,34 +13,54 @@ class CityVendorsController < ApplicationController
 	def create
 		@city_vendor = CityVendor.new(params[:city_vendor])
 		if @city_vendor.save
-			redirect_to :root, :notice => "Successfully signed up."
+			sign_in_vendor @city_vendor
+			flash[:success] = "Welcome to The College Store!"
+			redirect_to @city_vendor
 		else
-			render "login"
+			render "new"
 		end
 	end
 
-	def login
+	def edit
+	end
+
+	def update
+		if @city_vendor.update_attributes(params[:city_vendor])
+			flash[:success] = "Profile updated"
+			redirect_to @city_vendor
+		else
+			render 'edit'
+		end
+	end
+
+	def new_password
 		
 	end
 
-	def auth
-		city_vendor = CityVendor.authenticate(params[:email], params[:password])
-		if city_vendor
-			session[:city_vendor_id] = city_vendor.id
-			redirect_to :root, :notice => "You have successfully logged in."
+	def reset_password
+		vendor = CityVendor.find_by_email(params[:email])
+		vendor.send_password_reset if vendor
+		redirect_to root_url, notice: "Email sent with password reset instructions."
+	end
+
+	def edit_password
+		@city_vendor = CityVendor.find_by_password_reset_token!(params[:id])
+	end
+
+	def update_password
+		@city_vendor = CityVendor.find_by_password_reset_token!(params[:id].to_s)
+		if @city_vendor.password_reset_sent_at < 2.hours.ago
+			redirect_to new_vendor_password_path, alert: "password reset has expired."
+		elsif @city_vendor.update_attributes(params[:city_vendor])
+			redirect_to root_url, notice: "Password has been reset."
 		else
-			flash.now.alert = "Invalid email or password"
-			render "login"
+			render :edit
 		end
 	end
 
-	def logout
-		session[:city_vendor_id] = nil
-		redirect_to :root, :notice => "You are successfully logged out."
-	end
-	
 	private
-	def current_city_vendor
-		@current_city_vendor ||= CityVendor.find_by_id(session[:city_vendor_id]) if session[:city_vendor_id]
-	end
+		def correct_vendor
+			@city_vendor = CityVendor.find(params[:id])
+			redirect_to(root_url) unless current_vendor?(@city_vendor)
+		end
 end

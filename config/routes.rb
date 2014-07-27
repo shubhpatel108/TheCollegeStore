@@ -2,12 +2,16 @@ TheCollegeStore::Application.routes.draw do
   root to: 'application#check_cookies'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get '/city_vendors/login', to: 'city_vendors#login', as: :city_vendor_login
-  get '/city_vendors/logout', to: 'city_vendors#logout', as: :city_vendors_logout
-  post '/city_vendors/login', to: 'city_vendors#auth', as: :city_vendor_authenticate
+  
   resources :city_vendors
-  get '/city_vendors/new_password', to: 'city_vendors#new_password', as: :reset_password
-  post '/city_vendors/new_password', to: 'city_vendors#reset_password', as: :reset_password
+  get '/city_vendor/signup', to: 'city_vendors#new', as: :city_vendor_signup
+  resources :city_vendor_sessions, only: [:new, :create, :destroy]
+  get '/city_vendor/signin', to: 'city_vendor_sessions#new', as: :city_vendor_signin
+  delete '/city_vendor/signout', to: 'city_vendor_sessions#destroy', as: :city_vendor_signout
+  get '/city_vendor/new_password', to: 'city_vendors#new_password', as: :new_vendor_password
+  post '/city_vendor/new_password', to: 'city_vendors#reset_password', as: :reset_vendor_password
+  get '/city_vendor/:id/edit_password', to: 'city_vendors#edit_password', as: :edit_vendor_password
+  put '/city_vendor/:id', to: 'city_vendors#update_password', as: :update_vendor_password
   get "emailapi/index"
   post "emailapi/subscribe" => 'emailapi#subscribe'
   resources :books do
