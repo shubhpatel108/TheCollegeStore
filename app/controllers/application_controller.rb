@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :initialize_variables
+  before_filter :initialize_variables, :set_cache_buster
+  include CityVendorSessionsHelper
 
 	def select_college
 		c_id = params[:college_id]
@@ -60,5 +61,11 @@ class ApplicationController < ActionController::Base
 	      cat[:total_books] = cat_ids.count(cat.id)
 	    end
     end
+  end
+
+  def set_cache_buster
+	response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+	response.headers["Pragma"] = "no-cache"
+	response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 end
