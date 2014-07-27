@@ -15,7 +15,6 @@ gem 'goodreads'
 gem "paperclip", "~> 4.1"
 gem 'activeadmin'
 gem 'meta_search', '>=1.1.0.pre'
-gem "bcrypt-ruby", :require => "bcrypt"
 gem "passenger"
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,7 +33,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
