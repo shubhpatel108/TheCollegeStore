@@ -3461,16 +3461,16 @@ list-style-type:none
 .button,.action{
     font-weight: bold;
     padding: 5px 7px;
-    background: #2DAAA0;
+    background: #ed4e6e;
     color: #fff !important;
     font-size: 12px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     cursor: pointer;
     text-decoration: none;
     text-shadow: 0 1px 0px rgba(0,0,0,0.15);
-    border-width: 1px 1px 3px !important;
+    border-width: 0px 0px 4px !important;
     border-style: solid;
-    border-color: #326e99;
+    border-color: #861129;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -3494,8 +3494,7 @@ list-style-type:none
 }
 
 .button:hover,.action:hover{
-background:#3b82b3
-}
+background: #E73357;}
 
 .button:hover .icon,.action:hover .icon{
 -webkit-transition-duration:0.3s;
@@ -3603,7 +3602,7 @@ background:#f0f2f4 !important;
 
 .button-primary:hover{
 background: rgb(61, 155, 147) !important;
-border-color: rgb(53, 184, 173) !important;
+border-color: #5C0A1A !important;
 }
 
 .button-primary:active{
@@ -7546,7 +7545,8 @@ margin-bottom:15px;
 background:#fff;
     
 padding: 0px;
-    margin-bottom:30px;
+    
+margin-bottom: 0;
     position:relative;
     z-index:1;
     -webkit-border-radius:5px;
@@ -7642,7 +7642,7 @@ color: #085FB6;
     position:relative;
     display:block
 ;
-background: rgb(52, 133, 153);
+background: rgb(134,134,134);
 border-radius: 5px 5px 0 0;
 }
 

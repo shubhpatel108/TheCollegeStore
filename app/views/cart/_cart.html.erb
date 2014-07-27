@@ -25,11 +25,7 @@
 			        	<i class="fa fa-inr fa-padding"></i><%=b.price%>
 			        </td>
 			      </tr>
-				<%end%>
-			<%else%>
-				<p>There are no Books in your cart!</p>
-			<%end%>
-			<tr>
+			      <tr>
 				<td>
 				</td>
 				<td colspan="3" style="float:right">
@@ -47,12 +43,18 @@
 					</span>
 				</td>
 			</tr>
+				<%end%>
+			<%else%>
+				<p>There are no Books in your cart!</p>
+			<%end%>
+			
 			
 	  </table>
-
+	  <% if not books.nil?%>
 	  <div> 
 	  	<%= link_to "Proceed", coupons_path, :class => 'button' %>
 	  </div>
+	  <% end %>
 	</div>
 </div>
 

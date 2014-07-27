@@ -1,10 +1,13 @@
 
 /* @form header 
 ----------------------------------- */
+
+
+
 .smart-forms .header-black {	
-	background-color:#34495e;
+	background-color: rgb(174,29,84);
 	border-top:1px solid #7C9AB8;  
-	border-bottom:5px solid #2c3e50;
+	border-bottom: 5px solid rgb(116, 43, 71);
 }
 
 .smart-forms .header-lite{ border-top-color:#7C9AB8; }
@@ -68,9 +71,11 @@
 
 /* @button black 
 ------------------------------------------------------------- */
-.smart-forms .btn-black { background-color: #34495e; }
+.smart-forms .btn-black {
+    background: rgb(104,104,104);
+ }
 .smart-forms .btn-black:hover,
-.smart-forms .btn-black:focus{ background-color: #415b76; }
+.smart-forms .btn-black:focus{ background-color: rgb(77, 72, 72); }
 .smart-forms .btn-black:active{ background-color: #2c3e50; }
 .smart-forms .btn-black,
 .smart-forms .btn-black:hover,

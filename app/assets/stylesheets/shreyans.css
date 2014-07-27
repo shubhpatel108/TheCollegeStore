@@ -1,5 +1,5 @@
 #shelf{
-	background: #384047;
+	background: rgba(56,61,71,0.7);
 	width: 30px;
 	position: fixed;
 	padding: 10px;
@@ -25,8 +25,7 @@ left: 0;
 div#page-body{
 	width: 73%;
 	margin-left: 70px;
-	margin-top: 75px;
-	height: auto;
+	margin-top: 0;
 }
 
 .right-sidebar{
@@ -42,7 +41,7 @@ box-sizing: border-box;
 padding-left: 0px;
 padding-right: 15px;
 z-index: 0;
-margin-top: 43px;
+margin-top: 0;
 }
 
 .book-grid-main{
@@ -105,7 +104,7 @@ font-size: 22px !important;
 }
 
 button.add-to-cart-button{
-	background: rgb(48, 148, 139) !important;
+	background: #ed4e6e;
 	border: none;
 	font-size: 16px;
 	color:white;
@@ -117,7 +116,7 @@ button.add-to-cart-button{
 }
 
 button.add-to-cart-button:hover {
-background: rgb(61, 155, 147) !important;
+background: #CE3050;
 }
 
 a.cartbutton.cartbutton-primary {
@@ -231,7 +230,7 @@ padding-top: 5px;
 }
 
 li.divfloat:hover {
-box-shadow: 0 0 5px rgba(49, 87, 236, 0.8) inset;
+box-shadow: 0 0 5px rgb(170, 38, 88) inset;
 cursor: pointer;
 }
 
@@ -268,9 +267,10 @@ font-weight: 600;
 
 .video-entry{
 	width: 100%;
-	background: url('/assets/background-main.jpg');
-	margin-top: 59px;
-	/* -webkit-filter: blur(2px); */
+	background: url('/assets/mainfull.png');
+	margin-top: 0;
+	background-size: 100% 100%;
+	height: 488px;
 }
 
 div.video-player{
@@ -278,7 +278,7 @@ div.video-player{
 }
 
 .title-details{
-background: rgb(52, 133, 153);
+background: rgb(185, 185, 185);
 padding: 0 0 10px 30px;
 border-radius: 5px 5px 0 0;
 }
@@ -291,7 +291,7 @@ margin-right: 10px;
 float: left;
 /* min-width: 190px; */
 padding: 0% 2% 2% 2%;
-width: 100px;
+width: 150px;
 }
 
 td.mobile {
@@ -497,6 +497,11 @@ padding-top: 5px;
 	margin:-10px 0 -5px 15px;
 	height:56px;
 }
+
+table{
+	width: 100%;
+}
+
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 640px) { 
 .video-entry{

@@ -1,18 +1,19 @@
 .header-fixed{
     /* position: fixed; */
-    width: 100%;0    
+    width: 100%;    
     z-index: 100;
     top: 4px;
     z-index: 100;
 }
 
 div#content-wrap {
-    background: #E4E4E4;
     height: 58px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
+    background-size: 100% 100%;
+    background: rgba(0,0,0,0.3);
 }
 
 
@@ -45,13 +46,14 @@ position: relative;
     width: 70%;
     height: 20px;
     float: left;    
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "arial";
     border: 0;
     background: white;
     /* border-radius: 3px 0 0 3px; */
     font-size: 16px;      
     position: relative;
     margin: 0;
+    font-style: normal !important;
 }
 
 .form-wrapper input:focus {
@@ -88,7 +90,7 @@ position: relative;
     width: 20%;
     font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
-    background: rgb(53, 184, 173) !important;
+    background: rgb(111,111,111) !important;
     border-radius: 0 4px 4px 0;      
     margin: 0;
     cursor: pointer;
@@ -142,21 +144,22 @@ ul.user-list li {
 }
 
 a.button.button-primary {
-    background: rgb(48, 148, 139) !important;
-    border-color: rgb(27, 165, 153);
+    background: #ed4e6e !important;
+    border-color: #DA1E44;
     font-size: 17px;
     padding: 9px;
 }
 
 .username-header{
 	color:white;
-	font-size: 16px; color: rgb(23, 92, 56); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500;
+	font-size: 16px; 
+	color: rgb(65, 65, 65); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 500;
 	text-decoration: underline;
 }
 
 span.select-college {
     font-size: 16px;
-    color: rgb(23, 92, 56);
+    color: rgb(65, 65, 65);
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 500;
 }
@@ -164,19 +167,19 @@ span.select-college {
 #logo{
  
     margin-left: 20px;
+    height: 92px;
     float: left;
     width: 15%; 
-    height: 100px;
-    background: url('logo.png') no-repeat;
-    display: block;
-    background-size: auto 100px;
+    background: url('/assets/logo.png') no-repeat;
+    background-size: 100%;
+    background-position: 0 -25px;
 }
 
 nav {
  
     float: right;   
     padding-left: 20px;
-    padding: right:20px;
+    padding-right:20px;
  
     width: 75%;
 }
@@ -214,6 +217,7 @@ a:hover#menu-icon {
 }
  .searchbar{
     width: 40%;
+    margin-left: 16%;
 }
 .right-user{
     float: right;
@@ -233,6 +237,24 @@ section {
     max-width: 980px;
     position: relative;
     padding: 20px
+}
+
+.right-user li.nav-li {
+padding: 10px;
+font-size: 20px;
+}
+
+a.animated_popup {
+color: rgb(157,30,79);
+padding: 5px;
+font-family: 'droid sans';
+font-weight: 600;
+}
+
+a.animated_popup-register{
+    color: rgb(65, 65, 65);   
+    font-family: 'droid sans';
+    font-weight: 600;
 } 
 
 
@@ -300,5 +322,6 @@ margin-left: 25%;
 }
 .searchbar{
     width: 100%;
+    margin-left: 0;
 }
 }

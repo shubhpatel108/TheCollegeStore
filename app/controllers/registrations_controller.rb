@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :check_college
+
   def new
   	@college_id = params[:college_id]
     super
@@ -23,5 +25,13 @@ class RegistrationsController < Devise::RegistrationsController
     sign_in @user, :event => :authentication
     flash[:success] = "Successfully authenticated!"
     redirect_to :books
+  end
+
+  private
+  def check_college
+    if cookies[:college_id].nil? || cookies[:college_name].nil?
+      flash[:warning] = "You need to choose your College!"
+      redirect_to controller: 'application', action: 'check_cookies'
+    end
   end
 end
