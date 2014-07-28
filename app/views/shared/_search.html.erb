@@ -7,8 +7,8 @@
 	$( "#autocomplete" ).autocomplete({
 			source: availableTags,
 			select: function(event, ui) {
-         $(this).val(ui.item.value);
-         $(this).parents("form").submit();
-     	}
+				$(this).val(ui.item.value);
+				$(this).parents("form").submit();
+			}
 	});
 </script>
