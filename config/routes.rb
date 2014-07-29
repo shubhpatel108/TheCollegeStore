@@ -62,6 +62,7 @@ TheCollegeStore::Application.routes.draw do
   get '/disclaimer', to: 'our#disclaimer'
   get '/terms', to: 'our#terms'
   get '/about_us', to: 'our#about_us'
+  get '/shipping-details', to: 'our#shipping'
 
   get '/profiles/:first_name-:last_name/:id', to: 'profiles#show'
   get '/my_orders', to: 'profiles#orders'
