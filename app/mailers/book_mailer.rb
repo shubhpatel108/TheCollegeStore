@@ -8,7 +8,8 @@ class BookMailer < ActionMailer::Base
       :domain               => "thecollegestore.in",
       :authentication       => "ssl",
       :user_name            => "sales@thecollegestore.in",
-      :password             => "sales@tcs"
+      :password             => "sales@tcs",
+      :enable_starttls_auto => false
     }
   end
 

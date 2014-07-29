@@ -16,8 +16,16 @@ class OurController < ApplicationController
   	
   end
 
-  def method_name
-  	
+  def shipping
+
+  end
+
+  def disclaimer
+
+  end
+
+  def privacy_policy
+
   end
 
   def send_mail

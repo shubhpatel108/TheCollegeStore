@@ -5,6 +5,10 @@
 <script type="text/javascript">	
 	var availableTags = <%= raw book_names.to_json %>;
 	$( "#autocomplete" ).autocomplete({
-			source: availableTags
-		});
+			source: availableTags,
+			select: function(event, ui) {
+				$(this).val(ui.item.value);
+				$(this).parents("form").submit();
+			}
+	});
 </script>

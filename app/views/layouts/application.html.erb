@@ -225,11 +225,11 @@
                               <h4><a>Topics <i class="fa fa-angle-down fa-lg"></i></a></h4>
                               <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
                                 <li><a id="all_categories_link"href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
-                                <% $categories.each do |c|%>
+                                <% Category.all.each do |c|%>
                                 <li>
                                   <a  id="category_<%=c.id%>_link" class="category_wise_books" href="/book_groups/category/<%=c.id%>" data-remote=true>
                                     <span class="cat-name"><%= c.name%></span>
-                                    <span class="cat-book-count"><b><%= c.total_books%></b></span>
+                                    <span class="cat-book-count"><b><%= c.book_groups.count%></b></span>
                                   </a>
                                 </li>
                                 <% end %>

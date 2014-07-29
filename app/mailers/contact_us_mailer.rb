@@ -8,7 +8,8 @@ class ContactUsMailer < ActionMailer::Base
       :domain               => "thecollegestore.in",
       :authentication       => "ssl",
       :user_name            => "contact@thecollegestore.in",
-      :password             => "saq1sazx"
+      :password             => "saq1sazx",
+      :enable_starttls_auto => false
     }
   end
 

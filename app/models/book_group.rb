@@ -9,7 +9,7 @@ class BookGroup < ActiveRecord::Base
   validates :author, presence: true
   has_many :books, :dependent => :destroy
   accepts_nested_attributes_for :books
-  before_create :set_image_name
+  after_create :set_image_name
   belongs_to :category
   attr_accessible :category_id
 
@@ -20,6 +20,7 @@ class BookGroup < ActiveRecord::Base
   	if not image_file_name.nil?
 	  	extension = File.extname(image_file_name).downcase
 	  	self.image.instance_write(:file_name, "#{self.title}_#{self.id}#{extension}")
+      self.save!
 	  end
   end
 end
