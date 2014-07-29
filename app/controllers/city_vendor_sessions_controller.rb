@@ -16,7 +16,7 @@ class CityVendorSessionsController < ApplicationController
 	end
 
 	def destroy
-		sign_out
+		sign_out_vendor
 		redirect_to city_vendor_signin_url
 	end
 end
