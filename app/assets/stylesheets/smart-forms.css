@@ -15,6 +15,11 @@
 
 
 
+
+
+
+
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 html, body{
@@ -33,7 +38,7 @@ html, body{
 
 /* @form wrappers 
 ---------------------------------- */
-.smart-wrap{ padding:0 20px; }
+.smart-wrap{ padding:0 20px; margin: 50px 0;}
 .smart-forms, 
 .smart-forms *{
 	-webkit-box-sizing: border-box;
@@ -51,7 +56,7 @@ html, body{
 
 .smart-container{
 	background:#fff;
-	margin: 50px auto;	
+	margin: 0 auto;	
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
@@ -683,7 +688,7 @@ html, body{
 	font-size:15px; 
     cursor: pointer;
 	
-    padding: 0 18px;
+    padding: 0 0px;
 	text-align: center;
 	vertical-align: top;
 	display: inline-block;
@@ -697,7 +702,7 @@ html, body{
 .smart-forms .button:active{ color: #1d2938;  }
 .smart-forms a.button, 
 .smart-forms span.button, 
-.smart-forms label.button { line-height: 42px; text-decoration: none; }
+.smart-forms label.button { line-height: 42px; text-decoration: none; padding: 0px 10px;}
 .smart-forms .button i{ font-size: 18px;}
 .smart-forms .button-list .button{ margin-bottom:5px; }
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140720100918) do
+ActiveRecord::Schema.define(:version => 20140727171445) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -93,15 +93,20 @@ ActiveRecord::Schema.define(:version => 20140720100918) do
   end
 
   create_table "city_vendors", :force => true do |t|
-    t.string   "vendor_name",   :default => "", :null => false
-    t.string   "mobile",        :default => "", :null => false
-    t.string   "email",         :default => "", :null => false
-    t.string   "city",          :default => "", :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.string   "password_hash", :default => "", :null => false
-    t.string   "password_salt", :default => "", :null => false
+    t.string   "vendor_name",            :default => "", :null => false
+    t.string   "mobile",                 :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "city",                   :default => "", :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "password_digest"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
+
+  add_index "city_vendors", ["auth_token"], :name => "index_city_vendors_on_auth_token"
+  add_index "city_vendors", ["email"], :name => "index_city_vendors_on_email", :unique => true
 
   create_table "colleges", :force => true do |t|
     t.string   "name",       :null => false

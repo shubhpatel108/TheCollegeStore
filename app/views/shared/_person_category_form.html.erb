@@ -1,8 +1,6 @@
 
 <script type="text/javascript">
 	function request_admin(){
-		console.log('hello');
-		// document.getElementById("request_admin").style.display = "block";
 		$('#request_admin').css({
 			display: 'block',
 			'padding-top': '15px'
@@ -24,7 +22,7 @@
 			<i class="fa fa-caret-square-o-down" style="position: relative;float: right;bottom: 28px;z-index: 1000;right: 10px;"></i>
 			</label>
 		</div>
-		<center><div class="button btn-black"><label><input class="go-button" name="commit" type="submit" value="Go"><i class="fa fa-arrow-circle-o-right fa-padding"></i></label></div></center>
+		<center><div class="button btn-black"><button class="go-button" name="commit" type="submit" style="cursor:pointer">Go <i class='fa fa-arrow-circle-o-right fa-padding' style='color:white'></i></button></div></center>
 		
 	<%end%>
 	<p id="college_entry" style="text-align:center">
@@ -34,7 +32,7 @@
 	<%= render :partial => "shared/request_form"%>
 
 <div style="text-align:center;" id="vendor_entry">
-	<%= link_to "City vendor", city_vendor_login_path, type: "city_vendor"%>
+	<%= link_to "City vendor", city_vendor_signin_path, type: "city_vendor"%>
 </div>
 </div>
 </div>

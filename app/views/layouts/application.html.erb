@@ -6,10 +6,11 @@
   <!-- Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>TheCollegeStore</title>
   <!--<%= stylesheet_link_tag    "application.css" %> -->
@@ -24,7 +25,7 @@
   <%= stylesheet_link_tag    "shreyans.css" %>
   <%= stylesheet_link_tag    "footer.css"%>
   <%= stylesheet_link_tag    "header.css"%>
-
+  <%= stylesheet_link_tag    "jquery.sidr.light.css"%>
   <%= csrf_meta_tags %>
 
   <%= javascript_include_tag "main_layout_js.js" %>
@@ -39,6 +40,9 @@
 
   <%= javascript_include_tag "jquery.popup.min.js" %>
   <%= javascript_include_tag "cool-popup.js" %>
+  <%= javascript_include_tag "back-to-top.js"%>
+
+  <%= javascript_include_tag "jquery.sidr.min.js"%>
 
 
 </head>
@@ -59,11 +63,29 @@
             <!--<div class="logo-div">
                   <%= image_tag("logo.png",:class => 'logo') %>
                 </div> -->
-                <a href="#" id="logo"></a>
+                <div class="mobile-nav">
+                  <div id="sidr">
+                    <!-- Your content -->
+                    <ul>
+                      <li><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></li>
+                      <li class="active"><a href="/login">Sign In</a></li>
+                      <li><a href="/register">Sign Up</a></li>
+                    </ul>
+                  </div>
+                  <a id="simple-menu" href="#sidr"><i class="fa fa-bars fa-menu-icon"></i></a>
+
+                </div>
+                
+                <div href="#" id="logo">&nbsp;</div>
                                     <a href="#" id="menu-name">TheCollegeStore</a>
+                   
+                  <script>
+                  $(document).ready(function() {
+                    $('#simple-menu').sidr();
+                  });
+                  </script>
 
                 <nav>
-                  <a href="#" id="menu-icon"><i class="fa fa-bars fa-menu-icon"></i></a>
                   <ul class="nav-ul">
                     <li class="nav-li searchbar">
                       <div class="search-bar-header" id="search-bar-header"> 
@@ -78,16 +100,16 @@
                     <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
                     <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
                     <li class="nav-li">
-                      <span style="display: -webkit-inline-box;display: -moz-inline-stack; padding: 10px;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
+                      <span style="display: -webkit-inline-box;display: -moz-inline-stackb;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
                     </li>
                     <%end%>
                     <% if !user_signed_in? %>
                     <li class="nav-li">     
-                      <a href="#cool-popup" class="animated_popup button button-primary">Login<i class="fa fa-sign-in fa-padding"></i></a>
+                      <a href="#cool-popup" class="animated_popup">Login<i class="fa fa-sign-in fa-padding"></i></a>
                       <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
                     </li>
                     <li class="nav-li">
-                      <a href="#cool-popup-register" class="animated_popup-register button button-primary">Register<i class="fa fa-user fa-padding"></i></a>
+                      <a href="#cool-popup-register" class="animated_popup-register">Register<i class="fa fa-user fa-padding"></i></a>
                     </li>
                     <%end%>
                     <li class="nav-li select-college">
@@ -95,7 +117,7 @@
                         <span class="select-college"><%= cookies[:college_name] %></span>
                         <span>
                           <% if cookies[:college_name].nil? %>
-                          <span style="color:white;">Select your college</span>
+                          <span style="color: white;text-decoration: underline;">Select College</span>
                           <%end%>
                           <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
                         </li>
@@ -178,18 +200,22 @@
                 </div>
 
                 <%if request.original_url== "http://www.thecollegestore.in/" || request.original_url== "http://thecollegestore.in/" || request.original_url== "http://localhost:3000/" %>
-                <div class="video-entry">
-                  <ul style="display:flex">
-                    <li style="width:65%">
-                      Text Here
-                    </li>
-                    <li style="margin: 20px; width:30%; background: black;">
-                      <iframe width="100%" height="300" src="//www.youtube.com/embed/wt9vaR7iXps?rel=0&theme=light" frameborder="0" allowfullscreen></iframe>
-                    </li>
-                  </ul>
-                </div>
+                  <div class="video-entry">
+                    <ul style="display:flex; list-style-type:none;">
+                      <li style="width:65%">
+                      </li>
+                      <li style="margin: 20px; width:30%; margin-top:120px">
+                        <iframe width="400" height="300" src="//www.youtube.com/embed/wt9vaR7iXps?rel=0&theme=light&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                      </li>
+                    </ul>
+                  </div>
+                <% else %>
+                  <div class="mobile-header" style="width:100%; height:200px; background:url('/assets/othermainfull.png'); background-size: 100% 100%;">
+                  </div>
+
                 <%end%>
                 
+                <%if request.original_url!= "http://www.thecollegestore.in/" && request.original_url!= "http://thecollegestore.in/" && request.original_url!= "http://localhost:3000/" %>
                   <div class="right-sidebar">
                     <div style="" class="scroll-mask">
                       <div class="scroll-container">
@@ -214,7 +240,7 @@
                       </div>
                     </div>
                   </div>
-
+                <% end %>
                 <!-- All Popup -->
                 <div style="display:none">
                   <div id="college-select-popup" >
@@ -233,7 +259,10 @@
 
                 <!-- Page Body -->
                 <div id="page-body">
-                  <%= yield %>
+                  
+                    <%= yield %>
+                  
+                  <div style="clear: both; line-height: 0;">&nbsp;</div>
                 </div>
 
                 <!-- Footer -->
@@ -263,7 +292,7 @@
 
   <%= javascript_include_tag "form-js.js" %>
 <!-- Back To Top -->
-<%= javascript_include_tag "back-to-top.js"%>
+
 <!-- Google Analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -273,6 +302,52 @@
 
   ga('create', 'UA-33616834-1', 'auto');
   ga('send', 'pageview');
+
+
+  // JS for book grid header color change
+  $(".latest").hover(function(){
+  $(".latest-title").css({
+      "background-color" : "rgb(170,38,88)",
+    });
+  $('.latest').css({
+      "border-color" : "rgb(170,38,88)",
+      cursor : 'pointer'
+  });
+
+  },function(){
+  $(".latest-title").css("background-color","rgb(185,185,185)");
+  $(".latest").css("border-color","rgb(184,184,184)");
+  });
+
+  // Popular
+  $(".popular").hover(function(){
+  $(".popular-title").css("background-color","rgb(170,38,88)");
+
+  $('.popular').css({
+      "border-color" : "rgb(170,38,88)",
+      cursor : 'pointer'
+  });
+  },function(){
+  $(".popular-title").css("background-color","rgb(185,185,185)");
+  $(".popular").css("border-color","rgb(184,184,184)");
+});
+
+// Header Image Change Script
+
+if(document.URL != "http://www.thecollegestore.in/" && document.URL!= "http://thecollegestore.in/" && document.URL!= "http://localhost:3000/"){
+  $('#content-wrap').css({
+    "background-size" : '100% 100%'
+  });
+  }
+
+if(document.URL == "http://www.thecollegestore.in/" || document.URL== "http://thecollegestore.in/" || document.URL== "http://localhost:3000/" || document.URL== "http://localhost:3000/#top"){
+
+    $("#page-body").css("width","90%");
+}else{
+  $("#page-body").css("width","73%");
+}
+  
+
 
 </script>
 

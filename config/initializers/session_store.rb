@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-TheCollegeStore::Application.config.session_store :active_record_store, :expire_after => 10.minutes
+TheCollegeStore::Application.config.session_store :active_record_store
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

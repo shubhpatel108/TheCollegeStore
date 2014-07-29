@@ -21,16 +21,11 @@
     <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers avalaible </p></a>
 
     <div class="wishbtn">
-      <% if user_signed_in? %>
-        <% if @wished %>
-          <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
-        <% else %>
-          <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
-        <% end %>  
+      <% if @wished %>
+        <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
       <% else %>
-        <a href="/users/sign_in" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+        <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
       <% end %>  
-      
     </div>
   </div>
 
@@ -59,7 +54,7 @@
             <td class="edition">
             <% if not book.edition.nil?%>
               <i class="fa fa-bookmark fa-color_grey" ></i>     
-              <%= book.edition %><span class="superscript"><%=superscript(book.edition)%></span>
+              <%= book.edition %><span class="superscript"><%=superscript(book.edition)%> </span>Edition
             <%end%>
             </td>
 
@@ -74,12 +69,14 @@
             </td>
 
             <td class="cartoption">
+              <% if current_user.nil? || current_user.id!=book.user_id %>
               <% if  book.reserved %> 
                 <button type="button" id="sold" class="add-to-cart-button sold" disabled><i class="fa fa-check fa-padding"></i>Sold</button>
               <% else %>
                 <a href="/add_item/<%= book.id%>" class="" name="Add to cart" data-remote=true> 
                   <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_white cart-icon"></i>Add To Cart</button>
                 </a>
+              <% end %>
               <% end %>
             </td>
           </div> 

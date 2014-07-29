@@ -224,9 +224,10 @@ table.book-grid
         /*padding: 5px 10px;*/
         /*border-radius: 2px;*/
         display: inline-block;
-        /*background: #ed4e6e;*/
+        /* background: #ed4e6e; */
         color: #666;
         text-decoration: underline;
+        cursor: pointer;
 }
 
 .grid figcaption a:hover {
