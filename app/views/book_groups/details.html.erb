@@ -21,16 +21,11 @@
     <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers avalaible </p></a>
 
     <div class="wishbtn">
-      <% if user_signed_in? %>
-        <% if @wished %>
-          <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
-        <% else %>
-          <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
-        <% end %>  
+      <% if @wished %>
+        <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
       <% else %>
-        <a href="/users/sign_in" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+        <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
       <% end %>  
-      
     </div>
   </div>
 
