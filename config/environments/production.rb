@@ -67,5 +67,15 @@ TheCollegeStore::Application.configure do
   config.action_mailer.default_url_options = { host: 'thecollegestore.in' }
 
   config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings[:enable_starttls_auto] = false
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.zoho.com",
+      :port                 => 465,
+      :user_name            => "contact@thecollegestore.in",
+      :password             => "saq1sazx",
+      :domain               => "thecollegestore.in",
+      :authentication       => :login,
+      :ssl                  => true
+    }
 
 end
