@@ -27,7 +27,7 @@ module CityVendorSessionsHelper
 		!current_vendor.nil?
 	end
 
-	def sign_out
+	def sign_out_vendor
 		current_vendor.update_attribute(:auth_token, CityVendor.digest(CityVendor.new_auth_token)) if vendor_signed_in?
 		cookies.delete(:auth_token)
 		self.current_vendor = nil
