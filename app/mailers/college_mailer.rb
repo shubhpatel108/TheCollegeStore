@@ -9,7 +9,7 @@ class CollegeMailer < ActionMailer::Base
       :authentication       => :login,
       :ssl                  => true,
       :tls                  => true,
-      :enable_starttls_auto => true
+      :enable_starttls_auto => false
     }
   end
 

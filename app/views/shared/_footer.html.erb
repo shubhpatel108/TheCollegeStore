@@ -17,7 +17,7 @@
     <div class="text">
       <h4>Categories</h4>
       <div>
-        <% $categories.each do |c|%>
+        <% Category.all.each do |c|%>
         <a href="/book_groups/category/<%=c.id%>" style="text-decoration:none;" data-remote=true>
           <%= c.name%>
         </a><br>
