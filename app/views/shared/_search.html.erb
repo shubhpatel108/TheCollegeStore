@@ -1,10 +1,10 @@
 	<form id="main_search_bar" class="form-wrapper cf" style="width=auto;" action="/search">
-  		<input type="text" name="query" placeholder="Search" id="autocomplete" style="height:40px; border-radius: 4px 0px 0px 4px;" required></input>
+  		<input type="text" name="query" placeholder="Search" class="autocomplete" style="height:40px; border-radius: 4px 0px 0px 4px;" required></input>
   		<button style="float:left;"type="submit"><i class="fa fa-search fa-padding"></i></button>
 	</form>
 <script type="text/javascript">	
 	var availableTags = <%= raw book_names.to_json %>;
-	$( "#autocomplete" ).autocomplete({
+	$( ".autocomplete" ).autocomplete({
 			source: availableTags,
 			select: function(event, ui) {
 				$(this).val(ui.item.value);
