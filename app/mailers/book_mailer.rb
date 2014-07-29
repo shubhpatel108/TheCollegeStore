@@ -1,15 +1,14 @@
 class BookMailer < ActionMailer::Base
-  default from: "sales@thecollegestore.in"
 
   def load_settings
     @@smtp_settings = {
       :address              => "smtp.zoho.com",
-      :port                 => "465",
-      :domain               => "thecollegestore.in",
-      :authentication       => "ssl",
+      :port                 => 465,
       :user_name            => "sales@thecollegestore.in",
       :password             => "sales@tcs",
-      :enable_starttls_auto => false
+      :domain               => "thecollegestore.in",
+      :authentication       => :login,
+      :ssl                  => true
     }
   end
 
@@ -21,7 +20,7 @@ class BookMailer < ActionMailer::Base
     @bookdetail = bookdetail
     @buyer_email = buyer.email
     @buyer_name = buyer.first_name + " " + buyer.last_name
-    mail(:to=>@seller_emails,:subject=>"Request to buy your book | TheCollegeStore")
+    mail(from: "sales@thecollegestore.in", :to=>@seller_emails,:subject=>"Request to buy your book | TheCollegeStore")
   end
 
   def buyer_invoice(seller, books, coupons)
@@ -33,7 +32,7 @@ class BookMailer < ActionMailer::Base
       b[:info] = b.book_group
     end
     @coupons = coupons
-  	mail(:to=>@email,:subject=>"Books purchased by you | TheCollegeStore")
+  	mail(from: "sales@thecollegestore.in", :to=>@email,:subject=>"Books purchased by you | TheCollegeStore")
   end
 
   def notify_wishers(bg)
@@ -42,6 +41,6 @@ class BookMailer < ActionMailer::Base
     wishers = User.where(:id => u_ids)
     @wisher_emails = wishers.collect(&:email).join(",")
     @book = bg
-    mail(:to=>@wisher_emails, :subject => "#{bg.title} is recently added by a seller")
+    mail(from: "sales@thecollegestore.in", :to=>@wisher_emails, :subject => "#{bg.title} is recently added by a seller")
   end
 end
