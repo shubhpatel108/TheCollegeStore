@@ -6,10 +6,9 @@ class CollegeMailer < ActionMailer::Base
       :port                 => 465,
       :user_name            => "contact@thecollegestore.in",
       :password             => "saq1sazx",
+      :domain               => "thecollegestore.in",
       :authentication       => :login,
-      :ssl                  => true,
-      :tls                  => true,
-      :enable_starttls_auto => false
+      :ssl                  => true
     }
   end
 
