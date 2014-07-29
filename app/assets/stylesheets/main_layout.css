@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body{
+    left:0 !important;
+}
 .CodeMirror{
 font-family:monospace;
     height:300px
@@ -3343,9 +3346,7 @@ margin:0;
     vertical-align:baseline
 }
 
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
-display:block
-}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{}
 
 blockquote,q{
 quotes:none
@@ -5961,7 +5962,7 @@ font-weight:bold
 }
 
 .footer{
-margin:0 0 20px 0;
+margin: 0 0 0 0;
     clear:both
 }
 

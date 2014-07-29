@@ -1,23 +1,20 @@
 @import url(http://weloveiconfonts.com/api/?family=zocial);
 
-footer {
+.footer {
     background-color: #384047;
     z-index: 1;
-    position: relative;
 }
 
 
-footer > ul {
+.footer > ul {
     list-style: none outside none;
     margin: 0 auto;
     max-width: 1200px;
-    overflow: hidden;
     padding: 25px 0;
-    position: relative;
     width: 95%;
 }
 
-footer > ul .footer_main {
+.footer > ul .footer_main {
     float: left;
     padding: 20px 15px;
     width: 28.3%;
@@ -27,7 +24,7 @@ footer > ul .footer_main {
     -moz-box-sizing:border-box;
 }
 
-footer > ul .footer_social {
+.footer > ul .footer_social {
     float: left;
     padding: 20px 15px;
     width: 10%;
@@ -36,13 +33,13 @@ footer > ul .footer_social {
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
 }
-footer > ul .footer_main {
+.footer > ul .footer_main {
     padding-left: 0;
 }
-footer > ul .footer_social{
+.footer > ul .footer_social{
     padding-right: 0;
 }
-footer > ul li .text {
+.footer > ul li .text {
     color: #999;
     font-size: 16px;
     line-height: 20px;
@@ -69,7 +66,7 @@ footer > ul li .text {
 
 
 @media screen and (max-width: 835px)  {
-    footer > ul .footer_main,.footer_social {
+    .footer > ul .footer_main,.footer_social {
         float:none;
         width:auto;
     }
