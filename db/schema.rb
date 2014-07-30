@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140730213706) do
+ActiveRecord::Schema.define(:version => 20140730221339) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -129,11 +129,12 @@ ActiveRecord::Schema.define(:version => 20140730213706) do
   add_index "coupons", ["distributor_id"], :name => "index_coupons_on_distributor_id"
 
   create_table "distributed_coupons", :force => true do |t|
-    t.integer  "coupon_id",  :null => false
-    t.integer  "user_id",    :null => false
-    t.string   "code",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "coupon_id",                     :null => false
+    t.integer  "user_id",                       :null => false
+    t.string   "code",                          :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "by_guest",   :default => false
   end
 
   add_index "distributed_coupons", ["coupon_id"], :name => "index_distributed_coupons_on_coupon_id"
