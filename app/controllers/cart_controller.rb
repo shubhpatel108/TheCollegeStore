@@ -98,6 +98,8 @@ class CartController < ApplicationController
     flash[:success] = "You have successfully checked out!"
     session[:cart] = nil
     session[:cart_total] = 0
+    session[:coupons] = []
+    session[:value_remaining] = 0
   end
 
 end
