@@ -1,6 +1,8 @@
 <script type="text/javascript">
   search_bar = document.getElementById('main_search_bar');
   search_bar.parentNode.removeChild(search_bar);
+  search_bar = document.getElementById('extra-responsive-search');
+  search_bar.parentNode.removeChild(search_bar);
   top_bar = document.getElementById('search-bar-header');
   var newdiv = document.createElement('div');
   newdiv.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'

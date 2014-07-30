@@ -67,7 +67,7 @@
                   <div id="sidr">
                     <!-- Your content -->
                     <ul>
-                      <li><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></li>
+                      <li id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></li>
                       <li class="active"><a href="/login">Sign In</a></li>
                       <li><a href="/register">Sign Up</a></li>
                     </ul>
@@ -88,8 +88,10 @@
                 <nav>
                   <ul class="nav-ul">
                     <li class="nav-li searchbar">
-                      <div class="search-bar-header" id="search-bar-header"> 
-                      <%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+                      <div class="search-bar-header" id="search-bar-header">
+                      <div id="extra-responsive-search"> 
+                        <%= render :partial => 'shared/search', :locals => {:book_names => $book_names } %>
+                      </div>
                       </div> 
                     </li>
                     <!-- User -->

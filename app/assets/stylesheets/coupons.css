@@ -46,26 +46,26 @@ margin-left: 10px;
 }
 
 .coupon-terms {
-	font-size: 1.2em;
+	font-size: 0.8em;
 	margin-top: 20px;
 	margin-left: 10px;
 }
 
 .coupon-save {
-	font-size: 1.1em;
-	margin-top: 20px;
-	margin-left: 15px;
+	font-size: 1em;
+	margin-top: 6px;
+	margin-left: 2px;
 }
 
 .save-money {
-	font-size: 1.6em;
-	margin-left: 10px;
+	font-size: 1em;
+	margin-left: 4px;
 }
 
 .expiry-date {
-	margin-left: 100px;
-	margin-top: 33px;
-	font-size: 1.25em;
+	margin-left: 116px;
+	margin-top: 6px;
+	font-size: 1em;
 }
 
 .pickbtn {
