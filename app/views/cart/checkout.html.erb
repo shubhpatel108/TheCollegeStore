@@ -9,8 +9,7 @@
 		<th class="checkout-th">Collect it from:</th>
 		<th class="checkout-th">Price</th>
 	</tr>
-<% @books.each do |book| %>
-	
+	<% @books.each do |book| %>
 		<tr>
 			<td id="checkout-title" class="checkout-td">
 				<span id="checkout-book-image"><%= image_tag "/assets/books/#{book.info.image_file_name}", {:class=>"checkout-mainimg"} %></span>
@@ -42,6 +41,40 @@
 		</td>
 	</tr>
 </table>
+
+<% if not @coupons.empty? %>
+	<table border="1" style="margin-left: auto; margin-right: auto;">
+		<tr style="background:#f8f8f8;">
+			<th class="checkout-th">Avail coupon at:</th>
+			<th class="checkout-th">Success</th>
+			<th class="checkout-th">Code</th>
+		</tr>
+		<% @coupons.each do |coupon| %>
+			<tr>
+				<td class="checkout-td">
+					<span><%=coupon.distributor_info.name%></span>
+					<span><%=coupon.distributor_info.address%></span>
+				</td>
+				<td class="checkout-td">
+					<%if coupon.err %>
+						<i class="fa fa-times cross"></i>
+					<%else%>
+						<i class="fa-check fa tick"></i>
+					<%end%>
+				</td>
+				<%if not coupon.err %>
+					<td class="checkout-td"><%= coupon.dist_code %></td>
+				<%end%>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+<p>
+	In order to activate the coupon(s), you need to show a printed copy of this message to the owner of the store or show it in your mobile.
+</p>
+<p style="color:black !important;">
+	Looking forward for more transactions!!!
+</p>
 </div>
 
 <%if not ((current_user.daiictian? unless current_user.nil?) or session[:guest].daiictian?) %>
@@ -55,5 +88,5 @@
 		<br>
 		<td><%= submit_tag "Send", :class => 'button btn-black'%></td>
 	<% end %>
-<%end%>
 </div>
+<%end%>
