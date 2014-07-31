@@ -54,6 +54,8 @@ class ApplicationController < ActionController::Base
 		@book_groups = BookGroup.all
 		$book_names = @book_groups.map(&:title)
 	end
+	session[:cart] ||= []
+	session[:cart_total] ||= 0
   end
 
   def set_cache_buster

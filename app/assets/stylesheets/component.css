@@ -28,6 +28,7 @@
 .cs-style-3 figure {
 	overflow: hidden;
 	height:100%;
+	max-width: 186px;
 }
 
 .cs-style-3 figure .img-book {
@@ -52,10 +53,11 @@
 
 .cs-style-3 figcaption {
 	height: 100%;
-	width: 100%;
+	width: 186px;
 	top: auto;
 	bottom: 0;
 	border-radius: 5px;
+	word-break: break-word;
 /*	-webkit-transform: translateY(185px);
 	-moz-transform: translateY(100%);
 	-ms-transform: translateY(100%);
@@ -153,6 +155,8 @@ table.book-grid .book-author
 {
 	font-size: 12px;
 	font-family: 'Roboto Slab',sans-serif;
+	max-width: 186px !important;
+	word-wrap: break-word;
 }
 
 table.book-grid
