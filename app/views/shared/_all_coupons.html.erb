@@ -6,34 +6,35 @@
       <div class="coupon-box" style="position:relative">
         <div class="image-box">
           <div class="img-brand">
-          <%= image_tag(coupon.distributor.image_name, :class => "set-image")%>
+            <%= image_tag(coupon.distributor.image_name, :class => "set-image")%>
           </div>
         </div>
         <div class="pickbtn">
           <%= link_to "Pick", add_coupon_path(coupon.id), :remote => true, :class => "myButton" %>
         </div>
         <div class="coupon-perks">
-              Get free food and drinks!
+          <%= coupon.scheme %>
         </div>
         <div class="coupon-terms">
-              Valid against a min. bill of Rs. 100
+          <%= coupon.conditions %>
         </div>
         <div class="links">
           <div class="inline-popups" style="margin-top: 10px;">
-            <!-- <li> --><a href="#coupon-deatils-popup", style="margin-left: 10px; font-size: 12px" data-effect="mfp-3d-unfold">See details</a><!-- </li> -->
+            <a href="#coupon-<%=coupon.id%>-deatils-popup" style="margin-left: 10px; font-size: 12px" class="coupons-details-animated">See details</a>
           </div>
         </div>
         <div style="border-top: 1px solid #cccccc; margin-top: 5px;">
         <div style="float:left">
   	      <div class="coupon-save">
-  	          SAVE
+  	          <span>On purchase of</span>
   	      </div>
   	      <div class="save-money" style="color:black">
-  	          Rs. 50
+            <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
+	          <%= coupon.value %>
   	      </div>
       	</div>
         <div class="expiry-date">
-            Expiry <span style="color:black"> 12 Sep 2014 </span>
+            <span>Expiry </span><span style="color:black"> Nov 30, 2014</span>
         </div>
         </div>
         <% if coupon.out_of_stock || (not coupon.applicable(value_remaining)) %>
@@ -41,56 +42,68 @@
           <div style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:white; opacity:0.5;"></div>
         <%end%>
       </div>
+      <div id="coupon-<%=coupon.id%>-deatils-popup" style="display:none;">
+        <div class="info-content">
+            <div class="info-heading">
+              <%= coupon.distributor.name %> 
+            </div> 
+              <hr/>
+            <div class="left-part">
+              <div class="coupon-details">
+                <%= coupon.scheme %>
+              </div>
+              <% if not coupon.conditions.nil? %>
+                <div class="cond-box">
+                  <div class="coupon-cond">
+                    <%= coupon.conditions %>
+                  </div>
+                </div>
+              <% end %>
+              <div class="avaliable-at">
+                  Avaliable at :-
+              </div>
+              <div class="address-bg">
+                <div class="store-address">
+                  <%= coupon.distributor.address %>
+                </div>
+              </div>
+              <div class="terms-and-cond">
+                <div class="terms-head">
+                    Terms & conditions
+                </div>
+                <ul class="terms-content">
+                  <li class="term-points">
+                    If the product offered in the e-coupon is not available due to any reason whatsoever, the store can offer a product of equivalent value to the customer.
+                  </li>
+                  <li class="term-points">
+                    One voucher will be honoured per billing.
+                  </li>
+                  <li class="term-points">
+                    The offer not valid with other offer schemes. 
+                  </li>   
+                  <li class="term-points">
+                    The offer cannot be redeemed for cash. 
+                  </li>
+                  <li class="term-points">
+                    Customer has to show the transactional sms received in his mobile at the time of billing at the respective store for availing the offer.
+                  </li>
+                  <li class="term-points">
+                    “The College Store” is not responsible for any kind of disputes about the delay, pricing or cancellation of the coupons by the the coupon vendor.
+                  </li>
+                  <li class="term-points">
+                    Coupon redemption is purely subjected to standard and specified terms and conditions mentioned by the respective coupon vendor. Hence, any damages, injuries, losses incurred by the end user by using the coupon is not the responsibility of “The College Store”.
+                  </li>
+                  <li class="term-points">
+                    All the coupons on the website are non-refundable, non-exchangeable and non-reversible.
+                  </li>
+                  <li class="term-points">
+                    “The College Store” reserves the right to change these conditions from time to time. The customer (user) is required to check terms and conditions at every visit. No notification communication will be done subject to change in terms and conditions.
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
     <% end %>
 </div>
 
-<div id="coupon-deatils-popup" class="click-popup mfp-with-anim mfp-hide">
-    <div class="info-content">
-        <div class="info-heading">
-              McDonald's,Gujrat 
-        </div> 
-          <hr/>
-        <div class="left-part">
-          <div class="coupon-details">
-            Get free food and drinks
-          </div>
-          <div class="cond-box">
-            <div class="coupon-cond">
-                    Valid against a min bill of Rs 100
-            </div>
-          </div>
-          <div class="avaliable-at">
-              Avaliable at :-
-          </div>
-          <div class="address-bg">
-            <div class="store-address">
-                Ground floor, Himalaya Mall, Drive-In Rd, Nilmani Society, Gurukul
-                Ahmedabad, Gujarat
-                079 3298 4844
-            </div>
-          </div>
-          <div class="terms-and-cond">
-            <div class="terms-head">
-                Terms & conditions
-            </div>
-            <ul class="terms-content">
-              <li class="term-points">
-                Rs.50 displayed in the e-coupon is an indicative value. 
-              </li>
-              <li class="term-points">
-                Customer has to handover the printed copy of the complete e-coupon mailer at the time of billing at McDonald™ store for availing the offer. Customer will not be entitled to avail the offer if the complete printout is not produced. 
-              </li>
-              <li class="term-points">
-                Get a complimentary McAloo Tikki™ Burger and Ice Tea (Regular) on spends of Rs.100 or above. Taxes extra.  
-              </li>   
-              <li class="term-points">
-                Get a complimentary McAloo Tikki™ Burger and Ice Tea (Regular) on spends of Rs.100 or above. Taxes extra.  
-              </li>                      
-            </ul>
-          </div>
-        </div>
-        <div class="right-part">
-          <%= image_tag("mcdman.jpg", :alt => "McDonald", :class => "image-attr")%>
-        </div>
-    </div>
-</div>

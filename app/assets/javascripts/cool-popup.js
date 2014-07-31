@@ -84,6 +84,26 @@
         }
       });
 
+      $('.coupons-details-animated').popup({
+        show        : function($popup, $back){
+
+          var plugin = this,
+            center = plugin.getCenter();
+
+          $popup
+            .css({
+              top     : - $popup.children().outerHeight(),
+              left    : center.left,
+              opacity : 1
+            })
+            .animate({top : center.top}, 500, 'easeOutBack', function(){
+              // Call the open callback
+              plugin.o.afterOpen.call(plugin);
+            });
+
+        }
+      });
+
       // Different preloader
       $('.preloader_popup').popup({
         preloaderContent  : '<img src="assets/images/preloader.gif" class="preloader">'
