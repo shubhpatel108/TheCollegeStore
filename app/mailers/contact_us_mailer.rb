@@ -1,15 +1,14 @@
 class ContactUsMailer < ActionMailer::Base
-  default to: "contact@thecollegestore.com"
 
   def load_settings
     @@smtp_settings = {
       :address              => "smtp.zoho.com",
-      :port                 => "465",
-      :domain               => "thecollegestore.in",
-      :authentication       => "ssl",
+      :port                 => 465,
       :user_name            => "contact@thecollegestore.in",
       :password             => "saq1sazx",
-      :enable_starttls_auto => false
+      :domain               => "thecollegestore.in",
+      :authentication       => :login,
+      :ssl                  => true
     }
   end
 
@@ -18,6 +17,6 @@ class ContactUsMailer < ActionMailer::Base
   	@name = name
   	@email = email
   	@message = message
-    mail(from: email, subject: 'Contact from TCS')
+    mail(from: "contact@thecollegestore.com", to: "contact@thecollegestore.com", subject: 'Contact from TCS')
   end
 end
