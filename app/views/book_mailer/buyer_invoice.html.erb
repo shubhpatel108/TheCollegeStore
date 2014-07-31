@@ -119,21 +119,34 @@
                         <tr>
                             <td class="w580" width="580">
                                 <div align="left" class="article-content">
-                                    <multiline label="Description"><% @coupons.each do |c|%>
-																		<tr>
-																			<td> <%= c.code %></td><br>
-																		</tr>
-																	<% end %>
+                                    <multiline label="Description">
+                                    <% @coupons.each do |c|%>
+										Store:<%= c.distributor_info.name %><br>
+										Address:<%= c.distributor_info.address %><br>
+										Coupon Code:<%= c.dist_code %><br>
+										Expiry Date: Nov 30, 2014<br>
+										<br>
+									<% end %>
 									</multiline>
                                 </div>
                             </td>
                         </tr>
                         <tr><td class="w580" width="580" height="10"></td></tr>
                     </tbody></table>
+                <p>
+                In order to activate the coupon, you need to show a printed copy of this message to the owner of the store or show it in your mobile.
+                </p>
                 </layout>
                 <%end%>
-            </repeater>
-						            </td>
+        	</repeater>
+        	<p>
+			Looking forward for more transactions!!!
+			</p>
+			<p>
+			Cheers!<br>
+			TheCollegeStore Team
+			</p>
+		</td>
 						            <td class="w30" width="30"></td>
 					        	</tr>
 					   		</tbody>
