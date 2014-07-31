@@ -22,10 +22,4 @@ class ProfilesController < ApplicationController
 	  	end
   	end
 
-  	def orders
-  		@ordered = Book.where(:buyer_id => current_user.id)
-  		@ordered.each do |b|
-  			b[:info] = b.book_group
-  		end
-  	end
 end
