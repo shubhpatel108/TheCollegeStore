@@ -12,4 +12,8 @@ module ApplicationHelper
 			return "th"
 		end
 	end
+
+	def flipkart_link(isbn)
+		return "http://www.flipkart.com/search/a/books?query="+"#{isbn}"+"&affid=shubhanshu1"
+	end
 end

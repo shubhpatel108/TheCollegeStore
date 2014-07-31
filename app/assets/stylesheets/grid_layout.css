@@ -35,6 +35,9 @@ Note: IE6 works fine without this fix.
 
 
 
+
+
+
 .container_4
 {
 	margin-left: none;
@@ -188,9 +191,9 @@ text-align: left;
 font-size: 20px;
 padding: 10px 1px 10px 30px;
 margin: 0;
-
-color: white;
 font-weight: bold;
+
+
 font-family: 'Merriweather', serif;
 }
 .container_4 {
@@ -201,6 +204,7 @@ font-family: 'Merriweather', serif;
 	width: 100%;
 	border: 3px solid rgb(184,184,184);
 	margin-bottom: 20px;
+	margin-left: 0;
 }
 
 .innertitle {

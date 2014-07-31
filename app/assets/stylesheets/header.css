@@ -1,3 +1,9 @@
+.mobile-header{
+    width:100%; 
+    height: 60px;  
+    margin-bottom: 30px;
+}
+
 .header-fixed{
     /* position: fixed; */
     width: 100%;    
@@ -245,14 +251,15 @@ font-size: 20px;
 }
 
 a.animated_popup {
-color: rgb(201, 24, 91);
+color: white;
 padding: 5px;
 font-family: 'droid sans';
 font-weight: 600;
+border-radius: 27px;
 }
 
 a.animated_popup-register{
-    color: rgb(65, 65, 65);   
+    color: white;   
     font-family: 'droid sans';
     font-weight: 600;
 } 
@@ -262,7 +269,7 @@ a.animated_popup-register{
 }
 
 /*MEDIA QUERY*/
-@media only screen and (max-width : 640px) { /*If device width is higher than 640px use this css and if less than 640px use above */
+@media screen and (max-width : 640px) { /*If device width is higher than 640px use this css and if less than 640px use above */
  
     #simple-menu{
         display: block;

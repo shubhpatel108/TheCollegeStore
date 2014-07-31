@@ -1,10 +1,28 @@
+ul.extra-page{
+font-size: 16px !important;
+font-family: 'Merriweather', serif;
+line-height: 1.5;
+padding-left: 60px;
+}
+
+ul.extra-page p{
+font-size: 16px !important;
+font-family: 'Merriweather', serif;
+line-height: 1.5;
+}
+.extra-page {
+font-size: 16px !important;
+font-family: 'Merriweather', serif;
+line-height: 1.5;
+}
+
 #shelf{
 	background: rgba(56,61,71,0.7);
 	width: 30px;
 	position: fixed;
 	padding: 10px;
 	top: 150px;
-left: 0;
+	left: 0;
 	z-index: 2;
 	-webkit-transition-duration: 0.2s;
 	-moz-transition-duration: 0.2s;
@@ -47,13 +65,18 @@ margin-top: 0;
 .book-grid-main{
 	width:100%;
 	color: #666;
+	height: 17px;
 }
 
 
 
 td.book-name1 a{
 	font-size: 15px !important;
-text-decoration: underline;
+	font-family: 'Roboto Slab',sans-serif;
+	font-weight: 600;
+	text-decoration: underline;
+	max-height: 38px;
+	overflow: hidden;
 }
 
 .grid figcaption a.button{
@@ -259,6 +282,7 @@ color: white;
 text-decoration: underline;
 padding: 6px 0;
 font-weight: 600;
+font-family: 'Roboto Slab',sans-serif;
 }
 
 .fa-color_black{
@@ -278,7 +302,7 @@ div.video-player{
 }
 
 .title-details{
-background: rgb(185, 185, 185);
+background: rgb(145, 145, 145);
 padding: 0 0 10px 30px;
 border-radius: 5px 5px 0 0;
 }
@@ -499,7 +523,7 @@ padding-top: 5px;
 }
 
 table{
-	width: 100%;
+	/* width: 100%; */
 }
 
 

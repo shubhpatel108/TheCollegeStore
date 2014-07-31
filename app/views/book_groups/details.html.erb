@@ -82,6 +82,33 @@
           </div> 
         </tr>
       <% end %>
+      <% @flipkart_links.each do |book|%>
+        <tr class="listelement">
+          <div class="sellerdetail">
+            <td class="sellername">
+              <i class="fa fa-user fa-1x fa-color_black"></i>
+              <%= image_tag("flipkart_logo.jpg", :size=>"120x50")%>
+            </td>
+
+            <td class="edition">
+            <% if not book[:edition].nil?%>
+              <i class="fa fa-bookmark fa-color_grey" ></i>
+              <%= book[:edition] %><span class="superscript"><%=superscript(book[:edition])%> </span>Edition
+            <%end%>
+            </td>
+
+            <td class="mobile">
+            </td>
+
+            <td class="price">
+            </td>
+
+            <td class="cartoption">
+              <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> at Flipkart" class="A_1" target="_blank"> <span id="SPAN_2">Buy on seller site</span><span id="SPAN_3"></span></a>
+            </td>
+          </div>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

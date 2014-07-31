@@ -28,6 +28,7 @@
 .cs-style-3 figure {
 	overflow: hidden;
 	height:100%;
+	max-width: 186px;
 }
 
 .cs-style-3 figure .img-book {
@@ -52,10 +53,11 @@
 
 .cs-style-3 figcaption {
 	height: 100%;
-	width: 100%;
+	width: 186px;
 	top: auto;
 	bottom: 0;
 	border-radius: 5px;
+	word-break: break-word;
 /*	-webkit-transform: translateY(185px);
 	-moz-transform: translateY(100%);
 	-ms-transform: translateY(100%);
@@ -152,6 +154,9 @@ table.book-grid tr td{
 table.book-grid .book-author
 {
 	font-size: 12px;
+	font-family: 'Roboto Slab',sans-serif;
+	max-width: 186px !important;
+	word-wrap: break-word;
 }
 
 table.book-grid
@@ -181,8 +186,8 @@ table.book-grid
 
 .grid li {
         display: inline-block;
-        margin: 5px 20px;
-        padding: 20px 10px;
+        margin: 5px 26px;
+        padding: 20px 5px;
         text-align: left;
         position: relative;
 		overflow: hidden;
@@ -200,6 +205,7 @@ table.book-grid
         position: relative;
         margin-bottom: 3%;
         border-top:1px solid;
+        margin: 0 auto;
 }
 
 .grid figcaption {
@@ -247,3 +253,48 @@ a.button {
 height: auto !important;
 text-decoration: none;
 }
+
+/*for button for online seller like flipkart*/
+.A_1 {
+    border-collapse: collapse;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    height: 14px;
+    text-align: center;
+    text-decoration: none solid rgb(0, 0, 0);
+    vertical-align: middle;
+    width: 148px;
+    background: rgba(0, 0, 0, 0) linear-gradient(rgb(255, 151, 46), rgb(230, 115, 0)) repeat scroll 0% 0% / auto padding-box border-box;
+    border: 1px solid rgb(229, 133, 16);
+    border-radius: 6px 6px 6px 6px;
+    font: normal normal bold 12px/normal Arial, Helvetica, sans-serif;
+    margin: 10px 0px 5px;
+    outline: rgb(0, 0, 0) none 0px;
+    padding: 8px 0px;
+}/*#A_1*/
+
+#SPAN_2 {
+    border-collapse: collapse;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none solid rgb(255, 255, 255);
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal bold 13px/normal Arial, Helvetica, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+}/*#SPAN_2*/
+
+#SPAN_3 {
+    background-position: -335px -519px;
+    border-collapse: collapse;
+    cursor: pointer;
+    display: none;
+    float: right;
+    text-align: center;
+    background: rgba(0, 0, 0, 0) url(http://ec2.images-amazon.com/images/G/31/junglee/sitewide/junglee_sprite_atf_05-08-14._V1_.png) no-repeat scroll -335px -519px / auto padding-box border-box;
+    font: normal normal bold 12px/normal Arial, Helvetica, sans-serif;
+    margin: 2px 6px 0px 0px;
+    overflow: hidden;
+}/*#SPAN_3*/
+
