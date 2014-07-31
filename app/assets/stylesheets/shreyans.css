@@ -305,6 +305,7 @@ div.video-player{
 background: rgb(145, 145, 145);
 padding: 0 0 10px 30px;
 border-radius: 5px 5px 0 0;
+word-wrap: break-word;
 }
 
 td.edition {
@@ -522,11 +523,6 @@ padding-top: 5px;
 	height:56px;
 }
 
-table{
-	/* width: 100%; */
-}
-
-
 @media only screen and (min-device-width: 320px) and (max-device-width: 640px) { 
 .video-entry{
     display: none;
@@ -550,6 +546,27 @@ table{
 
 #page-body{
 	margin-left: 12% !important;
+}
+
+.listofsellers .listelement {
+	border: 1px gray solid;
+}
+
+.listofsellers .listtitle {
+	text-align: center;
+}
+
+.book .details{
+	text-align: center;
+}
+
+.book .bookattr {
+	margin-left: 14%;
+}
+
+.listtitle {
+	text-align: center;
+	border: 1px gray solid;
 }
 
 }
