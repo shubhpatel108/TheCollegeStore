@@ -83,11 +83,15 @@
 
         }
       });
+          $('.coupons-details-animated').click(function(event){
+          event.preventDefault();
+          var id =  event.target.id;
+          console.log(id);
+          //var id = $(this).attr('id');
+          $("#"+id).popup({
 
-      $('.coupons-details-animated').popup({
-        show        : function($popup, $back){
-
-          var plugin = this,
+          show        : function($popup, $back){
+            plugin = this,
             center = plugin.getCenter();
 
           $popup
@@ -99,10 +103,13 @@
             .animate({top : center.top}, 500, 'easeOutBack', function(){
               // Call the open callback
               plugin.o.afterOpen.call(plugin);
+            })
+            .afterClose(function(){
+              plugin.close();
             });
-
         }
       });
+        });
 
       // Different preloader
       $('.preloader_popup').popup({

@@ -17,11 +17,11 @@
         </div>
         <div class="coupon-terms">
           <%= coupon.conditions %>
-        </div>
         <div class="links">
           <div class="inline-popups" style="margin-top: 10px;">
-            <a href="#coupon-<%=coupon.id%>-deatils-popup" style="margin-left: 10px; font-size: 12px" class="coupons-details-animated">See details</a>
+            <a href="#coupon-<%=coupon.id%>-deatils-popup" id="coupon-<%=coupon.id%>-deatils-link" style="margin-left: 10px; font-size: 12px" class="coupons-details-animated">See details</a>
           </div>
+        </div>
         </div>
         <div style="border-top: 1px solid #cccccc; margin-top: 5px;">
         <div style="float:left">
@@ -38,7 +38,6 @@
         </div>
         </div>
         <% if coupon.out_of_stock || (not coupon.applicable(value_remaining)) %>
-          <%= value_remaining%>
           <div style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:white; opacity:0.5;"></div>
         <%end%>
       </div>
