@@ -104,7 +104,7 @@ class CartController < ApplicationController
     end
     BookMailer.buyer_invoice(current_user || session[:guest], @books, @coupons).deliver
     flash[:success] = "You have successfully checked out!"
-    session[:cart] = nil
+    session[:cart] = []
     session[:cart_total] = 0
     session[:coupons] = []
     session[:value_remaining] = 0

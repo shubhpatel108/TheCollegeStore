@@ -48,7 +48,7 @@
           <div class="sellerdetail">
             <td class="sellername">
               <i class="fa fa-user fa-1x fa-color_black"></i>
-              <%= user.first_name %>
+              <%= user.first_name %> <%= user.last_name %>
             </td>
 
             <td class="edition">
@@ -60,7 +60,7 @@
 
             <td class="mobile">
               <i class="fa fa-phone fa-color_black subsign"></i>
-              <%= user.mobile %>
+              <%= book.admin_user.mobile %>
             </td>
 
             <td class="price">
