@@ -87,9 +87,12 @@ class CartController < ApplicationController
     @coupons = Coupon.where(:id => session[:coupons])
     @coupons.each do |c|
       if not c.out_of_stock
-        d_coupon = DistributedCoupon.new(:coupon_id => c.id, :user_id => current_user.id || session[:guest].id)
+        d_coupon = DistributedCoupon.new(:coupon_id => c.id)
         if current_user.nil?
+          d_coupon.user_id = session[:guest].id
           d_coupon.by_guest = true
+        else
+          d_coupon.user_id = current_user.id
         end
         d_coupon.code = c.generate_code(d_coupon.user_id, d_coupon.by_guest)
         d_coupon.save!
@@ -108,6 +111,7 @@ class CartController < ApplicationController
     session[:cart_total] = 0
     session[:coupons] = []
     session[:value_remaining] = 0
+    session[:guest] = nil
   end
 
 end
