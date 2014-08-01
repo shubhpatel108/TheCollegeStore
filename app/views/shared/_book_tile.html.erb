@@ -1,4 +1,4 @@
-<a href="<%= book_detail_path(book) %>">
+<a href="<%= book_detail_path(book) %>" title="<%=book.title%>">
 <li class="divfloat">
   <figure>
     <div class="img-book">
@@ -24,7 +24,8 @@
         <tr>
           <td class="book-author">
             <center>
-              Author : <%=book.author%> | <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
+              Author : <%=book.author%><br>
+              <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
             </center>
           </td>
         </tr>

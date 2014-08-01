@@ -49,8 +49,14 @@ class BookGroupsController < ApplicationController
     @book_category = @book_group.category.name
     @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved)
     @owners = []
+    @flipkart_links = []
     @books.each do |b|
       @owners << b.user
+      if not b.isbn.nil?
+        if not @flipkart_links.any? {|h| h[:isbn] == b.isbn}
+          @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
+        end
+      end
     end
     @wished = false
     if user_signed_in?
