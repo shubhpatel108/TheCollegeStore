@@ -1,8 +1,8 @@
 FlashNotice("<%= @m_type %>", "<%= @message%>");
 var count = document.getElementById('cart-item-count');
-console.log("sddadda");
 count.innerHTML = "<%= session[:cart].count%>";
+var count = document.getElementById('cart-item-count-2'); //for mobile browsers
+count.innerHTML = "Cart (<%= session[:cart].count %>)";
 var price = document.getElementById('cart-total-price');
 price.innerHTML = "<%= session[:cart_total] %>";
 $('#cart-content').html('<%=escape_javascript( render :partial => "cart/cart", :locals => {:books => session[:cart]})%>')
-console.log("sddadda22222");

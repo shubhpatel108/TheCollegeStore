@@ -69,12 +69,18 @@
                     <!-- Your content -->
                     <ul>
                       <li id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></li>
+                        <li class="resp-cart">
+                          <a href="#cart-content" class="animated-popup-cart">
+                            <span id ="cart-item-count-2">Cart (<%= session[:cart].count %>)</span>
+                          </a>
+                        </li>
                       <% if user_signed_in? %>
                         <li><%= link_to "#{current_user.first_name} #{current_user.last_name}",  "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}"%></li>
                         <li><%= link_to "Sell a book", new_book_group_path %></li>
                         <li><%= link_to "Wishlist", wishlist_path%>
                         <li><%= link_to "Logout", logout_path%>
                       <%else%>
+                        <li><%= link_to "Sell a book", new_book_group_path %></li>
                         <li><a href="/login">Sign In</a></li>
                         <li><a href="/register">Sign Up</a></li>
                       <%end%>
