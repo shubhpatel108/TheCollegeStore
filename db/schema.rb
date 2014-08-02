@@ -129,6 +129,13 @@ ActiveRecord::Schema.define(:version => 20140801001308) do
 
   add_index "coupons", ["distributor_id"], :name => "index_coupons_on_distributor_id"
 
+  create_table "coupons_users", :force => true do |t|
+    t.integer "coupon_id", :null => false
+    t.integer "user_id",   :null => false
+  end
+
+  add_index "coupons_users", ["user_id", "coupon_id"], :name => "index_coupons_users_on_user_id_and_coupon_id"
+
   create_table "distributed_coupons", :force => true do |t|
     t.integer  "coupon_id",                     :null => false
     t.integer  "user_id",                       :null => false
