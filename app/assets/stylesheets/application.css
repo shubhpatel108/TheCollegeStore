@@ -1,0 +1,35 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+  *= require  black.css 
+  *= require  Team/circle.css 
+  *= require  Team/common.css 
+  *= require  Team/demo.css
+  *= require  all_categories.css
+  *= require  all_forms.css
+  *= require  bookdetails.css
+  *= require  carting.css
+  *= require  categories.css
+  *= require  colleges.css
+  *= require  component.css
+  *= require  coupons.css
+  *= require  default.css
+  *= require  grid_layout.css
+  *= require  know-more.css
+  *= require  login_with_fb.css
+  *= require  jquery-ui-1.10.4.custom.css
+  *= require  jquery.toastmessage.css
+  *= require  font-awesome.css
+  *= require  main_layout.css
+  *= require  main_responsive.css
+  *= require  search-bar.css
+  *= require  form.css
+  *= require  popup.css
+  *= require  shreyans.css
+  *= require  footer.css
+  *= require  header.css
+  *= require  jquery.sidr.light.css
+  *= require  smart-forms.css
+*/
