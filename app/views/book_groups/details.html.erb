@@ -59,8 +59,10 @@
             </td>
 
             <td class="mobile">
+            <% if BooksByUser.present?(book.id) %>
               <i class="fa fa-phone fa-color_black subsign"></i>
-              <%= book.admin_user.mobile %>
+              <%= book.user.mobile %>
+            <% end %>
             </td>
 
             <td class="price">
