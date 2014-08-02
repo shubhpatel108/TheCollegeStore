@@ -16,7 +16,7 @@
 }
 
 .ch-img-1 { 
-	background-image: url(/assets/Team/jayant.jpg);
+	background-image: url();
 	background-size: 220px 220px;
 	background-repeat: no-repeat;
 	background-position: absolute;
@@ -24,7 +24,7 @@
 }
 
 .ch-img-2 { 
-	background-image: url(/assets/Team/valay.jpg);
+	background-image: url(/assets/Team/vaibhavi-team.jpg);
 	background-size: 220px 220px;
 	background-repeat: no-repeat;
 	background-position: absolute;
@@ -38,12 +38,18 @@
 }
 
 .ch-img-4 { 
-	background-image: url(/assets/Team/Prashant.jpg);
+	background-image: url(/assets/Team/rishu-team.jpg);
 	background-size: 220px 220px;
 	background-repeat: no-repeat;
 	background-position: absolute;
 }
 
+.ch-img-5 { 
+	background-image: url(/assets/Team/shantanu-team.jpg);
+	background-size: 220px 220px;
+	background-repeat: no-repeat;
+	background-position: absolute;
+}
 .ch-info {
 	position: absolute;
 	background: rgba(63,147,147, 0.8);
