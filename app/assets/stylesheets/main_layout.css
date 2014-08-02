@@ -1881,8 +1881,7 @@ font-family:monospace;
 }
 
 ul,ol{
-font-size:14px
-}
+font-size: 11px;}
 
 ul.no-bullets,ol.no-bullets{
 list-style-type:none
