@@ -9,6 +9,8 @@
 
 
 
+
+
 .popup_back {
 	height: 100%;
 	left: 0;
@@ -23,6 +25,7 @@
 	z-index: 102;
 	left: 25% !important;
 	width: 50%;
+	background: white;
 }
 
 .preloader {
