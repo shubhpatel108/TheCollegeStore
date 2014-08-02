@@ -6,7 +6,7 @@ gem 'rake', '10.3.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'
+gem 'mysql2'
 gem 'devise'
 gem 'gibbon'
 gem 'omniauth-facebook'
@@ -17,6 +17,8 @@ gem 'activeadmin'
 gem 'meta_search', '>=1.1.0.pre'
 gem "passenger"
 gem "sitemap_generator"
+gem "test-unit"
+gem "spreadsheet"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

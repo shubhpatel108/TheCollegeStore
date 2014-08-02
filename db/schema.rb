@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140801001308) do
+ActiveRecord::Schema.define(:version => 20140802065737) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(:version => 20140801001308) do
   add_index "books", ["buyer_id"], :name => "index_books_on_buyer_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
+
+  create_table "books_by_users", :force => true do |t|
+    t.integer "book_id"
+    t.integer "user_id"
+  end
 
   create_table "categories", :force => true do |t|
     t.string "name"
