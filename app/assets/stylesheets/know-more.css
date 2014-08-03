@@ -14,6 +14,7 @@
   border-radius: 5px 5px 5px 5px;
   border-color: #111;
   font-size: 12px;
+  background: white;
 }
 
 .info-content .info-heading {
@@ -27,6 +28,7 @@
 	float:left;
 	width: 100%;
 	height: 100%;
+	background: white;
 }
 
 .info-content .coupon-details {
