@@ -16,4 +16,8 @@ module ApplicationHelper
 	def flipkart_link(isbn)
 		return "http://www.flipkart.com/search/a/books?query="+"#{isbn}"+"&affid=shubhanshu1"
 	end
+
+	def title(page_title)
+	  content_for(:title) { " | " + page_title }
+	end
 end
