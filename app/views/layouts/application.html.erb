@@ -8,11 +8,16 @@
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,700' rel='stylesheet' type='text/css'>
 
+  <meta property="og:title" content="TheCollegeStore" />
+  <meta property="og:site_name" content="TheCollegeStore"/>
+  <meta property="og:url" content="http://www.thecollegestore.in/" />
+  <meta property="og:image" content="facebook_share.png" />
+  <meta property="og:description" content="A College oriented online platform to buy and sell Used Books" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>TheCollegeStore</title>
+  <title>TheCollegeStore<%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application.css" %>
   <%= csrf_meta_tags %>
 

@@ -1,3 +1,4 @@
+<% title "Sell a Book" %>
 <div style="display:none;">
 	<%= form_tag( '/books/sell/autofill' , {:remote => true , :method => :post , :id => "title_form"}) do %>
 	          <td><%= text_field_tag "book_title" %></td>
