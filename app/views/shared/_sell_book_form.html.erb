@@ -42,7 +42,7 @@
 
         <%= f.fields_for :books do |builder| %>
         
-
+        <% if not current_user.daiictian? %>
         <div class="section">
             <label for="price" class="field prepend-icon">
                 <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input'%>
@@ -51,6 +51,7 @@
                 </label>
             </label>
         </div><!-- end section -->
+        <% end %>
 
         <div class="section">
             <label for="edition" class="field prepend-icon">
@@ -66,15 +67,6 @@
                 <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input'%>
                 <label>
                     <i class="fa fa-circle-thin field-icon"></i>
-                </label>
-            </label>
-        </div><!-- end section -->
-
-        <div class="section">
-            <label for="image" class="field prepend-icon">
-               <%= f.file_field :image, :class => 'gui-input' %>
-               <label>
-                    <i class="fa fa-file field-icon"></i>
                 </label>
             </label>
         </div><!-- end section -->

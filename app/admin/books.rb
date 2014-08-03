@@ -14,7 +14,11 @@ ActiveAdmin.register Book do
 		end
 		column :sold
 		column :reserved
-		default_actions
+    column "Buyer" do |n|
+      b = User.where(:id => n.buyer_id).first
+      link_to "#{b.first_name} #{b.last_name}", admin_user_path(b.id) unless b.nil?
+    end
+    default_actions
 	end
 
 	filter :book_group_title, as: :string
