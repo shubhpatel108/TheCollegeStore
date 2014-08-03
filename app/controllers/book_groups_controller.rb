@@ -21,7 +21,11 @@ class BookGroupsController < ApplicationController
       end
       @old_book_group.books << @new_book
       @old_book_group.save
+      BooksByUser.create(book_id: @new_book.id, user_id: @new_book.user_id)
       BookMailer.notify_wishers(@old_book_group).deliver
+      if current_user.daiictian?
+        ContactUsMailer.book_added_notifier(@new_book, @new_book.book_group, @new_book.user).deliver
+      end
       flash[:success] = "Your Book is added!"
       redirect_to :books
     else
@@ -48,14 +52,18 @@ class BookGroupsController < ApplicationController
   def details
     @book_group = BookGroup.where(:id => params[:id]).first
     @book_category = @book_group.category.name
-    @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved)
+    @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved, :created_at)
     @owners = []
     @flipkart_links = []
     @books.each do |b|
-      @owners << b.user
-      if not b.isbn.nil?
-        if not @flipkart_links.any? {|h| h[:isbn] == b.isbn}
-          @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
+      if b.admin_user.nil?
+        @book.delete(b)
+      else
+        @owners << b.user
+        if not b.isbn.nil?
+          if not @flipkart_links.any? {|h| h[:isbn] == b.isbn}
+            @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
+          end
         end
       end
     end
