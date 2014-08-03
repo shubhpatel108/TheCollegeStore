@@ -57,7 +57,7 @@ class BookGroupsController < ApplicationController
     @flipkart_links = []
     @books.each do |b|
       if b.admin_user.nil?
-        @book.delete(b)
+        @books.delete(b)
       else
         @owners << b.user
         if not b.isbn.nil?
