@@ -51,30 +51,34 @@ class BookGroupsController < ApplicationController
 
   def details
     @book_group = BookGroup.where(:id => params[:id]).first
-    @book_category = @book_group.category.name
-    @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved, :created_at)
-    @owners = []
-    @flipkart_links = []
-    @books.each do |b|
-      if b.admin_user.nil?
-        @books.delete(b)
-      else
-        @owners << b.user
-        if not b.isbn.nil?
-          if not @flipkart_links.any? {|h| h[:isbn] == b.isbn}
-            @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
+    if @book_group.nil?
+      render file: 'public/404', status: 404, formats: [:html]
+    else
+      @book_category = @book_group.category.name
+      @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved, :created_at)
+      @owners = []
+      @flipkart_links = []
+      @books.each do |b|
+        if b.admin_user.nil?
+          @books.delete(b)
+        else
+          @owners << b.user
+          if not b.isbn.nil?
+            if not @flipkart_links.any? {|h| h[:isbn] == b.isbn}
+              @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
+            end
           end
         end
       end
-    end
-    @wished = false
-    if user_signed_in?
-      w = Wishlist.where(:book_group_id => @book_group.id, :user_id => current_user.id).first
-      if not w.nil?
-        @wished = true
+      @wished = false
+      if user_signed_in?
+        w = Wishlist.where(:book_group_id => @book_group.id, :user_id => current_user.id).first
+        if not w.nil?
+          @wished = true
+        end
       end
+      @details = @books.zip(@owners)
     end
-    @details = @books.zip(@owners)
   end
 
   def category_books
