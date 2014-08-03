@@ -62,10 +62,14 @@
                         </li>
                       <% if user_signed_in? %>
                         <li><%= link_to "#{current_user.first_name} #{current_user.last_name}",  "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}"%></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/coupons">Proceed To Coupons</a></li>
+                        <li><a href="/cart/checkout">Checkout</a></li>
                         <li><%= link_to "Sell a book", new_book_group_path %></li>
                         <li><%= link_to "Wishlist", wishlist_path%>
                         <li><%= link_to "Logout", logout_path%>
                       <%else%>
+                        <li><a href="/">Home</a></li>
                         <li><%= link_to "Sell a book", new_book_group_path %></li>
                         <li><a href="/login">Sign In</a></li>
                         <li><a href="/register">Sign Up</a></li>
