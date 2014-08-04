@@ -22,7 +22,7 @@ class BookGroupsController < ApplicationController
       @old_book_group.books << @new_book
       @old_book_group.save
       BooksByUser.create(book_id: @new_book.id, user_id: @new_book.user_id)
-      BookMailer.notify_wishers(@old_book_group).deliver
+      BookMailer.notify_wishers(@old_book_group)
       if current_user.daiictian?
         ContactUsMailer.book_added_notifier(@new_book, @new_book.book_group, @new_book.user).deliver
       end
