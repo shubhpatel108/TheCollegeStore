@@ -17,7 +17,7 @@ class ContactUsMailer < ActionMailer::Base
   	@name = name
   	@email = email
   	@message = message
-    mail(from: "contact@thecollegestore.co.in", to: "contact@thecollegestore.com", subject: 'Contact from TCS')
+    mail(from: "contact@thecollegestore.in", to: "contact@thecollegestore.com", subject: 'Contact from TCS')
   end
 
   def book_added_notifier(book, b_g, user)
@@ -26,6 +26,6 @@ class ContactUsMailer < ActionMailer::Base
     @book_group = b_g
     @user = user
     @admin_id
-    mail(from: "contact@thecollegestore.co.in", to: "booklyweb@gmail.com", subject: 'Book purchased! Get ready!')
+    mail(from: "contact@thecollegestore.in", to: "booklyweb@gmail.com", subject: 'Book purchased! Get ready!')
   end
 end
