@@ -38,6 +38,9 @@ Note: IE6 works fine without this fix.
 
 
 
+
+
+
 .container_4
 {
 	margin-left: none;
@@ -211,6 +214,7 @@ font-family: 'Merriweather', serif;
 width: 100%;
 background: rgb(185,185,185);
 
+padding: 5px;
 }
 .profiledetails p{
 	color: grey;

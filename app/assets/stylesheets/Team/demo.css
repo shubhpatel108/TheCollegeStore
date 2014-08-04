@@ -1,6 +1,7 @@
 /*@import url('normalize.css');*/
 
 /* General Demo Style */
+
 body{
 	
 	-webkit-font-smoothing: antialiased;
@@ -9,7 +10,6 @@ body{
 }
 
 .container_circle{
-	width: 60%;
 	position: relative;
 }
 .clr{
