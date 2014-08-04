@@ -5,6 +5,8 @@
 	display: block;
 	text-align: center;
 	width: 100%;
+	margin-left: 20%;
+	margin-bottom: 5%;
 }
 
 .ch-grid:after,
@@ -42,7 +44,6 @@ font-size: 3em;
 padding-top: 10px;
 padding-bottom: 5px;
 text-align: center;
-margin-left: 68%;
 
 }
 
