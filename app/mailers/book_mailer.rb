@@ -39,8 +39,14 @@ class BookMailer < ActionMailer::Base
     load_settings
     u_ids = Wishlist.where(:book_group_id => bg.id).map(&:user_id)
     wishers = User.where(:id => u_ids)
-    @wisher_emails = wishers.collect(&:email).join(",")
+    wishers.each do |recipient|
+      notify_individual_wisher(bg, recipient).deliver
+    end
+  end
+
+  def notify_individual_wisher(bg, recipient)
+    load_settings
     @book = bg
-    mail(from: "sales@thecollegestore.in", :to=>@wisher_emails, :subject => "#{bg.title} is recently added by a seller")
+    mail(from: "sales@thecollegestore.in", :to=>recipient.email, :subject => "#{bg.title} is recently added by a seller", template_name: 'notify_individual_wisher')
   end
 end
