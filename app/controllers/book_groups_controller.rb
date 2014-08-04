@@ -55,12 +55,12 @@ class BookGroupsController < ApplicationController
       render file: 'public/404', status: 404, formats: [:html]
     else
       @book_category = @book_group.category.name
-      @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved, :created_at)
+      @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved, :created_at).to_a
       @owners = []
       @flipkart_links = []
       @books.each do |b|
         if b.admin_user.nil?
-          @books.delete(b)
+          @books -= [b]
         else
           @owners << b.user
           if not b.isbn.nil?
@@ -87,7 +87,7 @@ class BookGroupsController < ApplicationController
     @books = BookGroup.where(:category_id => @c_id)
     college_id = cookies[:college_id]
     @books.each do |group|
-        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).count
+        group[:stock] = group.books.where(:college_id => college_id, :reserved => false, :admin_user_id => verified? ).count
         group[:min_price] = group.books.map(&:price).min
     end
     respond_to do |format|

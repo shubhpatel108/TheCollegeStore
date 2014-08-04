@@ -6,8 +6,8 @@ class BooksController < ApplicationController
     @book_groups = BookGroup.all
     college_id = cookies[:college_id]
     @book_groups.each do |group|
-        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).count
-        group[:min_price] = group.books.map(&:price).min
+        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).where(Book.arel_table[:admin_user_id].not_eq(nil)).count
+        group[:min_price] = group.books.map(&:price).compact.min
     end
     @latest = @book_groups.sort_by {|b| b[:updated_at]}.reverse!.slice(0..3)
     @popular = @book_groups.sort_by {|b| b[:stock]}.reverse!.slice(0..3)
@@ -79,8 +79,8 @@ class BooksController < ApplicationController
     @results = BookGroup.where(["title like ? or author like ?", "%#{@query}%", "%#{@query}%"])
     @results.each do |b|
       temp_books = b.books
-      b[:min_price] = temp_books.map(&:price).min
-      b[:stock] = temp_books.where(:college_id => cookies[:college_id], :reserved => false).count
+      b[:min_price] = temp_books.map(&:price).compact.min
+      b[:stock] = temp_books.where(:college_id => cookies[:college_id], :reserved => false).where(Book.arel_table[:admin_user_id].not_eq(nil)).count
     end
     respond_to do |format|
       format.html
