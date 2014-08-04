@@ -87,8 +87,8 @@ class BookGroupsController < ApplicationController
     @books = BookGroup.where(:category_id => @c_id)
     college_id = cookies[:college_id]
     @books.each do |group|
-        group[:stock] = group.books.where(:college_id => college_id, :reserved => false, :admin_user_id => verified? ).count
-        group[:min_price] = group.books.map(&:price).min
+        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).where(Book.arel_table[:admin_user_id].not_eq(nil)).count
+        group[:min_price] = group.books.map(&:price).compact.min
     end
     respond_to do |format|
       format.js
