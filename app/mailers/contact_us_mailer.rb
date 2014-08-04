@@ -21,6 +21,7 @@ class ContactUsMailer < ActionMailer::Base
   end
 
   def book_added_notifier(book, b_g, user)
+    load_settings
     @book = book
     @book_group = b_g
     @user = user
