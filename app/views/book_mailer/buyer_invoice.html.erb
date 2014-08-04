@@ -91,7 +91,7 @@
 				                                        Price:	<%= book.price%><br>
 				                                       	Edition:	<%= book.edition%><br>
 				                                       	ISBN:	<%= book.isbn%><br>
-				                                       	<% if not book.admin.nil? %>
+				                                       	<% if not book.admin_user.nil? %>
 				                                       	Collect it from: <%= book.admin_user.full_name%> (<%= book.admin_user.mobile%>), Room:<%= book.admin_user.room%><br>
 				                                       	<%end%>
 				                                       	<% end %>
