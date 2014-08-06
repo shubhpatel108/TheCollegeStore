@@ -10,7 +10,7 @@
 		<th class="checkout-th">Price</th>
 	</tr>
 	<% @books.each do |book| %>
-		<tr>
+			<tr>
 			<td id="checkout-title" class="checkout-td">
 				<span id="checkout-book-image"><%= image_tag "/assets/books/#{book.info.image_file_name}", {:class=>"checkout-mainimg"} %></span>
 				<span id="checkout-book-name"><%=book.info.title%></span>
@@ -25,7 +25,7 @@
 			<% if BooksByUser.present?(book.id) %>
 				<td id="checkout-seller" class="checkout-td"><%=book.user.first_name%> <%=book.user.last_name%><br><%=book.user.mobile%></td>
             <% else %>
-				<td id="checkout-seller" class="checkout-td"><%=book.admin_user.full_name%><br>Room no.<%=book.admin_user.room%><br>Mobile.<%=book.admin_user.mobile%></td>
+				<td id="checkout-seller" class="checkout-td"><strong><%=book.admin_user.full_name%><br>Room no.<%=book.admin_user.room%><br>Mobile.<%=book.admin_user.mobile%></strong></td>
 			<%end%>
 			<td id="checkout-price" class="checkout-td"><i class="fa fa-inr fa-padding"></i><%=book.price%></td>
 		</tr>
