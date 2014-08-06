@@ -1,6 +1,39 @@
+.contact-us-details{
+    margin: 30px 0;
+
+}
+
+.contact-us-details ul{
+    display: flex;
+
+    margin: auto;
+    width: 74%;
+    font-size: 16px;
+}
+
+.contact-us-details ul li{
+    list-style-type: none;
+
+    margin: 0 10px;
+}
+
+.contact-us-details ul li table{
+
+}
+
+.contact-us-details ul li table tr{
+
+}
+
+.contact-us-details ul li table tr td{
+    padding: 2px 10px;
+	
+}
+
 .extra-pages {
 font-size: 15px;
-font-family: 'Merriweather', serif;
+font-family: sans-serif;
+margin: 5px 0;
 }
 
 li.extra-pages {
