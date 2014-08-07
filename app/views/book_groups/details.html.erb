@@ -19,7 +19,7 @@
       <td class="publisher"><i class="fa fa-empire fa-4x fa-color_black" style="font-size:1.0em ;padding-right:5px;"></i>Publisher: <%= @book_group.publisher%> </td>
       </tr>
     </table>
-    <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers avalaible </p></a>
+    <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers available </p></a>
 
     <div class="wishbtn">
       <% if @wished %>
@@ -41,7 +41,7 @@
  <div id="userlist" class="sellerslist">
     <div class="tablecontent">
       <div class="listtitle" id="listtitle">
-        Avaliable Sellers:
+        Available Sellers:
       </div>
       <table class="listofsellers">    
         <% @details.each do |book, user| %>
