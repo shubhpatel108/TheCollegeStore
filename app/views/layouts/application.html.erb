@@ -2,22 +2,23 @@
 
 <html class="no-js" lang="en"><!--<![endif]-->
 <head>
+  <meta property="og:title" content="TheCollegeStore" />
+  <meta property="og:site_name" content="TheCollegeStore"/>
+  <meta property="og:url" content="http://www.thecollegestore.in/" />
+  <meta property="og:image" content="facebook_share.png" />
+  <meta property="og:description" content="A College oriented online platform to buy and sell Used Books" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="icon" type="image/png" href='/assets/logo.png' sizes="32x32">
+
   <!-- Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,700' rel='stylesheet' type='text/css'>
 
-  <meta property="og:title" content="TheCollegeStore" />
-  <meta property="og:site_name" content="TheCollegeStore"/>
-  <meta property="og:url" content="http://www.thecollegestore.in/" />
-  <meta property="og:image" content="facebook_share.png" />
-  <meta property="og:description" content="A College oriented online platform to buy and sell Used Books" />
-  <link rel="icon" type="image/png" href='/assets/logo.png' sizes="32x32">
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>TheCollegeStore<%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application.css" %>
   <%= csrf_meta_tags %>
@@ -25,8 +26,7 @@
   <%= javascript_include_tag "main_layout_js.js" %>
 
   <!-- Validations -->
-  <%= javascript_include_tag  "http://code.jquery.com/jquery-2.1.1.min.js" %>
-  <%= javascript_include_tag "http://code.jquery.com/ui/1.11.0/jquery-ui.js" %>
+  <%= javascript_include_tag  "jquery.magnific-popup.js" %>
   <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
  <%= javascript_include_tag "additional-methods.js" %>
 
