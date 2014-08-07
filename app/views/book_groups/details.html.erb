@@ -60,8 +60,10 @@
             </td>
 
             <td class="price">
-              <i class="fa fa-rupee fa-color_black subsign"></i>
-              <%= book.price %>
+              <% if not book.reserved %> 
+                <i class="fa fa-rupee fa-color_black subsign"></i>
+                <%= book.price %>
+              <% end %>
             </td>
 
             <td class="cartoption">

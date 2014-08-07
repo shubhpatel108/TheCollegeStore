@@ -21,7 +21,6 @@ class BookGroupsController < ApplicationController
       end
       @old_book_group.books << @new_book
       @old_book_group.save
-      BooksByUser.create(book_id: @new_book.id, user_id: @new_book.user_id)
       BookMailer.notify_wishers(@old_book_group)
       if current_user.daiictian?
         ContactUsMailer.book_added_notifier(@new_book, @new_book.book_group, @new_book.user).deliver
@@ -39,7 +38,6 @@ class BookGroupsController < ApplicationController
           @new_book.college_id = current_user.college_id
           @new_book.save
         end
-        BooksByUser.create(book_id: @new.book.id, user_id: @new_book.user_id)
         flash[:success] = "Your Book is added!"
         redirect_to :books
       else

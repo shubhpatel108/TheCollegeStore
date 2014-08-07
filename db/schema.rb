@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140802065737) do
+ActiveRecord::Schema.define(:version => 20140801001308) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -88,11 +88,6 @@ ActiveRecord::Schema.define(:version => 20140802065737) do
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
 
-  create_table "books_by_users", :force => true do |t|
-    t.integer "book_id"
-    t.integer "user_id"
-  end
-
   create_table "categories", :force => true do |t|
     t.string "name"
     t.string "image_name"
@@ -133,13 +128,6 @@ ActiveRecord::Schema.define(:version => 20140802065737) do
   end
 
   add_index "coupons", ["distributor_id"], :name => "index_coupons_on_distributor_id"
-
-  create_table "coupons_users", :force => true do |t|
-    t.integer "coupon_id", :null => false
-    t.integer "user_id",   :null => false
-  end
-
-  add_index "coupons_users", ["user_id", "coupon_id"], :name => "index_coupons_users_on_user_id_and_coupon_id"
 
   create_table "distributed_coupons", :force => true do |t|
     t.integer  "coupon_id",                     :null => false
