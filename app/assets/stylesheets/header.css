@@ -174,11 +174,11 @@ span.select-college {
  
     margin-left: 20px;
     float: left; 
-    background: url('/assets/logo.png') no-repeat;
-    background-size: 100%;
+    background: url('/assets/logo-main.png') no-repeat;
     background-position: 11px -5px;
     width: 100px;
-    height: 60px;
+    height: 150px;
+    background-size: 80px 150px;
 }
 
 nav {
