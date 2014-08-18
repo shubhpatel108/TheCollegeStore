@@ -21,13 +21,16 @@ ActiveAdmin.register Book do
     default_actions
 	end
 
+	filter :id
 	filter :book_group_title, as: :string
 	filter :edition
 	filter :isbn
 	filter :price
 	filter :college
 	filter :user_first_name, as: :string
+	filter :user_last_name, as: :string
 	filter :buyer_first_name, as: :string
+	filter :buyer_last_name, as: :string
 	filter :city_vendor_vendor_name, as: :string
 	filter :admin_user
 	filter :sold
