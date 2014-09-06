@@ -28,4 +28,14 @@ class ContactUsMailer < ActionMailer::Base
     @admin_id
     mail(from: "contact@thecollegestore.in", to: "booklyweb@gmail.com", subject: 'Book purchased! Get ready!')
   end
+
+  def book_sold_notifier(email, name, admin_id, amount)
+    load_settings
+    @name = name
+    @id = admin_id
+    @admin = AdminUser.find(@id)
+    @amount = amount
+    @email = email
+    mail(from: "contact@thecollegestore.in", to: @email, subject: 'Congratulations! | TheCollegeStore')
+  end
 end
