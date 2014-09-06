@@ -34,7 +34,7 @@
           <span id="checkout-book-image"><%= image_tag "/assets/books/#{book.info.image_file_name}", {:class=>"checkout-mainimg"} %></span>
           <span id="checkout-book-name"><%=book.info.title%></span>
         </td>
-        <td id="checkout-price" class="checkout-td"><i class="fa fa-inr fa-padding"></i><%=book.price%></td>
+        <td id="checkout-price" class="checkout-td"><i class="fa fa-inr fa-padding"></i><%=book.price*0.75%></td>
         <td id="checkout-status" class="checkout-td">
           <%if not book.reserved %>
             <i class="fa fa-times cross"></i>
