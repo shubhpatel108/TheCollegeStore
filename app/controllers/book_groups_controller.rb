@@ -57,16 +57,21 @@ class BookGroupsController < ApplicationController
       @owners = []
       @flipkart_links = []
       @books.each do |b|
+        if not b.isbn.nil?
+          if not @flipkart_links.any? {|h| h[:isbn] == b.isbn} and not b.isbn.empty?
+            @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
+          end
+        end
         if b.admin_user.nil?
           @books -= [b]
         else
           @owners << b.user
-          if not b.isbn.nil?
-            if not @flipkart_links.any? {|h| h[:isbn] == b.isbn}
-              @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
-            end
-          end
         end
+      end
+      if not @flipkart_links.empty?
+        temp_link = @flipkart_links.find { |h| h[:edition] == (@flipkart_links.map {|x| x[:edition]}.compact.max) }
+        @flipkart_links.clear
+        @flipkart_links << temp_link
       end
       @wished = false
       if user_signed_in?
