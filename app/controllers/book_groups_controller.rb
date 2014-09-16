@@ -73,6 +73,7 @@ class BookGroupsController < ApplicationController
         @flipkart_links.clear
         @flipkart_links << temp_link
       end
+      @isbn_amazon = @flipkart_links.first[:isbn] unless @flipkart_links.empty?
       @wished = false
       if user_signed_in?
         w = Wishlist.where(:book_group_id => @book_group.id, :user_id => current_user.id).first

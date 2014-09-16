@@ -106,6 +106,28 @@
           </div>
         </tr>
       <% end %>
+      <% if not @isbn_amazon.nil? %>
+        <tr class="listelement">
+          <div class="sellerdetail">
+            <td class="sellername">
+              <i class="fa fa-user fa-1x fa-color_black"></i>
+              <a href="<%=amazon_link(@isbn_amazon)%>" target="_blank">
+                <%= image_tag("amazon_logo.png", :size=>"140x40")%>
+              </a>
+            </td>
+
+            <td class="edition">
+            </td>
+
+            <td class="price">
+            </td>
+
+            <td class="cartoption">
+              <a href="<%=amazon_link(@isbn_amazon)%>" title="Buy <%=@book_group.title%> at Amazon" class="A_1" target="_blank"> <span id="SPAN_2">Buy on seller site</span><span id="SPAN_3"></span></a>
+            </td>
+          </div>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>
