@@ -65,6 +65,11 @@ TheCollegeStore::Application.routes.draw do
   get '/shipping-details', to: 'our#shipping'
 
   get '/profiles/:first_name-:last_name/:id', to: 'profiles#show'
+
+  get '/api/colleges', to: 'api#colleges'
+  get '/api/book_groups', to: 'api#book_groups'
+  get '/api/book_group/:book_group_id/', to: 'api#book_group'
+  get '/api/:college_id/:book_group_id/books', to: 'api#bg_books'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
