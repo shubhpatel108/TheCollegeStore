@@ -19,6 +19,7 @@ gem "passenger"
 gem "sitemap_generator"
 gem "test-unit"
 gem "spreadsheet"
+gem "jbuilder"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
