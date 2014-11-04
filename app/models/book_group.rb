@@ -23,4 +23,12 @@ class BookGroup < ActiveRecord::Base
       self.save!
 	  end
   end
+
+  def slug
+    title.downcase.gsub(" ", "-")
+  end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
 end
