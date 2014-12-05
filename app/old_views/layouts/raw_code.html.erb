@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TheCollegeStore</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "jquery-ui-1.10.4.custom.css"%>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "rails.validations", "jquery-ui-1.10.4.custom.min.js", 'autocomplete-rails.js', 'rails.js' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header>
+	<% if user_signed_in? %>
+  		<div>
+			<span>Welcome, <%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path %></span>
+			<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+		</div>
+	<%else%>
+		<div>
+		<%= link_to "Register", new_user_registration_path%>
+		<%= link_to "Log In", new_user_session_path%>
+		</div>
+	<%end%>
+	<%= cookies[:college_name] %>
+</header>
+<%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %>
+<%= link_to "Show Cart", show_cart_path, remote: true%>
+<div id="cart-content">
+</div>
+<div id="selected-coupons">
+<%= render :partial => 'coupons/coupons'%>
+</div>
+<div id="sub-heading">
+</div>
+<div id="category-bar">
+	<% $categories.each do |c|%>
+		<p><%= link_to "#{c.name}", category_books_path(c.id), {:remote => true}%></p>
+	<% end %>
+</div>
+<div id="page-body">
+	<%= yield %>
+</div>
+  <script>
+  	//for flash messages
+  	var notice= '<%= flash[:notice] %>'
+	var success= '<%= flash[:success] %>'
+	var warning= '<%= flash[:warning] %>'
+	var error= '<%= flash[:error] %>'
+	if(notice)
+		FlashNotice("notice", notice);
+	else if(success){
+		FlashNotice("success", success);
+	}
+	else if(warning)
+		FlashNotice("warning", warning);
+	else if(error)
+		FlashNotice("notice", error);
+  </script>
+</body>
+</html>

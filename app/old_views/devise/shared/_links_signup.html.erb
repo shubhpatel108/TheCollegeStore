@@ -1,0 +1,21 @@
+<div class="extra_options">
+<%- if Devise.mappings[:user].omniauthable? %>
+	<% if cookies[:college_id].nil? %>
+	<%= link_to image_tag('fblogin.png', :class => "fb_login" ), "/?flash=Please select your college" %>
+
+    <%= link_to image_tag('g+login.png', :class => "gmail_login"), "/?flash=Please select your college"%>
+	<% else %>
+    <%= link_to image_tag('fblogin.png', :class => "fb_login" ), omniauth_authorize_path(:user, Devise.omniauth_providers[0])%>
+
+    <%= link_to image_tag('g+login.png', :class => "gmail_login"), omniauth_authorize_path(:user, Devise.omniauth_providers[1]) %>
+    <% end %> 
+<% end -%>
+</div>
+
+<%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:user), :class => "link" %><br />
+<% end -%>
+
+<%- if Devise.mappings[:user].lockable? && Devise.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(:user), :class => "link" %><br />
+<% end -%>

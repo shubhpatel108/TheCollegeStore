@@ -1,0 +1,42 @@
+<% title "Welcome Guest" %>
+<div class="smart-wrap">
+  <div class="smart-forms smart-container wrap-3">
+    <div class="form-header header-black">
+        <h4><i class="fa "></i><center>Guest Checkout</center></h4>
+    </div>
+    <div class="form-body theme-black">
+      <%= form_for(@guest, :html => {:class=>'smart-form'}) do |f| %>
+        <div class="section">
+          <label for="firstname" class="field prepend-icon">
+            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'gui-input' %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="lastname" class="field prepend-icon">
+              <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'gui-input' %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="email" class="field prepend-icon">
+            <%= f.email_field :email, :placeholder => 'Email', :class=>'gui-input' %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="mobile" class="field prepend-icon">
+            <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'gui-input' %>
+          </label>
+        </div>
+        <div class="section">
+          <label for="email" class="field prepend-icon">
+            <%= f.hidden_field :college_id, :value=> cookies[:college_id] %>
+          </label>
+        </div>
+        <div class="section">
+          <center>
+            <%= f.submit "Proceed", :class => 'button btn-black' %> 
+          </center>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

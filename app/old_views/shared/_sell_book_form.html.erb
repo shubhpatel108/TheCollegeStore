@@ -1,0 +1,83 @@
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+        
+	    	<div class="form-header header-black">
+	        	<h4><center><i class="fa fa-book"></i>Book Selling Form<center></h4>
+	        </div><!-- end .form-header section -->
+	        <div class="form-body theme-black">
+
+	<%= form_for book_group,:html=> {:class => 'smart-form' } do |f| %> 
+        <div class="section">
+            <label for="book_title" class="field prepend-icon">
+                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title', :class => 'gui-input' %>
+            <label>
+                <i class="fa fa-book field-icon"></i>
+            </label>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="author" class="field prepend-icon">
+                <%= f.text_field :author, :placeholder => "Author", id: 'sell_author', :class => 'gui-input', :presence => false %>
+                <label>
+                    <i class="fa fa-user field-icon"></i>
+                </label>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="publisher" class="field prepend-icon">
+                <%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher', :class => 'gui-input' %>
+                <label>
+                    <i class="fa fa-bookmark field-icon"></i>
+                </label>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="category" class="field prepend-icon">
+                <%= f.collection_select :category_id, Category.all, :id, :name%>
+            </label>
+        </div><!-- end section -->
+
+        <%= f.fields_for :books do |builder| %>
+        
+        <% if not current_user.daiictian? %>
+        <div class="section">
+            <label for="price" class="field prepend-icon">
+                <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input'%>
+                <label>
+                    <i class="fa fa-inr field-icon"></i>
+                </label>
+            </label>
+        </div><!-- end section -->
+        <% end %>
+
+        <div class="section">
+            <label for="edition" class="field prepend-icon">
+                <%= builder.text_field :edition, :placeholder => "Edition", :class => 'gui-input'%>
+                <label>
+                    <i class="fa fa-bars field-icon"></i>
+                </label>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <label for="isbn" class="field prepend-icon">
+                <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input'%>
+                <label>
+                    <i class="fa fa-circle-thin field-icon"></i>
+                </label>
+            </label>
+        </div><!-- end section -->
+
+        <div class="section">
+            <center><%= f.button "Submit Book", :class => 'button btn-black' %> </center>
+        </div><!-- end section -->
+                
+		<%end%>	
+	<% end %>
+</div>
+</div>
+</div>
+

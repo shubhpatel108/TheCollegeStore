@@ -1,0 +1,8 @@
+FlashNotice("<%=@m_type%>", "<%=@message%>");
+if ("<%=@m_type%>"=="success")
+{
+	var wish_anchor = document.getElementById('add_to_wishlist'); 
+	wish_anchor.innerHTML = "Remove from Wishlist";
+	wish_anchor.setAttribute("id", "remove_from_wishlist");
+	wish_anchor.href = "/wishlist/remove/<%= escape_javascript(@bg_id)%>";
+}

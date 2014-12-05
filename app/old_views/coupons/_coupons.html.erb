@@ -1,0 +1,20 @@
+<style type="text/css">
+	
+</style>
+
+<div id="sel_coupon_wrapper">
+	<% if not session[:coupons].nil? %>
+		<% session[:coupons].each do |coupon|%>
+		<div id="cart_coupon_<%=coupon%>" class="each_coupon">
+			<div class="coupon_thumb">
+			<div id="remove-coupon"><%= link_to "x", remove_coupon_path(coupon), :remote => true %></div>
+			<%= image_tag('coupon_thumb.jpg', size:'30x30') %>
+			</div>
+		</div>
+		<% end %>
+	<% else %>
+		<p>No coupon selected</p>
+	<% end %>
+</div>
+<p><%= link_to "Checkout", checkout_path, :class=>"button mobile-checkout", :style=> "float:right;" %></p>
+

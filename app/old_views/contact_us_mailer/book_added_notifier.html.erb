@@ -1,0 +1,22 @@
+<p>Hey Admin,</p>
+<p>
+	A book has been added to TheCollegeStore at DA-IICT. Please review it and add admin_user_id to that book using the awesome admin panel provided to you.
+</p>
+<p>
+	Please also add the price to the database without forgetting.
+</p>
+
+Title: <%= @book_group.title %><br>
+Author: <%= @book_group.author %><br>
+Publisher: <%= @book_group.publisher %><br>
+Book ID: <%= @book.id %><br>
+ISBN: <%= @book.isbn unless @book.isbn.nil? %><br>
+Edition: <%= @book.edition unless @book.edition.nil? %><br>
+
+<p>Information about the Seller:</p>
+<p>Name: <%= @user.first_name%> <%= @user.last_name%> </p>
+<p>Mobile: <%= @user.mobile %> </p>
+<p>Email: <%= @user.email%> </p>
+
+Regards,
+TheCollegeStore Techinal Team

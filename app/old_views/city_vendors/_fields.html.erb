@@ -1,0 +1,20 @@
+<%= render 'shared/error_messages', object: f.object %> 
+  
+  <div><%= f.label :vendor_name %><br />
+  <%= f.text_field :vendor_name, autofocus: true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation, "Confirm Password" %> <br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.label :mobile %><br />
+	<%= f.text_field :mobile %></div>
+
+  <div><%= f.label :city %><br />
+  <%= f.text_field :city %></div>
+  <div>

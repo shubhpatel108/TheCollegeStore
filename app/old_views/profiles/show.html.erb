@@ -1,0 +1,92 @@
+<% title "#{@user.first_name} #{@user.last_name}"%>
+<div class="container_4">
+    <div class="innertitle">
+        <p>
+        <i class="fa fa-mortar-board fa-padding"></i><%=@user.first_name%> <%=@user.last_name%>
+        <% if current_user==@user %>
+        <a href="/users/edit"><i class="fa fa-edit fa-padding" style="float:right;color:white;">edit</i></a>
+        <%end%>
+        </p>
+    </div>
+    <div class="profiledetails">
+      <p>Name: <%=@user.first_name%> <%=@user.last_name%></p>
+      <p>College: <%=@user.college.name%></p>
+      <%if%>
+        <p>College Id: <%=@user.da_roll%></p>
+      <%end%>
+      <p>Mobile: <%=@user.mobile %></p>
+    </div>
+</div>
+<div class="container_4">
+    <div class="innertitle">
+        <p><i class="fa fa-book fa-padding"></i>Books</p>
+    </div>
+    <table border="1" style="margin-left: auto; margin-right: auto;">
+      <tr style="background:#f8f8f8;">
+        <th class="checkout-th">Book</th>
+        <th class="checkout-th">Price</th>
+        <th class="checkout-th">Sold</th>
+        <th class="checkout-th">Buyer</th>
+      </tr>
+    <% @my_books.each do |book| %>
+      <tr>
+        <td id="checkout-title" class="checkout-td">
+          <span id="checkout-book-image"><%= image_tag "/assets/books/#{book.info.image_file_name}", {:class=>"checkout-mainimg"} %></span>
+          <span id="checkout-book-name"><%=book.info.title%></span>
+        </td>
+        <td id="checkout-price" class="checkout-td"><i class="fa fa-inr fa-padding"></i><%=book.price*0.75%></td>
+        <td id="checkout-status" class="checkout-td">
+          <%if not book.reserved %>
+            <i class="fa fa-times cross"></i>
+          <%else%>
+            <i class="fa-check fa tick"></i>
+          <%end%>
+        </td>
+        <td id="checkout-seller" class="checkout-td">
+          <%if not book.reserved %>
+            <i class="fa fa-times cross"></i>
+          <%else%>
+            <%=book.buyer.first_name%> <%=book.buyer.last_name%></td>
+          <%end%>
+      </tr>
+    <% end %>
+    </table>
+</div>
+
+<% if not @bought.nil? %>
+<div class="container_4">
+    <div class="innertitle">
+        <p><i class="fa fa-book fa-padding"></i>Bought Books</p>
+    </div>
+    <table border="1" style="margin-left: auto; margin-right: auto;">
+      <tr style="background:#f8f8f8;">
+        <th class="checkout-th">Book</th>
+        <th class="checkout-th">Price</th>
+        <th class="checkout-th">Collected</th>
+        <th class="checkout-th">Seller</th>
+      </tr>
+    <% @bought.each do |book| %>
+      <tr>
+        <td id="checkout-title" class="checkout-td">
+          <span id="checkout-book-image"><%= image_tag "/assets/books/#{book.info.image_file_name}", {:class=>"checkout-mainimg"} %></span>
+          <span id="checkout-book-name"><%=book.info.title%></span>
+        </td>
+        <td id="checkout-price" class="checkout-td"><i class="fa fa-inr fa-padding"></i><%=book.price%></td>
+        <td id="checkout-status" class="checkout-td">
+          <%if not book.sold %>
+            <i class="fa fa-times cross"></i>
+          <%else%>
+            <i class="fa-check fa tick"></i>
+          <%end%>
+        </td>
+        <td id="checkout-seller" class="checkout-td">
+          <%if not book.reserved %>
+            <i class="fa fa-times cross"></i>
+          <%else%>
+            <%=book.user.first_name%> <%=book.user.last_name%></td>
+          <%end%>
+      </tr>
+    <% end %>
+    </table>
+</div>
+<% end %>

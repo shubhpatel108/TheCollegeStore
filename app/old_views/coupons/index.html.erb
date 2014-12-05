@@ -1,0 +1,49 @@
+<% title "Select Coupons" %>
+<script type="text/javascript">
+  search_bar = document.getElementById('main_search_bar');
+  search_bar.parentNode.removeChild(search_bar);
+  search_bar = document.getElementById('extra-responsive-search');
+  search_bar.parentNode.removeChild(search_bar);
+  top_bar = document.getElementById('search-bar-header');
+  var newdiv = document.createElement('div');
+  newdiv.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
+  newdiv.id = "top-coupon-bar";
+
+
+
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+if(window.innerWidth <= 800 && window.innerHeight <= 600)  {
+  console.log("test");
+  top_bar = document.getElementById('mobile-checkout');
+  top_bar.insertBefore(newdiv, top_bar.firstChild);
+}
+else{
+    console.log("set");
+    top_bar.insertBefore(newdiv, top_bar.firstChild);
+}
+</script>
+
+<div id="all_coupons_wrapper">
+  <%= render :partial => "shared/all_coupons", :locals => {:coupons => @coupons, :value_remaining => session[:value_remaining]} %>
+</div>
+

@@ -1,0 +1,9 @@
+<h1><%= @city_vendor.vendor_name %></h1>
+<h2><%= @city_vendor.email %></h2>
+<h2><%= @city_vendor.mobile %></h2>
+<h2><%= @city_vendor.city %></h2>
+<%= link_to "Edit Profile", edit_city_vendor_path %>
+
+<% if vendor_signed_in? %>
+| <%= link_to "Sign out", city_vendor_signout_path, method: :delete %>
+<% end -%>

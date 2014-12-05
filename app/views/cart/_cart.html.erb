@@ -1,60 +1,79 @@
-<div id="" style="background: white;padding: 30px;">
-  <center><h4 class="cart-title"><i class="fa fa-shopping-cart fa-padding"></i>Cart</h4></center>
-  
-	<div>
-		<table class="cart-table" style="">
-			<% if not books.empty? %>
-				<tr class="table-header">
-					<th>Book</th>
-					<th>Seller</th>
-					<th>Price</th>
-				</tr>
-				<% books.each do |b|%>
-			      <tr id="cart_item_<%=b.id%>" style="border-bottom: 3px solid rgb(234, 235, 223);">
-			        <td style="">
-			          <%= image_tag b[:group].image.url, {:class=>"item-image"} %>
-			          	<%= link_to "<i class='fa fa-times-circle fa-padding cart-remove-icon'></i>".html_safe, remove_item_path(b.id), remote: true%>
-			          	<p class="book-title"> <%=b[:group].title %></p>
-			          	<p class="cart-author"> Author : <%=b[:group].author%></p>
-			          	<p class="cart-edition"> Edition : <%= b.edition%></p>
-			        </td>
-			        <td style="text-align: center; padding: 0px;">
-			        	<%=b[:user].first_name %>
-			        </td>
-			        <td style="text-align: center; padding: 0px;">
-			        	<i class="fa fa-inr fa-padding"></i><%=b.price%>
-			        </td>
-			      </tr>
-				<%end%>
-			<%else%>
-			    <tr>
-					<p>There are no Books in your cart!</p>
-				</tr>
-			<%end%>
-				<tr>
-					<td>
-					</td>
-					<td colspan="3" style="float:right">
-						Total Estimated Amount
-					</td>
-					<td style="text-align:center;vertical-align: middle;">
-						<i class="fa fa-inr fa-padding"></i>
-						<span id="cart-total-price">
-							<% if not session[:cart_total].nil? %>
+<!-- cart modal-->
+        <div class="modal fade" id="shoppingCart">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"><h4>My Shopping Cart <i class="fa fa-shopping-cart"></i><i data-dismiss="modal" class="clickable pull-right fa fa-close"></i></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="number table table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th style="width:35%">Book</th>
+                                    <th style="width: 5%"><i class="fa fa-close"></i></th>
+                                    <th style="width:20%">Price</th>
+                                    <th style="width:20%">Quantity</th>
+                                    <th style="width:20%">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="center">
+                            	<% books.each do |b|%>
+                                <tr id="cart_item_<%=b.id%>">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                            <%= image_tag b[:group].image.url, {:style=>"width:90%"} %>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>
+                                                <a href="#"><b><%=b[:group].title %></b></a>
+                                            </h5>
+                                            <p style="font-size: 70%;text-align: left;">
+                                                <b>Place: </b>  <a href='#'>Baroda</a>
+                                                <br/>
+                                                <b>Author: </b>  <a href='#'><%=b[:group].author %></a>
+                                                <br/>
+                                                <b>Publisher: </b>  <a href='#'>MacMilan</a>
+                                                <br/>
+                                                <b>Edition: </b> <%=b[:group].edition %>
+                                            </p>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding-top: 30px;">
+                                        <i class="fa fa-close clickable"></i>
+                                    </td>
+                                    <td>
+                                        <h3>234</h3>
+                                    </td>
+                                    <td style="padding: 10px 40px 0px 40px;">
+                                        <input type="number" class="form-control input-lg" maxlength="3" value="1" />
+                                    </td>
+                                    <td>
+                                        <h3><b><%=b.price%></b></h3>
+                                    </td>
+                                </tr>
+                                <%else%>
+								    <tr>
+										<h3>There are no Books in your cart!</h3>
+									</tr>
+								<%end%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <h3 class="number">TOTAL: Rs. 
+                        <% if not session[:cart_total].nil? %>
 								<%=session[:cart_total]%>
 							<%else%>
 							0
 							<% end %>
-						</span>
-					</td>
-				</tr>
-	  </table>
-	  <% if not books.empty?%>
-	  <div> 
-	  	<%= link_to "Proceed", coupons_path, :class => 'button' %>
-	  </div>
-	  <% end %>
-	</div>
-</div>
-
-	  
+							</h3>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <% if not books.empty?%>
+                        <%= link_to "Proceed", coupons_path, :class => 'button' %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cart modal-->

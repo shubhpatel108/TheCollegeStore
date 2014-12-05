@@ -1,0 +1,29 @@
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+      
+      <div class="form-header header-black">
+          <h4><i class="fa fa-edit"></i>Edit Profile</h4>
+      </div>
+      
+      <div class="form-body theme-black">
+        <%= form_tag({controller: "/registrations", action:"update_mobile" }, :class =>'smart-form') do %>
+
+          <div class="section">
+            <label for="mobile" class="field prepend-icon">
+              <%= text_field_tag :mobile, nil, placeholder: 'Mobile', :class => 'gui-input' %>
+            </label>
+          </div> 
+
+          <div class="section">
+              <%= hidden_field_tag :user_id, auth_user_id %>
+          </div> 
+          <div class="section">
+            <center>
+              <%= submit_tag "Update", :class => 'button btn-black' %> 
+            </center>
+          </div><!-- end section -->
+        <% end %>
+        <hr>
+      </div>
+    </div>
+</div>

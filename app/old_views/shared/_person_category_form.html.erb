@@ -1,0 +1,40 @@
+
+<script type="text/javascript">
+	function request_admin(){
+		$('#request_admin').css({
+			display: 'block',
+			'padding-top': '15px'
+		});
+	}
+</script>
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+      
+      <div class="form-header header-black">
+          <h4><center><i class="fa fa-building"></i>Select Your College</center></h4>
+      </div>
+
+	<div class="form-body theme-black">
+	<%= form_tag('/application/select_college', method: "get") do %>
+		<div class="section">
+			 <label class="field select">
+			<%= select_tag "college_id", options_from_collection_for_select(College.all, "id", "name", :class => 'college-list') %>
+			<i class="fa fa-caret-square-o-down" style="position: relative;float: right;bottom: 28px;z-index: 1000;right: 10px;"></i>
+			</label>
+		</div>
+		<center><div class="button btn-black"><button class="go-button" name="commit" type="submit" style="cursor:pointer">Go <i class='fa fa-arrow-circle-o-right fa-padding' style='color:white'></i></button></div></center>
+		
+	<%end%>
+	<p id="college_entry" style="text-align:center">
+		<%= link_to_function "Not in the list?", 'request_admin()' %>
+	</p>
+
+	<%= render :partial => "shared/request_form"%>
+
+<div style="text-align:center;" id="vendor_entry">
+	<%= link_to "City vendor", city_vendor_signin_path, type: "city_vendor"%>
+</div>
+</div>
+</div>
+</div>
+

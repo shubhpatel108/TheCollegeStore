@@ -1,0 +1,43 @@
+<div class="footer">
+  <ul>
+    <li class="footer_main">
+      <div class="text">
+        <h4>TheCollegeStore</h4>
+        <div>
+         <a href="/our_team" style="text-decoration:none;">Our Team</a><br>
+         <a href="/about_us" style="text-decoration:none;">About us</a><br>
+         <a href="/contact_us" style="text-decoration:none;">Contact us</a><br>
+         <a href="/privacy_policy" style="text-decoration:none;"> Privacy Policy</a><br>
+         <a href="/disclaimer" style="text-decoration:none;">Disclaimer</a><br>
+         <a href="/terms" style="text-decoration:none;">Terms and Condition</a><br>
+       </div>
+     </div>
+   </li>
+   <li class="footer_main">
+    <div class="text">
+      <h4>Categories</h4>
+      <div>
+        <% Category.all.each do |c|%>
+        <a href="/book_groups/category/<%=c.id%>" style="text-decoration:none;" data-remote=true>
+          <%= c.name%>
+        </a><br>
+        <% end %>
+      </div>
+    </div>
+  </li>
+  <li class="footer_main">
+    <div class="text">
+    </div>
+  </li>
+  <li class="footer_social">
+    <div class="text">
+      <a href="https://www.facebook.com/thecollegestore.in"><%=image_tag('Facebook.png')%></a><br>
+      <a href="https://www.google.co.in/?gfe_rd=cr&ei=T02bU925MaTO8geB-oDgDw&gws_rd=ssl"><%= image_tag('Google.png') %></a>
+      <br>
+      <a href="https://www.twitter.com"><%= image_tag('Twitter.png') %></a>
+      <br>
+    </div>
+  </li>
+</ul>
+<div style="clear: both; line-height: 0;">&nbsp;</div>
+</div>

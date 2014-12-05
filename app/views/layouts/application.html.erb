@@ -1,362 +1,117 @@
 <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TheCollegeStore<%= yield(:title) %></title>
+        <%= csrf_meta_tags %>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <meta property="og:title" content="TheCollegeStore" />
+        <meta property="og:site_name" content="TheCollegeStore"/>
+        <meta property="og:url" content="http://www.thecollegestore.in/" />
+        <meta property="og:image" content="facebook_share.png" />
+        <meta property="og:description" content="A College oriented online platform to buy and sell Used Books" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="icon" type="image/png" href='/assets/logo.png' sizes="32x32">
+        <%= stylesheet_link_tag    "main.css" %>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.panel-heading').on("click", function(e) {
+                    if ($(this).hasClass('panel-collapsed'))
+                    {
+                        $(this).parents('.panel').find('.panel-body').slideDown();
+                        $(this).removeClass('panel-collapsed');
+                        $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                    }
+                    else {
+                        $(this).parents('.panel').find('.panel-body').slideUp();
+                        $(this).addClass('panel-collapsed');
+                        $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!--navbar-->
+        <header class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="../" class="navbar-brand"><img src="./tcs-mj.png" width="200"/></a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <i class='fa fa-bars'></i>
+                    </button>
+                </div>
 
-<html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta property="og:title" content="TheCollegeStore" />
-  <meta property="og:site_name" content="TheCollegeStore"/>
-  <meta property="og:url" content="http://www.thecollegestore.in/" />
-  <meta property="og:image" content="facebook_share.png" />
-  <meta property="og:description" content="A College oriented online platform to buy and sell Used Books" />
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <link rel="icon" type="image/png" href='/assets/logo.png' sizes="32x32">
-
-  <!-- Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,700' rel='stylesheet' type='text/css'>
-
-  <title>TheCollegeStore<%= yield(:title) %></title>
-  <%= stylesheet_link_tag    "application.css" %>
-  <%= csrf_meta_tags %>
-
-  <%= javascript_include_tag "main_layout_js.js" %>
-
-  <!-- Validations -->
-  <%= javascript_include_tag  "jquery.magnific-popup.js" %>
-  <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
- <%= javascript_include_tag "additional-methods.js" %>
-
-  <!-- POpup -->
-
-  <%= javascript_include_tag "jquery.popup.min.js" %>
-  <%= javascript_include_tag "cool-popup.js" %>
-  <%= javascript_include_tag "back-to-top.js"%>
-
-  <%= javascript_include_tag "jquery.sidr.min.js"%>
-
-
-</head>
-
-<body id="library top" class="gecko new-gecko">
-
-  <div class="header-fixed">
-    <div id="content-wrap">
-      <!-- <div class="fixed-heading"> -->
-      <!-- <div class="grid-container grid-parent"> -->
-      <!-- <div class="primary-heading"> -->
-
-      <!-- <div class="global-secondary-nav"> -->
-
-      <!-- <span id="header-title"> -->
-
-      <!--   LOGO -->
-            <!--<div class="logo-div">
-                  <%= image_tag("logo.png",:class => 'logo') %>
-                </div> -->
-                <div class="mobile-nav">
-                  <div id="sidr">
-                    <!-- Your content -->
-                    <ul>
-                      <li id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></li>
-                        <li class="resp-cart">
-                          <a href="#cart-content" class="animated-popup-cart">
-                            <span id ="cart-item-count-2">Cart (<%= session[:cart].count %>)</span>
-                          </a>
-                        </li>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav navbar-right">
                       <% if user_signed_in? %>
-                        <li><%= link_to "#{current_user.first_name} #{current_user.last_name}",  "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}"%></li>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/coupons">Proceed To Coupons</a></li>
-                        <li><a href="/cart/checkout">Checkout</a></li>
                         <li><%= link_to "Sell a book", new_book_group_path %></li>
-                        <li><%= link_to "Wishlist", wishlist_path%>
-                        <li><%= link_to "Logout", logout_path%>
-                      <%else%>
-                        <li><a href="/">Home</a></li>
-                        <li><%= link_to "Sell a book", new_book_group_path %></li>
-                        <li><a href="/login">Sign In</a></li>
-                        <li><a href="/register">Sign Up</a></li>
-                      <%end%>
+                        <li><%= link_to "Wishlist", wishlist_path%></li>
+                        <li><%= link_to "Logout", logout_path%></li>
+                      <% else %>
+                        <li><a href="#" ><i class="fa fa-sign-in"></i> Login | Signup</a></li>
+                      <% end %>
+                        <li><a href="#" ><i class="fa fa-book"></i> Explore Books</a></li>
+                        <li><a href="#" onclick="$('#shoppingCart').modal('show');"><i class='fa fa-shopping-cart'></i> Cart (<%= session[:cart].count %>)</a></li>
                     </ul>
-                  </div>
-                  <a id="simple-menu" href="#sidr"><i class="fa fa-bars fa-menu-icon"></i></a>
-
-                </div>
-
-                <!-- Mobile Checkout -->
-                
-                
-                <a href="/books"><div href="#" id="logo">&nbsp;</div></a>
-                <a href="/" id="menu-name">TheCollegeStore</a>
-                   <div id="mobile-checkout"></div>
-                  <script>
-                  $(document).ready(function() {
-                    $('#simple-menu').sidr();
-                  });
-                  </script>
-
-                <nav>
-                  <ul class="nav-ul">
-                    <li class="nav-li searchbar">
-                      <div class="search-bar-header" id="search-bar-header">
-                      <div id="extra-responsive-search"> 
-                        <%= render :partial => 'shared/search', :locals => {:book_names => $book_names } %>
-                      </div>
-                      </div> 
-                    </li>
-                    <!-- User -->
-                    <!--<div class="user-bar-header">        -->
-                    <!-- <ul class="user-list inline-popups"> -->
-                    <span class="right-user">
-                    <% if user_signed_in? %>
-                    <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
-                    <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
-                    <li class="nav-li">
-                      <span style="display: -webkit-inline-box;display: -moz-inline-stackb;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
-                    </li>
-                    <%end%>
-                    <% if !user_signed_in? %>
-                    <li class="nav-li">     
-                      <a href="#cool-popup" class="animated_popup">Login<i class="fa fa-sign-in fa-padding"></i></a>
-                      <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
-                    </li>
-                    <li class="nav-li">
-                      <a href="#cool-popup-register" class="animated_popup-register">Register<i class="fa fa-user fa-padding"></i></a>
-                    </li>
-                    <%end%>
-                    <li class="nav-li select-college">
-                      <a href="#college-select-popup" class="animated-popup-college-select">
-                        <span class="select-college"><%= cookies[:college_name] %></span>
-                        <span>
-                          <% if cookies[:college_name].nil? %>
-                          <span style="color: white;text-decoration: underline;">Select College</span>
-                          <%end%>
-                          <%= image_tag("dropDownArrow.png", :class => 'drop-down-college') %></span></a>
-                        </li>
-                        </span>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-
-
-                <div id="shelf">
-
-                  <ul class="global-nav">
-                    <li>
-                      <a href="/books" class="">
-                        <i class="fa fa-home fa-4x fa-color_grey"></i>
-                        <span class="nav-tooltip">Home</span>
-                      </a>      
-                    </li>
-                    <li>
-                      <a href="/book_groups/new" class="">
-                       <span class="fa fa-plus-square fa-4x fa-color_grey"></span>
-                       <span class="nav-tooltip">Sell a Book</span>
-                     </a>      
-                   </li>
-                    <li>
-                      <a href="#cart-content" class="animated-popup-cart">
-                        <span class="fa fa-shopping-cart fa-4x fa-color_grey"></span>
-                        <div id="cart-count-wrapper"><span id="cart-item-count">
-                        <% if session[:cart].nil? %>
-                        0
-                        <% else%>
-                        <%= session[:cart].count%>
-                        <%end%></span></div>
-                        <span class="nav-tooltip">Cart</span>
-                      </a>
-                    </li>
-                   <% if user_signed_in? %>
-                   <li>
-                    <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
-                      <i class="fa fa-user fa-4x fa-color_grey"></i>
-                      <span class="nav-tooltip">My Profile </span>
-                    </a>
-                  </li>
-                  <% end -%>
-                  <li>
-                    <a href="/wishlist/show" class="">
-                      <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
-                      <span class="nav-tooltip">Wish List</span>
-                    </a>      
-                  </li>
-                    <li>
-                      <a href="https://www.facebook.com/thecollegestore.in" class="">
-                        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
-                        <span class="nav-tooltip">Facebook</span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="/contact_us" class="">
-                        <span class="fa fa-phone fa-4x fa-color_grey"></span>
-                        <span class="nav-tooltip">Contact Us</span>
-                      </a>      
-                    </li>
-                    <% if user_signed_in? %>
-                    <li>
-                      <a href="/logout" class="">
-                        <span class="fa fa-sign-out fa-4x fa-color_grey"></span>
-                        <span class="nav-tooltip">Log out</span>
-                      </a>      
-                    </li>
-                    <% end %>
-                  </ul>
-                </div>
-
-                <%if request.original_url== "http://www.thecollegestore.in/" || request.original_url== "http://thecollegestore.in/" || request.original_url== "http://localhost:3000/" %>
-                  <div class="video-entry">
-                    <ul style="display:flex; list-style-type:none;">
-                      <li style="width:65%">
-                      </li>
-                      <li style="margin: 20px; width:30%; margin-top:120px">
-                        <iframe width="400" height="300" src="//www.youtube.com/embed/aUvYc0D08K4?rel=0&theme=light&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-                      </li>
-                    </ul>
-                  </div>
-                <% else %>
-                  <div class="mobile-header">
-                  </div>
-
-                <%end%>
-                
-                <%if request.original_url!= "http://www.thecollegestore.in/" && request.original_url!= "http://thecollegestore.in/" && request.original_url!= "http://localhost:3000/" %>
-                  <div class="right-sidebar">
-                    <div style="" class="scroll-mask">
-                      <div class="scroll-container">
-                        <div class="content-filter">
-                          <div class="filters-container">
-                            <div id="topics-expander" class="form-group">
-                              <h4><a>Categories</a></h4>
-                              <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
-                                <li><a id="all_categories_link"href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
-                                <% Category.all.each do |c|%>
-                                <li>
-                                  <a  id="category_<%=c.id%>_link" class="category_wise_books" href="/book_groups/category/<%=c.id%>" data-remote=true>
-                                    <span class="cat-name"><%= c.name%></span>
-                                    <span class="cat-book-count"><b><%= c.book_groups.count%></b></span>
-                                  </a>
-                                </li>
-                                <% end %>
-                              </ul>
-                            </div>
-                          </div>
+                    <form class="navbar-form">
+                        <div class="input-group">
+                            <input class="form-control" name="search" placeholder="Search" autocomplete="off" autofocus="autofocus" type="text">
+                            <span class="input-group-addon"><span class="fa fa-search"></span></span>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
-                <!-- All Popup -->
-                <div style="display:none">
-                  <div id="college-select-popup" >
-                    <%= render :partial => "shared/person_category_form"%>
-                  </div>
-                  <div id="cart-content">
-                    <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
-                  </div>
-                  <div id="cool-popup">
-                    <%= render :partial => "shared/login" %>
-                  </div>
-                  <div id="cool-popup-register">
-                    <%= render :partial => "shared/register" %>
-                  </div>
-                </div><!-- ends -->
-
-                <!-- Page Body -->
-                <div id="page-body">
-                    <%= yield %>
+                    </form>
                 </div>
-
-                <!-- Footer -->
-                <%= render :partial => "shared/footer" %>
-
-                <p id="back-top">
-                  <a href="#top"><i class="fa-chevron-circle-up fa"></i></a>
-                </p>
-
-                <!-- Toast Message -->
-                <%= javascript_include_tag "jquery.toastmessage.js"%>
-                <script>
-    //for flash messages
-    var notice= '<%= flash[:notice] %>' || '<%=notice%>'
-    var success= '<%= flash[:success] %>'
-    var warning= '<%= flash[:warning] %>' || '<%=alert%>'
-    var error= '<%= flash[:error] %>'
-    if(notice)
-      FlashNotice("notice", notice);
-    if(success)
-      FlashNotice("success", success);
-    if(warning)
-      FlashNotice("warning", warning);
-    if(error)
-      FlashNotice("notice", error);
-  </script>
-
-  <%= javascript_include_tag "form-js.js" %>
-<!-- Back To Top -->
-
-<!-- Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-33616834-1', 'auto');
-  ga('send', 'pageview');
-
-
-  // JS for book grid header color change
-  $(".latest").hover(function(){
-  $(".latest-title").css({
-      "background-color" : "rgb(170,38,88)",
-    });
-  $('.latest').css({
-      "border-color" : "rgb(170,38,88)",
-      cursor : 'pointer'
-  });
-
-  },function(){
-  $(".latest-title").css("background-color","rgb(185,185,185)");
-  $(".latest").css("border-color","rgb(184,184,184)");
-  });
-
-  // Popular
-  $(".popular").hover(function(){
-  $(".popular-title").css("background-color","rgb(170,38,88)");
-
-  $('.popular').css({
-      "border-color" : "rgb(170,38,88)",
-      cursor : 'pointer'
-  });
-  },function(){
-  $(".popular-title").css("background-color","rgb(185,185,185)");
-  $(".popular").css("border-color","rgb(184,184,184)");
-});
-
-// Header Image Change Script
-
-if(document.URL != "http://www.thecollegestore.in/" && document.URL!= "http://thecollegestore.in/" && document.URL!= "http://localhost:3000/"){
-  $('#content-wrap').css({
-    "background-size" : '100% 100%'
-  });
-  }
-
-if(document.URL == "http://www.thecollegestore.in/" || document.URL== "http://thecollegestore.in/" || document.URL== "http://localhost:3000/" || document.URL== "http://localhost:3000/#top"){
-
-    $("#page-body").css("width","90%");
-}else{
-  $("#page-body").css("width","74%");
-}
-  
-
-
-</script>
-
+            </div>
+        </header>
+        <!--navbar-->
+<% yield %>
+<footer style='margin-bottom:0px;'>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 footer-left">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Books</a>
+                    </li>
+                    <li>
+                        <a href="#">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#">The Team</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+                </ul>
+                <br />
+                <ul class="list-inline">
+                    <li><i class="fa fa-facebook-square fa-3x social-icon"></i></li>
+                    <li><i class="fa fa-twitter-square fa-3x social-icon"></i></li>
+                    <li><i class="fa fa-google-plus-square fa-3x social-icon"></i></li>
+                </ul>
+            </div>
+            <div class="col-md-6 footer-right">
+                <p>TheCollegeStore is a startup.</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12 footer-below">
+                <p>&COPY;2014 Bookly Web</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

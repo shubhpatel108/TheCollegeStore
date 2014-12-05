@@ -1,0 +1,240 @@
+<% title "Contact Us" %>
+<div class="">
+    <div class="innertitle latest-title">
+        <p><i class="fa fa-book fa-padding"></i>Contact Us</p>
+    </div>
+
+<div class="contact-us-details">
+    <ul>
+        <li>
+            <table>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        : Shubhanshu Gupta
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        : B-214, DAIICT, Gandhinagar, Gujarat
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        : shubhanshu.gupta93@gmail.com
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Mobile
+                    </td>
+                    <td>
+                        : 7359473626
+                    </td>
+                </tr>
+            </table>
+        </li>
+
+        <li>
+            <table>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        : Vaibhavi Desai
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        : K-311, DAIICT, Gandhinagar, Gujarat
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        : rani.vhd@gmail.com
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Mobile
+                    </td>
+                    <td>
+                        : 7698876900
+                    </td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+</div>
+
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+        
+	    	<div class="form-header header-black">
+	        	<h4><i class="fa "></i><center>Contact Us</center></h4>
+	        </div><!-- end .form-header section -->
+	        <div class="form-body theme-black">
+				<%= form_tag "/send", :class=>'smart-form' do%>
+
+					<div class="section">
+		            	<label for="name" class="field prepend-icon">
+		                	<%= text_field_tag('Name', '',size: 35, :class =>'gui-input', :name=>'name', :placeholder=>'Name') %> 
+		                </label>
+		        	</div><!-- end section -->		
+
+		        	<div class="section">
+		            	<label for="email" class="field prepend-icon">
+					 		<%= email_field_tag('Email', '',size: 35, :class=>'gui-input', :name => 'email', :placeholder=>'Email') %> 
+		                </label>
+		        	</div><!-- end section -->		
+
+		        	<div class="section">
+		            	<label for="message" class="field prepend-icon">
+		                	<%= text_area_tag('Message', nil, rows: 10, cols: 50, :class=>'gui-textarea', :name=>'message', :placeholder=>'Message') %> 
+		                </label>
+		        	</div><!-- end section -->		
+
+		        	<div class="section">
+		                	<%= button_tag "Submit", :class => "button btn-black"%>
+		        	</div><!-- end section -->		
+		<% end %>
+        <div id="googleMap" style="width:500px;height:380px;"></div>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+		<script
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+		</script>
+
+		<script>
+		var myCenter=new google.maps.LatLng(23.187202, 72.626770);
+
+		function initialize()
+		{
+		var mapProp = {
+		  center:myCenter,
+		  zoom:16,
+		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
+
+		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+		var marker=new google.maps.Marker({
+		  position:myCenter,
+		  });
+
+		marker.setMap(map);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+
+
+<script type="text/javascript">
+    
+    
+        $(function() {
+        
+
+                $( "#form" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: false,
+                    numberOfMonths: 1,
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                    onClose: function( selectedDate ) {
+                        $( "#checkout" ).datepicker( "option", "minDate", selectedDate );
+                    }
+                });
+                /* @custom validation method (smartCaptcha) 
+                ------------------------------------------------------------------ */
+                    
+                // $.validator.methods.smartCaptcha = function(value, element, param) {
+                //      return value == param;
+                // };
+                        
+                $( "#form" ).validate({
+                
+                        /* @validation states + elements 
+                        ------------------------------------------- */
+                        
+                        errorClass: "state-error1",
+                        validClass: "state-success1",
+                        errorElement: "em1",
+                        
+                        /* @validation rules 
+                        ------------------------------------------ */
+                            
+                        rules: {
+                                name: {
+                                        required: true
+                                },
+                                email: {
+                                        required: true,
+                                        email: true
+                                },                  
+                                message: {
+                                        required: true
+                                }
+                                
+                        },
+                        
+                        /* @validation error messages 
+                        ---------------------------------------------- */
+                            
+                        messages:{
+                                name: {
+                                        required: 'Enter Name'
+                                },
+                                email: {
+                                        required: 'Enter Email',
+                                        email: 'Enter a Valid Email'
+                                },                  
+                                message: {
+                                        required: 'Enter Message'
+                                }
+                                 
+                        },
+
+                        /* @validation highlighting + error placement  
+                        ---------------------------------------------------- */ 
+                        
+                        highlight: function(element, errorClass, validClass) {
+                                $(element).closest('.field').addClass(errorClass).removeClass(validClass);
+                        },
+                        unhighlight: function(element, errorClass, validClass) {
+                                $(element).closest('.field').removeClass(errorClass).addClass(validClass);
+                        },
+                        errorPlacement: function(error, element) {
+                           if (element.is(":radio") || element.is(":checkbox")) {
+                                    element.closest('.option-group').after(error);
+                           } else {
+                                    error.insertAfter(element.parent());
+                           }
+                        }
+                                
+                });     
+        
+        });             
+    
+    
+</script>

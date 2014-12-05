@@ -1,0 +1,133 @@
+<% title @book_group.title + " by " + @book_group.author %>
+<div class="book" onreadystatechange="me()">
+
+  <div class="title-details">
+      <p class="titlebox"><%= @book_group.title %></p>
+  </div>
+
+  <div class="bookattr">
+      <%= image_tag @book_group.image.url, {:class=>"mainimg"} %>
+  </div>
+  
+  <div class="details">
+    <table class="single-book">
+       
+      <tr>
+        <td class="author"><i class="fa fa-user fa-4x fa-color_black" style="font-size:1.0em ;padding-right:5px;"></i>Author: <%= @book_group.author%></td>
+      </tr>
+      <tr>
+      <td class="publisher"><i class="fa fa-empire fa-4x fa-color_black" style="font-size:1.0em ;padding-right:5px;"></i>Publisher: <%= @book_group.publisher%> </td>
+      </tr>
+    </table>
+    <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers available </p></a>
+
+    <div class="wishbtn">
+      <% if @wished %>
+        <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+      <% else %>
+        <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
+      <% end %>  
+    </div>
+  </div>
+
+  <a class="link2link" style="background-color:rgb(64, 148, 141) !important" href="#listtitle"> 
+    <%= image_tag "Add-To-Cart.png", :class => 'single-book-add-to-cart' %> 
+    <div class="add-to-cart-text">
+      Add To Cart
+    </div>
+  </a>  
+</div>
+
+ <div id="userlist" class="sellerslist">
+    <div class="tablecontent">
+      <div class="listtitle" id="listtitle">
+        Available Sellers:
+      </div>
+      <table class="listofsellers">    
+        <% @details.each do |book, user| %>
+        <tr class="listelement">
+          <div class="sellerdetail">
+            <td class="sellername">
+              <i class="fa fa-user fa-1x fa-color_black"></i>
+              <%= user.first_name %> <%= user.last_name %>
+            </td>
+
+            <td class="edition">
+            <% if not book.edition.nil?%>
+              <i class="fa fa-bookmark fa-color_grey" ></i>     
+              <%= book.edition %><span class="superscript"><%=superscript(book.edition)%> </span>Edition
+            <%end%>
+            </td>
+
+            <td class="price">
+              <% if not book.reserved %> 
+                <i class="fa fa-rupee fa-color_black subsign"></i>
+                <%= book.price %>
+              <% end %>
+            </td>
+
+            <td class="cartoption">
+              <% if current_user.nil? || current_user.id!=book.user_id %>
+              <% if  book.reserved %> 
+                <button type="button" id="sold" class="add-to-cart-button sold" disabled><i class="fa fa-check fa-padding"></i>Sold</button>
+              <% else %>
+                <a href="/add_item/<%= book.id%>" class="" name="Add to cart" data-remote=true> 
+                  <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_white cart-icon"></i>Add To Cart</button>
+                </a>
+              <% end %>
+              <% end %>
+            </td>
+          </div> 
+        </tr>
+      <% end %>
+      <% @flipkart_links.each do |book|%>
+        <tr class="listelement">
+          <div class="sellerdetail">
+            <td class="sellername">
+              <i class="fa fa-user fa-1x fa-color_black"></i>
+              <a href="<%=flipkart_link(book[:isbn])%>" target="_blank">
+                <%= image_tag("flipkart_logo.jpg", :size=>"120x50")%>
+              </a>
+            </td>
+
+            <td class="edition">
+            <% if not book[:edition].nil?%>
+              <i class="fa fa-bookmark fa-color_grey" ></i>
+              <%= book[:edition] %><span class="superscript"><%=superscript(book[:edition])%> </span>Edition
+            <%end%>
+            </td>
+
+            <td class="price">
+            </td>
+
+            <td class="cartoption">
+              <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> at Flipkart" class="A_1" target="_blank"> <span id="SPAN_2">Buy on seller site</span><span id="SPAN_3"></span></a>
+            </td>
+          </div>
+        </tr>
+      <% end %>
+      <% if not @isbn_amazon.nil? %>
+        <tr class="listelement">
+          <div class="sellerdetail">
+            <td class="sellername">
+              <i class="fa fa-user fa-1x fa-color_black"></i>
+              <a href="<%=amazon_link(@isbn_amazon)%>" target="_blank">
+                <%= image_tag("amazon_logo.png", :size=>"140x40")%>
+              </a>
+            </td>
+
+            <td class="edition">
+            </td>
+
+            <td class="price">
+            </td>
+
+            <td class="cartoption">
+              <a href="<%=amazon_link(@isbn_amazon)%>" title="Buy <%=@book_group.title%> at Amazon" class="A_1" target="_blank"> <span id="SPAN_2">Buy on seller site</span><span id="SPAN_3"></span></a>
+            </td>
+          </div>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

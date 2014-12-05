@@ -1,0 +1,26 @@
+<p>Hi <%= @name%>, </p>
+<p>
+Your book has been sold through The College Store and you may now come to collect your money. Please come on 6, 7 or 8 Sept from 12 to 1 AM. 
+</p>
+
+<p>Contact Details:<br>
+Name: <%= @admin.full_name %><br>
+Room no: <%= @admin.room%><br>
+Phone: <%= @admin.mobile%><br>
+Amount: Rs. <%= @amount%><br>
+</p>
+
+<p>
+Please bring the change if your amount is not in the perfect hundred figures. In case of any other queries or payment related issues please contact any of our team members.
+</p>
+
+<p>
+	If you want to check the entire transaction, login at <%= link_to "www.thecollegestore.in", "http://www.thecollegestore.in"%>. Your account has automatically been made. If you don't know the password, try "<%= link_to "Forgot Password", "http://thecollegestore.in/users/password/new"%>" to retrieve.
+</p>
+
+<p>Regards,</p>
+<p>The College Store Team<br>
+<%= link_to "Website", "http://www.thecollegestore.in"%> | <%= link_to "Facebook", "https://www.facebook.com/thecollegestore.in?ref=hl"%>
+</p>
+
+<p>PS: This mail is automatically generated. But you may respond to the same mail, if you have any queries.</p>

@@ -1,0 +1,40 @@
+<a href="<%= book_detail_path(book) %>" title="<%=book.title%>">
+<li class="divfloat">
+  <figure>
+    <div class="img-book">
+      <%= image_tag book.image.url %>
+    </div>
+    <figcaption id="book_<%= book.id %>">
+    <table class="book-grid">
+        <tr class="book-grid-main">
+          <td class="book-name1">
+            <center><%=link_to book.title, book_detail_path(book) %></center>
+          </td>
+        </tr>
+        <tr class="book-grid-main">
+          <td>
+            <center>                
+              <span style="font-size:20px; padding:10px">
+                <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
+                <span class="book-price"><%=book.min_price%></span>
+              </span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td class="book-author">
+            <center>
+              Author : <%=book.author%><br>
+              <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td><center><span><%= link_to "Details", book_detail_path(book), :class => 'button' %></span></center></td>
+          
+        </tr>
+      </table>
+    </figcaption>
+  </figure>
+</li>
+</a>
