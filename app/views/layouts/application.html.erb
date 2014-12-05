@@ -115,6 +115,9 @@
                     <% if user_signed_in? %>
                     <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
                     <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
+
+                    <li class="nav-li"><a href="#"><%= image_tag current_user.profile_pic.url, :size => "30x30" %></a></li>
+
                     <li class="nav-li">
                       <span style="display: -webkit-inline-box;display: -moz-inline-stackb;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
                     </li>

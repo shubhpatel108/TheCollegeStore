@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
 									:points, :da_roll
   # attr_accessible :title, :body
 
+	attr_accessible :profile_pic
+	has_attached_file :profile_pic, :styles => {:thumb => "100x100"}, :default_url => "/images/missing.jpg"
+	validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
+
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, :on => :create
   # validates :mobile, presence: true,

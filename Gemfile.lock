@@ -234,8 +234,6 @@ DEPENDENCIES
   omniauth-google-oauth2
   paperclip (~> 4.1)
   passenger
-  rails (= 3.2.16)
-  rake (= 10.3.1)
   sass-rails (~> 3.2.3)
   sitemap_generator
   spreadsheet

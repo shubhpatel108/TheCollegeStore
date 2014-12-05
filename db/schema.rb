@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140801001308) do
+ActiveRecord::Schema.define(:version => 20141205073621) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(:version => 20140801001308) do
   add_index "books", ["buyer_id"], :name => "index_books_on_buyer_id"
   add_index "books", ["college_id"], :name => "index_books_on_college_id"
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
+
+  create_table "books_by_users", :force => true do |t|
+    t.integer "book_id"
+    t.integer "user_id"
+  end
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -169,29 +174,33 @@ ActiveRecord::Schema.define(:version => 20140801001308) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "first_name",                           :default => "", :null => false
-    t.string   "last_name",                            :default => "", :null => false
-    t.string   "email",                                :default => "", :null => false
-    t.string   "encrypted_password",                   :default => "", :null => false
+    t.string   "first_name",                             :default => "", :null => false
+    t.string   "last_name",                              :default => "", :null => false
+    t.string   "email",                                  :default => "", :null => false
+    t.string   "encrypted_password",                     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                        :default => 0,  :null => false
+    t.integer  "sign_in_count",                          :default => 0,  :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
     t.string   "provider"
     t.float    "authid"
-    t.string   "mobile",                 :limit => 20
+    t.string   "mobile",                   :limit => 20
     t.integer  "college_id"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.integer  "points"
     t.integer  "da_roll"
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
   end
 
   add_index "users", ["college_id"], :name => "index_users_on_college_id"
