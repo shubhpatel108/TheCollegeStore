@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 			current_user.college = @college
 			current_user.save!
 		end
-	  	redirect_to :controller => "books", :action => "index"
+		redirect_to :controller => "books", :action => "index", flash: flash
 	end
 
 	def check_cookies

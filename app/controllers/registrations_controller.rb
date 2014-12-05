@@ -8,7 +8,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    
+    if resource.save and not session[:recommender_id].nil?
+      recommender = User.where(:id => session[:recommender_id]).first
+      if not recommender.nil?
+        Recommendation.create(:recommender_id => recommender.id, :recommended_id => resource.id)
+      end
+    end
   end
 
   def update
@@ -25,6 +30,12 @@ class RegistrationsController < Devise::RegistrationsController
     sign_in @user, :event => :authentication
     flash[:success] = "Successfully authenticated!"
     redirect_to :books
+  end
+
+  def recommend
+    id = params[:recommended_by_id].to_i
+    session[:recommender_id] = id
+    redirect_to :controller => "registrations", :action=> "new"
   end
 
   private
