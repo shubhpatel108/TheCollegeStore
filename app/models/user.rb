@@ -38,13 +38,14 @@ class User < ActiveRecord::Base
 			if registered_user
 				return registered_user
 			else
-				user = User.new
+			user = User.new
 		    user.provider = auth.provider
 		    user.authid = auth.uid
 		    user.email = auth.info.email
 		    user.password = Devise.friendly_token[0,20]
 		    user.first_name = auth.info.first_name
 		    user.last_name = auth.info.last_name
+		    user.profile_pic = process_uri(auth.info.image)
 		    user.confirm!
 		    user.save!
 		    return user
@@ -68,6 +69,7 @@ class User < ActiveRecord::Base
 		    user.password = Devise.friendly_token[0,20]
 		    user.first_name = auth.info.first_name
 		    user.last_name = auth.info.last_name
+		    user.profile_pic = process_uri(auth.info.image)
 		    user.confirm!
 		    user.save!
 		    return user
@@ -83,4 +85,11 @@ class User < ActiveRecord::Base
   def daiictian?
   	self.college_id == 1
   end
+
+  private
+	def self.process_uri(uri)
+		avatar_url = URI.parse(uri)
+		avatar_url.scheme = 'https'
+		avatar_url.to_s
+	end
 end
