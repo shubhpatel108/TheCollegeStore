@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
 	def select_college
 		c_id = params[:college_id]
+		flash.keep
 		@college = College.where(:id => c_id).first
 		c_name = @college.name
 		cookies[:college_id] = c_id
@@ -13,19 +14,19 @@ class ApplicationController < ActionController::Base
 			current_user.college = @college
 			current_user.save!
 		end
-		redirect_to :controller => "books", :action => "index", flash: flash
+		redirect_to :controller => "books", :action => "index"
 	end
 
 	def check_cookies
 		@book_groups = BookGroup.all
-		flash[:notice] = params[:flash] 
+		flash.keep
 		if current_user.nil? and cookies[:college_id].nil?
 				@colleges = College.all
 				render :template => 'shared/sellect_college'
 		elsif not current_user.nil?
-			redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id], flash: flash
+			redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id]
 		else
-			redirect_to :books, flash: flash
+			redirect_to :books
 		end
 	end
 
