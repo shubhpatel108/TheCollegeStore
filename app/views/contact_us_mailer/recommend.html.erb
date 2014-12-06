@@ -1,0 +1,6 @@
+<p>Hi <%=@email%>,</p>
+<p><%=@user.first_name%> <%=@user.last_name%> has recommended TheCollegeStore to you.</p>
+<p>Please follow this <%=link_to "link", "localhost:3000/#{@user.id}/#{@user.first_name}-#{@user.first_name}/recommend"%> to get started.</p>
+
+<p>Thanks,</p>
+<p>TheCollegeStore Team</p>

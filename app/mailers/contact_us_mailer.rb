@@ -38,4 +38,10 @@ class ContactUsMailer < ActionMailer::Base
     @email = email
     mail(from: "contact@thecollegestore.in", to: @email, subject: 'Congratulations! | TheCollegeStore')
   end
+
+  def recommend(email, user)
+    @email = email
+    @user = user
+    mail(from: "contact@thecollegestore.in", to: @email, subject: "#{user.first_name} #{user.last_name} recommends TheCollegeStore")
+  end
 end

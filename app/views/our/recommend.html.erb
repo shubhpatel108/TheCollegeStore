@@ -1,0 +1,4 @@
+<%= form_tag(:controller => "our", :action => "send_recommendation") do %>
+	<%= text_field_tag "email", nil, placeholder: "someone@example.com" %>
+	<%= submit_tag "Recommend", :class => "button"%>
+<%end%>
