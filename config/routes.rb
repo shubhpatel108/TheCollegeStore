@@ -70,6 +70,9 @@ TheCollegeStore::Application.routes.draw do
   get '/api/book_groups', to: 'api#book_groups'
   get '/api/book_group/:book_group_id/', to: 'api#book_group'
   get '/api/:college_id/:book_group_id/books', to: 'api#bg_books'
+
+  get '/feedback', to: 'feedback#new'
+  post '/feedback/submit', to: 'feedback#create', as: :feedback
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
