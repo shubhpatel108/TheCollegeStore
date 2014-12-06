@@ -28,6 +28,9 @@
         <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
       <% end %>  
     </div>
+
+    <button class="button" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
+
   </div>
 
   <a class="link2link" style="background-color:rgb(64, 148, 141) !important" href="#listtitle"> 

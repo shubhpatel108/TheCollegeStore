@@ -356,9 +356,42 @@ if(document.URL == "http://www.thecollegestore.in/" || document.URL== "http://th
 }else{
   $("#page-body").css("width","74%");
 }
-  
+</script>
 
+<!-- for facebook feed -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1451918948362653',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+  function fb_feed(name, link, pic_url, caption) {
+    link = "http://thecollegestore.in" + link
+    if(pic_url == 'noimage.jpg')
+    {
+      pic_url = "http://thecollegestore.in/assets/logo.png"
+    }
+    FB.ui({
+      display: 'popup',
+      method: 'feed',
+      name: name,
+      link: link,
+      picture: pic_url,
+      caption: caption,
+    }, function(response){});
+  }
 </script>
 
 </body>
