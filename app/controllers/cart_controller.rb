@@ -64,6 +64,7 @@ class CartController < ApplicationController
     @seller_ids = users.map(&:id)
     @total = 0
     done = @books.zip(groups, users)
+    @guest = session[:guest]
     done.each do |b, g, u|
       if b.reserved
         b[:err] = true

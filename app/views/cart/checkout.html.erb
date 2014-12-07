@@ -1,3 +1,10 @@
+<%
+meta site: "TheCollegeStore",
+     description: "Checkout and buy books",
+     keywords: ["Checkout"]
+%>
+
+<% title "Checkout" %>
 <div class="container_4">
     <div class="innertitle">
         <p><i class="fa fa-truck fa-padding"></i>Your Order</p>
@@ -77,7 +84,7 @@
 </p>
 </div>
 
-<%if not ((current_user.daiictian? unless current_user.nil?) or session[:guest].daiictian?) %>
+<%if not ((current_user.daiictian? unless current_user.nil?) or (@guest.daiictian? unless @guest.nil?)) %>
 <div class="seller-message">
 	<p>Message the seller(s):</p>
 	<%= form_tag(request_seller_books_path) do %>

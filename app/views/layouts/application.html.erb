@@ -2,6 +2,7 @@
 
 <html class="no-js" lang="en"><!--<![endif]-->
 <head>
+  <%= metamagic %>
   <meta property="og:title" content="TheCollegeStore" />
   <meta property="og:site_name" content="TheCollegeStore"/>
   <meta property="og:url" content="http://www.thecollegestore.in/" />
@@ -94,6 +95,10 @@
                     <span class="right-user">
                     <% if user_signed_in? %>
                     <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
+                    <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
+
+                    <li class="nav-li"><a href="#"><%= image_tag current_user.profile_pic.url, :size => "30x30" %></a></li>
+
                     <li class="nav-li">
                       <span style="display: -webkit-inline-box;display: -moz-inline-stackb;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
                     </li>
@@ -330,9 +335,42 @@ if(document.URL == "http://www.thecollegestore.in/" || document.URL== "http://th
 }else{
   $("#page-body").css("width","74%");
 }
-  
+</script>
 
+<!-- for facebook feed -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1451918948362653',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+  function fb_feed(name, link, pic_url, caption) {
+    link = "http://thecollegestore.in" + link
+    if(pic_url == 'noimage.jpg')
+    {
+      pic_url = "http://thecollegestore.in/assets/logo.png"
+    }
+    FB.ui({
+      display: 'popup',
+      method: 'feed',
+      name: name,
+      link: link,
+      picture: pic_url,
+      caption: caption,
+    }, function(response){});
+  }
 </script>
 
 </body>

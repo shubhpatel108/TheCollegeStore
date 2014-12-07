@@ -19,13 +19,14 @@ TheCollegeStore::Application.routes.draw do
       post 'request_seller'
     end
   end
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"}
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations", :confirmations => "devise/confirmations"}
   get '/search', to: 'books#main_search', as: :search
   get '/person_category', to: 'application#person_category'
   get '/application/select_college', to: 'application#select_college'
   devise_scope :user do
     get 'register', to: 'devise/registrations#new', as: :register
     post 'update_mobile', to: 'registrations#update_mobile', as: :update_mobile
+    get '/:recommended_by_id/:username/recommend', to: "registrations#recommend"
     get 'login', to: 'devise/sessions#new', as: :login
     get 'logout', to: 'devise/sessions#destroy', as: :logout
   end
@@ -70,6 +71,16 @@ TheCollegeStore::Application.routes.draw do
   get '/api/book_groups', to: 'api#book_groups'
   get '/api/book_group/:book_group_id/', to: 'api#book_group'
   get '/api/:college_id/:book_group_id/books', to: 'api#bg_books'
+
+  get '/recommend', to: 'our#recommend'
+  post '/recommended', to: 'our#send_recommendation'
+
+  get '/feedback', to: 'feedback#new'
+  post '/feedback/submit', to: 'feedback#create', as: :feedback
+
+  get '/blog', to: 'blog#index'
+  post '/blog/new', to: 'blog#new'
+  post '/blog/create', to: 'blog#create'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

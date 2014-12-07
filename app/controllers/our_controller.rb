@@ -1,4 +1,5 @@
 class OurController < ApplicationController
+  before_filter :authenticate_user!, only: [:recommend, :send_recommendation]
 
   def our_team
 
@@ -29,11 +30,22 @@ class OurController < ApplicationController
   end
 
   def send_mail
-	name = params[:name]
-	email = params[:email]
-	message = params[:message]
+	name = sanitize(params[:name])
+	email = sanitize(params[:email])
+	message = sanitize(params[:message])
   	ContactUsMailer.email_us(name, email, message).deliver
   	redirect_to '/', notice: 'Your message has successfully sent, we will contact you soon.'
+  end
+
+  def recommend
+    #serve the recommendation page where user can invite using email
+  end
+
+  def send_recommendation
+    email = sanitize(params[:email])
+    ContactUsMailer.recommend(email, current_user).deliver
+    flash[:success] = "Successfully invited! You'll soon be rewarded."
+    redirect_to :root
   end
 
 end

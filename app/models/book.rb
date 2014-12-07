@@ -11,4 +11,12 @@ class Book < ActiveRecord::Base
   belongs_to :buyer, :foreign_key => "buyer_id", :class_name => "User"
 
   scope :unsold, where(:reserved => false)
+
+  def buyer
+    if by_guest
+      Guest.where(:id => buyer_id).first
+    else
+      User.where(:id => buyer_id).first
+    end
+  end
 end

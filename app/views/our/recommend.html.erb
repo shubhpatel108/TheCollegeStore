@@ -1,0 +1,8 @@
+<p>Type an Email:</p>
+<%= form_tag(:controller => "our", :action => "send_recommendation") do %>
+	<%= text_field_tag "email", nil, placeholder: "someone@example.com" %>
+	<%= submit_tag "Recommend", :class => "button"%>
+<%end%>
+
+<p>OR</p>
+<button onclick="fb_feed('TheCollegeStore', '/<%=current_user.id%>/<%=current_user.first_name%>-<%=current_user.last_name%>/recommend', 'http://thecollegestore.in/assets/logo.png', 'Sell used books and Buy used or new books from your own College Friends!')">Recommend on facebook</button>

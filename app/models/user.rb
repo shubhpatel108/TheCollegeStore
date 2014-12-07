@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
 									:points, :da_roll
   # attr_accessible :title, :body
 
+	attr_accessible :profile_pic
+	has_attached_file :profile_pic, :styles => {:thumb => "100x100"}, :default_url => "/images/missing.jpg"
+	validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
+
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, :on => :create
   # validates :mobile, presence: true,
@@ -24,6 +28,7 @@ class User < ActiveRecord::Base
 	has_many :wishlists, :dependent => :destroy,
                        :foreign_key => "user_id"
   has_many :wishes, :through => :wishlists, :source => :wish
+  has_many :posts, :through => :blogs
 	
 	def self.find_for_google_oauth2(auth)
 	  user = User.where(:provider => auth.provider, :authid => auth.uid).first
@@ -34,13 +39,14 @@ class User < ActiveRecord::Base
 			if registered_user
 				return registered_user
 			else
-				user = User.new
+			user = User.new
 		    user.provider = auth.provider
 		    user.authid = auth.uid
 		    user.email = auth.info.email
 		    user.password = Devise.friendly_token[0,20]
 		    user.first_name = auth.info.first_name
 		    user.last_name = auth.info.last_name
+		    user.profile_pic = process_uri(auth.info.image)
 		    user.confirm!
 		    user.save!
 		    return user
@@ -64,6 +70,7 @@ class User < ActiveRecord::Base
 		    user.password = Devise.friendly_token[0,20]
 		    user.first_name = auth.info.first_name
 		    user.last_name = auth.info.last_name
+		    user.profile_pic = process_uri(auth.info.image)
 		    user.confirm!
 		    user.save!
 		    return user
@@ -79,4 +86,11 @@ class User < ActiveRecord::Base
   def daiictian?
   	self.college_id == 1
   end
+
+  private
+	def self.process_uri(uri)
+		avatar_url = URI.parse(uri)
+		avatar_url.scheme = 'https'
+		avatar_url.to_s
+	end
 end

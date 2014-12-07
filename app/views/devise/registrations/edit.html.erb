@@ -53,13 +53,17 @@
               <%= f.text_field :mobile,  :placeholder => 'Mobile', :class => 'gui-input', :name=>'mobile' %>
             </label>
           </div><!-- end section --> 
-        
+
           <div class="section">
-          <center>
-             <%= link_to "Back", :back, :class =>'button btn-black' %>
-            <%= f.submit "Update", :class => 'button btn-black' %> 
-          </center>
-        </div><!-- end section -->
+            <%= f.file_field :profile_pic %>
+          </div>
+
+          <div class="section">
+            <center>
+               <%= link_to "Back", :back, :class =>'button btn-black' %>
+              <%= f.submit "Update", :class => 'button btn-black' %> 
+            </center>
+          </div><!-- end section -->
       <% end %>
       <hr>
 </div>

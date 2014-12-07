@@ -1,0 +1,19 @@
+<li class="divfloat">
+    <div>
+      <b><h4><%= post["post_title"] %></h4></b>
+    </div>
+    
+    <hr>
+
+    <div>
+      <%= post["post_content"].html_safe %>
+    </div>
+    
+    <hr>
+    
+    <div>
+      <% user_id = Blog.where(:post_id => post["post_id"]).first.user_id %>
+      <% user = User.where(:id => user_id).first %>
+      <%= "By - " + user.first_name + " " + user.last_name %>
+    </div>
+</li>

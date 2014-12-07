@@ -2,9 +2,9 @@ class ProfilesController < ApplicationController
 	before_filter :authenticate_user!
 	
 	def show
-		id = params[:id]
-		fn = params[:first_name]
-		ln = params[:last_name]
+		id = sanitize(params[:id])
+		fn = sanitize(params[:first_name])
+		ln = sanitize(params[:last_name])
 		@user = User.where(:id => id, :first_name => fn, :last_name => ln).first
 		if not @user.nil?
 				@my_books = Book.where(:user_id => id)
@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 					b[:info] = b.book_group
 				end
 			if @user == current_user
-				@bought = Book.where(:buyer_id => id)
+				@bought = Book.where(:buyer_id => id, :by_guest => false)
 				@bought.each do |b|
 					b[:info] = b.book_group
 				end

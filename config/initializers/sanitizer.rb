@@ -1,0 +1,1 @@
+$full_sanitizer = Rails::Html::FullSanitizer.new

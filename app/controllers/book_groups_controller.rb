@@ -7,7 +7,7 @@ class BookGroupsController < ApplicationController
   end
 
   def create
-    @book_group = BookGroup.new(params[:book_group])
+    @book_group = BookGroup.new(sanitize_hash(params[:book_group]))
     @old_book_group = BookGroup.where(title: @book_group.title, author: @book_group.author, publisher: @book_group.publisher).first
     if not @old_book_group.nil?
       @new_book = Book.new(params[:book_group][:books_attributes]['0'])
@@ -48,7 +48,7 @@ class BookGroupsController < ApplicationController
   end
 
   def details
-    @book_group = BookGroup.where(:id => params[:id]).first
+    @book_group = BookGroup.where(:id => sanitize(params[:id])).first
     if @book_group.nil?
       render file: 'public/404', status: 404, formats: [:html]
     else
@@ -86,7 +86,7 @@ class BookGroupsController < ApplicationController
   end
 
   def category_books
-    @c_id = params[:id]
+    @c_id = sanitize(params[:id])
     @category = Category.where(:id => @c_id).first
     @books = BookGroup.where(:category_id => @c_id)
     college_id = cookies[:college_id]
