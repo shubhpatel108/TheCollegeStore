@@ -22,6 +22,26 @@
         }
       });
 
+      $('.animated_popup_feedback').popup({
+        show        : function($popup, $back){
+
+          var plugin = this,
+            center = plugin.getCenter();
+
+          $popup
+            .css({
+              top     : - $popup.children().outerHeight(),
+              left    : center.left,
+              opacity : 1
+            })
+            .animate({top : center.top}, 500, 'easeOutBack', function(){
+              // Call the open callback
+              plugin.o.afterOpen.call(plugin);
+            });
+
+        }
+      });
+
       $('.animated-popup-college-select').popup({
         show        : function($popup, $back){
 

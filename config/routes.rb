@@ -74,6 +74,13 @@ TheCollegeStore::Application.routes.draw do
 
   get '/recommend', to: 'our#recommend'
   post '/recommended', to: 'our#send_recommendation'
+
+  get '/feedback', to: 'feedback#new'
+  post '/feedback/submit', to: 'feedback#create', as: :feedback
+
+  get '/blog', to: 'blog#index'
+  post '/blog/new', to: 'blog#new'
+  post '/blog/create', to: 'blog#create'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,28 @@
+<%= javascript_include_tag "nicEdit" %>
+<div>
+	<h2 style="font-size: 29px;font-weight: 400;line-height: 20px;">Add New Post</h2>
+</div>
+<br>
+<hr>
+<br>
+<div>
+	<%= form_for(:post, :url => {:action => 'create'}) do |f| %>     
+	     <div>
+	          <%= f.text_field(:title, :size => 30, :placeholder => "Post title", :autofocus => true, :id => 'title') %>
+	     </div>
+	     <br>
+	     <div>
+	          <%= f.text_area(:content, :rows => 25, :cols => 70, :placeholder => "Content", :id => 'content') %>
+	     </div>
+
+	     <%= submit_tag("Publish Post", :class =>'btn-black') %>
+	<% end %>
+</div>
+
+<script type="text/javascript">
+   bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+   $('document').ready(function(){
+		var elem = document.getElementById("topics-expander");
+		elem.parentNode.removeChild(elem);	
+	});
+</script>

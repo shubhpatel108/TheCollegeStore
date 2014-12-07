@@ -117,6 +117,8 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    metamagic (3.1.6)
+      rails (>= 3.0.0)
     mime-types (1.25.1)
     mini_portile (0.6.1)
     multi_json (1.10.1)
@@ -193,7 +195,10 @@ GEM
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    retryable-rb (1.1.0)
     ruby-ole (1.2.11.7)
+    rubypress (1.0.9)
+      retryable-rb
     sass (3.3.14)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -237,6 +242,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails (~> 4.2.1)
   meta_search (>= 1.1.0.pre)
+  metamagic
   mysql2
   omniauth-facebook
   omniauth-google-oauth2
@@ -244,6 +250,7 @@ DEPENDENCIES
   paperclip (~> 4.1)
   passenger
   rails-html-sanitizer
+  rubypress
   sass-rails (~> 3.2.3)
   sitemap_generator
   spreadsheet

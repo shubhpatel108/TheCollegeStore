@@ -1,0 +1,23 @@
+<% title "Blog" %>
+
+<%= button_to("Create New Post", :action => 'new') %>
+<br><br>
+
+<div>
+	<h2>All Posts</h2>
+</div>
+
+<div class="no-touch">
+  <ul class="grid cs-style-3">
+    <% @posts.each do |post| %>
+      <%= render :partial => "shared/post", :locals => {:post => post}%>
+    <% end %>
+  </ul>
+</div>
+
+<script type="text/javascript">
+	$('document').ready(function(){
+		var elem = document.getElementById("topics-expander");
+		elem.parentNode.removeChild(elem);	
+	});
+</script>
