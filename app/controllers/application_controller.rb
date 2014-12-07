@@ -2,9 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :initialize_variables, :set_cache_buster
   include CityVendorSessionsHelper
+  include SanitizerHelper
 
 	def select_college
-		c_id = params[:college_id]
+		c_id = sanitize(params[:college_id])
 		flash.keep
 		@college = College.where(:id => c_id).first
 		c_name = @college.name

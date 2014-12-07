@@ -3,7 +3,7 @@
 	<button style="float:left;"type="submit"><i class="fa fa-search fa-padding"></i></button>
 </form>
 <script type="text/javascript">	
-	var availableTags = <%= raw book_names.to_json %>;
+	var availableTags = <%= raw BookGroup.all.map(&:title).to_json %>;
 	$( ".autocomplete" ).autocomplete({
 			source: availableTags,
 			select: function(event, ui) {

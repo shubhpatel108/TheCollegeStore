@@ -18,6 +18,7 @@ gem "test-unit"
 gem "spreadsheet"
 gem "jbuilder"
 gem "open_uri_redirections"
+gem "rails-html-sanitizer"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -5,7 +5,7 @@ class GuestsController < ApplicationController
 	end
 
 	def create
-		@guest = Guest.new(params[:guest])
+		@guest = Guest.new(sanitize_hash(params[:guest]))
 		if @guest.save
 			session[:guest] = @guest
 			session[:college_id] = @guest.college_id

@@ -77,7 +77,7 @@
 </p>
 </div>
 
-<%if not ((current_user.daiictian? unless current_user.nil?) or session[:guest].daiictian?) %>
+<%if not ((current_user.daiictian? unless current_user.nil?) or (@guest.daiictian? unless @guest.nil?)) %>
 <div class="seller-message">
 	<p>Message the seller(s):</p>
 	<%= form_tag(request_seller_books_path) do %>

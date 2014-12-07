@@ -21,9 +21,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def update_mobile
-    id = params[:user_id]
+    id = sanitize(params[:user_id])
     @user = User.find(id)
-    mobile = params[:mobile]
+    mobile = sanitize(params[:mobile])
     @user.mobile = mobile
     @user.college_id = cookies[:college_id]
     @user.save!

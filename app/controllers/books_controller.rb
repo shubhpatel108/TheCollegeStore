@@ -37,7 +37,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    all = params
+    all = sanitize_hash(params)
     @book = Book.find(all[:id])
     if @book.nil?
       flash[:error] = "Book not Found!"
@@ -75,7 +75,7 @@ class BooksController < ApplicationController
   end
 
   def main_search
-  	@query = params[:query]
+    @query = sanitize(params[:query])
     @results = BookGroup.where(["title like ? or author like ?", "%#{@query}%", "%#{@query}%"])
     @results.each do |b|
       temp_books = b.books
@@ -88,7 +88,7 @@ class BooksController < ApplicationController
   end
 
   def sell_autofill
-    titl = params[:book_title]
+    titl = sanitize(params[:book_title])
     if not titl.empty?
       @est_book = BookGroup.where(["title like ?", "#{titl}"]).first
     end
@@ -103,7 +103,7 @@ class BooksController < ApplicationController
 
   def request_seller
     s_ids = params[:seller_ids]
-    message = params[:message]
+    message = sanitize(params[:message])
     if not current_user.nil?
       @user = current_user 
     else
