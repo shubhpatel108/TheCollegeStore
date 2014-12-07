@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 					b[:info] = b.book_group
 				end
 			if @user == current_user
-				@bought = Book.where(:buyer_id => id)
+				@bought = Book.where(:buyer_id => id, :by_guest => false)
 				@bought.each do |b|
 					b[:info] = b.book_group
 				end
