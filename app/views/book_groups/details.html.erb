@@ -5,138 +5,173 @@ meta site: "TheCollegeStore",
 %>
 
 <% title @book_group.title + " by " + @book_group.author %>
-<div class="book" onreadystatechange="me()">
 
-  <div class="title-details">
-      <p class="titlebox"><%= @book_group.title %></p>
-  </div>
+<!--page wrapper-->
+<div id="page" class="container center-block">
+  <div class='row'>
+    <div class="col-md-9">
+      <div class='panel'>
+        <div class='panel-body'>
+          <div class="row">
+            <div class='col-md-3'>
+              <%= image_tag @book_group.image.url, {:class=>"img-responsive"} %>
+            </div>
+            <div class='col-md-9'>
+              <h1>
+                <%= @book_group.title %>
+              </h1>
+              <div class='row'>
+                <div class='col-md-8'>
+                  <h2>
+                  Rs. 250 <span class='label label-success'><%= @details.count%> Sellers</span>
+                  </h2>
+                  <p>
+                    <b><i class='fa fa-user'></i> Authors:</b> 
+                    <span class='label label-primary'><%= @book_group.author%></span>
+                  </p>
+                  <p>
+                    <b><i class='fa fa-bank'></i> Publisher:</b> 
+                    <span class='label label-info'><%= @book_group.publisher%></span>
+                  </p>
+                </div>
 
-  <div class="bookattr">
-      <%= image_tag @book_group.image.url, {:class=>"mainimg"} %>
-  </div>
-  
-  <div class="details">
-    <table class="single-book">
-       
-      <tr>
-        <td class="author"><i class="fa fa-user fa-4x fa-color_black" style="font-size:1.0em ;padding-right:5px;"></i>Author: <%= @book_group.author%></td>
-      </tr>
-      <tr>
-      <td class="publisher"><i class="fa fa-empire fa-4x fa-color_black" style="font-size:1.0em ;padding-right:5px;"></i>Publisher: <%= @book_group.publisher%> </td>
-      </tr>
-    </table>
-    <a class ="single-book-anchor" href="#userlist"><p class="sellers"><%= @details.count%> sellers available </p></a>
+                <div class="col-md-4">
+                  <% if @wished %>
+                    <a href="/wishlist/remove/<%=@book_group.id%>" class="btn btn-lg button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+                  <% else %>
+                    <a href="/wishlist/add/<%=@book_group.id%>" class="btn btn-lg button-primary" data-remote=true  id="add_to_wishlist">
+                    <button class="btn-sm btn btn-success">Add to Wishlist</button>
+                    </a>
+                  <% end %>  
+                </div>
 
-    <div class="wishbtn">
-      <% if @wished %>
-        <a href="/wishlist/remove/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
-      <% else %>
-        <a href="/wishlist/add/<%=@book_group.id%>" class="button button-primary" data-remote=true  id="add_to_wishlist">Add to Wishlist</a>
-      <% end %>  
-    </div>
+                <button class="button" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
 
-    <button class="button" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
-
-  </div>
-
-  <a class="link2link" style="background-color:rgb(64, 148, 141) !important" href="#listtitle"> 
-    <%= image_tag "Add-To-Cart.png", :class => 'single-book-add-to-cart' %> 
-    <div class="add-to-cart-text">
-      Add To Cart
-    </div>
-  </a>  
-</div>
-
- <div id="userlist" class="sellerslist">
-    <div class="tablecontent">
-      <div class="listtitle" id="listtitle">
-        Available Sellers:
-      </div>
-      <table class="listofsellers">    
-        <% @details.each do |book, user| %>
-        <tr class="listelement">
-          <div class="sellerdetail">
-            <td class="sellername">
-              <i class="fa fa-user fa-1x fa-color_black"></i>
-              <%= user.first_name %> <%= user.last_name %>
-            </td>
-
-            <td class="edition">
-            <% if not book.edition.nil?%>
-              <i class="fa fa-bookmark fa-color_grey" ></i>     
-              <%= book.edition %><span class="superscript"><%=superscript(book.edition)%> </span>Edition
-            <%end%>
-            </td>
-
-            <td class="price">
-              <% if not book.reserved %> 
-                <i class="fa fa-rupee fa-color_black subsign"></i>
-                <%= book.price %>
-              <% end %>
-            </td>
-
-            <td class="cartoption">
-              <% if current_user.nil? || current_user.id!=book.user_id %>
-              <% if  book.reserved %> 
-                <button type="button" id="sold" class="add-to-cart-button sold" disabled><i class="fa fa-check fa-padding"></i>Sold</button>
-              <% else %>
-                <a href="/add_item/<%= book.id%>" class="" name="Add to cart" data-remote=true> 
-                  <button class="add-to-cart-button"><i class="fa fa-shopping-cart fa-1x fa-color_white cart-icon"></i>Add To Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-12'>
+              <h3>
+                Product Description
+              </h3>
+              <p>
+                Charging your phone has been made simpler with Mi's 10400 mAh Power Bank. Its aluminum casing surrounds the dual battery cell technology developed by LG and Samsung. Enjoy the pleasures of your smartphone for longer periods with this highly convenient Power Bank.
+              </p>
+            </div>
+          </div>
+          <div class='row' name='buy'>
+            <div class='col-md-6'>
+              <h3>
+                Used Books available from <%= @details.count%> sellers
+              </h3>
+              <table class='table table-striped table-hover sellers'>
+                <tbody>
+                  <tr>
+                    <th>Seller</th>
+                    <th>Edition</th>
+                    <th>Price</th>
+                    <th>Buy</th>
+                  </tr>
+                  <% @details.each do |book, user| %>
+                    <tr>
+                      <td><%= user.first_name %> <%= user.last_name %></td>
+                      <td>
+                        <% if not book.edition.nil? %>
+                          <%= book.edition %><span class="superscript"><%=superscript(book.edition)%> </span>Edition
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if not book.reserved %> 
+                          <%= book.price %></td>
+                        <% end %>
+                      <td>
+                        <% if current_user.nil? || current_user.id!=book.user_id %>
+                          <% if book.reserved %> 
+                            <button type="button" id="sold" class="add-to-cart-button sold" disabled><i class="fa fa-check fa-padding"></i>Sold</button>
+                          <% else %>
+                            <a href="/add_item/<%= book.id%>" class="" name="Add to cart" data-remote=true> 
+                              <button class="btn-sm btn btn-success"><i class="fa fa-shopping-cart fa-1x fa-color_white cart-icon"></i>Add To Cart</button>
+                            </a>
+                          <% end %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class='col-md-4 col-md-offset-2'>
+              <h3>
+                New Books available from :
+              </h3>
+              <% @flipkart_links.each do |book|%>
+                <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
+                  <button class='btn btn-sm btn-warning'>
+                    Buy new book from Flipkart
+                  </button>
                 </a>
               <% end %>
+              <% if not @isbn_amazon.nil? %>
+                <a href="<%=amazon_link(@isbn_amazon)%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
+                  <button class='btn btn-sm btn-warning'>
+                    Buy new book from Amazon
+                  </button>
+                </a>
               <% end %>
-            </td>
-          </div> 
-        </tr>
-      <% end %>
-      <% @flipkart_links.each do |book|%>
-        <tr class="listelement">
-          <div class="sellerdetail">
-            <td class="sellername">
-              <i class="fa fa-user fa-1x fa-color_black"></i>
-              <a href="<%=flipkart_link(book[:isbn])%>" target="_blank">
-                <%= image_tag("flipkart_logo.jpg", :size=>"120x50")%>
-              </a>
-            </td>
-
-            <td class="edition">
-            <% if not book[:edition].nil?%>
-              <i class="fa fa-bookmark fa-color_grey" ></i>
-              <%= book[:edition] %><span class="superscript"><%=superscript(book[:edition])%> </span>Edition
-            <%end%>
-            </td>
-
-            <td class="price">
-            </td>
-
-            <td class="cartoption">
-              <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> at Flipkart" class="A_1" target="_blank"> <span id="SPAN_2">Buy on seller site</span><span id="SPAN_3"></span></a>
-            </td>
+            </div>
           </div>
-        </tr>
-      <% end %>
-      <% if not @isbn_amazon.nil? %>
-        <tr class="listelement">
-          <div class="sellerdetail">
-            <td class="sellername">
-              <i class="fa fa-user fa-1x fa-color_black"></i>
-              <a href="<%=amazon_link(@isbn_amazon)%>" target="_blank">
-                <%= image_tag("amazon_logo.png", :size=>"140x40")%>
-              </a>
-            </td>
-
-            <td class="edition">
-            </td>
-
-            <td class="price">
-            </td>
-
-            <td class="cartoption">
-              <a href="<%=amazon_link(@isbn_amazon)%>" title="Buy <%=@book_group.title%> at Amazon" class="A_1" target="_blank"> <span id="SPAN_2">Buy on seller site</span><span id="SPAN_3"></span></a>
-            </td>
-          </div>
-        </tr>
-      <% end %>
-    </table>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-3'>
+      <div class="panel">
+        <div class="panel-heading">
+          Suggested Books
+        </div>
+        <div class="panel-body">
+          <div class="thumbnail">
+                <img style='width:100px;height:150px;' src="http://img5a.flixcart.com/image/book/6/1/2/programming-in-ansi-c-6e-balaguruswamy-400x400-imadbm5su8rafr4z.jpeg" alt="">
+                <div class="caption">
+                  <h5 class="pull-right">&#8377;250</h5>
+                  <h5>
+                  <a href="#"><b>Programming in ANSI C</b></a>
+                </h5>
+                  <p>
+                    <b>Place: </b>  <a href='#'>Baroda</a>
+                    <br/>
+                    <b>Author: </b>  <a href='#'>E.Balaguruswamy</a>
+                    <br/>
+                    <b>Publisher: </b>  <a href='#'>MacMilan</a>
+                    <br/>
+                    <b>Edition: </b> VII
+                  </p>
+                </div>
+              </div>
+          <div class="thumbnail">
+                <img style='width:100px;height:150px;' src="http://img5a.flixcart.com/image/book/6/1/2/programming-in-ansi-c-6e-balaguruswamy-400x400-imadbm5su8rafr4z.jpeg" alt="">
+                <div class="caption">
+                  <h5 class="pull-right">&#8377;250</h5>
+                  <h5>
+                  <a href="#"><b>Programming in ANSI C</b></a>
+                </h5>
+                  <p>
+                    <b>Place: </b>  <a href='#'>Baroda</a>
+                    <br/>
+                    <b>Author: </b>  <a href='#'>E.Balaguruswamy</a>
+                    <br/>
+                    <b>Publisher: </b>  <a href='#'>MacMilan</a>
+                    <br/>
+                    <b>Edition: </b> VII
+                  </p>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+

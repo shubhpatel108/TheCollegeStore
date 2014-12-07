@@ -1,48 +1,78 @@
-<div class="footer">
-  <ul>
-    <li class="footer_main">
-      <div class="text">
-        <h4>TheCollegeStore</h4>
-        <div>
-         <a href="/our_team" style="text-decoration:none;">Our Team</a><br>
-         <a href="/about_us" style="text-decoration:none;">About us</a><br>
-         <a href="/contact_us" style="text-decoration:none;">Contact us</a><br>
-         <a href="/privacy_policy" style="text-decoration:none;"> Privacy Policy</a><br>
-         <a href="/disclaimer" style="text-decoration:none;">Disclaimer</a><br>
-         <a href="/terms" style="text-decoration:none;">Terms and Condition</a><br>
-         <a href="/blog" style="text-decoration:none;">Blog</a><br>
-         <a href="#cool-popup-feedback" class="animated_popup_feedback">Leave us feedback !</a>
-       </div>
-       <div style="display:none" id="cool-popup-feedback">
-          <%= render :partial => "shared/feedback" %>
-       </div>
-     </div>
-   </li>
-   <li class="footer_main">
-    <div class="text">
-      <h4>Categories</h4>
-      <div>
-        <% Category.all.each do |c|%>
-        <a href="/book_groups/category/<%=c.id%>" style="text-decoration:none;" data-remote=true>
-          <%= c.name%>
-        </a><br>
-        <% end %>
-      </div>
-    </div>
-  </li>
-  <li class="footer_main">
-    <div class="text">
-    </div>
-  </li>
-  <li class="footer_social">
-    <div class="text">
-      <a href="https://www.facebook.com/thecollegestore.in"><%=image_tag('Facebook.png')%></a><br>
-      <a href="https://www.google.co.in/?gfe_rd=cr&ei=T02bU925MaTO8geB-oDgDw&gws_rd=ssl"><%= image_tag('Google.png') %></a>
-      <br>
-      <a href="https://www.twitter.com"><%= image_tag('Twitter.png') %></a>
-      <br>
-    </div>
-  </li>
-</ul>
-<div style="clear: both; line-height: 0;">&nbsp;</div>
-</div>
+<!DOCTYPE html>
+<html>
+    <body>
+        <footer style='margin-bottom:0px;'>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 footer-left">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="/blog">Blog</a>
+                            </li>
+                            <li>
+                                <a href="/books">Books</a>
+                            </li>
+                            <li>
+                                <a href="/about_us">About Us</a>
+                            </li>
+                            <li>
+                                <a href="/our_team">The Team</a>
+                            </li>
+                            <li>
+                                <a href="/contact_us">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="/privacy_policy">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="/disclaimer">Disclaimer</a>
+                            </li>
+                            <li>
+                                <a href="/terms">Terms and Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="$('#feedback').modal('show');">Leave us feedback !</a>
+                            </li>
+                        </ul>
+                        <br />
+                        <ul class="list-inline">
+                            <li>
+                              <a href="https://www.facebook.com/thecollegestore.in">
+                                <i class="fa fa-facebook-square fa-3x social-icon"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://www.twitter.com">
+                                <i class="fa fa-twitter-square fa-3x social-icon"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://www.google.co.in/?gfe_rd=cr&ei=T02bU925MaTO8geB-oDgDw&gws_rd=ssl">
+                                <i class="fa fa-google-plus-square fa-3x social-icon"></i>
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 footer-right">
+                        <p>TheCollegeStore is a startup.</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12 footer-below">
+                        <p>&COPY;2014 Bookly Web</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <div class="modal fade" id="feedback">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <%= render :partial => "shared/feedback" %>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
