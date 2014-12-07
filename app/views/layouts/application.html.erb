@@ -44,54 +44,9 @@
   <%= render :partial => '/shared/header' %>
   <!-- <div class="header-fixed">
     <div id="content-wrap">
-                <div class="mobile-nav">
-                  <div id="sidr">
-                    <ul>
-                      <li id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></li>
-                        <li class="resp-cart">
-                          <a href="#cart-content" class="animated-popup-cart">
-                            <span id ="cart-item-count-2">Cart (<%= session[:cart].count %>)</span>
-                          </a>
-                        </li>
-                      <% if user_signed_in? %>
-                        <li><%= link_to "#{current_user.first_name} #{current_user.last_name}",  "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}"%></li>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/coupons">Proceed To Coupons</a></li>
-                        <li><a href="/cart/checkout">Checkout</a></li>
-                        <li><%= link_to "Sell a book", new_book_group_path %></li>
-                        <li><%= link_to "Wishlist", wishlist_path%>
-                        <li><%= link_to "Logout", logout_path%>
-                      <%else%>
-                        <li><a href="/">Home</a></li>
-                        <li><%= link_to "Sell a book", new_book_group_path %></li>
-                        <li><a href="/login">Sign In</a></li>
-                        <li><a href="/register">Sign Up</a></li>
-                      <%end%>
-                    </ul>
-                  </div>
-                  <a id="simple-menu" href="#sidr"><i class="fa fa-bars fa-menu-icon"></i></a>
-
-                </div>
                 
-                
-                <a href="/books"><div href="#" id="logo">&nbsp;</div></a>
-                <a href="/" id="menu-name">TheCollegeStore</a>
-                   <div id="mobile-checkout"></div>
-                  <script>
-                  $(document).ready(function() {
-                    $('#simple-menu').sidr();
-                  });
-                  </script>
-
                 <nav>
                   <ul class="nav-ul">
-                    <li class="nav-li searchbar">
-                      <div class="search-bar-header" id="search-bar-header">
-                      <div id="extra-responsive-search"> 
-                        <%= render :partial => 'shared/search', :locals => {:book_names => $book_names } %>
-                      </div>
-                      </div> 
-                    </li>
                     <span class="right-user">
                     <% if user_signed_in? %>
                     <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
@@ -153,100 +108,10 @@
                         <span class="nav-tooltip">Cart</span>
                       </a>
                     </li>
-                   <% if user_signed_in? %>
-                   <li>
-                    <a href="/profiles/<%=current_user.first_name%>-<%=current_user.last_name%>/<%=current_user.id%>" class="">
-                      <i class="fa fa-user fa-4x fa-color_grey"></i>
-                      <span class="nav-tooltip">My Profile </span>
-                    </a>
-                  </li>
-                  <% end -%>
-                  <li>
-                    <a href="/wishlist/show" class="">
-                      <span class="fa fa-list-ul fa-4x fa-color_grey"></span>
-                      <span class="nav-tooltip">Wish List</span>
-                    </a>      
-                  </li>
-                    <li>
-                      <a href="https://www.facebook.com/thecollegestore.in" class="">
-                        <span class="fa fa-facebook fa-4x fa-color_grey"></span>
-                        <span class="nav-tooltip">Facebook</span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="/contact_us" class="">
-                        <span class="fa fa-phone fa-4x fa-color_grey"></span>
-                        <span class="nav-tooltip">Contact Us</span>
-                      </a>      
-                    </li>
-                    <% if user_signed_in? %>
-                    <li>
-                      <a href="/logout" class="">
-                        <span class="fa fa-sign-out fa-4x fa-color_grey"></span>
-                        <span class="nav-tooltip">Log out</span>
-                      </a>      
-                    </li>
-                    <% end %>
                   </ul>
                 </div>
 
-                <%if request.original_url== "http://www.thecollegestore.in/" || request.original_url== "http://thecollegestore.in/" || request.original_url== "http://localhost:3000/" %>
-                  <div class="video-entry">
-                    <ul style="display:flex; list-style-type:none;">
-                      <li style="width:65%">
-                      </li>
-                      <li style="margin: 20px; width:30%; margin-top:120px">
-                        <iframe width="400" height="300" src="//www.youtube.com/embed/aUvYc0D08K4?rel=0&theme=light&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-                      </li>
-                    </ul>
-                  </div>
-                <% else %>
-                  <div class="mobile-header">
-                  </div>
-
-                <%end%>
-                
-                <%if request.original_url!= "http://www.thecollegestore.in/" && request.original_url!= "http://thecollegestore.in/" && request.original_url!= "http://localhost:3000/" %>
-                  <div class="right-sidebar">
-                    <div style="" class="scroll-mask">
-                      <div class="scroll-container">
-                        <div class="content-filter">
-                          <div class="filters-container">
-                            <div id="topics-expander" class="form-group">
-                              <h4><a>Categories</a></h4>
-                              <ul class="filter-list filter-list-primary featurette" data-featurette="filter-list" id="topic">
-                                <li><a id="all_categories_link"href="/book_groups/categories/all" data-remote=true>All Categories</a></li>
-                                <% Category.all.each do |c|%>
-                                <li>
-                                  <a  id="category_<%=c.id%>_link" class="category_wise_books" href="/book_groups/category/<%=c.id%>" data-remote=true>
-                                    <span class="cat-name"><%= c.name%></span>
-                                    <span class="cat-book-count"><b><%= c.book_groups.count%></b></span>
-                                  </a>
-                                </li>
-                                <% end %>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
-                <div style="display:none">
-                  <div id="college-select-popup" >
-                    <%= render :partial => "shared/person_category_form"%>
-                  </div>
-                  <div id="cart-content">
-                    <%= render :partial => "cart/cart", :locals => {:books => session[:cart]}%>
-                  </div>
-                  <div id="cool-popup">
-                    <%= render :partial => "shared/login" %>
-                  </div>
-                  <div id="cool-popup-register">
-                    <%= render :partial => "shared/register" %>
-                  </div>
-                </div> --><!-- ends -->
+                -->
 
                 <!-- Page Body -->
                 <div id="page-body">

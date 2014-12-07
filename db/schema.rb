@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(:version => 20141207083114) do
     t.string   "city",                   :default => "", :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "password_hash",          :default => "", :null => false
+    t.string   "password_salt",          :default => "", :null => false
     t.string   "password_digest"
     t.string   "auth_token"
     t.string   "password_reset_token"
@@ -140,6 +142,13 @@ ActiveRecord::Schema.define(:version => 20141207083114) do
   end
 
   add_index "coupons", ["distributor_id"], :name => "index_coupons_on_distributor_id"
+
+  create_table "coupons_users", :force => true do |t|
+    t.integer "coupon_id", :null => false
+    t.integer "user_id",   :null => false
+  end
+
+  add_index "coupons_users", ["user_id", "coupon_id"], :name => "index_coupons_users_on_user_id_and_coupon_id"
 
   create_table "distributed_coupons", :force => true do |t|
     t.integer  "coupon_id",                     :null => false
