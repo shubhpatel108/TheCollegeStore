@@ -1,0 +1,137 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway|Open+Sans);
+.caption p
+{
+    font-size:11px;
+}
+.modal-dialog
+{
+    width:900px;
+}
+.book-bg
+{
+    background-image: url('open-book.png');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+}
+.carousel-slide
+{
+    text-align: center;
+    width:100%;
+    height:500px;
+}
+.clickable
+{
+    cursor:pointer;
+}
+.coupon-img
+{
+    margin-right: 50px;
+}
+body
+{
+    /*margin-top:100px;*/
+    background-color: #EEC55C;
+    background-repeat: repeat;
+    font-family: "Raleway";
+}
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 75px;
+    height: 75px;
+    padding-top: 0;
+}
+.navbar-form
+{
+    margin-top: 20px;
+}
+#page
+{
+    margin-top:65px;
+}
+footer
+{
+    margin-top:30px;
+    margin-bottom:0px;
+    background-color:#fff;
+    padding:40px;
+    text-align: center;
+}
+.footer-left
+{
+    text-align: left;
+}
+.number
+{
+    font-family: "Open Sans",sans-serif;
+}
+.footer-right
+{
+    text-align: right;
+}
+.center
+{
+    text-align: center;
+}
+.social-icon
+{
+    cursor: pointer;
+    margin-right:30px;
+}
+.sellers td,th
+{
+    text-align:center;
+    vertical-align:middle !important;
+}
+.step
+{
+    display: inline-block;
+    position: relative;
+    float:left;
+}
+.complete > .step-bar
+{
+    background-color: #5cb85c;
+}
+.complete > .step-circle
+{
+    background-color: #5cb85c;
+    color:#fff;
+}
+.step-text
+{
+    margin-bottom: -22px;
+    margin-left: 55px;
+    font-weight: bold;
+}
+.step-bar
+{
+    display:inline-block;
+    position:absolute;
+    margin-top:22px;
+    margin-bottom:22px;
+    margin-left:45px;
+    width:100%;
+    padding:0px;
+    height:6px;
+    border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+    background-color: #fff;
+    z-index:0;
+}
+.step-circle
+{
+    display:inline-block;
+    width: 50px;
+    z-index:10;
+    height: 50px;
+    background: #fff;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    line-height: 50px;
+    text-align: center;
+    font-family: "Open Sans";
+    font-weight: bold;
+    font-size: 120%;
+}

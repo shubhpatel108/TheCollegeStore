@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The College Store</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <%= stylesheet_link_tag "tcs.css" %>
+        <!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.panel-heading').on("click", function(e) {
+                    if ($(this).hasClass('panel-collapsed'))
+                    {
+                        $(this).parents('.panel').find('.panel-body').slideDown();
+                        $(this).removeClass('panel-collapsed');
+                        $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                    }
+                    else {
+                        $(this).parents('.panel').find('.panel-body').slideUp();
+                        $(this).addClass('panel-collapsed');
+                        $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!--navbar-->
+        <header class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/books" class="navbar-brand"><%= image_tag("logo-final.png", :width => 200) %></a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <i class='fa fa-bars'></i>
+                    </button>
+                </div>
+
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if !user_signed_in? %>
+                            <li>     
+                              <a href="#" onclick="$('#login').modal('show');">Login
+                                <i class="fa fa-sign-in"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" onclick="$('#register').modal('show');">Register
+                                <i class="fa fa-user"></i>
+                              </a>
+                            </li>
+                        <% else %>
+                            <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
+                            <li class="nav-li">
+                              <span style="display: -webkit-inline-box;display: -moz-inline-stackb;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
+                            </li>
+                        <%end%>
+                        <li><a href="#" ><i class="fa fa-book"></i> Explore Books</a></li>
+                        <li><a href="#" onclick="$('#shoppingCart').modal('show');"><i class='fa fa-shopping-cart'></i> Cart</a></li>
+                    </ul>
+                    <div id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></div>
+                </div>
+            </div>
+        </header>
+        <!--navbar-->
+        <!-- cart modal-->
+        <div class="modal fade" id="shoppingCart">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"><h4>My Shopping Cart <i class="fa fa-shopping-cart"></i><i data-dismiss="modal" class="clickable pull-right fa fa-close"></i></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class='row' id='results'>
+                        <div class="col-sm-3 col-lg-3 col-md-3">
+                            <div class="thumbnail">
+                                <img style='width:100px;height:150px;' src="http://img5a.flixcart.com/image/book/6/1/2/programming-in-ansi-c-6e-balaguruswamy-400x400-imadbm5su8rafr4z.jpeg" alt="">
+                                <div class="caption">
+                                    <h5 class="pull-right">&#8377;250</h5>
+                                    <h5>
+                                        <a href="#"><b>Programming in ANSI C</b></a>
+                                    </h5>
+                                    <p>
+                                        <b>Place: </b>  <a href='#'>Baroda</a>
+                                        <br/>
+                                        <b>Author: </b>  <a href='#'>E.Balaguruswamy</a>
+                                        <br/>
+                                        <b>Publisher: </b>  <a href='#'>MacMilan</a>
+                                        <br/>
+                                        <b>Edition: </b> VII
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-3 col-md-3">
+                            <div class="thumbnail">
+                                <img style='width:100px;height:150px;' src="http://img5a.flixcart.com/image/book/6/1/2/programming-in-ansi-c-6e-balaguruswamy-400x400-imadbm5su8rafr4z.jpeg" alt="">
+                                <div class="caption">
+                                    <h5 class="pull-right">&#8377;250</h5>
+                                    <h5>
+                                        <a href="#"><b>Programming in ANSI C</b></a>
+                                    </h5>
+                                    <p>
+                                        <b>Place: </b>  <a href='#'>Baroda</a>
+                                        <br/>
+                                        <b>Author: </b>  <a href='#'>E.Balaguruswamy</a>
+                                        <br/>
+                                        <b>Publisher: </b>  <a href='#'>MacMilan</a>
+                                        <br/>
+                                        <b>Edition: </b> VII
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success">Checkout</button>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <!-- login modal -->
+        <div class="modal fade" id="login">
+           <div class="modal-dialog">
+                <div class="modal-content">
+                  <%= render :partial => "shared/login" %>
+                </div>
+            </div>
+        </div>
+        <!-- login modal-->
+        <!-- login modal -->
+        <div class="modal fade" id="register">
+           <div class="modal-dialog">
+                <div class="modal-content">
+                  <%= render :partial => "shared/register" %>
+                </div>
+            </div>
+        </div>
+        <!-- login modal-->
+    </body>
+</html>
