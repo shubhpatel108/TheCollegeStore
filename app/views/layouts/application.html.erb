@@ -25,8 +25,6 @@
 
   <%= javascript_include_tag "main_layout_js.js" %>
 
-  <!-- Validations -->
-  <%= javascript_include_tag  "jquery.magnific-popup.js" %>
   <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" %>
  <%= javascript_include_tag "additional-methods.js" %>
 
@@ -42,24 +40,11 @@
 </head>
 
 <body id="library top" class="gecko new-gecko">
-
-  <div class="header-fixed">
+  <%= render :partial => '/shared/header' %>
+  <!-- <div class="header-fixed">
     <div id="content-wrap">
-      <!-- <div class="fixed-heading"> -->
-      <!-- <div class="grid-container grid-parent"> -->
-      <!-- <div class="primary-heading"> -->
-
-      <!-- <div class="global-secondary-nav"> -->
-
-      <!-- <span id="header-title"> -->
-
-      <!--   LOGO -->
-            <!--<div class="logo-div">
-                  <%= image_tag("logo.png",:class => 'logo') %>
-                </div> -->
                 <div class="mobile-nav">
                   <div id="sidr">
-                    <!-- Your content -->
                     <ul>
                       <li id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></li>
                         <li class="resp-cart">
@@ -86,8 +71,6 @@
                   <a id="simple-menu" href="#sidr"><i class="fa fa-bars fa-menu-icon"></i></a>
 
                 </div>
-
-                <!-- Mobile Checkout -->
                 
                 
                 <a href="/books"><div href="#" id="logo">&nbsp;</div></a>
@@ -108,13 +91,9 @@
                       </div>
                       </div> 
                     </li>
-                    <!-- User -->
-                    <!--<div class="user-bar-header">        -->
-                    <!-- <ul class="user-list inline-popups"> -->
                     <span class="right-user">
                     <% if user_signed_in? %>
                     <li class="nav-li"><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
-                    <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
                     <li class="nav-li">
                       <span style="display: -webkit-inline-box;display: -moz-inline-stackb;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
                     </li>
@@ -122,7 +101,6 @@
                     <% if !user_signed_in? %>
                     <li class="nav-li">     
                       <a href="#cool-popup" class="animated_popup">Login<i class="fa fa-sign-in fa-padding"></i></a>
-                      <!-- <a href="#cool" class="animated_popup">Extending animations</a> -->
                     </li>
                     <li class="nav-li">
                       <a href="#cool-popup-register" class="animated_popup-register">Register<i class="fa fa-user fa-padding"></i></a>
@@ -251,7 +229,6 @@
                     </div>
                   </div>
                 <% end %>
-                <!-- All Popup -->
                 <div style="display:none">
                   <div id="college-select-popup" >
                     <%= render :partial => "shared/person_category_form"%>
@@ -265,7 +242,7 @@
                   <div id="cool-popup-register">
                     <%= render :partial => "shared/register" %>
                   </div>
-                </div><!-- ends -->
+                </div> --><!-- ends -->
 
                 <!-- Page Body -->
                 <div id="page-body">
