@@ -21,6 +21,7 @@ gem "test-unit"
 gem "spreadsheet"
 gem "jbuilder"
 gem 'metamagic'
+gem 'rubypress'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
