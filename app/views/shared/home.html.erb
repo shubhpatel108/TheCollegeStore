@@ -1,0 +1,102 @@
+<!--page wrapper-->
+<div id="page" class="container center-block">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="well">
+                <legend>Select Your College</legend>
+                <%= form_tag('/application/select_college', method: "get") do %>
+
+                    <%= select_tag "city", options_for_select(College.all.map(&:city).uniq), :class => "form-control", :id => "city-select", :onchange => "myFunction()" %>
+
+                    <label>College</label>
+                    <%= select_tag "college_id", options_from_collection_for_select(College.all, "id", "name"), :class => "form-control", :id => "college-select" %>
+
+                    <br />
+                    <div class="row">
+                        <span class="col-lg-8 col-md-8 hidden-sm">College not listed? 
+                              <a href="#" onclick="$('#request').modal('show');">Not in the list?</a>
+                        </span>
+                        <span class="col-lg-4 col-md-4 col-sm-12">
+                            <button class="btn btn-primary btn-block" style="right:0px;">Go!</button>
+                        </span>
+                    </div>                
+                <%end%>
+            </div>
+            <br />
+            <div class="well center">
+                <legend>Download our App!</legend>
+                <div class="row">
+                        <button class="btn btn-info">
+                            <i class="fa fa-download"></i> Download
+                        </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 book-bg" style="height:600px; margin-top: -10px; padding:60px 40px;">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <%= image_tag "backpack.png", {:class=>"img-thumbnail"} %>
+                        </div>
+                        <div class="col-md-8" style="line-height: 80px;">
+                            <p>An Ultra short description.</p>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-md-8" style="line-height: 80px;">
+                            <p>An Ultra short description.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <%= image_tag "backpack.png", {:class=>"img-thumbnail"} %>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <%= image_tag "backpack.png", {:class=>"img-thumbnail"} %>
+                        </div>
+                        <div class="col-md-8" style="line-height: 80px;">
+                            <p>An Ultra short description.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5" style="height:600px;padding-top: 125px;">
+                    <iframe width="100%" src="//www.youtube.com/embed/aUvYc0D08K4" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="request">
+   <div class="modal-dialog">
+        <div class="modal-content">
+          <%= render :partial => "shared/request_form" %>
+        </div>
+    </div>
+</div>
+<!--page wrapper-->
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        myFunction();
+    });
+
+    function myFunction() {
+        var x = document.getElementById("city-select").value;
+        var colleges = <%= raw College.all.map(&:name).to_json %>;
+        var cities = <%= raw College.all.map(&:city).to_json %>;
+        var col = $("#college-select");
+        col.empty();
+        for (var j = 0; j < colleges.length; j++){         
+            if (cities[j] == x)
+                $("#college-select").append("<option value='" +colleges[j]+ "'>" +colleges[j]+ "</option>");  
+        }
+    };
+</script

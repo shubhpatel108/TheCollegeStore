@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 		flash.keep
 		if current_user.nil? and cookies[:college_id].nil?
 				@colleges = College.all
-				render :template => 'shared/sellect_college'
+				render :template => 'shared/home'
 		elsif not current_user.nil?
 			redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id]
 		else
