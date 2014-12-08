@@ -66,7 +66,11 @@ TheCollegeStore::Application.routes.draw do
   get '/about_us', to: 'our#about_us'
   get '/shipping-details', to: 'our#shipping'
 
-  get '/profiles/:first_name-:last_name/:id', to: 'profiles#show'
+  get '/profiles/show/:first_name-:last_name/:id', to: 'profiles#show'
+  get '/profiles/show_profile/:id', to: 'profiles#show_profile'
+  get '/profiles/books_on_sale/:id', to: 'profiles#books_on_sale'
+  get '/profiles/books_purchased/:id', to: 'profiles#books_purchased' 
+  get '/profiles/edit_profile', to: 'profiles#edit_profile' 
 
   get '/api/colleges', to: 'api#colleges'
   get '/api/book_groups', to: 'api#book_groups'

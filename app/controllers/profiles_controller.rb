@@ -22,4 +22,40 @@ class ProfilesController < ApplicationController
 	  	end
   	end
 
+	def show_profile
+		@user = User.where(:id => params[:id]).first
+        respond_to do |format|
+          format.js
+        end
+  	end
+
+  	def books_on_sale
+  		id = params[:id]
+		@books = Book.where(:user_id => id)
+		@books.each do |b|
+			b[:info] = b.book_group
+		end
+		respond_to do |format|
+          format.js
+        end
+  	end
+
+  	def books_purchased
+  		id = params[:id]
+		@bought = Book.where(:buyer_id => id, :by_guest => false)
+		@bought.each do |b|
+			b[:info] = b.book_group
+		end
+		respond_to do |format|
+          format.js
+        end
+  	end
+
+  	# This action is to show edit profiel page without loading page
+  	def edit_profile
+		respond_to do |format|
+          format.js
+        end
+  	end
+
 end
