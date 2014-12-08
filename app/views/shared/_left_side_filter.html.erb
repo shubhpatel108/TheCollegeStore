@@ -1,0 +1,106 @@
+<div class="col-md-3 col-lg-3 col-sm-3">
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <b>FILTERS</b>
+    </div>
+    <section class='panel-body'>
+      <div class='col-md-10 col-md-offset-1'>
+        <div class='row'>
+          <label>Title</label>
+          <input type="text" id="filter_title" placeholder="Enter Title" class="form-control" onblur="check_title();">
+        </div>
+        <div class='row'>
+          <label>Subject</label>
+          <select class='form-control' id="filter_category" onchange="filter_query();">
+            <option>All</option>
+            <% Category.all.each do |category| %>
+              <option><%= category.name %></option>
+            <% end%>
+          </select>
+        </div>
+        <br/>
+        <div class='row'>
+          <label>Max Price</label>
+          <select class='form-control' id="filter_price" onchange="filter_query();">
+            <option>All</option>
+            <option>200</option>
+            <option>400</option>
+            <option>600</option>
+            <option>800</option>
+          </select>
+        </div>
+        <br/>
+        <div class='row'>
+          <label>Author</label>
+          <select class='form-control' id="filter_author" onchange="filter_query();">
+            <option>All</option>
+            <% BookGroup.all.map(&:author).uniq do |author| %>
+              <option><%= author %></option>
+            <% end%>
+          </select>
+        </div>
+        <br/>
+        <div class='row'>
+          <label>Publisher</label>
+          <select class='form-control' id="filter_publisher" onchange="filter_query();">
+            <option>All</option>
+            <% BookGroup.all.map(&:publisher).uniq do |publisher| %>
+              <option><%= publisher %></option>
+            <% end%>
+          </select>
+        </div>
+        <br/>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+
+  function check_title(){
+    // var sel_title = document.getElementById("filter_title");
+    // if(sel_title.value!="")
+      filter_query();
+  }
+  function filter_query(){
+    var sel_title = document.getElementById("filter_title");
+    var sel_cat = document.getElementById("filter_category");
+    var sel_price = document.getElementById("filter_price");
+    var sel_author = document.getElementById("filter_author");
+    var sel_pub = document.getElementById("filter_publisher");
+    var title = sel_title.value;
+    var cat = sel_cat.options[sel_cat.selectedIndex].text;
+    var price = sel_price.options[sel_price.selectedIndex].text;
+    var author = sel_author.options[sel_author.selectedIndex].text;
+    var pub = sel_pub.options[sel_pub.selectedIndex].text;
+
+    post('/filter', {title: title, category: cat, price: price, author: author, publisher: pub}, "post")
+  }
+
+  function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("data-remote", true);
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+    form.setAttribute("id", "filter_form");
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    $("#filter_form").submit(); 
+    $("#filter_form").remove(); 
+  }
+</script>

@@ -1,0 +1,14 @@
+<div class="col-lg-9 col-md-9 col-sm-9" id="search-result">
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+       <p><b><%=query%></b></p>
+    </div>
+    <section class='panel-body'>
+      <div class='row' id='results'>
+        <% results.each do |book| %>
+          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>

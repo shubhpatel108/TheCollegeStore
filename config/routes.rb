@@ -86,6 +86,8 @@ TheCollegeStore::Application.routes.draw do
   get '/blog', to: 'blog#index'
   post '/blog/new', to: 'blog#new'
   post '/blog/create', to: 'blog#create'
+
+  post '/filter', to: 'books#filter'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

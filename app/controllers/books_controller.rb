@@ -82,6 +82,8 @@ class BooksController < ApplicationController
       b[:min_price] = temp_books.map(&:price).compact.min
       b[:stock] = temp_books.where(:college_id => cookies[:college_id], :reserved => false).where(Book.arel_table[:admin_user_id].not_eq(nil)).count
     end
+    @original_query = @query
+    @query = "Search results for \'" + @query + "\'"
     respond_to do |format|
       format.html
     end
@@ -136,6 +138,32 @@ class BooksController < ApplicationController
     end
     flash[:notice] = "Your mail has been sent, seller(s) will soon respond you."
     redirect_to :books
+  end
+
+  def filter
+    p = params
+    p[:cateogry] = '*' if [:category]=="All"
+    p[:author] = '' if p[:author]=="All"
+    p[:publisher] = '' if p[:publisher]=="All"
+    p[:price] = 1000 if p[:price]=="All"
+    book_groups = BookGroup.where(["title like ? and author like ? and publisher like ?", "%#{p[:title]}%", "%#{p[:author]}%", "%#{p[:publisher]}%"])
+    @results = book_groups.to_a
+
+    book_groups.each do |bg|
+      temp_books = bg.books
+      if (temp_books.map(&:price).select { |b| b < p[:price].to_i }).count == 0
+        @results.delete(bg)
+      end
+    end
+    @results.each do |bg|
+      temp_books = bg.books
+      bg[:min_price] = temp_books.map(&:price).compact.min
+      bg[:stock] = temp_books.where(:college_id => cookies[:college_id], :reserved => false).where(Book.arel_table[:admin_user_id].not_eq(nil)).count
+    end
+    @query = "Search results"
+    respond_to do |format|
+      format.js { render :template => "/books/filter.js.erb"}
+    end
   end
 
   private
