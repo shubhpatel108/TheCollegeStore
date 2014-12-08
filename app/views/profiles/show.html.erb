@@ -12,19 +12,19 @@ meta site: "TheCollegeStore",
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked" role="tablist">
                         <% if @user == current_user %>
-                            <li role="presentation" class="active"><%= link_to("<i class='fa fa-fw fa-user'></i>My Profile".html_safe, "/profiles/show_profile/#{@user.id}", :remote => true) %>
+                            <li role="presentation" class="prol active"><%= link_to("<i class='fa fa-fw fa-user'></i>My Profile".html_safe, "/profiles/show_profile/#{@user.id}", :remote => true) %>
                             </li>
-                            <li role="presentation"><%= link_to("<i class='fa fa-edit fa-fw'></i>Edit Profile".html_safe, "/profiles/edit_profile", :remote => true) %>
+                            <li role="presentation" class="prol"><%= link_to("<i class='fa fa-edit fa-fw'></i>Edit Profile".html_safe, "/profiles/edit_profile", :remote => true) %>
                             </li>
-                            <li role="presentation"><a href="#"><i class="fa fa-tag fa-fw"></i> My Coupons</a></li>
-                            <li role="presentation"><%= link_to("<i class='fa fa-book fa-fw'></i>Books On Sale".html_safe, "/profiles/books_on_sale/#{@user.id}", :remote => true) %>
+                            <li role="presentation" class="prol"><a href="#"><i class="fa fa-tag fa-fw"></i> My Coupons</a></li>
+                            <li role="presentation" class="prol"><%= link_to("<i class='fa fa-book fa-fw'></i>Books On Sale".html_safe, "/profiles/books_on_sale/#{@user.id}", :remote => true) %>
                             </li>
-                            <li role="presentation"><%= link_to("<i class='fa fa-money fa-fw'></i>Purchased Books".html_safe, "/profiles/books_purchased/#{@user.id}", :remote => true) %>
+                            <li role="presentation" class="prol"><%= link_to("<i class='fa fa-money fa-fw'></i>Purchased Books".html_safe, "/profiles/books_purchased/#{@user.id}", :remote => true) %>
                             </li>
                         <% else %>                        
-                            <li role="presentation" class="active"><%= link_to("<i class='fa fa-fw fa-user'></i>Profile".html_safe, "/profiles/show_profile/#{@user}", :remote => true) %>
+                            <li role="presentation" class="prol active"><%= link_to("<i class='fa fa-fw fa-user'></i>Profile".html_safe, "/profiles/show_profile/#{@user}", :remote => true) %>
                             </li>
-                            <li role="presentation"><%= link_to("<i class='fa fa-book fa-fw'></i>Books On Sale".html_safe, "/profiles/books_on_sale/#{@user.id}", :remote => true) %>
+                            <li role="presentation" class="prol"><%= link_to("<i class='fa fa-book fa-fw'></i>Books On Sale".html_safe, "/profiles/books_on_sale/#{@user.id}", :remote => true) %>
                             </li>
                         <% end %>
                     </ul>
@@ -42,3 +42,12 @@ meta site: "TheCollegeStore",
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.prol').click(function(){
+            $('.prol').removeClass('active');
+            $(this).addClass('active');
+       });
+    })
+</script>
