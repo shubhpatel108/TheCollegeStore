@@ -1,12 +1,111 @@
-<div class="container_4">
-    <div class="innertitle">
-        <p>Search results for "<%=@query%>"</p>
+<!--page wrapper-->
+<div id="page" class="container center-block">
+  <div class='row'>
+
+
+    <div class="col-md-3 col-lg-3 col-sm-3">
+      <div class='panel panel-default'>
+        <div class='panel-heading'>
+          <b>FILTERS</b>
+        </div>
+        <section class='panel-body'>
+          <div class='col-md-10 col-md-offset-1'>
+            <div class='row'>
+              <label>Semester</label>
+              <select class='form-control'>
+                <option selected>All</option>
+                <option>I</option>
+                <option>II</option>
+                <option>III</option>
+                <option>IV</option>
+                <option>V</option>
+                <option>VI</option>
+                <option>VII</option>
+                <option>VIII</option>
+              </select>
+            </div>
+            <br/>
+            <div class='row'>
+              <label>Subject</label>
+              <select multiple class='form-control'>
+                <option selected>All</option>
+                <option>Engineering Graphics</option>
+                <option>Computer Programming & Utilization</option>
+                <option>Calculus</option>
+                <option>Environmental Science</option>
+              </select>
+            </div>
+            <br/>
+            <div class='row'>
+              <label>Max Price</label>
+              <select class='form-control'>
+                <option selected>Any</option>
+                <option>200</option>
+                <option>400</option>
+                <option>600</option>
+                <option>800</option>
+              </select>
+            </div>
+            <br/>
+            <div class='row'>
+              <label>Condition</label>
+              <br/>
+              <input type='checkbox' />Used
+              <br/>
+              <input type='checkbox' />New
+              <br/>
+            </div>
+            <br/>
+            <div class='row'>
+              <label>Publisher</label>
+              <select multiple class='form-control'>
+                <option selected>Any</option>
+                <option>Atul Prakashan</option>
+                <option>Mahajan Publishing House</option>
+                <option>TechMax Publications</option>
+              </select>
+            </div>
+            <br/>
+            <div class='row'>
+              <label>Author</label>
+              <select multiple class='form-control'>
+                <option selected>Any</option>
+                <option>P.J. Shah</option>
+                <option>Shefali Shah</option>
+              </select>
+            </div>
+            <br/>
+            <div class='row'>
+              <label>Location</label>
+              <select multiple class='form-control'>
+                <option selected>Any</option>
+                <option>Baroda</option>
+                <option>Ahmedabad</option>
+              </select>
+            </div>
+            <br/>
+          </div>
+        </section>
+      </div>
     </div>
-    <div class="no-touch">
-      <ul class="grid cs-style-3">
-        <% @results.each do |book| %>
-          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
-        <% end %>
-      </ul>
+
+    <div id="booklist">
+      <div class="col-lg-9 col-md-9 col-sm-9" id="search-result">
+        <div class='panel panel-default'>
+          <div class='panel-heading'>
+             <p><b>Search results for "<%=@query%>"</b></p>
+          </div>
+          <section class='panel-body'>
+            <div class='row' id='results'>
+              <% @results.each do |book| %>
+                <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
+              <% end %>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
+
+  </div>
 </div>
+<!--page wrapper-->
