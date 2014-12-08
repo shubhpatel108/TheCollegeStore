@@ -1,83 +1,161 @@
-<div class="smart-wrap">
-    <div class="smart-forms smart-container wrap-3">
-        
-	    	<div class="form-header header-black">
-	        	<h4><center><i class="fa fa-book"></i>Book Selling Form<center></h4>
-	        </div><!-- end .form-header section -->
-	        <div class="form-body theme-black">
-
-	<%= form_for book_group,:html=> {:class => 'smart-form' } do |f| %> 
-        <div class="section">
-            <label for="book_title" class="field prepend-icon">
-                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title', :class => 'gui-input' %>
-            <label>
-                <i class="fa fa-book field-icon"></i>
-            </label>
-            </label>
-        </div><!-- end section -->
-
-        <div class="section">
-            <label for="author" class="field prepend-icon">
-                <%= f.text_field :author, :placeholder => "Author", id: 'sell_author', :class => 'gui-input', :presence => false %>
-                <label>
-                    <i class="fa fa-user field-icon"></i>
-                </label>
-            </label>
-        </div><!-- end section -->
-
-        <div class="section">
-            <label for="publisher" class="field prepend-icon">
-                <%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher', :class => 'gui-input' %>
-                <label>
-                    <i class="fa fa-bookmark field-icon"></i>
-                </label>
-            </label>
-        </div><!-- end section -->
-
-        <div class="section">
-            <label for="category" class="field prepend-icon">
-                <%= f.collection_select :category_id, Category.all, :id, :name%>
-            </label>
-        </div><!-- end section -->
-
+<div id="page" class="container center-block">
+    <h1 style="text-align: center;">Sell Your Book</h1>
+    <br />
+    <br />
+    <br />
+    <div class='step' style='width:3%'>&nbsp;</div>
+    <div class="step" style="width:30%;" id="step1_progress">
+        <div class="step-text">Enter Book Details</div>
+        <div class="step-bar"></div>
+        <div class="step-circle">1</div>
+    </div>
+    <div class="step" style="width:30%;" id="step2_progress">
+        <div class="step-text">Decide the price</div>
+        <div class="step-bar"></div>
+        <div class="step-circle">2</div>
+    </div>
+    <div class="step" style="width:30%;" id="step3_progress">
+        <div class="step-text">Choose Your Coupons</div>
+        <div class="step-bar"></div>
+        <div class="step-circle">3</div>
+    </div>
+    <div class="step" style="width:5%;">
+        <div class="step-circle">4</div>
+    </div>
+    <%= form_for book_group,:html=> {:class => 'smart-form', :multipart => true } do |f| %>
         <%= f.fields_for :books do |builder| %>
-        
-        <% if not current_user.daiictian? %>
-        <div class="section">
-            <label for="price" class="field prepend-icon">
-                <%= builder.text_field :price, :placeholder => "Price", :class => 'gui-input'%>
-                <label>
-                    <i class="fa fa-inr field-icon"></i>
-                </label>
-            </label>
-        </div><!-- end section -->
-        <% end %>
+            <div id="sell_form">
+                <div class='panel' id='step1' style='margin-top: 100px; padding-top:40px;padding-bottom:40px;'>
+                    <div class='panel-body'>
+                        <div class='row'>
+                            <div class='col-md-4 col-md-offset-1'>
+                                <%= f.text_field :title, :placeholder => "Title of the Book", id: 'sell_title', :class => 'form-control' %>
 
-        <div class="section">
-            <label for="edition" class="field prepend-icon">
-                <%= builder.text_field :edition, :placeholder => "Edition", :class => 'gui-input'%>
-                <label>
-                    <i class="fa fa-bars field-icon"></i>
-                </label>
-            </label>
-        </div><!-- end section -->
+                                <br />
+                                <%= f.text_field :author, :placeholder => "Author", id: 'sell_author', :class => 'form-control', :presence => false %>
+                                <br />
+                                <%= f.text_field :publisher, :placeholder => "Publisher", id: 'sell_publisher', :class => 'form-control' %>
+                                <br />
+                                <%= f.collection_select :category_id, Category.all, :id, :name,{}, {:class => "form-control"}%>
+                                <br />
+                                <button type="button" class='btn btn-success' style='float:right;' onclick="next_step(1)">Proceed >></button>
+                            </div>
+                            <div class='col-md-2'>
+                                <h2 style='text-align:center;margin-top:60px;'>- OR -</h2>
+                            </div>
+                            <div class='col-md-4'>
+                                <br />
+                                <br />
+                                <br />
+                                <%= builder.text_field :isbn, :placeholder => "Enter ISBN", :class => 'form-control'%>
+                                <br />
+                                <button type="button" class='btn btn-success' style='float:right;' onclick="isbn_autfill_submit()">Fetch Info!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='panel' id='step2' style='margin-top: 100px; padding-top:40px;padding-bottom:40px; display:none;'>
+                        <div class='panel-body'>
+                            <div class='row'>
+                                <div class='col-md-4 col-md-offset-1'>
+                                    <h4 class='info'>This book has 45.50% probability of being sold if you sell it at the recommended price.</h4>
+                                </div>
+                                <div class='col-md-2'>
+                                </div>
+                                <div class='col-md-4'>
+                                    <p class='info'>TheCollegeStore recommended price: <b><i class='fa fa-inr'></i><span class='number'>250</span></b></p>
+                                    <br />
+                                    <div class='row'>
+                                        <div class='col-md-4' style='text-align: right;'>
+                                            <h4>Your Price:</h4>
+                                        </div>
+                                        <div class='col-md-4'>
+                                            <%= builder.text_field :price, :placeholder => "Price", :class => 'form-control'%>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-md-4' style='text-align: right;'>
+                                            <h4>Edition:</h4>
+                                        </div>
+                                        <div class='col-md-4'>
+                                            <%= builder.text_field :edition, :placeholder => "Edition", :class => 'form-control'%>
+                                        </div>
+                                    </div>
+                                    <div class ='col-md-4'>
+                                        <button type="button" class="btn btn-danger" onclick="back_step(2)">Back </button>
+                                        <button type="button" class='btn btn-success' onclick="next_step(2)">Proceed >></button>
+                                    </div>
 
-        <div class="section">
-            <label for="isbn" class="field prepend-icon">
-                <%= builder.text_field :isbn, :placeholder => "ISBN", :class => 'gui-input'%>
-                <label>
-                    <i class="fa fa-circle-thin field-icon"></i>
-                </label>
-            </label>
-        </div><!-- end section -->
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class='panel' id='step3' style='margin-top: 100px; padding-top:40px;padding-bottom:40px; display:none;'>
+                    <div class='panel-body'>
+                        <div class='row'>
+                            <div class='col-md-11 col-md-offset-1'>
+                                <h4 class='info'>TheCollegeStore offers you the following coupons! Pick yours!</h4>
+                                <input type="checkbox" />
+                                <img src="http://placehold.it/100x100" class="img-thumbnail coupon-img" />
+                                <input type="checkbox" />
+                                <img src="http://placehold.it/100x100" class="img-thumbnail coupon-img" />
+                                <input type="checkbox" />
+                                <img src="http://placehold.it/100x100" class="img-thumbnail coupon-img" />
+                                <br />
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-6">
+                                <button type="button" class="btn btn-danger" onclick="back_step(3)">Back </button>
+                                <button type="button" class="btn btn-success" onclick="next_step(3)">Proceed >></button>
 
-        <div class="section">
-            <center><%= f.button "Submit Book", :class => 'button btn-black' %> </center>
-        </div><!-- end section -->
-                
-		<%end%>	
-	<% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='panel' id='step4' style='margin-top: 100px; padding-top:40px;padding-bottom:40px;  display:none;'>
+                    <div class='panel-body'>
+                        <div class='row'>
+                            <div class='col-md-11 col-md-offset-1'>
+                                <h4 class='info'>Thank you for putting your book for sale on TheCollegeStore!</h4>
+                                <h4>You can view your book <a href="#">here</a></h4>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-5">
+                                <a href="/book_groups/new"><button class="btn btn-info">Sell Another Book</button></a>
+                                <%= f.button "Done!", :class => 'btn btn-success' %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    <% end %>
 </div>
-</div>
-</div>
 
+
+<script type="text/javascript">
+    function next_step(step){
+        var current_step = document.getElementById("step"+ step.toString());
+        current_step.style.display = "none";
+        var progress_bar = document.getElementById("step"+ step.toString()+ "_progress");
+        progress_bar.className += " complete"
+        current_step.className += " complete"
+        var next_step = document.getElementById("step" + (step + 1).toString());
+        next_step.style.display = "block";
+    }
+
+    function back_step(step){
+        var current_step = document.getElementById("step"+ step.toString());
+        current_step.style.display = "none";
+        var progress_bar = document.getElementById("step"+ (step - 1).toString()+ "_progress");
+        progress_bar.className = "step"
+        var back_step = document.getElementById("step" + (step - 1).toString());
+        back_step.style.display = "block";
+    }
+</script>

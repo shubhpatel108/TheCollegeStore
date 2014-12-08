@@ -78,11 +78,6 @@ class User < ActiveRecord::Base
 	  end
 	end
 
-  def goodreads_search(query)
-  	search = $gr_client.search_books(query)
-  	search.results.work
-  end
-
   def daiictian?
   	self.college_id == 1
   end

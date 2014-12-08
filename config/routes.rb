@@ -37,6 +37,7 @@ TheCollegeStore::Application.routes.draw do
   end
   get '/books/sell/new_book', to: 'books#sell'
   post '/books/sell/autofill', to: 'books#sell_autofill'
+  post '/books/sell/isbn_autofill', to: 'books#isbn_autofill'
   resources :book_groups
   get '/book_groups/details/:id', to: 'book_groups#details', as: :book_detail
   get '/add_item/:id', to: 'cart#add_item', as: :add_item
