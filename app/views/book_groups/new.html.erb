@@ -11,6 +11,12 @@ meta site: "TheCollegeStore",
 	<%end%>
 </div>
 
+<div style="display:none;">
+	<%= form_tag( '/books/sell/isbn_autofill' , {:remote => true , :method => :post , :id => "isbn_form"}) do %>
+	          <td><%= text_field_tag "isbn_query" %></td>
+	<%end%>
+</div>
+
 <div id="sell_book_form">
 	<%= render partial: 'shared/sell_book_form', :locals => {:book_group => @book_group, :books => :books}%>
 </div>
@@ -28,4 +34,11 @@ meta site: "TheCollegeStore",
 		document.getElementById("book_title").value = document.getElementById("sell_title").value
 	  $("#title_form").submit();
 		});
+
+	function isbn_autfill_submit()
+	{
+		document.getElementById("isbn_query").value = document.getElementById("book_group_books_attributes_0_isbn").value;
+		console.log("asdasdsaads");
+		$("#isbn_form").submit();
+	}
 </script>

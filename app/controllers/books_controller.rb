@@ -97,6 +97,24 @@ class BooksController < ApplicationController
     end
   end
 
+
+  def isbn_autofill
+    isbn = sanitize(params[:isbn_query])
+    @est_book = Book.where(:isbn => isbn).first
+    if @est_book.nil?
+      @est_book = BookGroup.new
+      results = goodreads_search(isbn)
+      @est_book.title = results[:best_book][:title]
+      @est_book.author = results[:best_book][:author][:name]
+      @est_book.publisher = ""
+    else
+      @est_book = @est_book.book_group
+    end
+    respond_to do |format|
+      format.js { render :template => "/books/sell_autofill.js.erb"}
+    end
+  end
+
   def sell
     @book = Book.new
   end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :initialize_variables, :set_cache_buster
   include CityVendorSessionsHelper
   include SanitizerHelper
+  include GoodreadsHelper
 
 	def select_college
 		c_id = sanitize(params[:college_id])
