@@ -92,11 +92,12 @@
         var x = document.getElementById("city-select").value;
         var colleges = <%= raw College.all.map(&:name).to_json %>;
         var cities = <%= raw College.all.map(&:city).to_json %>;
+        var ids = <%= raw College.all.map(&:id).to_json %>;
         var col = $("#college-select");
         col.empty();
         for (var j = 0; j < colleges.length; j++){         
             if (cities[j] == x)
-                $("#college-select").append("<option value='" +colleges[j]+ "'>" +colleges[j]+ "</option>");  
+                $("#college-select").append("<option value='" +ids[j]+ "'>" +colleges[j]+ "</option>");  
         }
     };
 </script
