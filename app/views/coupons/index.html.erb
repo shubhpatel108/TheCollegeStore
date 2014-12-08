@@ -8,13 +8,8 @@ meta site: "TheCollegeStore",
 <script type="text/javascript">
   search_bar = document.getElementById('main_search_bar');
   search_bar.parentNode.removeChild(search_bar);
-  search_bar = document.getElementById('extra-responsive-search');
-  search_bar.parentNode.removeChild(search_bar);
   top_bar = document.getElementById('search-bar-header');
-  var newdiv = document.createElement('div');
-  newdiv.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
-  newdiv.id = "top-coupon-bar";
-
+  top_bar.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
 
 
 var isMobile = {
@@ -38,15 +33,6 @@ var isMobile = {
     }
 };
 
-if(window.innerWidth <= 800 && window.innerHeight <= 600)  {
-  console.log("test");
-  top_bar = document.getElementById('mobile-checkout');
-  top_bar.insertBefore(newdiv, top_bar.firstChild);
-}
-else{
-    console.log("set");
-    top_bar.insertBefore(newdiv, top_bar.firstChild);
-}
 </script>
 
 <div id="all_coupons_wrapper">

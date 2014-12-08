@@ -69,7 +69,9 @@
                             </li>
                         <%end%>
                     </ul>
-                    <div id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></div>
+                    <div id="search-bar-header">
+                        <div id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></div>
+                    </div>
                 </div>
             </div>
         </header>

@@ -43,9 +43,9 @@
 				</span>
 			</div>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<% if not books.empty?%>
-            	<a href="/cart/checkout"><button type="button" class="btn btn-success">Checkout</button></a>
-        	<% end %>
+			<% if not books.empty?%>
+               <a href="<%= coupons_path %>"><button type="button" class="btn btn-success">Checkout</button></a>
+           <% end %>
        </div>
     </div>
 </div>

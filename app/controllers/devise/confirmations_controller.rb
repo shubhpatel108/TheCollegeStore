@@ -39,10 +39,13 @@ class Devise::ConfirmationsController < DeviseController
 
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, resource)
-    recommender = Recommendation.where(:recommended_id => resource.id).first.recommender
-    recommender.points = 0 if recommender.points.nil?
-    recommender.points += 300
-    recommender.save
+    recommendation = Recommendation.where(:recommended_id => resource.id).first
+    if not recommendation.nil?
+      recommender = recommendation.recommender
+      recommender.points = 0 if recommender.points.nil?
+      recommender.points += 300
+      recommender.save
+    end
     if signed_in?(resource_name)
       signed_in_root_path(resource)
     else
