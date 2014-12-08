@@ -1,0 +1,119 @@
+<div class="smart-wrap">
+    <div class="smart-forms smart-container wrap-3">
+      
+      <div class="form-header header-black">
+          <h4><i class="fa fa-edit"></i>Edit Profile</h4>
+      </div>
+      
+      <div class="form-body theme-black">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :id =>'edit-registraion' }) do |f| %>
+
+          <div class="section">
+            <label for="firstname" class="field prepend-icon">
+              <%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true, :class => 'gui-input', :name=>'firstname' %>
+            </label>
+          </div><!-- end section -->
+
+          <div class="section">
+            <label for="lastname" class="field prepend-icon">
+              <%= f.text_field :last_name, :placeholder => 'Last Name', :class => 'gui-input', :name => 'lastname' %>
+            </label>
+          </div><!-- end section -->
+
+          <div class="section">
+            <label for="email" class="field prepend-icon">
+              <%= f.email_field :email,  :placeholder => 'Email', :class => 'gui-input', :name => 'email' %>
+            </label>
+          </div><!-- end section -->
+
+          <% if Devise.mappings[:user].confirmable? && resource.pending_reconfirmation? %>
+            Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+          <% end %>
+
+          <div class="section">
+            <label for="newpassword" class="field prepend-icon">
+              <%= f.password_field :password, :placeholder => 'New Password', autocomplete: "off", :class => 'gui-input newpassword', :validates => false %>
+            </label>
+          </div><!-- end section -->
+
+          <div class="section">
+            <label for="newpassword-confirm" class="field prepend-icon">
+              <%= f.password_field :password_confirmation, :placeholder => 'Confirm New Password', autocomplete: "off", :class => 'gui-input' %>
+            </label>
+          </div><!-- end section -->
+
+          <div class="section">
+            <label for="current-password" class="field prepend-icon">
+              <%= f.password_field :current_password, :placeholder => 'Current Password To Save Changes', autocomplete: "off", :class => 'gui-input' %>
+            </label>
+          </div><!-- end section -->
+
+          <div class="section">
+            <label for="mobile" class="field prepend-icon">
+              <%= f.text_field :mobile,  :placeholder => 'Mobile', :class => 'gui-input', :name=>'mobile' %>
+            </label>
+          </div><!-- end section --> 
+
+          <div class="section">
+            <%= f.file_field :profile_pic %>
+          </div>
+
+          <div class="section">
+            <center>
+               <%= link_to "Back", :back, :class =>'button btn-black' %>
+              <%= f.submit "Update", :class => 'button btn-black' %> 
+            </center>
+          </div><!-- end section -->
+      <% end %>
+      <hr>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+        $('#edit-registraion').validate({
+                errorClass: "state-error",
+                validClass: "state-success",
+                errorElement: "em",
+                rules: {
+                        "user[email]": {
+                            required: true,
+                            email: true,
+                        },
+                        "user[first_name]": {
+                            required: true,
+                        },
+                        "user[last_name]": {
+                            required: true,
+                        },
+                        "user[mobile]": {
+                            required: true,
+                            minlength:10,
+                            maxlength:10,
+                            number: true,
+                        },
+                        "user[current_password]": {
+                            required: true,
+                        },
+                },
+                messages:{
+                    email:{
+                        email: 'Please enter a valid email'
+                    },
+                    mobile: {
+                        minlength: 'Mobile No Should be of 10 digits',
+                        maxlength: 'Mobile No Should be of 10 digits'
+                    }
+
+                },
+                highlight: function(element, errorClass, validClass) {
+                        $(element).closest('.field').addClass(errorClass).removeClass(validClass);
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                        $(element).closest('.field').removeClass(errorClass).addClass(validClass);
+                }
+        });
+});
+</script>

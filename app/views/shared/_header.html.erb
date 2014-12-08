@@ -38,6 +38,8 @@
 
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/books" ><i class="fa fa-book"></i> Explore Books</a></li>
+                        <li><a href="#" onclick="$('#cart-content').modal('show');"><i class='fa fa-shopping-cart'></i> Cart(<span id="cart-item-count">0</span>)</a></li>
                         <% if !user_signed_in? %>
                             <li>     
                               <a href="#" onclick="$('#login').modal('show');">Login
@@ -50,19 +52,22 @@
                               </a>
                             </li>
                         <% else %>
-                            <li><a href="/book_groups/new" class="button button-primary">Sell<i class="fa fa-plus-square fa-padding"></i></a></li>
+                            <li><a href="/book_groups/new"><i class="fa fa-plus-square" style="margin-right:3px;"></i>Sell</a></li>
                             <li>
-                              <span style="display: -webkit-inline-box;display: -moz-inline-stackb;font-size: 17px;"><%= link_to "#{current_user.first_name}", "/profiles/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %></span>
-                            </li>
-                            <li>
-                              <a href="/logout" class="">
-                                <span class="fa fa-sign-out"></span>
-                                <span class="nav-tooltip">Log out</span>
-                              </a>      
+                                <div class="dropdown">
+                                  <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                    <%= "#{current_user.first_name}" %>
+                                    <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <%= link_to "My Profile", "/profiles/show/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :class => 'username-header' %>
+                                    </li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Log Out</a></li>
+                                  </ul>
+                                </div>
                             </li>
                         <%end%>
-                        <li><a href="#" ><i class="fa fa-book"></i> Explore Books</a></li>
-                        <li><a href="#" onclick="$('#cart-content').modal('show');"><i class='fa fa-shopping-cart'></i> Cart(<span id="cart-item-count">0</span>)</a></li>
                     </ul>
                     <div id="main_search_bar"><a href="#" style="margin:0; padding:0"><%= render :partial => 'shared/search', :locals => {:book_names => $book_names} %></a></div>
                 </div>
