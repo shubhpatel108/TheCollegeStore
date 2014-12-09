@@ -6,6 +6,7 @@
                 <legend>Select Your College</legend>
                 <%= form_tag('/application/select_college', method: "get") do %>
 
+                    <label>City</label>
                     <%= select_tag "city", options_for_select(College.all.map(&:city).uniq), :class => "form-control", :id => "city-select", :onchange => "myFunction()" %>
 
                     <label>College</label>

@@ -34,7 +34,7 @@
           <label>Author</label>
           <select class='form-control' id="filter_author" onchange="filter_query();">
             <option>All</option>
-            <% BookGroup.all.map(&:author).uniq do |author| %>
+            <% BookGroup.all.map(&:author).uniq.each do |author| %>
               <option><%= author %></option>
             <% end%>
           </select>
@@ -44,7 +44,7 @@
           <label>Publisher</label>
           <select class='form-control' id="filter_publisher" onchange="filter_query();">
             <option>All</option>
-            <% BookGroup.all.map(&:publisher).uniq do |publisher| %>
+            <% BookGroup.all.map(&:publisher).uniq.each do |publisher| %>
               <option><%= publisher %></option>
             <% end%>
           </select>
