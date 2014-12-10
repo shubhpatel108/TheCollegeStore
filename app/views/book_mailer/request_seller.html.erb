@@ -134,13 +134,13 @@
                                             <td class="w275" width="275">
                                                 <p align="left" class="article-title"><singleline label="Title">Book Details</singleline></p>
                                                 <div align="left" class="article-content">
-                                                    <multiline label="Description"><% @bookdetail.each do |book| %>
-									                                    Title:    <%=book.info.title%><br>
-									                                    Author:    <%=book.info.author%><br>
-								                                        Price:	<%= book.price%><br>
-								                                       	Edition:	<%= book.edition%><br>
-																		ISBN:	<%= book.isbn%><br><br>
-																			<% end %></multiline>
+                                                    <multiline label="Description">
+			     	                                    Title:   <%= @book.book_group.title%><br>
+					                                    Author:  <%= @book.book_group.author%><br>
+				                                        Price:	 <%= @book.price%><br>
+				                                       	Edition: <%= @book.edition%><br>
+														ISBN:	 <%= @book.isbn%><br><br>
+													</multiline>
                                                 </div>
                                             </td>
                                         </tr>

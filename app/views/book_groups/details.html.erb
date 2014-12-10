@@ -23,7 +23,7 @@ meta site: "TheCollegeStore",
               <div class='row'>
                 <div class='col-md-8'>
                   <h2>
-                  Rs. 250 <span class='label label-success'><%= @details.count%> Sellers</span>
+                      <span class='label label-success'><%= @details.count - @reserved_count %> Sellers</span>
                   </h2>
                   <p>
                     <b><i class='fa fa-user'></i> Authors:</b> 

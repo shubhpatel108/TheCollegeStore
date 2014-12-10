@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     @book_groups = BookGroup.all
     college_id = cookies[:college_id]
     @book_groups.each do |group|
-        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).where(Book.arel_table[:admin_user_id].not_eq(nil)).count
+        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).count
         group[:min_price] = group.books.map(&:price).compact.min
     end
     @latest = @book_groups.sort_by {|b| b[:updated_at]}.reverse!.slice(0..3)
@@ -122,22 +122,23 @@ class BooksController < ApplicationController
   end
 
   def request_seller
-    s_ids = params[:seller_ids]
+    b_ids = params[:books_ids]
     message = sanitize(params[:message])
     if not current_user.nil?
       @user = current_user 
     else
       @user = session[:guest]
     end
-    s_ids.each do |s|
-      book_details = Book.where(:user_id => s, :buyer_id=> @user.id)
-      book_details.each do |b|
-        b[:info] = b.book_group
+
+    b_ids.each do |b|
+      book = Book.where(:id => b).first
+      if book.admin_user.nil? 
+        BookMailer.request_seller(book.user_id, @user, message, book).deliver
       end
-      BookMailer.request_seller(s, @user, message, book_details).deliver
     end
+
     flash[:notice] = "Your mail has been sent, seller(s) will soon respond you."
-    redirect_to :books
+    redirect_to :action => 'index'
   end
 
   def filter

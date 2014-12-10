@@ -12,12 +12,12 @@ class BookMailer < ActionMailer::Base
     }
   end
 
-  def request_seller(s_ids, buyer, message, bookdetail)
+  def request_seller(s_id, buyer, message, book)
     load_settings
-    @sellers = User.where(:id => s_ids)
+    @sellers = User.where(:id => s_id)
     @seller_emails = @sellers.map(&:email)
     @message = message
-    @bookdetail = bookdetail
+    @book = book
     @buyer_email = buyer.email
     @buyer_name = buyer.first_name + " " + buyer.last_name
     mail(from: "contact@thecollegestore.in", :to=>@seller_emails,:subject=>"Request to buy your book | TheCollegeStore")

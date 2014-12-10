@@ -84,16 +84,14 @@ meta site: "TheCollegeStore",
 </p>
 </div>
 
-<%if not ((current_user.daiictian? unless current_user.nil?) or (@guest.daiictian? unless @guest.nil?)) %>
 <div class="seller-message">
 	<p>Message the seller(s):</p>
 	<%= form_tag(request_seller_books_path) do %>
 		<td><%= text_area_tag :message, nil, rows: "10", cols: "50" %></td>
-		<% @seller_ids.each do |i| %>
-	    <%= hidden_field_tag "seller_ids[]", i %>
+		<% @books.each do |b| %>
+	    	<%= hidden_field_tag "books_ids[]", b.id %>
 		<% end %>
 		<br>
 		<td><%= submit_tag "Send", :class => 'button btn-black'%></td>
 	<% end %>
 </div>
-<%end%>

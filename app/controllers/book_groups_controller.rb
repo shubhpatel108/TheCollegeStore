@@ -48,6 +48,7 @@ class BookGroupsController < ApplicationController
   end
 
   def details
+    @reserved_count = 0
     @book_group = BookGroup.where(:id => sanitize(params[:id])).first
     if @book_group.nil?
       render file: 'public/404', status: 404, formats: [:html]
@@ -62,10 +63,9 @@ class BookGroupsController < ApplicationController
             @flipkart_links << {:isbn => b.isbn, :edition => b.edition}
           end
         end
-        if b.admin_user.nil?
-          @books -= [b]
-        else
-          @owners << b.user
+        @owners << b.user
+        if b.reserved
+          @reserved_count += 1
         end
       end
       if not @flipkart_links.empty?
@@ -91,7 +91,7 @@ class BookGroupsController < ApplicationController
     @books = BookGroup.where(:category_id => @c_id)
     college_id = cookies[:college_id]
     @books.each do |group|
-        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).where(Book.arel_table[:admin_user_id].not_eq(nil)).count
+        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).count
         group[:min_price] = group.books.map(&:price).compact.min
     end
     respond_to do |format|
