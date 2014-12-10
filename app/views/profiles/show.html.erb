@@ -16,11 +16,11 @@ meta site: "TheCollegeStore",
                             </li>
                             <li role="presentation" class="prol"><%= link_to("<i class='fa fa-edit fa-fw'></i>Edit Profile".html_safe, "/profiles/edit_profile", :remote => true) %>
                             </li>
-                            <li role="presentation" class="prol"><a href="#"><i class="fa fa-tag fa-fw"></i> My Coupons</a></li>
                             <li role="presentation" class="prol"><%= link_to("<i class='fa fa-book fa-fw'></i>Books On Sale".html_safe, "/profiles/books_on_sale/#{@user.id}", :remote => true) %>
                             </li>
                             <li role="presentation" class="prol"><%= link_to("<i class='fa fa-money fa-fw'></i>Purchased Books".html_safe, "/profiles/books_purchased/#{@user.id}", :remote => true) %>
                             </li>
+                            <li role="presentation" class="prol"><%= link_to("<i class='fa fa-book fa-fw'></i>My Coupons".html_safe, "/profiles/distributed_coupons/", :remote => true) %></li>
                         <% else %>                        
                             <li role="presentation" class="prol active"><%= link_to("<i class='fa fa-fw fa-user'></i>Profile".html_safe, "/profiles/show_profile/#{@user.id}", :remote => true) %>
                             </li>

@@ -1,0 +1,33 @@
+    <div class="col-md-12">
+      <h1>Coupons Distributed to You Earlier</h1>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row">
+            <% dist_info_coupons.each do |dist_info| %>
+              <div class="col-md-3">
+                <div class="thumbnail">
+                  <div class="caption">
+                    <h5><b><%= dist_info.coupon.distributor.name %> : <%= dist_info.coupon.scheme %></b></h5>
+                    <p>
+                      <%= dist_info.coupon.conditions %>
+                    </p>
+                    <p>
+                      Code: <%= dist_info.code %>
+                    </p>
+                    <p>
+                      Distributed on: <%= dist_info.coupon.created_at.strftime("%B %d, %Y") %>
+                    </p>
+                    <p class="alert alert-info"><i class="fa fa-info-circle"></i> On purchase of Rs. <%= dist_info.coupon.value %> and above.</p>
+                    <p class="pull-right"><a href="#" onclick="$('#coupon-<%=dist_info.coupon.id%>-deatils').modal('show');">Details</a></p>
+                  </div>
+                </div>
+              </div>
+              <div id="coupon-<%=dist_info.coupon.id%>-deatils" class="modal fade">
+                <%= render :partial => "coupons/coupon_details", :locals => {:coupon => dist_info.coupon} %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>

@@ -58,4 +58,11 @@ class ProfilesController < ApplicationController
         end
   	end
 
+	def distributed_coupons
+		@dist_info = DistributedCoupon.where(:user_id => current_user.id, :by_guest => false)
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end
