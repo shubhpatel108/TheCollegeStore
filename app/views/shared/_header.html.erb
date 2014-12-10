@@ -39,7 +39,14 @@
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/books" ><i class="fa fa-book"></i> Explore Books</a></li>
-                        <li><a href="#" onclick="$('#cart-content').modal('show');"><i class='fa fa-shopping-cart'></i> Cart(<span id="cart-item-count">0</span>)</a></li>
+                        <li><a href="#" onclick="$('#cart-content').modal('show');"><i class='fa fa-shopping-cart'></i> Cart(
+                        <span id="cart-item-count">
+                            <% if session[:cart].nil? %>
+                                0
+                            <% else%>
+                                <%= session[:cart].count%>
+                            <%end%>
+                        </span>)</a></li>
                         <% if !user_signed_in? %>
                             <li>     
                               <a href="#" onclick="$('#login').modal('show');">Login
