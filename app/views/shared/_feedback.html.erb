@@ -1,35 +1,45 @@
-<div class="smart-wrap">
-    <div class="smart-forms smart-container wrap-3">
-      
-      <div class="form-header header-black">
-          <h4><center><i class="fa fa-sign-in"></i>Feedback</center></h4>
-      </div>
-      
-      <div class="form-body theme-black">
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal">x</button>
+		    <h2>Feedback</h2>
+		</div>
 
-		<%= form_for @feedback, :as => :feedback, :url => feedback_path, :html => {:id => "feedback_form"} do |f| %>
-		  <%= f.hidden_field 'page' %>
-		  <% unless @error_message.blank? %>
-		    <p class="error">
-		      <%=h @error_message %>
-		    </p>
+		<div class="modal-body">
+			<%= form_for @feedback, :as => :feedback, :url => feedback_path, :html => {:id => "feedback_form", :class => 'form-signin'} do |f| %>
+
+				<%= f.hidden_field 'page' %>
+				<% unless @error_message.blank? %>
+					<p class="error">
+					  	<%=h @error_message %>
+					</p>
+				<% end %>
+
+				<div>
+				  <p>
+				    <%= f.label 'subject' %>
+				    <%= f.select 'subject', ['Problem', 'Suggestion', 'Question', 'Other'] %>
+				  </p>
+			  	</div>
+
+			  	<div>
+	  			  <p>
+				    <%= f.label 'email' %>
+				    <%= f.text_field 'email', :class => 'form-control' %>
+				  </p>
+		        </div>
+
+	        	<div>
+    			  <p>
+        		    <%= f.label 'comment' %><br />
+				    <%= f.text_area 'comment', :rows => 10, :cols => 30, :class => 'form-control' %>
+				  </p>
+				</div>
+		      	
+		      	<div>
+			      	<%= f.submit 'Send', :class =>'btn btn-lg btn-primary' %>
+			    </div>
 		  <% end %>
-
-		  <p>
-		    <%= f.label 'subject' %>
-		    <%= f.select 'subject', ['Problem', 'Suggestion', 'Question', 'Other'] %>
-		  </p>
-		  <br>
-		  <p>
-		    <%= f.label 'email' %>
-		    <%= f.text_field 'email' %>
-		  </p>
-		  <p>
-		    <%= f.label 'comment' %><br />
-		    <%= f.text_area 'comment', :rows => 10, :cols => 30 %>
-		  </p>
-		  <p><%= f.submit 'Send', :class =>'button btn-black' %></p>
-		<% end %>
-</div>
-</div>
+		 </div>
+	</div>
 </div>

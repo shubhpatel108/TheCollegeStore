@@ -3,7 +3,7 @@ require 'rubypress'
 class BlogController < ApplicationController
 	before_filter :authenticate_user!, only: [:new, :create]
 
-	def index
+	def posts
 		@@wp = Rubypress::Client.new(:host => "thecollegestore1.wordpress.com", 
 		                             :username => "thecollegestore1", 
 		                             :password => "thecollegestorethe")
@@ -11,7 +11,7 @@ class BlogController < ApplicationController
 		@posts = @@wp.getPosts( :filter => {
 					            	:post_type => 'post',
 				                	:orderby => 'post_date',
-				                	:order => 'asc'
+				                	:order => 'desc'
 	                        	} )
 	end
 
@@ -21,7 +21,7 @@ class BlogController < ApplicationController
 
 	def create
 		post_id = @@wp.newPost(  :blog_id => 1, # 0 unless using WP Multi-Site, then use the blog id
-            				     :content => {
+	        				     :content => {
 		                         	 :post_status  => "publish",
 		                         	 :post_date    => Time.now,
 		                         	 :post_content => params[:post][:content],
@@ -34,7 +34,7 @@ class BlogController < ApplicationController
 	                         	 }
 	            			   )
 		Blog.create(:post_id => post_id, :user_id => current_user.id)
-		redirect_to action: 'index'
+		redirect_to action: 'posts'
 	end
 
 end

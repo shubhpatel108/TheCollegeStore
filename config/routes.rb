@@ -83,8 +83,10 @@ TheCollegeStore::Application.routes.draw do
   get '/feedback', to: 'feedback#new'
   post '/feedback/submit', to: 'feedback#create', as: :feedback
 
-  get '/blog', to: 'blog#index'
+  get '/blog', to: 'blog#posts'
   post '/blog/new', to: 'blog#new'
+  get '/blog/new', to: 'blog#new'
+  post '/blog/create', to: 'blog#create'
   post '/blog/create', to: 'blog#create'
 
   post '/filter', to: 'books#filter'

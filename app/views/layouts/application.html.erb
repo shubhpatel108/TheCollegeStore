@@ -124,118 +124,117 @@
                 <p id="back-top">
                   <a href="#top"><i class="fa-chevron-circle-up fa"></i></a>
                 </p>
+    <!-- Toast Message -->
+    <%= javascript_include_tag "jquery.toastmessage.js"%>
+      <script>
+        //for flash messages
+        var notice= '<%= flash[:notice] %>' || '<%=notice%>'
+        var success= '<%= flash[:success] %>'
+        var warning= '<%= flash[:warning] %>' || '<%=alert%>'
+        var error= '<%= flash[:error] %>'
+        if(notice)
+          FlashNotice("notice", notice);
+        if(success)
+          FlashNotice("success", success);
+        if(warning)
+          FlashNotice("warning", warning);
+        if(error)
+          FlashNotice("notice", error);
+      </script>
 
-                <!-- Toast Message -->
-                <%= javascript_include_tag "jquery.toastmessage.js"%>
-  <script>
-    //for flash messages
-    var notice= '<%= flash[:notice] %>' || '<%=notice%>'
-    var success= '<%= flash[:success] %>'
-    var warning= '<%= flash[:warning] %>' || '<%=alert%>'
-    var error= '<%= flash[:error] %>'
-    if(notice)
-      FlashNotice("notice", notice);
-    if(success)
-      FlashNotice("success", success);
-    if(warning)
-      FlashNotice("warning", warning);
-    if(error)
-      FlashNotice("notice", error);
-  </script>
+      <%= javascript_include_tag "form-js.js" %>
+    <!-- Back To Top -->
 
-  <%= javascript_include_tag "form-js.js" %>
-<!-- Back To Top -->
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-<!-- Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-33616834-1', 'auto');
-  ga('send', 'pageview');
+      ga('create', 'UA-33616834-1', 'auto');
+      ga('send', 'pageview');
 
 
-  // JS for book grid header color change
-  $(".latest").hover(function(){
-  $(".latest-title").css({
-      "background-color" : "rgb(170,38,88)",
+      // JS for book grid header color change
+      $(".latest").hover(function(){
+      $(".latest-title").css({
+          "background-color" : "rgb(170,38,88)",
+        });
+      $('.latest').css({
+          "border-color" : "rgb(170,38,88)",
+          cursor : 'pointer'
+      });
+
+      },function(){
+      $(".latest-title").css("background-color","rgb(185,185,185)");
+      $(".latest").css("border-color","rgb(184,184,184)");
+      });
+
+      // Popular
+      $(".popular").hover(function(){
+      $(".popular-title").css("background-color","rgb(170,38,88)");
+
+      $('.popular').css({
+          "border-color" : "rgb(170,38,88)",
+          cursor : 'pointer'
+      });
+      },function(){
+      $(".popular-title").css("background-color","rgb(185,185,185)");
+      $(".popular").css("border-color","rgb(184,184,184)");
     });
-  $('.latest').css({
-      "border-color" : "rgb(170,38,88)",
-      cursor : 'pointer'
-  });
 
-  },function(){
-  $(".latest-title").css("background-color","rgb(185,185,185)");
-  $(".latest").css("border-color","rgb(184,184,184)");
-  });
+    // Header Image Change Script
 
-  // Popular
-  $(".popular").hover(function(){
-  $(".popular-title").css("background-color","rgb(170,38,88)");
+    if(document.URL != "http://www.thecollegestore.in/" && document.URL!= "http://thecollegestore.in/" && document.URL!= "http://localhost:3000/"){
+      $('#content-wrap').css({
+        "background-size" : '100% 100%'
+      });
+      }
 
-  $('.popular').css({
-      "border-color" : "rgb(170,38,88)",
-      cursor : 'pointer'
-  });
-  },function(){
-  $(".popular-title").css("background-color","rgb(185,185,185)");
-  $(".popular").css("border-color","rgb(184,184,184)");
-});
+    if(document.URL == "http://www.thecollegestore.in/" || document.URL== "http://thecollegestore.in/" || document.URL== "http://localhost:3000/" || document.URL== "http://localhost:3000/#top"){
 
-// Header Image Change Script
-
-if(document.URL != "http://www.thecollegestore.in/" && document.URL!= "http://thecollegestore.in/" && document.URL!= "http://localhost:3000/"){
-  $('#content-wrap').css({
-    "background-size" : '100% 100%'
-  });
-  }
-
-if(document.URL == "http://www.thecollegestore.in/" || document.URL== "http://thecollegestore.in/" || document.URL== "http://localhost:3000/" || document.URL== "http://localhost:3000/#top"){
-
-    $("#page-body").css("width","100%");
-}else{
-  $("#page-body").css("width","74%");
-}
-</script>
-
-<!-- for facebook feed -->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1451918948362653',
-      xfbml      : true,
-      version    : 'v2.1'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-<script>
-  function fb_feed(name, link, pic_url, caption) {
-    link = "http://thecollegestore.in" + link
-    if(pic_url == 'noimage.jpg')
-    {
-      pic_url = "http://thecollegestore.in/assets/logo.png"
+        $("#page-body").css("width","100%");
+    }else{
+      $("#page-body").css("width","74%");
     }
-    FB.ui({
-      display: 'popup',
-      method: 'feed',
-      name: name,
-      link: link,
-      picture: pic_url,
-      caption: caption,
-    }, function(response){});
-  }
-</script>
+    </script>
+
+    <!-- for facebook feed -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1451918948362653',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+      function fb_feed(name, link, pic_url, caption) {
+        link = "http://thecollegestore.in" + link
+        if(pic_url == 'noimage.jpg')
+        {
+          pic_url = "http://thecollegestore.in/assets/logo.png"
+        }
+        FB.ui({
+          display: 'popup',
+          method: 'feed',
+          name: name,
+          link: link,
+          picture: pic_url,
+          caption: caption,
+        }, function(response){});
+      }
+    </script>
 
 </body>
 </html>

@@ -1,19 +1,17 @@
-<li class="divfloat">
-    <div>
-      <b><h4><%= post["post_title"] %></h4></b>
-    </div>
-    
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+     <h3><p><b><%= post["post_title"] %></b></p></h3>
+  </div>
+  <section class='panel-body'>
+  <p class="lead">
+    <% user_id = Blog.where(:post_id => post["post_id"]).first.user_id %>
+    <% user = User.where(:id => user_id).first %>
+    by <%= link_to("#{user.first_name} #{user.last_name}", "/profiles/show/#{user.first_name}-#{user.last_name}/#{user_id}") %>
+    </p>
+    <p><span class="glyphicon glyphicon-time"></span> Posted on <%= post["post_date"].to_time().strftime('%B %d, %Y at %I:%M %p %Z') %></p>
     <hr>
+    <p><%= post["post_content"].html_safe %></p>
+    <hr>      
+  </section>
+</div>
 
-    <div>
-      <%= post["post_content"].html_safe %>
-    </div>
-    
-    <hr>
-    
-    <div>
-      <% user_id = Blog.where(:post_id => post["post_id"]).first.user_id %>
-      <% user = User.where(:id => user_id).first %>
-      <%= "By - " + user.first_name + " " + user.last_name %>
-    </div>
-</li>

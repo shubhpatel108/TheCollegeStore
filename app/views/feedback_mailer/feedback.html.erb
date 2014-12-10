@@ -2,10 +2,10 @@ Dear site administrator,
 
 You're lucky today, you've got feedback from your users:
 
-Subject: <%=h @feedback[:subject] %>
-User's email: <%=h @feedback[:email] %>
+Subject: <%=h @feedback.subject %>
+User's email: <%=h @feedback.email %>
 Sent at: <%= Time.now %>
-From Page: <%= @feedback[:page] %>
+From Page: <%= @feedback.page %>
 
 Comment: 
-<%=h @feedback[:comment] %>
+<%=h @feedback.comment %>

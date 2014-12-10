@@ -1,65 +1,49 @@
-<div class="smart-wrap">
-    <div class="smart-forms smart-container wrap-3">
-      
-      <div class="form-header header-black">
-          <h4><center><i class="fa fa-user"></i>Sign up</center></h4>
-      </div>
-      
-      <div class="form-body theme-black">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h2><i class="fa fa-user"></i>Sign up</center></h2>
+    </div>
 
-      <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'smart-form'}) do |f| %>
+    <div class="modal-body">
+      <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'form-signin', :role => 'form'}) do |f| %>
 
-        <div class="section">
-          <label for="firstname" class="field prepend-icon">
-            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'gui-input' %>
-          </label>
-        </div><!-- end section -->
-        
-        <div class="section">
-          <label for="lastname" class="field prepend-icon">
-              <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'gui-input' %>
-          </label>
-        </div><!-- end section -->
+          <div>
+            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
+          </div>
 
-        <div class="section">
-          <label for="email" class="field prepend-icon">
-            <%= f.email_field :email, :placeholder => 'Email', :class=>'gui-input' %>
-          </label>
-        </div><!-- end section -->
+          <div>
+              <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'form-control' %>
+          </div>
 
-        <div class="section">
-          <label for="password" class="field prepend-icon">
-            <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'gui-input'%>
-          </label>
-        </div><!-- end section -->
+          <div>
+              <%= f.email_field :email, :placeholder => 'Email', :class=>'form-control' %>
+          </div>
 
-        <div class="section">
-          <label for="mobile" class="field prepend-icon">
-            <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'gui-input' %>
-          </label>
-        </div><!-- end section -->  
-          
-        <div>
-          <label for="email" class="field prepend-icon">
-            <%= f.hidden_field :college_id, :value=> cookies[:college_id] %>
-          </label>
-        </div><!-- end section -->
+          <div>
+              <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'form-control'%>
+          </div>
 
-        <div>
-            <%= f.file_field :profile_pic %>
-        </div><!-- end section -->  
+          <div>
+              <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'form-control' %>
+          </div>
 
-        <div class="section">
-          <center>
-            <%= f.submit "Sign up", :class => 'button btn-black' %> 
-          </center>
-        </div><!-- end section -->
+          <div>
+              <%= f.hidden_field :college_id, :value=> cookies[:college_id] %>
+          </div>
+
+          <div>
+              <%= f.file_field :profile_pic %>
+          </div>
+
+          <div>
+              <%= f.submit "Sign up", :class => 'btn btn-lg btn-primary' %> 
+          </div>
       <% end %>
+     </div>
 
-      <%= render "devise/shared/links_signup" %>
-
+    <div class="modal-footer"> 
+      <center><%= render "devise/shared/links_signup" %></center>
     </div>
   </div>
 </div>
-
-

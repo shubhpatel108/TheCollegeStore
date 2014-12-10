@@ -233,3 +233,9 @@ footer
   color: white;
   margin-top: -12px;
 }
+
+/* for blog post text area */
+.blogtext
+{
+  background-color: #000 !important;  
+}
