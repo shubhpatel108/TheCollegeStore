@@ -239,3 +239,13 @@ footer
 {
   background-color: #000 !important;  
 }
+
+
+/* for coupon image */
+.set-image {
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  padding: 0;
+}

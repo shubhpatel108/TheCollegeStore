@@ -1,0 +1,71 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header"><h4>Coupon Details<i data-dismiss="modal" class="clickable pull-right fa fa-close"></i></h4>
+        </div>
+        <div class="modal-body">
+            <div class="info-content">
+            <div class="info-heading">
+              <%= coupon.distributor.name %> 
+            </div> 
+              <hr/>
+            <div class="left-part">
+              <div class="coupon-details">
+                <b>Scheme:</b> <%= coupon.scheme %>
+              </div>
+              <% if not coupon.conditions.nil? %>
+                <div class="cond-box">
+                  <div class="coupon-cond">
+                    <b>Condition(s): </b> <%= coupon.conditions %>
+                  </div>
+                </div>
+              <% end %>
+              <div class="avaliable-at">
+                  <b>Applicable at :- </b>
+              </div>
+              <div class="address-bg">
+                <div class="store-address">
+                  <%= coupon.distributor.address %>
+                </div>
+              </div>
+              <div class="terms-and-cond">
+                <div class="terms-head">
+                    <b>Terms & conditions</b>
+                </div>
+                <ul class="terms-content">
+                  <li class="term-points">
+                    If the product offered in the e-coupon is not available due to any reason whatsoever, the store can offer a product of equivalent value to the customer.
+                  </li>
+                  <li class="term-points">
+                    One voucher will be honoured per billing.
+                  </li>
+                  <li class="term-points">
+                    The offer not valid with other offer schemes. 
+                  </li>   
+                  <li class="term-points">
+                    The offer cannot be redeemed for cash. 
+                  </li>
+                  <li class="term-points">
+                    Customer has to show the transactional sms received in his mobile at the time of billing at the respective store for availing the offer.
+                  </li>
+                  <li class="term-points">
+                    “The College Store” is not responsible for any kind of disputes about the delay, pricing or cancellation of the coupons by the the coupon vendor.
+                  </li>
+                  <li class="term-points">
+                    Coupon redemption is purely subjected to standard and specified terms and conditions mentioned by the respective coupon vendor. Hence, any damages, injuries, losses incurred by the end user by using the coupon is not the responsibility of “The College Store”.
+                  </li>
+                  <li class="term-points">
+                    All the coupons on the website are non-refundable, non-exchangeable and non-reversible.
+                  </li>
+                  <li class="term-points">
+                    “The College Store” reserves the right to change these conditions from time to time. The customer (user) is required to check terms and conditions at every visit. No notification communication will be done subject to change in terms and conditions.
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+    </div>
+</div>

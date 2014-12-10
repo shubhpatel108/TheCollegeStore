@@ -1,116 +1,37 @@
-<style>
-  .popup_cont{
-  top:50px !important; 
-}
-</style>
-
-<div class="coupon-container">
-    <div class= "coupan_head">
-      Select your Coupon
-    </div>
-    <% coupons.each do |coupon| %>
-      <div class="coupon-box" style="position:relative">
-        <div class="image-box">
-          <div class="img-brand">
-            <%= image_tag(coupon.distributor.image_name, :class => "set-image")%>
-          </div>
-        </div>
-        <div class="pickbtn">
-          <%= link_to "Pick", add_coupon_path(coupon.id), :remote => true, :class => "myButton" %>
-        </div>
-        <div class="coupon-perks">
-          <%= coupon.scheme %>
-        </div>
-        <div class="coupon-terms">
-          <%= coupon.conditions %>
-        <div class="links">
-          <div class="inline-popups" style="margin-top: 10px;">
-            <a href="#coupon-<%=coupon.id%>-deatils-popup" id="coupon-<%=coupon.id%>-deatils-link" style="margin-left: 10px; font-size: 12px" class="coupons-details-animated">See details</a>
-          </div>
-        </div>
-        </div>
-        <div style="border-top: 1px solid #cccccc; margin-top: 5px;">
-        <div style="float:left">
-  	      <div class="coupon-save">
-  	          <span>On purchase of</span>
-  	      </div>
-  	      <div class="save-money" style="color:black">
-            <i class="fa fa-rupee fa-4x fa-color_white" style="font-size:1.0em"></i>
-	          <%= coupon.value %>
-  	      </div>
-      	</div>
-        <div class="expiry-date">
-            <span>Expiry </span><span style="color:black"> Nov 30, 2014</span>
-        </div>
-        </div>
-        <% if coupon.out_of_stock || (not coupon.applicable(value_remaining)) %>
-          <div style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:white; opacity:0.5;"></div>
-        <%end%>
-      </div>
-
-
-      <div id="coupon-<%=coupon.id%>-deatils-popup" style="display:none;">
-        <div class="info-content">
-            <div class="info-heading">
-              <%= coupon.distributor.name %> 
-            </div> 
-              <hr/>
-            <div class="left-part">
-              <div class="coupon-details">
-                <%= coupon.scheme %>
-              </div>
-              <% if not coupon.conditions.nil? %>
-                <div class="cond-box">
-                  <div class="coupon-cond">
-                    <%= coupon.conditions %>
+<div class="container center-block" id="page">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Select Coupons</h1>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row">
+            <% coupons.each do |coupon| %>
+              <div class="col-md-3">
+                <div class="thumbnail">
+                  <%= image_tag(coupon.distributor.image_name, :class => "set-image")%>
+                  <div class="caption">
+                    <h5><b><%= coupon.distributor.name %> : <%= coupon.scheme %></b></h5>
+                    <p>
+                      <%= coupon.conditions %>
+                    </p>
+                    <p class="alert alert-info"><i class="fa fa-info-circle"></i> On purchase of Rs. <%= coupon.value %> and above.</p>
+                    <p class="alert alert-warning"><i class="fa fa-exclamation-circle"></i> Valid till 30<sup>th</sup> December Only!</p>
+                    <p class="pull-right"><a href="#" onclick="$('#coupon-<%=coupon.id%>-deatils').modal('show');">Details</a></p>
+                    <%= link_to "Pick", add_coupon_path(coupon.id), :remote => true, :class => "btn btn-success" %>
                   </div>
                 </div>
-              <% end %>
-              <div class="avaliable-at">
-                  Available at :-
+                <% if coupon.out_of_stock || (not coupon.applicable(value_remaining)) %>
+                  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:white; opacity:0.5;"></div>
+                <%end%>
               </div>
-              <div class="address-bg">
-                <div class="store-address">
-                  <%= coupon.distributor.address %>
-                </div>
+              <div id="coupon-<%=coupon.id%>-deatils" class="modal fade">
+                <%= render :partial => "coupons/coupon_details", :locals => {:coupon => coupon} %>
               </div>
-              <div class="terms-and-cond">
-                <div class="terms-head">
-                    Terms & conditions
-                </div>
-                <ul class="terms-content">
-                  <li class="term-points">
-                    If the product offered in the e-coupon is not available due to any reason whatsoever, the store can offer a product of equivalent value to the customer.
-                  </li>
-                  <li class="term-points">
-                    One voucher will be honoured per billing.
-                  </li>
-                  <li class="term-points">
-                    The offer not valid with other offer schemes. 
-                  </li>   
-                  <li class="term-points">
-                    The offer cannot be redeemed for cash. 
-                  </li>
-                  <li class="term-points">
-                    Customer has to show the transactional sms received in his mobile at the time of billing at the respective store for availing the offer.
-                  </li>
-                  <li class="term-points">
-                    “The College Store” is not responsible for any kind of disputes about the delay, pricing or cancellation of the coupons by the the coupon vendor.
-                  </li>
-                  <li class="term-points">
-                    Coupon redemption is purely subjected to standard and specified terms and conditions mentioned by the respective coupon vendor. Hence, any damages, injuries, losses incurred by the end user by using the coupon is not the responsibility of “The College Store”.
-                  </li>
-                  <li class="term-points">
-                    All the coupons on the website are non-refundable, non-exchangeable and non-reversible.
-                  </li>
-                  <li class="term-points">
-                    “The College Store” reserves the right to change these conditions from time to time. The customer (user) is required to check terms and conditions at every visit. No notification communication will be done subject to change in terms and conditions.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <% end %>
+          </div>
         </div>
+      </div>
+      </div>
     </div>
-    <% end %>
+  </div>
 </div>
-

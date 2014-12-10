@@ -16,12 +16,16 @@ class CouponsController < ApplicationController
     @coupon = Coupon.where(:id => c_id).first
     @coupons = Coupon.all
     if not @coupon.nil?
+      if not @coupon.out_of_stock and @coupon.applicable(session[:value_remaining])
         session[:value_remaining] -= @coupon.value
         session[:coupons] ||= []
         session[:coupons] << @coupon.id
         respond_to do |format|
           format.js
         end
+      else
+        render :js => "FlashNotice('error', 'You are smart :) but we cannot give more coupons');"
+      end
     else
         render :js => "FlashNotice('error', 'No such coupon!');"
     end
