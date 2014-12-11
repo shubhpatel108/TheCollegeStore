@@ -109,12 +109,22 @@
                       </a>
                     </li>
                   </ul>
+                </div> -->
+
+                <a href="#" onclick="$('#feedback').modal('show');">
+                  <div id="zenbox_tab" style="display: block; background-color: green; border-color: red; right: -40px;" title="Feedback" class="ZenboxTabRight" classname="ZenboxTabRight">
+
+                    <div id="feedback_tab_text"><i class="fa fa-pencil" style="-webkit-transform: rotate(180deg);"></i> Feedback</div>
+
+                  </div>
+                </a>
+
+                <div class="modal fade" id="feedback">
+                  <%= render :partial => "shared/feedback" %>
                 </div>
 
-                -->
-
                 <!-- Page Body -->
-                <div id="page-body">
+                <div id="page-body" style="margin_left:50px;">
                     <%= yield %>
                 </div>
 
