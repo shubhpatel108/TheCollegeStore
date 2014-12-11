@@ -7,7 +7,7 @@
       <div class='col-md-10 col-md-offset-1'>
         <div class='row'>
           <label>Title</label>
-          <input type="text" id="filter_title" placeholder="Enter Title" class="form-control" onblur="check_title();">
+          <input type="text" id="filter_title" placeholder="Enter Title" class="form-control autocomplete" onblur="check_title();">
         </div>
         <div class='row'>
           <label>Subject</label>
@@ -76,5 +76,10 @@
 
     post('/filter', {title: title, category: cat, price: price, author: author, publisher: pub}, "post")
   }
+
+  var b_n = <%= raw $book_names.to_json %>;
+  $( "#filter_title" ).autocomplete({
+    source: b_n
+  });
 
 </script>
