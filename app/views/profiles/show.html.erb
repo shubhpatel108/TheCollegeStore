@@ -21,6 +21,7 @@ meta site: "TheCollegeStore",
                             <li role="presentation" class="prol"><%= link_to("<i class='fa fa-money fa-fw'></i>Purchased Books".html_safe, "/profiles/books_purchased/#{@user.id}", :remote => true) %>
                             </li>
                             <li role="presentation" class="prol"><%= link_to("<i class='fa fa-book fa-fw'></i>My Coupons".html_safe, "/profiles/distributed_coupons/", :remote => true) %></li>
+                            <li role="presentation" class="prol"><%= link_to("<i class='fa fa-sign-out fa-fw'></i>Logout".html_safe, logout_path) %></li>
                         <% else %>                        
                             <li role="presentation" class="prol active"><%= link_to("<i class='fa fa-fw fa-user'></i>Profile".html_safe, "/profiles/show_profile/#{@user.id}", :remote => true) %>
                             </li>

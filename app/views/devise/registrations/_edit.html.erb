@@ -1,74 +1,38 @@
-<div class="smart-wrap">
-    <div class="smart-forms smart-container wrap-3">
+<h4><i class="fa fa-edit"></i>Edit Profile</h4>
       
-      <div class="form-header header-black">
-          <h4><i class="fa fa-edit"></i>Edit Profile</h4>
-      </div>
-      
-      <div class="form-body theme-black">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :id =>'edit-registraion' }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :id =>'edit-registraion' }) do |f| %>
+    
+    <%= label_tag "First Name"%>
+    <%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true, :class => 'form-control', :name=>'firstname' %>
 
-          <div class="section">
-            <label for="firstname" class="field prepend-icon">
-              <%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true, :class => 'gui-input', :name=>'firstname' %>
-            </label>
-          </div><!-- end section -->
+    <%= label_tag "Last Name"%>
+    <%= f.text_field :last_name, :placeholder => 'Last Name', :class => 'form-control', :name => 'lastname' %>
 
-          <div class="section">
-            <label for="lastname" class="field prepend-icon">
-              <%= f.text_field :last_name, :placeholder => 'Last Name', :class => 'gui-input', :name => 'lastname' %>
-            </label>
-          </div><!-- end section -->
+    <%= label_tag "Email"%>
+    <%= f.email_field :email,  :placeholder => 'Email', :class => 'form-control', :name => 'email' %>
 
-          <div class="section">
-            <label for="email" class="field prepend-icon">
-              <%= f.email_field :email,  :placeholder => 'Email', :class => 'gui-input', :name => 'email' %>
-            </label>
-          </div><!-- end section -->
+    <% if Devise.mappings[:user].confirmable? && resource.pending_reconfirmation? %>
+      Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+    <% end %>
 
-          <% if Devise.mappings[:user].confirmable? && resource.pending_reconfirmation? %>
-            Currently waiting confirmation for: <%= resource.unconfirmed_email %>
-          <% end %>
+    <%= label_tag "New Password"%>
+    <%= f.password_field :password, :placeholder => 'New Password', autocomplete: "off", :class => 'form-control newpassword', :validates => false %>
 
-          <div class="section">
-            <label for="newpassword" class="field prepend-icon">
-              <%= f.password_field :password, :placeholder => 'New Password', autocomplete: "off", :class => 'gui-input newpassword', :validates => false %>
-            </label>
-          </div><!-- end section -->
+    <%= label_tag "Confirm Password"%>
+    <%= f.password_field :password_confirmation, :placeholder => 'Confirm New Password', autocomplete: "off", :class => 'form-control' %>
 
-          <div class="section">
-            <label for="newpassword-confirm" class="field prepend-icon">
-              <%= f.password_field :password_confirmation, :placeholder => 'Confirm New Password', autocomplete: "off", :class => 'gui-input' %>
-            </label>
-          </div><!-- end section -->
+    <%= label_tag "Current Password"%>
+    <%= f.password_field :current_password, :placeholder => 'Current Password To Save Changes', autocomplete: "off", :class => 'form-control' %>
 
-          <div class="section">
-            <label for="current-password" class="field prepend-icon">
-              <%= f.password_field :current_password, :placeholder => 'Current Password To Save Changes', autocomplete: "off", :class => 'gui-input' %>
-            </label>
-          </div><!-- end section -->
+    <%= label_tag "Mobile"%>
+    <%= f.text_field :mobile,  :placeholder => 'Mobile', :class => 'form-control', :name=>'mobile' %>
 
-          <div class="section">
-            <label for="mobile" class="field prepend-icon">
-              <%= f.text_field :mobile,  :placeholder => 'Mobile', :class => 'gui-input', :name=>'mobile' %>
-            </label>
-          </div><!-- end section --> 
+    <%= label_tag "Profile Picture"%>
+    <%= f.file_field :profile_pic %>
 
-          <div class="section">
-            <%= f.file_field :profile_pic %>
-          </div>
-
-          <div class="section">
-            <center>
-               <%= link_to "Back", :back, :class =>'button btn-black' %>
-              <%= f.submit "Update", :class => 'button btn-black' %> 
-            </center>
-          </div><!-- end section -->
-      <% end %>
-      <hr>
-</div>
-</div>
-</div>
+    <%= f.submit "Update", :class => 'btn btn-success' %>
+<% end %>
+<hr>
 
 <script type="text/javascript">
 

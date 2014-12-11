@@ -1,8 +1,13 @@
-<p>Type an Email:</p>
-<%= form_tag(:controller => "our", :action => "send_recommendation") do %>
-	<%= text_field_tag "email", nil, placeholder: "someone@example.com" %>
-	<%= submit_tag "Recommend", :class => "button"%>
-<%end%>
+<div id="page" class="container center-block">
+  <div class='row'>
+    <div class="col-md-9">
+			<%= form_tag({:controller => "our", :action => "send_recommendation"}) do %>
+				<%= text_field_tag "email", nil, placeholder: "Type an email", :class=> "form-control" %>
+				<%= submit_tag "Recommend", :class => "btn-sml btn btn-sucess form-control"%>
+			<%end%>
+			<center>OR</center>
+			<button onclick="fb_feed('TheCollegeStore', '/<%=current_user.id%>/<%=current_user.first_name%>-<%=current_user.last_name%>/recommend', 'http://thecollegestore.in/assets/logo.png', 'Sell used books and Buy used or new books from your own College Friends!')" class="btn-sml btn btn-success form-control">Recommend on facebook</button>
+		</div>  
+	</div>
+</div>
 
-<p>OR</p>
-<button onclick="fb_feed('TheCollegeStore', '/<%=current_user.id%>/<%=current_user.first_name%>-<%=current_user.last_name%>/recommend', 'http://thecollegestore.in/assets/logo.png', 'Sell used books and Buy used or new books from your own College Friends!')">Recommend on facebook</button>
