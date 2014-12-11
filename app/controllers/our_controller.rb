@@ -43,9 +43,14 @@ class OurController < ApplicationController
 
   def send_recommendation
     email = sanitize(params[:email])
-    ContactUsMailer.recommend(email, current_user).deliver
-    flash[:success] = "Successfully invited! You'll soon be rewarded."
-    redirect_to :root
+    if email.empty?
+      flash[:error] = "You must enter an email."
+      redirect_to :back
+    else
+      ContactUsMailer.recommend(email, current_user).deliver
+      flash[:success] = "Successfully invited! You'll soon be rewarded."
+      redirect_to :root
+    end
   end
 
 end
