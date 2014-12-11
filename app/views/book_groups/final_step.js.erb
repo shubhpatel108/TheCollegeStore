@@ -1,0 +1,3 @@
+FlashNotice('success', 'Your Book is added!');
+next_step(3);
+$("#confirm_addition").html('<%=escape_javascript( render :partial => "book_groups/final_step", :locals => {:book_group => @book_group})%>')

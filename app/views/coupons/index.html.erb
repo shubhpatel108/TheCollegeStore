@@ -5,37 +5,7 @@ meta site: "TheCollegeStore",
 %>
 
 <% title "Select Coupons" %>
-<script type="text/javascript">
-  search_bar = document.getElementById('main_search_bar');
-  search_bar.parentNode.removeChild(search_bar);
-  top_bar = document.getElementById('search-bar-header');
-  top_bar.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
-
-
-var isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
-
-</script>
 
 <div id="all_coupons_wrapper">
   <%= render :partial => "shared/all_coupons", :locals => {:coupons => @coupons, :value_remaining => session[:value_remaining]} %>
 </div>
-

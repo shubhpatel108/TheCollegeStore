@@ -37,15 +37,17 @@ meta site: "TheCollegeStore",
 
                 <div class="col-md-4">
                   <% if @wished %>
-                    <a href="/wishlist/remove/<%=@book_group.id%>" class="btn btn-lg button-primary" data-remote=true  id="remove_from_wishlist">Remove From Wishlist</a>
+                    <a href="/wishlist/remove/<%=@book_group.id%>" data-remote=true  id="remove_from_wishlist">
+                      <button class="btn-sm btn btn-danger">Remove from Wishlist</button>
+                    </a>
                   <% else %>
-                    <a href="/wishlist/add/<%=@book_group.id%>" class="btn btn-lg button-primary" data-remote=true  id="add_to_wishlist">
-                    <button class="btn-sm btn btn-success">Add to Wishlist</button>
+                    <a href="/wishlist/add/<%=@book_group.id%>" data-remote=true  id="add_to_wishlist">
+                      <button class="btn-sm btn btn-success">Add to Wishlist</button>
                     </a>
                   <% end %>  
                 </div>
 
-                <button class="button" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
+                <button class="btn btn-info" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
 
               </div>
             </div>

@@ -1,0 +1,8 @@
+<div class='col-md-11 col-md-offset-1'>
+    <h4 class='info'>Thank you for putting your book for sale on TheCollegeStore!</h4>
+    <% if not book_group.nil? %>
+        <h4>You can view your book <%= link_to "here" ,book_detail_path(book_group)%>.</h4>
+        <button class="btn btn-info" type="button" onclick="fb_feed('Get <%=book_group.title%> by <%=book_group.author%> at TheCollegeStore', '<%=book_detail_path(book_group)%>', '<%=book_group.image.url%>','Get used <%=book_group.title%> by <%=book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
+
+    <% end %>
+</div>

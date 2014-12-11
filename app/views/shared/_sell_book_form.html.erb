@@ -22,9 +22,9 @@
     <div class="step" style="width:5%;">
         <div class="step-circle">4</div>
     </div>
-    <%= form_for book_group,:html=> {:class => 'smart-form', :multipart => true } do |f| %>
+    <%= form_for book_group,:html=> {:class => 'smart-form', :multipart => true, :id => "sell_form", :remote => true } do |f| %>
         <%= f.fields_for :books do |builder| %>
-            <div id="sell_form">
+            <div>
                 <div class='panel' id='step1' style='margin-top: 100px; padding-top:40px;padding-bottom:40px;'>
                     <div class='panel-body'>
                         <div class='row'>
@@ -70,7 +70,7 @@
                                             <h4>Your Price:</h4>
                                         </div>
                                         <div class='col-md-4'>
-                                            <%= builder.text_field :price, :placeholder => "Price", :class => 'form-control'%>
+                                            <%= builder.text_field :price, :placeholder => "Price", :class => 'form-control', :id => "entered_price"%>
                                         </div>
                                     </div>
                                     <div class='row'>
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class ='col-md-4'>
                                         <button type="button" class="btn btn-danger" onclick="back_step(2)">Back </button>
-                                        <button type="button" class='btn btn-success' onclick="next_step(2)">Proceed >></button>
+                                        <button type="button" class='btn btn-success' onclick="get_incentive_for_new_book()">Proceed >></button>
                                     </div>
 
                                 </div>
@@ -95,13 +95,8 @@
                         <div class='row'>
                             <div class='col-md-11 col-md-offset-1'>
                                 <h4 class='info'>TheCollegeStore offers you the following coupons! Pick yours!</h4>
-                                <input type="checkbox" />
-                                <img src="http://placehold.it/100x100" class="img-thumbnail coupon-img" />
-                                <input type="checkbox" />
-                                <img src="http://placehold.it/100x100" class="img-thumbnail coupon-img" />
-                                <input type="checkbox" />
-                                <img src="http://placehold.it/100x100" class="img-thumbnail coupon-img" />
-                                <br />
+                                <div id="coupons_for_new_books">
+                                </div>
                             </div>
                         </div>
                         <br />
@@ -109,26 +104,21 @@
                         <div class="row">
                             <div class="col-md-6 col-md-offset-6">
                                 <button type="button" class="btn btn-danger" onclick="back_step(3)">Back </button>
-                                <button type="button" class="btn btn-success" onclick="next_step(3)">Proceed >></button>
-
+                                <%= f.button "Proceed >>", :class => 'btn btn-success' %>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class='panel' id='step4' style='margin-top: 100px; padding-top:40px;padding-bottom:40px;  display:none;'>
                     <div class='panel-body'>
-                        <div class='row'>
-                            <div class='col-md-11 col-md-offset-1'>
-                                <h4 class='info'>Thank you for putting your book for sale on TheCollegeStore!</h4>
-                                <h4>You can view your book <a href="#">here</a></h4>
-                            </div>
+                        <div class='row' id="confirm_addition">
                         </div>
                         <br />
                         <br />
                         <div class="row">
                             <div class="col-md-6 col-md-offset-5">
-                                <a href="/book_groups/new"><button class="btn btn-info">Sell Another Book</button></a>
-                                <%= f.button "Done!", :class => 'btn btn-success' %>
+                                <%= link_to "Sell Another Book", "/book_groups/new" ,:class => 'btn btn-info'%>
+                                <%= link_to "Done!", root_path ,:class => 'btn btn-success'%>
                             </div>
                         </div>
                     </div>
@@ -157,5 +147,10 @@
         progress_bar.className = "step"
         var back_step = document.getElementById("step" + (step - 1).toString());
         back_step.style.display = "block";
+    }
+    function get_incentive_for_new_book(){
+        entered_price = document.getElementById("entered_price").value;
+        post('/incentive_for_new_book', {price: entered_price}, "post");
+        next_step(2);
     }
 </script>
