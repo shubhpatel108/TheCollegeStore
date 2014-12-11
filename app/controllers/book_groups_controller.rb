@@ -25,8 +25,10 @@ class BookGroupsController < ApplicationController
       if current_user.daiictian?
         ContactUsMailer.book_added_notifier(@new_book, @new_book.book_group, @new_book.user).deliver
       end
-      flash[:success] = "Your Book is added!"
-      redirect_to :books
+      @book_group = @old_book_group
+      respond_to do |format|
+        format.js { render :template => "/book_groups/final_step"}
+      end
     else
       if @book_group.save
         @new_book = @book_group.books.last
@@ -38,8 +40,9 @@ class BookGroupsController < ApplicationController
           @new_book.college_id = current_user.college_id
           @new_book.save
         end
-        flash[:success] = "Your Book is added!"
-        redirect_to :books
+        respond_to do |format|
+          format.js { render :template => "/book_groups/final_step"}
+        end
       else
         flash[:error] = "Something went wrong! Please try again"
         render :action => 'new'
@@ -101,6 +104,16 @@ class BookGroupsController < ApplicationController
 
   def all_categories
     @categories = Category.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def incentive_for_new_book
+    @coupons = Coupon.all
+    price = params[:price].to_i
+    session[:value_remaining] = price
+    session[:coupons] = []
     respond_to do |format|
       format.js
     end

@@ -91,6 +91,7 @@ TheCollegeStore::Application.routes.draw do
   post '/blog/create', to: 'blog#create'
 
   post '/filter', to: 'books#filter'
+  post '/incentive_for_new_book', to: 'book_groups#incentive_for_new_book'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

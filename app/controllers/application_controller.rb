@@ -41,11 +41,11 @@ class ApplicationController < ActionController::Base
   end
 
   def is_cart_empty
-	if session[:cart].nil?
-		flash[:warning] = "Your cart is Empty!"
+	if session[:value_remaining].nil?
+		flash[:warning] = "You are not elligible for incentives!"
 		redirect_to :back
-	elsif session[:cart].empty?
-		flash[:warning] = "Your cart is Empty!"
+	elsif session[:value_remaining] < 0
+		flash[:warning] = "You are not elligible for incentives!"
 		redirect_to :back
 	end
 	rescue ActionController::RedirectBackError

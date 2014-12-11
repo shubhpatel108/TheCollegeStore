@@ -2,7 +2,9 @@ FlashNotice("<%=@m_type%>", "<%=@message%>");
 if ("<%=@m_type%>"=="success")
 {
 	var wish_anchor = document.getElementById('add_to_wishlist'); 
-	wish_anchor.innerHTML = "Remove from Wishlist";
 	wish_anchor.setAttribute("id", "remove_from_wishlist");
 	wish_anchor.href = "/wishlist/remove/<%= escape_javascript(@bg_id)%>";
+	var wish_button = wish_anchor.children[0];
+	wish_button.textContent = "Remove from Wishlist";
+	wish_button.setAttribute("class", "btn-sm btn btn-danger"); 
 }
