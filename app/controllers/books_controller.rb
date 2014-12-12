@@ -93,9 +93,11 @@ class BooksController < ApplicationController
     titl = sanitize(params[:book_title])
     if not titl.empty?
       @est_book = BookGroup.where(["title like ?", "#{titl}"]).first
-    end
-    respond_to do |format|
-      format.js
+      respond_to do |format|
+        format.js
+      end
+    else
+      render :js => ""
     end
   end
 

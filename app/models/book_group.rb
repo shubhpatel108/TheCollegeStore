@@ -31,4 +31,12 @@ class BookGroup < ActiveRecord::Base
   def to_param
     "#{id}-#{slug}"
   end
+
+  def college_stock(college_id)
+    self.books.where(:college_id => college_id, :reserved => false).count
+  end
+
+  def min_price
+    self.books.map(&:price).compact.min
+  end
 end

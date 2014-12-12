@@ -56,7 +56,8 @@ class BookGroupsController < ApplicationController
     if @book_group.nil?
       render file: 'public/404', status: 404, formats: [:html]
     else
-      @book_category = @book_group.category.name
+      @book_cat = @book_group.category
+      @book_category = @book_cat.name
       @books = @book_group.books.where(:college_id => cookies[:college_id]).order(:reserved, :created_at).to_a
       @owners = []
       @flipkart_links = []
@@ -85,6 +86,11 @@ class BookGroupsController < ApplicationController
         end
       end
       @details = @books.zip(@owners)
+
+      #suggestions
+      @suggested_books = BookGroup.where(:category_id => @book_cat.id).to_a
+      @suggested_books.delete(@book_group)
+      @suggested_books = @suggested_books.sort_by {|b| b.college_stock(cookies[:college_id])}.reverse.slice(0..1)
     end
   end
 

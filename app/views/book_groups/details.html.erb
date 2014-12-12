@@ -22,9 +22,6 @@ meta site: "TheCollegeStore",
               </h1>
               <div class='row'>
                 <div class='col-md-8'>
-                  <h2>
-                      <span class='label label-success'><%= @details.count - @reserved_count %> Sellers</span>
-                  </h2>
                   <p>
                     <b><i class='fa fa-user'></i> Authors:</b> 
                     <span class='label label-primary'><%= @book_group.author%></span>
@@ -33,6 +30,9 @@ meta site: "TheCollegeStore",
                     <b><i class='fa fa-bank'></i> Publisher:</b> 
                     <span class='label label-info'><%= @book_group.publisher%></span>
                   </p>
+                  <h3>
+                      <span class='label label-success'><%= @details.count - @reserved_count %> Sellers</span>
+                  </h3>
                 </div>
 
                 <div class="col-md-4">
@@ -44,10 +44,11 @@ meta site: "TheCollegeStore",
                     <a href="/wishlist/add/<%=@book_group.id%>" data-remote=true  id="add_to_wishlist">
                       <button class="btn-sm btn btn-success">Add to Wishlist</button>
                     </a>
-                  <% end %>  
+                  <% end %>
+
+                  <button class="btn btn-info" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
                 </div>
 
-                <button class="btn btn-info" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
 
               </div>
             </div>
@@ -90,7 +91,7 @@ meta site: "TheCollegeStore",
                       <td>
                         <% if current_user.nil? || current_user.id!=book.user_id %>
                           <% if book.reserved %> 
-                            <button type="button" id="sold" class="add-to-cart-button sold" disabled><i class="fa fa-check fa-padding"></i>Sold</button>
+                            <button type="button" class="btn btn-warning" disabled><i class="fa fa-check fa-padding"></i>Sold</button>
                           <% else %>
                             <a href="/add_item/<%= book.id%>" class="" name="Add to cart" data-remote=true> 
                               <button class="btn-sm btn btn-success"><i class="fa fa-shopping-cart fa-1x fa-color_white cart-icon"></i>Add To Cart</button>
@@ -132,42 +133,24 @@ meta site: "TheCollegeStore",
           Suggested Books
         </div>
         <div class="panel-body">
-          <div class="thumbnail">
-                <img style='width:100px;height:150px;' src="http://img5a.flixcart.com/image/book/6/1/2/programming-in-ansi-c-6e-balaguruswamy-400x400-imadbm5su8rafr4z.jpeg" alt="">
-                <div class="caption">
-                  <h5 class="pull-right">&#8377;250</h5>
-                  <h5>
-                  <a href="#"><b>Programming in ANSI C</b></a>
-                </h5>
-                  <p>
-                    <b>Place: </b>  <a href='#'>Baroda</a>
-                    <br/>
-                    <b>Author: </b>  <a href='#'>E.Balaguruswamy</a>
-                    <br/>
-                    <b>Publisher: </b>  <a href='#'>MacMilan</a>
-                    <br/>
-                    <b>Edition: </b> VII
-                  </p>
-                </div>
+          <% @suggested_books.each do |book|%>
+            <div class="thumbnail">
+              <a href="<%= book_detail_path(book) %>">
+                <%= image_tag @book_group.image.url, {:class=>"img-responsive", :style=>'width:100px;height:150px;'} %>
+              </a>
+              <div class="caption">
+                <h5 class="pull-right">&#8377;<%= book.min_price %></h5>
+                <h5>
+                <a href="<%= book_detail_path(book) %>"><b><%= book.title %></b></a>
+              </h5>
+                <p>
+                  <b>Author: </b>  <a href='#'><%= book.author %></a>
+                  <br/>
+                  <b>Publisher: </b>  <a href='#'><%= book.publisher %></a>
+                </p>
               </div>
-          <div class="thumbnail">
-                <img style='width:100px;height:150px;' src="http://img5a.flixcart.com/image/book/6/1/2/programming-in-ansi-c-6e-balaguruswamy-400x400-imadbm5su8rafr4z.jpeg" alt="">
-                <div class="caption">
-                  <h5 class="pull-right">&#8377;250</h5>
-                  <h5>
-                  <a href="#"><b>Programming in ANSI C</b></a>
-                </h5>
-                  <p>
-                    <b>Place: </b>  <a href='#'>Baroda</a>
-                    <br/>
-                    <b>Author: </b>  <a href='#'>E.Balaguruswamy</a>
-                    <br/>
-                    <b>Publisher: </b>  <a href='#'>MacMilan</a>
-                    <br/>
-                    <b>Edition: </b> VII
-                  </p>
-                </div>
-              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
