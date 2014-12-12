@@ -29,6 +29,7 @@ TheCollegeStore::Application.routes.draw do
     get '/:recommended_by_id/:username/recommend', to: "registrations#recommend"
     get 'login', to: 'devise/sessions#new', as: :login
     get 'logout', to: 'devise/sessions#destroy', as: :logout
+    post '/send_verification_sms', to: 'registrations#send_verification_sms'
   end
   resources :colleges do
     collection do

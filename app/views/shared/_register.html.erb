@@ -6,39 +6,25 @@
     </div>
 
     <div class="modal-body">
-      <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'form-signin', :role => 'form'}) do |f| %>
+      <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'form-signin', :id => "new_user_form"}) do |f| %>
 
-          <div>
-            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
-          </div>
+        <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
 
-          <div>
-              <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'form-control' %>
-          </div>
+          <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'form-control' %>
 
-          <div>
-              <%= f.email_field :email, :placeholder => 'Email', :class=>'form-control' %>
-          </div>
+          <%= f.email_field :email, :placeholder => 'Email', :class=>'form-control' %>
 
-          <div>
-              <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'form-control'%>
-          </div>
+          <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'form-control'%>
 
-          <div>
-              <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'form-control' %>
-          </div>
+          <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'form-control', :id => "entered_mobile" %>
 
-          <div>
-              <%= f.hidden_field :college_id, :value=> cookies[:college_id] %>
-          </div>
+          <%= f.hidden_field :college_id, :value=> cookies[:college_id], :class => "form-control" %>
 
-          <div>
-              <%= f.file_field :profile_pic %>
-          </div>
+          <%= f.file_field :profile_pic %>
 
-          <div>
-              <%= f.submit "Sign up", :class => 'btn btn-lg btn-primary' %> 
-          </div>
+          <%= f.text_field :verification_code, :placeholder => "Enter Verification Code", :id => "verification_code", :class => "form-control", :style => "display:none;" %>
+
+          <button type="button" class="btn btn-primary" onclick="verify_mobile()" id="verified_sign_up"> Sign Up </button>
       <% end %>
      </div>
 
@@ -47,3 +33,12 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function verify_mobile(){
+    mobile_no = document.getElementById("entered_mobile").value;
+    post("/send_verification_sms", {mobile: mobile_no, button: "verified_sign_up"});
+    document.getElementById("verification_code").style.display = "block";
+    document.getElementById("entered_mobile").remove();
+  }
+</script>

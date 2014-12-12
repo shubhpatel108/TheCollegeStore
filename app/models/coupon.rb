@@ -15,4 +15,10 @@ class Coupon < ActiveRecord::Base
     user_indication = if by_guest then "1" else "0" end
     return self.code + "U" + "#{user_id}" + user_indication
   end
+
+  def dist_code=(nothing)
+  end
+
+  def dist_code
+  end
 end

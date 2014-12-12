@@ -73,16 +73,33 @@ class CartController < ApplicationController
         b[:user] = u
         if not current_user.nil?
           b.buyer_id = current_user.id
+          buyer_to_notify = current_user
         end
         if not session[:guest].nil?
           b.buyer_id = session[:guest].id
           b.save
           b.by_guest = true
+          buyer_to_notify = session[:guest]
         end
         b.reserved = true
         b.save
         b[:err] = false
         @total += b.price
+
+        #notify the buyer and send seller's contact
+        url = URI.parse("http://sms.ssdindia.com/api/sendhttp.php?authkey=5863AO8VuQyUREU54882154&mobiles=#{buyer_to_notify.mobile}&message=Hi%2C%20thanks%20for%20purchasing.%20Please%20contact%20the%20seller%20#{b.user.first_name}%20#{b.user.last_name}%2C%20number%3A%20#{b.user.mobile}%20%26%20proceed%20with%20the%20transaction.%20Also%20checkout%20the%20handpicked%20coupon%20store.%20-TheCollegeStore.in&sender=clgstr&route=4")
+        req = Net::HTTP::Get.new(url.to_s)
+        res = Net::HTTP::start(url.host, url.port) {|http|
+          http.request(req)
+        }
+
+        #notify the seller of the book
+        url1 = URI.parse("http://sms.ssdindia.com/api/sendhttp.php?authkey=5863AO8VuQyUREU54882154&mobiles=#{b.user.mobile}&message=Hi%2C%20your%20listing%20has%20been%20purchased.%20Please%20contact%20the%20buyer%20#{buyer_to_notify.first_name}%20#{buyer_to_notify.last_name}%2C%20contact%20no.%20#{buyer_to_notify.mobile}%20and%20proceed%20with%20the%20transaction.%20Do%20visit%20our%20coupons%20section%20for%20handpicked%20exciting%20store%20coupons.%20-TheCollegeStore.in&sender=clgstr&route=4")
+        req1 = Net::HTTP::Get.new(url1.to_s)
+        res1 = Net::HTTP::start(url1.host, url1.port) {|http|
+          http.request(req1)
+        }
+
       end
     end
     @coupons = Coupon.where(:id => session[:coupons])

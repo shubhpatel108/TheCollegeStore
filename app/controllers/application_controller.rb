@@ -1,3 +1,5 @@
+require 'net/http'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :initialize_variables, :set_cache_buster

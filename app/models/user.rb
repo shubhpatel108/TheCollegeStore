@@ -82,6 +82,12 @@ class User < ActiveRecord::Base
   	self.college_id == 1
   end
 
+  def verification_code
+  end
+
+  def verification_code=(nothing)
+  end
+
   private
 	def self.process_uri(uri)
 		avatar_url = URI.parse(uri)
