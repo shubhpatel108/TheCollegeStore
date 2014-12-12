@@ -38,6 +38,10 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to :controller => "registrations", :action=> "new"
   end
 
+  def send_sms
+    
+  end
+
   private
   def check_college
     if cookies[:college_id].nil? || cookies[:college_name].nil?

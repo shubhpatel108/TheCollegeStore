@@ -38,6 +38,7 @@
 
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/blog">Blog</a></li>
                         <li><a href="/books" ><i class="fa fa-book"></i> Explore Books</a></li>
                         <li><a href="#" onclick="$('#cart-content').modal('show');"><i class='fa fa-shopping-cart'></i> Cart(
                         <span id="cart-item-count">
@@ -73,6 +74,9 @@
                                         <a href="/logout">Log Out</a>
                                     </li>
                                   </ul>
+                            </li>
+                            <li style="height:auto;width:50px;">
+                               <%= link_to image_tag(current_user.profile_pic.url, {:class => 'img-responsive img-rounded', :style => 'display:block;height:50px;width:50px;'}), "/profiles/show/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :style=>"height:50px; width:50px;"%>
                             </li>
                         <%end%>
                     </ul>

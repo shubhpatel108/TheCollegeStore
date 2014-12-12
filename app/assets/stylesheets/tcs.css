@@ -249,3 +249,48 @@ footer
   max-height: 200px;
   padding: 0;
 }
+
+
+/* For Feedback */
+#zenbox_tab {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  height: 25px;
+  min-width: 40px;
+  z-index: 10000;
+  white-space: nowrap;
+  padding: 20px 10px 35px 10px;
+}
+
+#zenbox_tab #feedback_tab_text {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: auto;
+  color: #fff;
+}
+
+#zenbox_tab.ZenboxTabLeft {
+  left: 0px;
+  background-position: right 0;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg  );
+}
+
+#zenbox_tab.ZenboxTabRight {
+  right: 0px;
+  background-position: left 0;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg  );
+}
+
+
