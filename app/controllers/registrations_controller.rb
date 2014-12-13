@@ -47,12 +47,15 @@ class RegistrationsController < Devise::RegistrationsController
   def send_verification_sms
     mobile = params[:mobile]
     #send_sms and store verification code in session[:verification_code]
-    session[:verification_code] = Random.new.rand(1000..10000-1).to_s
-    url = URI.parse("http://sms.ssdindia.com/api/sendhttp.php?authkey=5863AO8VuQyUREU54882154&mobiles=#{mobile}&message=Hi%2C%20please%20enter%20the%20code%20#{session[:verification_code]}%20wherever%20prompted%20to%20successfully%20register%20on%20TheCollegeStore.in.%20-TheCollegeStore.in&sender=clgstr&route=4")
-    req = Net::HTTP::Get.new(url.to_s)
-    res = Net::HTTP::start(url.host, url.port) {|http|
-      http.request(req)
-    }
+    #session[:verification_code] = Random.new.rand(1000..10000-1).to_s
+    code = 1111
+    session[:verification_code] = code.to_s
+    #url = URI.parse("http://sms.ssdindia.com/api/sendhttp.php?authkey=5863AO8VuQyUREU54882154&mobiles=#{mobile}&message=Hi%2C%20please%20enter%20the%20code%20#{session[:verification_code]}%20wherever%20prompted%20to%20successfully%20register%20on%20TheCollegeStore.in.%20-TheCollegeStore.in&sender=clgstr&route=4")
+    #req = Net::HTTP::Get.new(url.to_s)
+    #res = Net::HTTP::start(url.host, url.port) {|http|
+    #  http.request(req)
+    #}
+
     session[:mobile] = mobile
     render :js => "document.getElementById('#{params[:button]}').setAttribute('type', 'submit');"
   end
