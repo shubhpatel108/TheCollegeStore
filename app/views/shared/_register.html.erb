@@ -2,26 +2,37 @@
   <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">x</button>
-        <h2><i class="fa fa-user"></i>Sign up</center></h2>
+        <h2><i class="fa fa-user"></i> Sign up</center></h2>
     </div>
 
     <div class="modal-body">
       <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'form-signin', :id => "new_user_form"}) do |f| %>
-
-        <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
-
+          <div class="form-group">
+          <label>First Name</label>
+          <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
+          </div>
+          <div class="form-group">
+          <label>Last Name</label>
           <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'form-control' %>
-
+          </div>
+          <div class="form-group">
+          <label>Email</label>
           <%= f.email_field :email, :placeholder => 'Email', :class=>'form-control' %>
-
+          </div>
+          <div class="form-group">
+          <label>Password</label>
           <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'form-control'%>
-
+          </div>
+          <div class="form-group">
+          <label>Mobile</label>
           <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'form-control', :id => "entered_mobile" %>
-
+          </div>
+          <div class="form-group">
           <%= f.hidden_field :college_id, :value=> cookies[:college_id], :class => "form-control" %>
-
+          </div>
+          <div class="form-group">
           <%= f.file_field :profile_pic %>
-
+          </div>
           <%= f.text_field :verification_code, :placeholder => "Enter Verification Code", :id => "verification_code", :class => "form-control", :style => "display:none;" %>
 
           <button type="button" class="btn btn-primary" onclick="verify_mobile()" id="verified_sign_up"> Sign Up </button>
