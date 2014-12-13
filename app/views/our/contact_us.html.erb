@@ -6,90 +6,11 @@ meta site: "TheCollegeStore",
 <% title "Contact Us" %>
 
 <div id="page" class="container center-block">
-    <h1>Contact Us</h1>
+<h1>Contact Us</h1>
+<div class="row">
+    <div class="col-md-8">
     <div class="panel">
         <div class="panel-body">
-            <div class="row">
-                <div class="col-md-7">
-                    <div width="100%" height="500">
-                        <ul>
-                            <li>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Name
-                                        </td>
-                                        <td>
-                                            : Shubhanshu Gupta
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Address
-                                        </td>
-                                        <td>
-                                            : B-214, DAIICT, Gandhinagar, Gujarat
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Email
-                                        </td>
-                                        <td>
-                                            : shubhanshu.gupta93@gmail.com
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Mobile
-                                        </td>
-                                        <td>
-                                            : 7359473626
-                                        </td>
-                                    </tr>
-                                </table>
-                            </li>
-
-                            <li>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Name
-                                        </td>
-                                        <td>
-                                            : Vaibhavi Desai
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Address
-                                        </td>
-                                        <td>
-                                            : K-311, DAIICT, Gandhinagar, Gujarat
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Email
-                                        </td>
-                                        <td>
-                                            : rani.vhd@gmail.com
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Mobile
-                                        </td>
-                                        <td>
-                                            : 7698876900
-                                        </td>
-                                    </tr>
-                                </table>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-5">
                     <%= form_tag "/send" do%>
 
                         <div class="section">
@@ -114,8 +35,64 @@ meta site: "TheCollegeStore",
                                 <%= button_tag "Submit", :class => "btn btn-success"%>
                         </div><!-- end section -->      
                     <% end %>
-                </div>
+                                </div>
             </div>
+                </div>
+                <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h4><b><i class="fa fa-envelope"></i> Write to us</b></h4>
+                                <hr />
+                                <p>
+                                    <b>Shubhanshu Gupta</b>
+                                </p>
+                                <p>
+                                    <address>
+                                    B-214, DAIICT, 
+                                    Gandhinagar, 
+                                    Gujarat
+                                    <a mailto="shubhanshu.gupta93@gmail.com">shubhanshu.gupta93@gmail.com</a>
+                                    <p class="number">
+                                    +917359473626
+                                    </p>
+                                    </address>
+                                </p>
+                                <hr />
+                                <p>
+                                    <b>Vaibhavi Desai</b>
+                                </p>
+                                <p>
+                                    <address>
+                                    K-311, DAIICT, 
+                                    Gandhinagar, 
+                                    Gujarat
+                                    <a mailto="rani.vhd@gmail.com">rani.vhd@gmail.com</a>
+                                    <br />
+                                    <p class="number">
+                                    +917698876900
+                                    </p>
+                                    </address>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h4><b><i class="fa fa-map-marker"></i> Corporate Address</b></h4>
+                                <addr>
+                                    1 Hacker Way <br />Menlo Park, CA 94025
+                                </addr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
         </div>
     </div>
 </div>
