@@ -1,6 +1,9 @@
-<h4><i class="fa fa-edit"></i>Edit Profile</h4>
+<div class='panel'>
+<div class="panel-heading">
+<h4><i class="fa fa-edit"></i> Edit Profile</h4></div>
+                <div class='panel-body'>
       
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :id =>'edit-registraion' }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :id =>'edit-registraion', :class =>'form-horizontal' }) do |f| %>
     
     <%= label_tag "First Name"%>
     <%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true, :class => 'form-control', :name=>'firstname' %>
@@ -32,7 +35,9 @@
 
     <%= f.submit "Update", :class => 'btn btn-success' %>
 <% end %>
-<hr>
+<hr />
+</div>
+</div>
 
 <script type="text/javascript">
 

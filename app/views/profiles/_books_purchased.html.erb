@@ -1,43 +1,44 @@
-<% if not (books.nil? || books.count == 0) %>
-    <div class='panel'>
-        <div class='panel-body'>
-            <div class='row'>
-                <% books.each do |book| %>
-                    <div class="col-sm-3 col-lg-3 col-md-3">
-                        <div class="thumbnail">
-                            <%= image_tag book.info.image.url, {:style => 'width:100px;height:150px;'} %>
-                            <div class="caption">
-                                <h5 class="pull-right">&#8377;<%= book.price %></h5>
-                                <h5>
-                                    <b><%= book.info.title %></b>
-                                </h5>
-                                <% if not book.sold %>
-                                    <span class='label label-primary'><%="Not Collected"%></span>
-                                <% else %>
-                                    <span class='label label-primary'><%="Collected"%></span>
-                                <% end %>
-                                <p>
-                                    <b>Author: </b> <%= book.info.author %>
-                                    <br/>
-                                    <b>Edition: </b> <%= book.edition%>
-                                    <br />
-                                    <%if not book.sold %>
-                                        <b>Collected: </b> <%= "NO" %>
-                                    <%else%>
-                                        <b>Collected: </b> <%= "YES" %>
-                                    <%end%>
-                                    <br />
-                                    <b>Seller: </b>  <%=book.user.first_name%> <%=book.user.last_name%></td>
-                                </p>
-                            </div>
+<div class='panel'>
+<div class="panel-heading">
+<h4><i class="fa fa-money"></i> Purchased Books</h4></div>
+                <div class='panel-body'>
+    <% if not (books.nil? || books.count == 0) %>
+
+        <div class='row'>
+            <% books.each do |book| %>
+                <div class="col-sm-3 col-lg-3 col-md-3">
+                    <div class="thumbnail">
+                        <%= image_tag book.info.image.url, {:style => 'width:100px;height:150px;'} %>
+                        <div class="caption">
+                            <h5 class="pull-right">&#8377;<%= book.price %></h5>
+                            <h5>
+                                <b><%= book.info.title %></b>
+                            </h5>
+                            <% if not book.sold %>
+                                <span class='label label-primary'><%="Not Collected"%></span>
+                            <% else %>
+                                <span class='label label-primary'><%="Collected"%></span>
+                            <% end %>
+                            <p>
+                                <b>Author: </b> <%= book.info.author %>
+                                <br/>
+                                <b>Edition: </b> <%= book.edition%>
+                                <br />
+                                <%if not book.sold %>
+                                    <b>Collected: </b> <%= "NO" %>
+                                <%else%>
+                                    <b>Collected: </b> <%= "YES" %>
+                                <%end%>
+                                <br />
+                                <b>Seller: </b>  <%=book.user.first_name%> <%=book.user.last_name%></td>
+                            </p>
                         </div>
                     </div>
-                <% end %>
-            </div>
+                </div>
+            <% end %>
         </div>
-    </div>
-<% else %>
-    <div class='panel'>
-        <center><h3> There are no purchased books. </h3></center>
-    </div>
-<% end %>
+    <% else %>
+        <center><h5 class="alert alert-info col-md-4 col-md-offset-4"><i class="fa fa-info-circle"></i> There are no purchased books. </h5></center>
+    <% end %>
+</div>
+</div>

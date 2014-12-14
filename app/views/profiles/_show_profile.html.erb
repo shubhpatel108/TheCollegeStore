@@ -1,3 +1,5 @@
+<div class='panel'>
+                <div class='panel-body'>
 <% if not user.nil? %>
     <div class='col-md-3'>
         <%= image_tag user.profile_pic.url, :size => "200x200", :class => 'img-responsive img-rounded' %>
@@ -6,10 +8,12 @@
         <h1>
             <%= user.first_name + " " + user.last_name %>
         </h1>
-        <h4 class="number"><i class="fa fa-fw fa-bank"></i> <b><%= user.college.name %></b></h4>
-        <h4 class="number"><i class="fa fa-fw fa-at"></i> <b> <%= user.email %> </b></h4>
+        <h4><i class="fa fa-fw fa-bank"></i> <b><%= user.college.name %></b></h4>
+        <h4><i class="fa fa-fw fa-at"></i> <b> <%= user.email %> </b></h4>
         <h4 class="number"><i class="fa fa-fw fa-mobile"></i> <b><%= user.mobile %></b></h4>
     </div>
 <% else %>
     <%= render file: 'public/404', status: 404, formats: [:html] %>
 <% end %>
+</div>
+</div>

@@ -32,14 +32,8 @@ meta site: "TheCollegeStore",
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div class='panel'>
-                <div class='panel-body'>
-                    <div class="row" id="profile-content">
-                        <%= render :partial => "profiles/show_profile", :locals => {:user => @user} %>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-9" id="profile-content">
+            <%= render :partial => "profiles/show_profile", :locals => {:user => @user} %>
         </div>
     </div>
 </div>
