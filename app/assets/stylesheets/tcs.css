@@ -7,6 +7,14 @@
 {
     width:900px;
 }
+.teamMemberImage
+{
+  width:100%;
+}
+.teamMemberLinks > *
+{
+  margin:20px;
+}
 .book-bg
 {
     background-image: url('open-book.png');
