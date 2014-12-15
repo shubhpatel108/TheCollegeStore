@@ -90,13 +90,13 @@
                             </div>
                         </div>
                 </div>
-                <div class="panel" style='margin-top: 100px;'>
+                <div class="panel" style='margin-top: 100px;' id='coup-layout'>
                 <!-- bingo -->
                 <!-- make sure that the div is hidden except on step3-->
                     <div class="panel-heading">
                     <h3>Selected Coupons</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" id='coup-list'>
                     <!-- add coupons here-->
                     </div>
                 </div>
@@ -143,6 +143,11 @@
 
 
 <script type="text/javascript">
+  layout = document.getElementById('coup-layout');
+  layout.style.display = "none";
+</script>
+
+<script type="text/javascript">
     function next_step(step){
         var current_step = document.getElementById("step"+ step.toString());
         current_step.style.display = "none";
@@ -151,6 +156,15 @@
         current_step.className += " complete"
         var next_step = document.getElementById("step" + (step + 1).toString());
         next_step.style.display = "block";
+        if (step == 2) {
+            layout = document.getElementById('coup-layout');
+            layout.style.display = "block";
+            list = document.getElementById('coup-list');
+            list.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
+        } else {
+            layout = document.getElementById('coup-layout');
+            layout.style.display = "none";
+        }
     }
 
     function back_step(step){
@@ -160,6 +174,15 @@
         progress_bar.className = "step"
         var back_step = document.getElementById("step" + (step - 1).toString());
         back_step.style.display = "block";
+        if (step == 2) {
+            layout = document.getElementById('coup-layout');
+            layout.style.display = "block";
+            list = document.getElementById('coup-list');
+            list.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
+        } else {
+            layout = document.getElementById('coup-layout');
+            layout.style.display = "none";
+        }
     }
     function get_incentive_for_new_book(){
         entered_price = document.getElementById("entered_price").value;
