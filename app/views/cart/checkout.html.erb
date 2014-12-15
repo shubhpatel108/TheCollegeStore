@@ -5,11 +5,12 @@ meta site: "TheCollegeStore",
 %>
 
 <% title "Checkout" %>
-<div class="container_4">
-    <div class="innertitle">
-        <p><i class="fa fa-truck fa-padding"></i>Your Order</p>
-	</div>
-<table border="1" style="margin-left: auto; margin-right: auto;">
+<div class="container">
+<h3><i class="fa fa-truck fa-padding"></i> Your Order</h3>
+<div class="panel panel-body">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<table class="table table-hover">
 	<tr style="background:#f8f8f8;">
 		<th class="checkout-th">Book</th>
 		<th class="checkout-th">Success</th>
@@ -48,9 +49,10 @@ meta site: "TheCollegeStore",
 		</td>
 	</tr>
 </table>
-
+</div>
+</div>
 <% if not @coupons.empty? %>
-	<table border="1" style="margin-left: auto; margin-right: auto;">
+	<table class="table table-hover">
 		<tr style="background:#f8f8f8;">
 			<th class="checkout-th">Avail coupon at:</th>
 			<th class="checkout-th">Success</th>
@@ -76,22 +78,23 @@ meta site: "TheCollegeStore",
 		<% end %>
 	</table>
 <% end %>
-<p>
+<p class="alert alert-info">
+<i class="fa fa-info-circle"></i>
 	In order to activate the coupon(s), you need to show a printed copy of this message to the owner of the store or show it in your mobile.
 </p>
-<p style="color:black !important;">
+<h4 class="center">
 	Looking forward for more transactions!!!
-</p>
+</h4>
 </div>
 
-<div class="seller-message">
+<div class="panel panel-body">
 	<p>Message the seller(s):</p>
 	<%= form_tag(request_seller_books_path) do %>
-		<td><%= text_area_tag :message, nil, rows: "10", cols: "50" %></td>
+		<td><%= text_area_tag :message, nil, rows: "5", :style=>"width:100%;" %></td>
 		<% @books.each do |b| %>
 	    	<%= hidden_field_tag "books_ids[]", b.id %>
 		<% end %>
-		<br>
-		<td><%= submit_tag "Send", :class => 'button btn-black'%></td>
+		<br />
+		<td><%= submit_tag "Send", :class => 'btn btn-success'%></td>
 	<% end %>
 </div>

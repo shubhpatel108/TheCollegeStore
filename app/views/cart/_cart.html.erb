@@ -8,7 +8,8 @@
                     <% books.each do |b|%>
                         <div class="col-sm-3 col-lg-3 col-md-3" id="cart_item_<%=b.id%>">
                             <div class="thumbnail">
-                                <%= image_tag b[:group].image.url, {:style=>'width:100px;height:150px;'} %>
+                            <%= link_to "<button type='button' class='pull-right btn btn-danger btn-sm'><i class='fa fa-close'></i></button>".html_safe, remove_item_path(b.id), remote: true , :style => 'position:absolute;right:20px;'%>
+                                <%= image_tag b[:group].image.url, {:style=>'width:100%;'} %>
 
                                 <div class="caption">
                                     <h5 class="pull-right">&#8377;<%=b.price%></h5>
@@ -17,9 +18,8 @@
                                     </h5>
                                     <p><b>Author: </b>  <%=b[:group].author%></p>
                                     <p><b>Publisher: </b>  <%=b[:group].publisher%></p>
-                                    <p><b>Edition: </b> <%=b.edition%></p>
+                                    <p><b>Edition: </b> <%=b.edition%></p>  
                                 </div>
-                                <%= link_to "<button type='button' class='btn btn-danger'>remove</button>".html_safe, remove_item_path(b.id), remote: true%>
                             </div>
                         </div>
               		<% end %>
@@ -29,19 +29,19 @@
             </div>
         </div>
         <div class="modal-footer">
-        	<div colspan="3" style="float:right">
-				Total Estimated Amount
-			</div>
-			<div style="text-align:center;vertical-align: middle;">
-				<i class="fa fa-inr fa-padding"></i>
-				<span id="cart-total-price">
-					<% if not session[:cart_total].nil? %>
-						<%=session[:cart_total]%>
-					<%else%>
-					0
-					<% end %>
-				</span>
-			</div>
+        	<h6>
+				<b>Total Estimated Amount </b>
+			</h6>
+            <h2 style="margin-bottom:20px;">
+            <i class="fa fa-inr fa-padding"></i> 
+                <span id="cart-total-price" class="number">
+                    <% if not session[:cart_total].nil? %>
+                        <%=session[:cart_total]%>
+                    <%else%>
+                    0
+                    <% end %>
+                </span>
+            </h2>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			<% if not books.empty?%>
                <a href="<%= coupons_path %>"><button type="button" class="btn btn-success">Checkout</button></a>
