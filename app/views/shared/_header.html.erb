@@ -75,8 +75,8 @@
                                     </li>
                                   </ul>
                             </li>
-                            <li style="height:auto;width:50px;">
-                               <%= link_to image_tag(current_user.profile_pic.url, {:class => 'img-responsive img-rounded', :style => 'display:block;height:50px;width:50px;'}), "/profiles/show/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}", :style=>"height:50px; width:50px;"%>
+                            <li>
+                               <%= link_to image_tag(current_user.profile_pic.url, {:class => 'img-circle' ,:style=>"height:50px; width:50px;"}), "/profiles/show/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}"%>
                             </li>
                         <%end%>
                     </ul>
