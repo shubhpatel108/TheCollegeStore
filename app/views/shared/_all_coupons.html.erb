@@ -1,8 +1,10 @@
 <script type="text/javascript">
   search_bar = document.getElementById('main_search_bar');
   search_bar.parentNode.removeChild(search_bar);
-  top_bar = document.getElementById('search-bar-header');
-  top_bar.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
+  top_bar = document.getElementById('coupon-list');
+  top_bar.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>';
+  btn = document.getElementById('checkout-btn');
+  btn.innerHTML = '<%= escape_javascript(render :partial => "coupons/checkout_button" )%>';
 </script>
 
 <div class="container center-block" id="page">

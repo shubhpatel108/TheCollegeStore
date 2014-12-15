@@ -1,3 +1,4 @@
-$('#search-bar-header').html('<%= escape_javascript( render :partial => "coupons/coupons")%>');
+$('#coup-list').html('<%= escape_javascript( render :partial => "coupons/coupons")%>');
+$('#coupon-list').html('<%= escape_javascript( render :partial => "coupons/coupons")%>');
 $('#all_coupons_wrapper').html('<%= escape_javascript( render :partial => "shared/all_coupons", :locals => {:coupons => @coupons, :value_remaining => session[:value_remaining]})%>');
 FlashNotice('success', 'Successfully added!');

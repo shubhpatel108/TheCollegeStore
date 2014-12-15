@@ -1,10 +1,3 @@
-<script type="text/javascript">
-  search_bar = document.getElementById('main_search_bar');
-  search_bar.parentNode.removeChild(search_bar);
-  top_bar = document.getElementById('search-bar-header');
-  top_bar.innerHTML = '<%= escape_javascript(render :partial => "coupons/coupons" )%>'
-</script>
-
 <div class="col-md-12">
           <div class="row">
             <% coupons.each do |coupon| %>
