@@ -46,7 +46,7 @@ meta site: "TheCollegeStore",
                     </a>
                   <% end %>
 
-                  <button class="btn btn-info" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')">Recommend on facebook</button>
+                  <button style="margin-top:20px" class="btn btn-sm btn-info" onclick="fb_feed('Get <%=@book_group.title%> by <%=@book_group.author%> at TheCollegeStore', '<%=book_detail_path(@book_group)%>', '<%=@book_group.image.url%>','Get used <%=@book_group.title%> by <%=@book_group.author%> at very low prices in your own college!')"><i class="fa fa-facebook"></i> Recommend</button>
                 </div>
 
 
@@ -110,7 +110,7 @@ meta site: "TheCollegeStore",
                 </tbody>
               </table>
             </div>
-            <div class='col-md-4 col-md-offset-2'>
+            <div class='col-md-4 col-md-offset-1'>
               <h3>
                 New Books available from :
               </h3>
