@@ -44,7 +44,7 @@ body
     font-family: "Raleway";
 }
 .navbar-brand,
-.navbar-nav li a {
+.navbar-nav > li > a{
     line-height: 75px;
     height: 75px;
     padding-top: 0;
