@@ -195,12 +195,14 @@ footer
 
 /* for coupon bar on selecting coupons page*/
 #sel_coupon_wrapper{
+  /*
   position: relative;
-  top: 15px;
+  top: 15px;*/
 }
 
 #sel_coupon_wrapper
 {
+  /*
   height: 34px;
   overflow: hidden;
   border: 1px gray solid;
@@ -211,16 +213,17 @@ footer
   background: white;
 
   width: 30%;
+  */
 }
 
 .coupon_thumb
 {
-  box-shadow: 0px 0px 2px #888888;
-  border-radius: 10%;
-  height: 32px;
-  width: 32px;
+  /*box-shadow: 0px 0px 2px #888888;*/
+  /*border-radius: 10%;*/
+  height: 64px;/*32*/
+  width: 64px;/*32*/
   margin-top: 3px;
-  margin-left: 5px;
+  margin-left: 10px;
   float: left;
 }
 

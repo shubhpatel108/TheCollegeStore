@@ -6,6 +6,16 @@ meta site: "TheCollegeStore",
 
 <% title "Select Coupons" %>
 
-<div id="all_coupons_wrapper">
+<div id="all_coupons_wrapper" class="container">
+<div class="panel" style='margin-top: 100px;' id='coup-layout'>
+                <!-- bingo -->
+                <!-- make sure that the div is hidden except on step3-->
+                    <div class="panel-heading">
+                    <h3>Selected Coupons</h3>
+                    </div>
+                    <div class="panel-body" id='coup-list'>
+                    <!-- add coupons here-->
+                    </div>
+                </div>
   <%= render :partial => "shared/all_coupons", :locals => {:coupons => @coupons, :value_remaining => session[:value_remaining]} %>
 </div>
