@@ -1,25 +1,19 @@
 <%= javascript_include_tag "nicEdit" %>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-	        <h1 class="page-header">
-	                Add New Post
-	        </h1>
-			<div>
-				<%= form_for(:post, :url => {:action => 'create'}) do |f| %>     
-				     <div>
-				          <%= f.text_field(:title, :placeholder => "Post title", :autofocus => true, :id => 'title', :class => "form-control") %>
-				     </div>
-				     <br>
-				     <div>
-				          <%= f.text_area(:content, :rows => 25, :cols => 70, :placeholder => "Content", :id => 'content', :class => "form-control blogtext") %>
-				     </div>
-				     <br>
-				     <%= submit_tag("Publish Post", :class =>'btn btn-success') %>
-				<% end %>
-			</div>
-		</div>
+<div class="container" id="page">
+    <h3>Add New Post</h3>
+	<div class="panel panel-body">
+		<%= form_for(:post, :url => {:action => 'create'}) do |f| %>     
+		     <div>
+		          <%= f.text_field(:title, :placeholder => "Post title", :autofocus => true, :id => 'title', :class => "form-control") %>
+		     </div>
+		     <br>
+		     <div>
+		          <%= f.text_area(:content, :rows => 25, :cols => 70, :placeholder => "Content", :id => 'content', :class => "form-control blogtext") %>
+		     </div>
+		     <br>
+		     <%= submit_tag("Publish Post", :class =>'btn btn-success') %>
+		<% end %>
 	</div>
 </div>
 

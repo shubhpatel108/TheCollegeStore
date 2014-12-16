@@ -1,16 +1,10 @@
 <% title "Blog" %>
 
-<div class="container">
-	<%= button_to "Create New Post", {:action => 'new'} , :class => 'btn btn-lg btn-success' %>
-    <div class="row">
-        <div class="col-md-8">
-            <h1 class="page-header">
-                All Posts
-            </h1>
-		    <% @posts.each do |post| %>
-		      <%= render :partial => "shared/post", :locals => {:post => post}%>
-		    <% end %>
-	    </div>
-    </div>
+<div class="container" id="page">
+	<%= button_to 'Create New Post', {:action => 'new'} , :class => 'btn btn-success pull-right' %>
+    <h3>All Posts</h3>
+        <% @posts.each do |post| %>
+          <%= render :partial => "shared/post", :locals => {:post => post}%>
+        <% end %>
 </div>
 
