@@ -145,16 +145,21 @@ class BooksController < ApplicationController
 
   def filter
     p = params
-    p[:cateogry] = '*' if [:category]=="All"
+    if p[:category]!="All"
+      p[:category] = Category.where(:name => p[:category]).first
+    else
+      p[:category] = nil
+    end
     p[:author] = '' if p[:author]=="All"
     p[:publisher] = '' if p[:publisher]=="All"
-    p[:price] = 1000 if p[:price]=="All"
+    p[:price] = 10000 if p[:price]=="All"
     book_groups = BookGroup.where(["title like ? and author like ? and publisher like ?", "%#{p[:title]}%", "%#{p[:author]}%", "%#{p[:publisher]}%"])
-    @results = book_groups.to_a
+    book_groups = book_groups.where(:category_id => p[:category]) unless p[:category].nil?
+    @results = book_groups.to_a.dup
 
     book_groups.each do |bg|
       temp_books = bg.books
-      if (temp_books.map(&:price).select { |b| b < p[:price].to_i }).count == 0
+      if not temp_books.map(&:price).select { |b| b < p[:price].to_i }.count > 0
         @results.delete(bg)
       end
     end
