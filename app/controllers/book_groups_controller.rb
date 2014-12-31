@@ -131,4 +131,13 @@ class BookGroupsController < ApplicationController
       format.js
     end
   end
+
+  def lowest_price
+    book_group = BookGroup.where(:title => params[:title], :author => params[:author], :publisher => params[:publisher]).first
+    if book_group.nil?
+      render :js => "document.getElementById('lowest_price').innerHTML = 'You are the first one to sell this book.';"
+    else
+      render :js => "document.getElementById('lp_no').innerHTML = " + book_group.books.map(&:price).min.to_s
+    end
+  end
 end

@@ -58,13 +58,13 @@
                         <div class='panel-body'>
                             <div class='row'>
                                 <div class='col-md-4 col-md-offset-1'>
-                                    <h4 class='info'>This book has 45.50% probability of being sold if you sell it at the recommended price.</h4>
+                                    <h4 class='info'>We recommend you to sell at 50% of the book's MRP.</h4>
+                                    <p class='info' id="lowest_price">The Lowest price of this book on TheCollegeStore: <b><i class='fa fa-inr'></i><span class='number' id="lp_no">250</span></b></p>
+                                    <br />
                                 </div>
                                 <div class='col-md-2'>
                                 </div>
                                 <div class='col-md-4'>
-                                    <p class='info'>TheCollegeStore recommended price: <b><i class='fa fa-inr'></i><span class='number'>250</span></b></p>
-                                    <br />
                                     <div class='row'>
                                         <div class='col-md-4' style='text-align: right;'>
                                             <h4>Your Price:</h4>
@@ -164,6 +164,14 @@
         } else {
             layout = document.getElementById('coup-layout');
             layout.style.display = "none";
+        }
+
+        if (step==1){
+            var b_title = document.getElementById("sell_title").value
+            var b_author = document.getElementById("sell_author").value
+            var b_publisher = document.getElementById("sell_publisher").value
+
+            post('/get_lowest_price', {title: b_title, author: b_author, publisher: b_publisher},"post");
         }
     }
 

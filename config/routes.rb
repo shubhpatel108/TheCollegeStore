@@ -93,6 +93,7 @@ TheCollegeStore::Application.routes.draw do
 
   post '/filter', to: 'books#filter'
   post '/incentive_for_new_book', to: 'book_groups#incentive_for_new_book'
+  post '/get_lowest_price', to: 'book_groups#lowest_price'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
