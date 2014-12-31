@@ -110,25 +110,27 @@ meta site: "TheCollegeStore",
                 </tbody>
               </table>
             </div>
-            <div class='col-md-4 col-md-offset-1'>
-              <h3>
-                New Books available from :
-              </h3>
-              <% @flipkart_links.each do |book|%>
-                <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
-                  <button class='btn btn-sm btn-warning'>
-                    Buy new book from Flipkart
-                  </button>
-                </a>
-              <% end %>
-              <% if not @isbn_amazon.nil? %>
-                <a href="<%=amazon_link(@isbn_amazon)%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
-                  <button class='btn btn-sm btn-warning'>
-                    Buy new book from Amazon
-                  </button>
-                </a>
-              <% end %>
-            </div>
+            <% if not @isbn_amazon.nil? or not @flipkart_links.empty? %>
+              <div class='col-md-4 col-md-offset-1'>
+                <h3>
+                  New Books available from :
+                </h3>
+                <% @flipkart_links.each do |book|%>
+                  <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
+                    <button class='btn btn-sm btn-warning'>
+                      Buy new book from Flipkart
+                    </button>
+                  </a>
+                <% end %>
+                <% if not @isbn_amazon.nil? %>
+                  <a href="<%=amazon_link(@isbn_amazon)%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
+                    <button class='btn btn-sm btn-warning'>
+                      Buy new book from Amazon
+                    </button>
+                  </a>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
