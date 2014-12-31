@@ -49,4 +49,13 @@ class BookMailer < ActionMailer::Base
     @book = bg
     mail(from: "sales@thecollegestore.in", :to=>recipient.email, :subject => "#{bg.title} is recently added by a seller", template_name: 'notify_individual_wisher')
   end
+
+  def seller_coupons(user, book, coupons)
+    load_settings
+    @user = user
+    @email = @user.email
+    @book = book
+    @coupons = coupons
+    mail(from: "sales@thecollegestore.in", :to=>@email, :subject => "Incentives for Selling Book On TheCollegeStore")
+  end
 end

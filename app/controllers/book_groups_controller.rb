@@ -1,5 +1,6 @@
 class BookGroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
+  include CouponsHelper
   
   def new
   	@book_group = BookGroup.new
@@ -21,10 +22,13 @@ class BookGroupsController < ApplicationController
       end
       @old_book_group.books << @new_book
       @old_book_group.save
+
+      distribute_coupon #func in coupon_helper.rb
+
       #BookMailer.notify_wishers(@old_book_group)
-      if current_user.daiictian?
-        ContactUsMailer.book_added_notifier(@new_book, @new_book.book_group, @new_book.user).deliver
-      end
+      # if current_user.daiictian?
+      #   ContactUsMailer.book_added_notifier(@new_book, @new_book.book_group, @new_book.user).deliver
+      # end
       @book_group = @old_book_group
       respond_to do |format|
         format.js { render :template => "/book_groups/final_step"}
@@ -40,6 +44,9 @@ class BookGroupsController < ApplicationController
           @new_book.college_id = current_user.college_id
           @new_book.save
         end
+
+        distribute_coupon #func in coupon_helper.rb
+
         respond_to do |format|
           format.js { render :template => "/book_groups/final_step"}
         end
