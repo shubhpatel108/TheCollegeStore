@@ -8,6 +8,12 @@ class BookGroupsController < ApplicationController
   end
 
   def create
+    param = params #ensuring parameters are not lost
+    new_bg_info = param[:book_group]
+    new_book_info = param[:book_group][:books_attributes]['0']
+    if new_bg_info[:title].empty? or new_bg_info[:author].empty? or new_bg_info[:publisher].empty? or new_book_info[:edition].empty? or new_book_info[:price].empty?
+      render :js => "FlashNotice('error', 'Please fill all the details!');"
+    else
     @book_group = BookGroup.new(sanitize_hash(params[:book_group]))
     @old_book_group = BookGroup.where(title: @book_group.title, author: @book_group.author, publisher: @book_group.publisher).first
     if not @old_book_group.nil?
@@ -54,6 +60,7 @@ class BookGroupsController < ApplicationController
         flash[:error] = "Something went wrong! Please try again"
         render :action => 'new'
       end
+    end
     end
   end
 
