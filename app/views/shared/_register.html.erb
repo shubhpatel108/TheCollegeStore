@@ -2,11 +2,11 @@
   <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">x</button>
-        <h2><i class="fa fa-user"></i> Sign up</center></h2>
+        <h2><i class="fa fa-user"></i> Sign up </center></h2>
     </div>
 
     <div class="modal-body">
-      <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'form-signin', :id => "new_user_form"}) do |f| %>
+      <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'form-signin smart-form', :id => "new_user_form"}) do |f| %>
           <div class="form-group">
           <label>First Name</label>
           <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
@@ -49,7 +49,5 @@
   function verify_mobile(){
     mobile_no = document.getElementById("entered_mobile").value;
     post("/send_verification_sms", {mobile: mobile_no, button: "verified_sign_up"});
-    document.getElementById("verification_code").style.display = "block";
-    document.getElementById("entered_mobile").remove();
   }
 </script>

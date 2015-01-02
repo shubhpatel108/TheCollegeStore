@@ -3,16 +3,16 @@
 <h4><i class="fa fa-edit"></i> Edit Profile</h4></div>
                 <div class='panel-body'>
       
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :id =>'edit-registraion', :class =>'form-horizontal' }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :id =>'edit-registraion', :class =>'form-horizontal smart-form' }) do |f| %>
     
     <%= label_tag "First Name"%>
-    <%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true, :class => 'form-control', :name=>'firstname' %>
+    <%= f.text_field :first_name, :placeholder => 'First Name', autofocus: true, :class => 'form-control' %>
 
     <%= label_tag "Last Name"%>
-    <%= f.text_field :last_name, :placeholder => 'Last Name', :class => 'form-control', :name => 'lastname' %>
+    <%= f.text_field :last_name, :placeholder => 'Last Name', :class => 'form-control' %>
 
     <%= label_tag "Email"%>
-    <%= f.email_field :email,  :placeholder => 'Email', :class => 'form-control', :name => 'email' %>
+    <%= f.email_field :email,  :placeholder => 'Email', :class => 'form-control' %>
 
     <% if Devise.mappings[:user].confirmable? && resource.pending_reconfirmation? %>
       Currently waiting confirmation for: <%= resource.unconfirmed_email %>
@@ -28,7 +28,7 @@
     <%= f.password_field :current_password, :placeholder => 'Current Password To Save Changes', autocomplete: "off", :class => 'form-control' %>
 
     <%= label_tag "Mobile"%>
-    <%= f.text_field :mobile,  :placeholder => 'Mobile', :class => 'form-control', :name=>'mobile' %>
+    <%= f.text_field :mobile,  :placeholder => 'Mobile', :class => 'form-control' %>
 
     <%= label_tag "Profile Picture"%>
     <%= f.file_field :profile_pic %>

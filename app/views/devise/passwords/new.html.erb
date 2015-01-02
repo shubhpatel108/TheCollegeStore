@@ -5,10 +5,10 @@
 		</div>
 
 		<div class="modal-body">
-			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-
-	    	<%= f.email_field :email, autofocus: true, :placeholder => 'Email', :class => "form-control", :id => 'email' %>
-	
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { :class => "smart-form", method: :post }) do |f| %>
+			<div>
+				<%= f.email_field :email, autofocus: true, :placeholder => 'Email', :class => "form-control", :id => 'email' %>
+			</div>
 	      <center><%= f.submit "Send me reset password instructions", :class => 'form-control btn btn-primary' %></center>
 
 				<%- if controller_name != 'sessions' %>
