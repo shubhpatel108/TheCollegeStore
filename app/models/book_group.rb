@@ -7,7 +7,7 @@ class BookGroup < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates :title, presence: true
   validates :author, presence: true
-  has_many :books, :dependent => :destroy
+  has_many :books, dependent: :destroy
   accepts_nested_attributes_for :books
   after_create :set_image_name
   belongs_to :category

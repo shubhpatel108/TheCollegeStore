@@ -22,13 +22,13 @@ class User < ActiveRecord::Base
   #                	:length => { :minimum => 10, :maximum => 15 }
   validates :first_name, :last_name, :presence => true
   
-  has_many :books
+  has_many :books, dependent: :destroy
   belongs_to :college
   has_and_belongs_to_many :coupons, :join_table => :distributed_coupons, :foreign_key => "user_id", :conditions => proc { "by_guest = false" }
 	has_many :wishlists, :dependent => :destroy,
                        :foreign_key => "user_id"
-  has_many :wishes, :through => :wishlists, :source => :wish
-  has_many :posts, :through => :blogs
+  has_many :wishes, :through => :wishlists, :source => :wish, dependent: :destroy
+  has_many :posts, :through => :blogs, dependent: :destroy
 	
 	def self.find_for_google_oauth2(auth)
 	  user = User.where(:provider => auth.provider, :authid => auth.uid).first
