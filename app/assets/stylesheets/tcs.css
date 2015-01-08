@@ -3,6 +3,10 @@
 {
     font-size:11px;
 }
+.modal-content
+{
+    border: 5px solid #eec55c;;
+}
 .modal-dialog
 {
     width:400px;
