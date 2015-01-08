@@ -2,7 +2,7 @@
 	<div class="modal-content">
 		<div class="modal-header">
 		    <button type="button" class="close" data-dismiss="modal">x</button>
-		    <h2><i class="fa fa-sign-in"></i> SignIn</h2>
+		    <h4><i class="fa fa-sign-in"></i> Sign In</h4>
 		</div>
 
 		<div class="modal-body">
@@ -26,13 +26,10 @@
 		      	<% end %>
 		      	
 		      	<div>
-			    	<%= f.submit "Sign in", :class => "btn btn-lg btn-primary" %>
+			    	<%= f.submit "Sign in", :class => "btn btn-primary" %>
 			    </div>
 		  <% end %>
 		 </div>
-
-		<div class="modal-footer"> 
 		  <center><%= render "devise/shared/links_signin" %></center>
-		</div>
 	</div>
 </div>

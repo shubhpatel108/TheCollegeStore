@@ -1,13 +1,21 @@
 <div class="extra_options">
 <%- if Devise.mappings[:user].omniauthable? %>
 	<% if cookies[:college_id].nil? %>
-	<%= link_to image_tag('fblogin.png', :class => "fb_login" ), "/?flash=PLease select your college" %>
+	<%= link_to("/?flash=Please select your college",:class => 'btn btn-social btn-facebook') do %>
+    <i class='fa fa-facebook fb_login'></i> Sign In
+  <% end %>
 
-    <%= link_to image_tag('g+login.png', :class => "gmail_login"), "/?flash=PLease select your college"%>
-	<% else %>
-    <%= link_to image_tag('fblogin.png', :class => "fb_login" ), omniauth_authorize_path(:user, Devise.omniauth_providers[0])%>
+    <%= link_to("/?flash=Please select your college",:class => 'btn btn-social btn-google-plus') do %>
+      <i class='fa fa-google-plus gmail_login'></i> Sign In
+    <% end %>
+  <% else %>
+  <%= link_to(omniauth_authorize_path(:user, Devise.omniauth_providers[0]) ,:class => 'btn btn-social btn-facebook') do %>
+    <i class='fa fa-facebook fb_login'></i> Sign In
+    <% end %>
 
-    <%= link_to image_tag('g+login.png', :class => "gmail_login"), omniauth_authorize_path(:user, Devise.omniauth_providers[1]) %>
+    <%= link_to(omniauth_authorize_path(:user, Devise.omniauth_providers[1]),:class => 'btn btn-social btn-google-plus') do %>
+    <i class='fa fa-google-plus gmail_login'></i> Sign In
+    <% end %>
     <% end %> 
 <% end -%>
 </div>
