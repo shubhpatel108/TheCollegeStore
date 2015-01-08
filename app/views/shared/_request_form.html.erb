@@ -1,35 +1,32 @@
-<div id="request_admin" style="text-align: center">
+<div class="modal fade" id="request">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4>Add your college</h4>
+</div>
+<div class="modal-body">
+<div id="request_admin" class="row">
+<div class="col-md-10 col-md-offset-1">
 	<%= form_tag({:controller=>'/colleges', :action=>'request_admin_to_add_college'}, :class=> "smart-form") do %>
-	<center>
-		<table class="college-select">
-			<tr>
-				<td>
-					<div class="section">
-			 			<label class="field prepend-icon">
-							<%= text_field_tag :college_name, '',:placeholder => "Enter your college", :class=>'gui-input' %>
-							<label class="field-icon"><i class="fa fa-bank"></i></label>
-						</label>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="section">
-			 			<label class="field prepend-icon">
-							<%= email_field_tag :email,'', :placeholder => "Enter your email id", :class=>'gui-input' %>
-							<label class="field-icon"><i class="fa fa-envelope"></i></label>
-						</label>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="section">
-						<center><%= submit_tag "Send", :class => 'button btn-black' %></center>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</center>
+	<div class="form-group">
+	<div class="input-group">
+	<div class="input-group-addon"><i class="fa fa-institution"></i></div>
+		<%= text_field_tag :college_name, '',:placeholder => "Enter your college", :class=>'form-control' %>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="input-group">
+	<div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+	<%= email_field_tag :email,'', :placeholder => "Enter your email id", :class=>'form-control' %>
+	</div>
+	</div>
+	<div class="form-group">
+	<%= submit_tag "Send", :class => 'btn btn-success' %>
+	</div>			
 	<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
