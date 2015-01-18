@@ -39,6 +39,15 @@ class OurController < ApplicationController
 
   def recommend
     #serve the recommendation page where user can invite using email
+    @reco_completed = Recommendation.where(:recommender_id => current_user.id).count%10 + 1
+    earning = Earning.where(:user_id => current_user.id).first
+    if earning.nil?
+      @earning_due = 0
+      @earning_paid = 0
+    else
+      @earning_due = earning.due
+      @earning_paid = earning.paid
+    end
   end
 
   def send_recommendation
@@ -51,6 +60,21 @@ class OurController < ApplicationController
       flash[:success] = "Successfully invited! You'll soon be rewarded."
       redirect_to :root
     end
+  end
+
+  def notify_to_recharge
+    @earning = current_user.earning
+    if @earning.nil?
+      render :js => "FlashNotice('error', 'Please invite people and let them join!');"
+    elsif @earning.due==0
+      render :js => "FlashNotice('error', 'Please invite more people!');"
+    else
+      ContactUsMailer.recharge(current_user, @earning.due).deliver
+      @earning.paid += @earning.due
+      @earning.due = 0 #asssuming all due will be paid
+      @earning.save!
+    end
+
   end
 
 end

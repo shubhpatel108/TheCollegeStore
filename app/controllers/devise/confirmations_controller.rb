@@ -45,7 +45,24 @@ class Devise::ConfirmationsController < DeviseController
       recommender.points = 0 if recommender.points.nil?
       recommender.points += 300
       recommender.save
+
+      reco_till_now = Recommendation.where(:recommender_id => recommender.id).count%10
+      user_earning = Earning.where(:user_id => recommender.id).first
+      if user_earning.nil?
+        user_earning = Earning.new(:user_id => recommender.id, :paid => 0, :due => 0)
+      end
+
+      case reco_till_now
+      when 3
+        user_earning.due += 10
+      when 6
+        user_earning.due += 15
+      when 0
+        user_earning.due += 25
+      end
+      user_earning.save!
     end
+
     if signed_in?(resource_name)
       signed_in_root_path(resource)
     else

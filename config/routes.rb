@@ -81,6 +81,7 @@ TheCollegeStore::Application.routes.draw do
 
   get '/recommend', to: 'our#recommend'
   post '/recommended', to: 'our#send_recommendation'
+  get '/recharge-mobile', to: 'our#notify_to_recharge'
 
   get '/feedback', to: 'feedback#new'
   post '/feedback/submit', to: 'feedback#create', as: :feedback

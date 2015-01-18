@@ -19,6 +19,8 @@ class RegistrationsController < Devise::RegistrationsController
           Recommendation.create(:recommender_id => recommender.id, :recommended_id => resource.id)
         end
       end
+      session[:mobile] = nil
+      session[:recommender_id] = nil
     end
   end
 

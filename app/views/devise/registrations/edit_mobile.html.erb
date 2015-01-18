@@ -10,17 +10,17 @@
 
           <div class="section">
             <label for="mobile" class="field prepend-icon">
-              <%= text_field_tag :mobile, nil, placeholder: 'Mobile', :class => 'gui-input', :id=> "edit_mobile" %>
+              <%= text_field_tag :mobile, nil, placeholder: 'Mobile', :class => 'gui-input entered_mobile_class', :id=> "edit_mobile" %>
             </label>
           </div>
 
-          <%= text_field_tag :verification_code, nil, placeholder: 'Enter Verification', :class => 'form-control', :id=> "verification_code_auth", :style => "display:none;" %>
+          <%= text_field_tag :verification_code, nil, placeholder: 'Enter Verification', :class => 'form-control verification_code_auth_class', :id=> "verification_code_class", :style => "display:none;" %>
 
           <div class="section">
               <%= hidden_field_tag :user_id, auth_user_id %>
           </div> 
           <div class="section">
-            <button type="button" class="btn btn-primary" onclick="verify_auth_mobile()" id="verify_auth_mob"> Update </button>
+            <button type="button" class="btn btn-primary verify_auth_mob_class" onclick="verify_auth_mobile()" id="verify_auth_mob"> Update </button>
           </div><!-- end section -->
         <% end %>
         <hr>
@@ -31,8 +31,6 @@
 <script type="text/javascript">
   function verify_auth_mobile(){
     mobile_no = document.getElementById("edit_mobile").value;
-    post("/send_verification_sms", {mobile: mobile_no, button: "verify_auth_mob"});
-    document.getElementById("verification_code_auth").style.display = "block";
-    document.getElementById("edit_mobile").remove();
+    post("/send_verification_sms", {mobile: mobile_no, button: "verify_auth_mob_class"});
   }
 </script>

@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
 	has_many :wishlists, :dependent => :destroy,
                        :foreign_key => "user_id"
   has_many :wishes, :through => :wishlists, :source => :wish, dependent: :destroy
-  has_many :posts, :through => :blogs, dependent: :destroy
+  has_many :blogs, dependent: :destroy
+  has_one :earning
 	
 	def self.find_for_google_oauth2(auth)
 	  user = User.where(:provider => auth.provider, :authid => auth.uid).first

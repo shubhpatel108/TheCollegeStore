@@ -25,7 +25,7 @@
           </div>
           <div class="form-group">
           <label>Mobile</label>
-          <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'form-control', :id => "entered_mobile" %>
+          <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'form-control entered_mobile_class', :id => "entered_mobile" %>
           </div>
           <div class="form-group">
           <%= f.hidden_field :college_id, :value=> cookies[:college_id], :class => "form-control" %>
@@ -33,9 +33,9 @@
           <div class="form-group">
           <%= f.file_field :profile_pic %>
           </div>
-          <%= f.text_field :verification_code, :placeholder => "Enter Verification Code", :id => "verification_code", :class => "form-control", :style => "display:none;" %>
+          <%= f.text_field :verification_code, :placeholder => "Enter Verification Code", :id => "verification_code", :class => "form-control verification_code_class", :style => "display:none;" %>
 
-          <button type="button" class="btn btn-primary" onclick="verify_mobile()" id="verified_sign_up"> Sign Up </button>
+          <button type="button" class="btn btn-primary verified_sign_up_class" onclick="verify_mobile()" id="verified_sign_up"> Sign Up </button>
       <% end %>
      </div>
       <center><%= render "devise/shared/links_signup" %></center>
@@ -44,7 +44,12 @@
 
 <script type="text/javascript">
   function verify_mobile(){
-    mobile_no = document.getElementById("entered_mobile").value;
-    post("/send_verification_sms", {mobile: mobile_no, button: "verified_sign_up"});
+    var mobile_nos = document.getElementsByClassName("entered_mobile_class");
+    var mobile_no = "";
+    for(i=0; i<mobile_nos.length; i++)
+    {
+      mobile_no = mobile_no.concat(mobile_nos[i].value);
+    }
+    post("/send_verification_sms", {mobile: mobile_no, button: "verified_sign_up_class"});
   }
 </script>

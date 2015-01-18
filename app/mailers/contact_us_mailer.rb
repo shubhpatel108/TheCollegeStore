@@ -44,4 +44,10 @@ class ContactUsMailer < ActionMailer::Base
     @user = user
     mail(from: "contact@thecollegestore.in", to: @email, subject: "#{user.first_name} #{user.last_name} recommends TheCollegeStore")
   end
+
+  def recharge(user, amount)
+    @user = user
+    @amount = amount
+    mail(from: "contact@thecollegestore.in", to: "booklyweb@gmail.com", subject: "Recharge Mobile for user")
+  end
 end
