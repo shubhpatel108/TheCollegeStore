@@ -39,4 +39,8 @@ class BookGroup < ActiveRecord::Base
   def min_price
     self.books.map(&:price).compact.min
   end
+
+  def college_sold_stock(college_id)
+    self.books.where(:college_id => college_id, :reserved => true).count
+  end
 end

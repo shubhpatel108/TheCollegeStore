@@ -104,7 +104,7 @@ class BookGroupsController < ApplicationController
       #suggestions
       @suggested_books = BookGroup.where(:category_id => @book_cat.id).to_a
       @suggested_books.delete(@book_group)
-      @suggested_books = @suggested_books.sort_by {|b| b.college_stock(cookies[:college_id])}.reverse.slice(0..1)
+      @suggested_books = @suggested_books.sort_by {|b| b.college_sold_stock(cookies[:college_id])}.reverse.slice(0..1)
     end
   end
 
