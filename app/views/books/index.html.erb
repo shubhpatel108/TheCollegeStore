@@ -23,7 +23,7 @@ meta site: "TheCollegeStore",
             <div class='panel-body'>
               <div class='row' id='results'>
                 <% @book_with_blogs.each do |book| %>
-                    <%= render :partial => "shared/book_tile", :locals => {:book => book.book_group}%>
+                    <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
                 <% end %>
               </div>
             </div>
