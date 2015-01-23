@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
 	attr_accessible :profile_pic
-	has_attached_file :profile_pic, :styles => {:thumb => "100x100"}, :default_url => "/images/missing.jpg"
+	has_attached_file :profile_pic, :styles => {:thumb => "100x100"}, :default_url => "/assets/missing.jpg"
 	validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
   validates :email, presence: true, uniqueness: true
