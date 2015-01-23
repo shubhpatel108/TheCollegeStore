@@ -17,6 +17,11 @@
         height: 34px;
         line-height: 34px;
     }
+    .list-group-item-text
+    {
+        height: 50px;
+        text-overflow: ellipsis;
+    }
 </style>
 <div class="container center-block">
 <center><h1 class="site-heading">TheCollegeStore</h1></center>
@@ -76,14 +81,23 @@
                     <!-- Latest Book Tiles here -->
                 </div>
             </div>
+            <div class="panel-footer" style="text-align:right;">
+                <a href="#">See More...</a>
+            </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel">
-            <div class="panel-heading"><h3>Blog @ <b>TheCollegeStore</b></h3></div>
+            <div class="panel-heading">
+                <h3>Blog @ <b>TheCollegeStore</b></h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="blog-posts">
                 <!-- Blog Posts here -->
+                <center><h4>Loading...</h4></center>
+            </div>
+            <div class="panel-footer" style="text-align:right;">
+            <a href="http://blog.thecollegestore.in">Read More...</a>
+            </div>
             </div>
         </div>
     </div>
@@ -94,8 +108,23 @@
 <script type="text/javascript">
     $( document ).ready(function() {
         myFunction();
+        readBlogPostFeed();
     });
-
+    function readBlogPostFeed()
+    {
+        $.get('http://localhost/laravelshots/?feed=rss2', function (data) {
+            var element = "<div class='list-group'>";
+            $(data).find("item").each(function () {
+                var item = $(this);
+                element += '<a href='+ item.link +' class="list-group-item">';
+                element += '<h4 class="list-group-item-heading">'+ item.title +'</h4>';
+                element += '<p class="list-group-item-text">'+ item.description +'</p>';
+                element += '</a>';
+            });
+            element += '</div>';
+            $("#blog-posts").html(element);
+        });
+    }
     function myFunction() {
         var x = document.getElementById("city-select").value;
         var colleges = <%= raw College.all.map(&:name).to_json %>;
