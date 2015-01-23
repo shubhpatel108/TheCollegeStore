@@ -23,10 +23,11 @@ class ApplicationController < ActionController::Base
 
 	def check_cookies
 		if params[:ref] == "main"
-			@book_with_blogs = Blogbook.all.to_a.slice(0..3)
+			@book_with_blogs = Blogbook.all.to_a.slice(0..3).map(&:book_group)
 			render :template => 'shared/home'
 		else
 			@book_groups = BookGroup.all
+			@book_with_blogs = Blogbook.all.to_a.slice(0..3).map(&:book_group)
 			flash.keep
 			if current_user.nil? and cookies[:college_id].nil?
 					@colleges = College.all
