@@ -34,7 +34,7 @@ class BookGroup < ActiveRecord::Base
     "#{id}-#{slug}"
   end
 
-  def stock
+  def total_stock
     self.books.where(:reserved => false).count
   end
 
