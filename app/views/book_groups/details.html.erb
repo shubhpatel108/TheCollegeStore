@@ -53,16 +53,19 @@ meta site: "TheCollegeStore",
               </div>
             </div>
           </div>
-          <div class='row'>
-            <div class='col-md-12'>
-              <h3>
-                Product Description
-              </h3>
-              <p>
-                Charging your phone has been made simpler with Mi's 10400 mAh Power Bank. Its aluminum casing surrounds the dual battery cell technology developed by LG and Samsung. Enjoy the pleasures of your smartphone for longer periods with this highly convenient Power Bank.
-              </p>
+          <% book_descrip = description(@book_group.id)%>
+          <% if not book_descrip.nil? %>
+            <div class='row'>
+              <div class='col-md-12'>
+                <h3>
+                  Description
+                </h3>
+                <p>
+                  <%= book_descrip %>
+                </p>
+              </div>
             </div>
-          </div>
+          <% end %>
           <div class='row' name='buy'>
             <div class='col-md-6'>
               <h3>
