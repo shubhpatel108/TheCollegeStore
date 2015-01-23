@@ -12,7 +12,7 @@
           <br/>
           <b>Publisher: </b>  <%=book.publisher%>
           <br/>
-          <%= link_to "#{book.stock} Sellers", book_detail_path(book) %>
+          <%= link_to "#{book.stock(cookies[:college_id])} Sellers", book_detail_path(book) %>
           <br/>
           <%= link_to "Details", book_detail_path(book), :class => 'button' %>
         </p>

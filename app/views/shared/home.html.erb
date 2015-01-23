@@ -78,7 +78,9 @@
             <div class="panel-heading"><h3>Latest Books on <b>TheCollegeStore</b></h3></div>
             <div class="panel-body">
                 <div class="row">
-                    <!-- Latest Book Tiles here -->
+                <% @book_with_blogs.each do |book| %>
+                    <%= render :partial => "shared/book_tile", :locals => {:book => book.book_group}%>
+                <% end %>
                 </div>
             </div>
             <div class="panel-footer" style="text-align:right;">
@@ -96,7 +98,7 @@
                 <center><h4>Loading...</h4></center>
             </div>
             <div class="panel-footer" style="text-align:right;">
-            <a href="http://blog.thecollegestore.in">Read More...</a>
+            <a href="http://blog.thecollegestore.in" target="_blank">Read More...</a>
             </div>
             </div>
         </div>

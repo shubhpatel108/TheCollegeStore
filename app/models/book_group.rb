@@ -16,6 +16,8 @@ class BookGroup < ActiveRecord::Base
   has_many :wishlists, :dependent => :destroy,
                        :foreign_key => "book_group_id"
   has_many :wishers, :through => :wishlists, :source => :wisher
+  has_one :blogbook
+
   def set_image_name
   	if not image_file_name.nil?
 	  	extension = File.extname(image_file_name).downcase
@@ -32,7 +34,11 @@ class BookGroup < ActiveRecord::Base
     "#{id}-#{slug}"
   end
 
-  def college_stock(college_id)
+  def stock
+    self.books.where(:reserved => false).count
+  end
+
+  def stock(college_id)
     self.books.where(:college_id => college_id, :reserved => false).count
   end
 
@@ -42,5 +48,9 @@ class BookGroup < ActiveRecord::Base
 
   def college_sold_stock(college_id)
     self.books.where(:college_id => college_id, :reserved => true).count
+  end
+
+  def min_price
+    self.books.map(&:price).compact.min
   end
 end

@@ -22,15 +22,20 @@ class ApplicationController < ActionController::Base
 	end
 
 	def check_cookies
-		@book_groups = BookGroup.all
-		flash.keep
-		if current_user.nil? and cookies[:college_id].nil?
-				@colleges = College.all
-				render :template => 'shared/home'
-		elsif not current_user.nil?
-			redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id]
+		if params[:ref] == "main"
+			@book_with_blogs = Blogbook.all.to_a.slice(0..3)
+			render :template => 'shared/home'
 		else
-			redirect_to :books
+			@book_groups = BookGroup.all
+			flash.keep
+			if current_user.nil? and cookies[:college_id].nil?
+					@colleges = College.all
+					render :template => 'shared/home'
+			elsif not current_user.nil?
+				redirect_to :action => 'select_college', :college_id => current_user.college_id || cookies[:college_id]
+			else
+				redirect_to :books
+			end
 		end
 	end
 

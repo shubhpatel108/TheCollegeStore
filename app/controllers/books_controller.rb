@@ -5,12 +5,11 @@ class BooksController < ApplicationController
   def index
     @book_groups = BookGroup.all
     college_id = cookies[:college_id]
-    @book_groups.each do |group|
-        group[:stock] = group.books.where(:college_id => college_id, :reserved => false).count
-        group[:min_price] = group.books.map(&:price).compact.min
-    end
+
     @latest = @book_groups.sort_by {|b| b[:updated_at]}.reverse!.slice(0..3)
     @popular = @book_groups.sort_by {|b| b[:stock]}.reverse!.slice(0..3)
+
+    @book_with_blogs = Blogbook.all.to_a.slice(0..3)
   end
 
   def new

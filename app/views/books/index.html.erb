@@ -12,6 +12,24 @@ meta site: "TheCollegeStore",
     <%= render :partial => "/shared/left_side_filter" %>
 
     <div id="booklist">
+
+      <div class="col-md-9" id="books_with_blogs">
+        <div class='panel panel-default'>
+
+            <div class='panel-heading'>
+               <p><i class="fa fa-book fa-padding"></i> <b>Trending around the world</b></p>
+            </div>
+
+            <div class='panel-body'>
+              <div class='row' id='results'>
+                <% @book_with_blogs.each do |book| %>
+                    <%= render :partial => "shared/book_tile", :locals => {:book => book.book_group}%>
+                <% end %>
+              </div>
+            </div>
+        </div>
+      </div>
+
       <div class="col-md-9">
         <div class='panel panel-default'>
 

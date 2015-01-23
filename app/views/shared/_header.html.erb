@@ -31,7 +31,7 @@
         <header class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/books" class="navbar-brand"><%= image_tag("logo-main.png", :width => 80) %></a>
+                    <a href="<%= root_path(:ref => 'main') %>" class="navbar-brand"><%= image_tag("logo-main.png", :width => 80) %></a>
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                         <i class='fa fa-bars'></i>
                     </button>
@@ -39,7 +39,7 @@
 
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="http://blog.thecollegestore.in" target="_blank">Blog</a></li>
                         <li><a href="/books" ><i class="fa fa-book"></i> Explore Books</a></li>
                         <li><a href="#" onclick="$('#cart-content').modal('show');"><i class='fa fa-shopping-cart'></i> Cart(
                         <span id="cart-item-count">
