@@ -10,7 +10,9 @@
                     <div class="thumbnail">
                         <%= image_tag book.info.image.url, {:style => 'width:100px;height:150px;'} %>
                         <div class="caption">
-                            <h5 class="pull-right">&#8377;<%= book.price %></h5>
+                            <% if not book.price.nil? %>
+                                <h5 class="pull-right">&#8377;<%= book.price %></h5>
+                            <% end %>
                             <h5>
                                 <b><%= book.info.title %></b>
                             </h5>
