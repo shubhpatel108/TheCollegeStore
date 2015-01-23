@@ -28,6 +28,9 @@ class ApplicationController < ActionController::Base
 		else
 			@book_groups = BookGroup.all
 			@book_with_blogs = Blogbook.all.to_a.slice(0..3).map(&:book_group)
+			if @book_with_blogs.empty?
+				@book_with_blogs = @book_groups.slice(0..3)
+			end
 			flash.keep
 			if current_user.nil? and cookies[:college_id].nil?
 					@colleges = College.all
