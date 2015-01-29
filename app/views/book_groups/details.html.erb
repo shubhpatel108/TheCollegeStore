@@ -89,7 +89,7 @@ meta site: "TheCollegeStore",
                       </td>
                       <td>
                         <% if not book.reserved %> 
-                          <%= book.price %></td>
+                          &#8377;<%= book.price %></td>
                         <% end %>
                       <td>
                         <% if current_user.nil? || current_user.id!=book.user_id %>

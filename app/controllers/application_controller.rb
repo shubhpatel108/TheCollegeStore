@@ -24,6 +24,9 @@ class ApplicationController < ActionController::Base
 	def check_cookies
 		if params[:ref] == "main"
 			@book_with_blogs = Blogbook.all.to_a.slice(0..3).map(&:book_group)
+			if @book_with_blogs.empty?
+				@book_with_blogs = BookGroup.all.slice(0..3)
+			end
 			render :template => 'shared/home'
 		else
 			@book_groups = BookGroup.all
