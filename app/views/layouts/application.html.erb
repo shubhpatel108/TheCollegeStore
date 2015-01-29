@@ -236,7 +236,11 @@
         link = "http://thecollegestore.in" + link
         if(pic_url == 'noimage.jpg')
         {
-          pic_url = "http://thecollegestore.in/assets/logo.png"
+          pic_url = "http://thecollegestore.in/assets/logo-main.png"
+        }
+        else
+        {
+          pic_url = "http://thecollegestore.in" + pic_url;
         }
         FB.ui({
           display: 'popup',
