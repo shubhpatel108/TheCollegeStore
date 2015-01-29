@@ -9,7 +9,11 @@ class FeedbackController < ApplicationController
     if @feedback.valid?
       FeedbackMailer.feedback(@feedback).deliver
       flash[:success] = "Thank you for your feedback !"
-      redirect_to :back      
+      if request.original_url.include?(feedback_path)
+        redirect_to :root
+      else
+        redirect_to :back
+      end
     else
       @error_message = "Please enter your #{@feedback.subject.to_s.downcase}"
       render :action => 'new', :status => :unprocessable_entity

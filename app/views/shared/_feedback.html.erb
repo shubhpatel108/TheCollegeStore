@@ -6,7 +6,7 @@
 		</div>
 
 		<div class="modal-body">
-			<%= form_for @feedback, :as => :feedback, :url => feedback_path, :html => {:id => "feedback_form", :class => 'form-signin'} do |f| %>
+			<%= form_for @feedback, :as => :feedback, :url => feedback_path, :html => {:id => "feedback_form", :class => 'form-signin smart-form'} do |f| %>
 
 				<%= f.hidden_field 'page' %>
 				<% unless @error_message.blank? %>

@@ -102,6 +102,15 @@ $('.smart-form').each(function() {
                         },
                         college_name: {
                             required: true,
+                        },
+                        "feedback[subject]": {
+                            required: true,
+                        },
+                        "feedback[comment]": {
+                            required: true,
+                        },
+                        "feedback[email]": {
+                            required: true,
                         }
                 },
                 
