@@ -34,10 +34,14 @@ class User < ActiveRecord::Base
 	def self.find_for_google_oauth2(auth)
 	  user = User.where(:provider => auth.provider, :authid => auth.uid).first
 		if user
+			user.profile_pic = process_uri(auth.info.image)
+			user.save
 			return user
 		else
 			registered_user = User.where(:email => 	auth.info.email).first
 			if registered_user
+				registered_user.profile_pic = process_uri(auth.info.image)
+				registered_user.save
 				return registered_user
 			else
 			user = User.new
@@ -58,10 +62,14 @@ class User < ActiveRecord::Base
 	def self.find_for_facebook_oauth(auth)
 		user = User.where(:provider => auth.provider, :authid => auth.uid).first
 		if user
+			user.profile_pic = process_uri(auth.info.image)
+			user.save
 			return user
 		else
 			registered_user = User.where(:email => 	auth.info.email).first
 			if registered_user
+				registered_user.profile_pic = process_uri(auth.info.image)
+				registered_user.save
 				return registered_user
 			else
 				user = User.new
