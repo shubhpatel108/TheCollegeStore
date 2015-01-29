@@ -5,8 +5,12 @@
     </div>
     <section class='panel-body'>
       <div class='row' id='results'>
-        <% results.each do |book| %>
-          <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
+        <% if results.empty? %>
+          <p>No results found.</p>
+        <% else %>
+          <% results.each do |book| %>
+            <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
+          <% end %>
         <% end %>
       </div>
     </section>
