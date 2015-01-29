@@ -52,6 +52,9 @@
           </select>
         </div>
         <br/>
+        <div class='row'>
+          <button class="btn-sm btn btn-danger" onclick="clear_filter()">Clear filters</button>
+        </div>
       </div>
     </section>
   </div>
@@ -83,5 +86,20 @@
   $( "#filter_title" ).autocomplete({
     source: b_n
   });
+
+  function clear_filter()
+  {
+    var sel_title = document.getElementById("filter_title");
+    var sel_cat = document.getElementById("filter_category");
+    var sel_price = document.getElementById("filter_price");
+    var sel_author = document.getElementById("filter_author");
+    var sel_pub = document.getElementById("filter_publisher");
+    sel_title.value = "";
+    sel_cat.selectedIndex = 0;
+    sel_price.selectedIndex = 0;
+    sel_author.selectedIndex = 0;
+    sel_pub.selectedIndex = 0;
+    post('/filter', {title: "", category: "All", price: "All", author: "All", publisher: "All"}, "post")
+  }
 
 </script>
