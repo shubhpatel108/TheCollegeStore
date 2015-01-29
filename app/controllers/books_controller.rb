@@ -165,7 +165,7 @@ class BooksController < ApplicationController
 
     book_groups.each do |bg|
       temp_books = bg.books
-      if not temp_books.map(&:price).select { |b| b < p[:price].to_i }.count > 0
+      if not temp_books.map(&:price).select { |b| if b.nil? then true else b < p[:price].to_i end }.count > 0
         @results.delete(bg)
       end
     end
