@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     @latest = @book_groups.sort_by {|b| b[:updated_at]}.reverse!.slice(0..3)
     @popular = @book_groups.sort_by {|b| b.stock(college_id)}.reverse!.slice(0..3)
 
-    @book_with_blogs = Blogbook.all.to_a.slice(0..3)
+    @book_with_blogs = Blogbook.all.to_a.slice(0..3).map(&:book_group)
     if @book_with_blogs.empty?
       @book_with_blogs = @book_groups.sort_by {|b| b.total_stock}.reverse!.slice(0..3)
     end
