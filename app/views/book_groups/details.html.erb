@@ -88,7 +88,7 @@ meta site: "TheCollegeStore",
                         <% end %>
                       </td>
                       <td>
-                        <% if not book.reserved %> 
+                        <% if not book.reserved and not book.price.nil? %>
                           &#8377;<%= book.price %></td>
                         <% end %>
                       <td>
