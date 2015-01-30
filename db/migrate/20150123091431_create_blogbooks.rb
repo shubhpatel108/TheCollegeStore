@@ -2,7 +2,7 @@ class CreateBlogbooks < ActiveRecord::Migration
   def up
     create_table :blogbooks do |t|
     	t.integer :book_group_id, 	null: false
-    	t.integer :url, 						null: false 
+    	t.string :url, 						null: false 
       t.timestamps
     end
   end
