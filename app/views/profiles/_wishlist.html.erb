@@ -1,0 +1,16 @@
+<div class='panel'>
+    <div class="panel-heading">
+    <h4><i class="fa fa-money"></i> Purchased Books</h4></div>
+                    <div class='panel-body'>
+        <% if not (books.nil? || books.count == 0) %>
+
+            <div class='row'>
+                <% books.each do |book| %>
+                    <%= render :partial => "shared/book_tile", :locals => {:book => book}%>
+                <% end %>
+            </div>
+        <% else %>
+            <center><h5 class="alert alert-info col-md-4 col-md-offset-4"><i class="fa fa-info-circle"></i> There are no purchased books. </h5></center>
+        <% end %>
+    </div>
+</div>

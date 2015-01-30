@@ -73,6 +73,7 @@ TheCollegeStore::Application.routes.draw do
   get '/profiles/books_purchased/:id', to: 'profiles#books_purchased' 
   get '/profiles/edit_profile', to: 'profiles#edit_profile' 
   get '/profiles/distributed_coupons', to: 'profiles#distributed_coupons'
+  get '/profiles/wishlist', to: 'profiles#wishlist'
 
   get '/api/colleges', to: 'api#colleges'
   get '/api/book_groups', to: 'api#book_groups'

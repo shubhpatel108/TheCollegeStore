@@ -65,4 +65,12 @@ class ProfilesController < ApplicationController
 		end
 	end
 
+	def wishlist
+		w_ids = Wishlist.where(:user_id => current_user.id).map(&:book_group_id)
+		@books = BookGroup.where(:id => w_ids)
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end
