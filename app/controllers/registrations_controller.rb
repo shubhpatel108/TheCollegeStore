@@ -31,13 +31,18 @@ class RegistrationsController < Devise::RegistrationsController
   def update_mobile
     id = sanitize(params[:user_id])
     @user = User.find(id)
-    mobile = session[:mobile]
-    @user.mobile = mobile
-    @user.college_id = cookies[:college_id]
-    @user.save!
-    sign_in @user, :event => :authentication
-    flash[:success] = "Successfully authenticated!"
-    redirect_to :books
+    if params[:verification_code] != session[:verification_code]
+      flash[:error] = "Verification Failed. Please try again."
+      redirect_to :back
+    else
+      mobile = session[:mobile]
+      @user.mobile = mobile
+      @user.college_id = cookies[:college_id]
+      @user.save!
+      sign_in @user, :event => :authentication
+      flash[:success] = "Successfully authenticated!"
+      redirect_to :books
+    end
   end
 
   def recommend
