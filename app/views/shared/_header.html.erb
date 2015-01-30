@@ -50,13 +50,18 @@
                             <%end%>
                         </span>)</a></li>
                         <% if !user_signed_in? %>
-                            <li>     
+                            <li>
                               <a href="#" onclick="$('#login').modal('show');">Login
                                 <i class="fa fa-sign-in"></i>
                               </a>
                             </li>
                             <li>
-                              <a href="#" onclick="$('#register').modal('show');">Register
+                            <% if cookies[:college_id].nil? %>
+                                <% pop_up_func = "FlashNotice('error', 'Please select college.');"%>
+                              <% else %>
+                                <% pop_up_func = "$('#register').modal('show');"%>
+                              <% end %>
+                              <a href="#" onclick="<%= pop_up_func %>">Register
                                 <i class="fa fa-user"></i>
                               </a>
                             </li>

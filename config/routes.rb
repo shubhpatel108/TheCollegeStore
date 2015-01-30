@@ -24,7 +24,7 @@ TheCollegeStore::Application.routes.draw do
   get '/person_category', to: 'application#person_category'
   get '/application/select_college', to: 'application#select_college'
   devise_scope :user do
-    get 'register', to: 'devise/registrations#new', as: :register
+    get 'register', to: 'registrations#new', as: :register
     post 'update_mobile', to: 'registrations#update_mobile', as: :update_mobile
     get '/:recommended_by_id/:username/recommend', to: "registrations#recommend"
     get 'login', to: 'devise/sessions#new', as: :login
