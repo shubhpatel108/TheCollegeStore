@@ -29,7 +29,7 @@ class BookGroupsController < ApplicationController
       @old_book_group.books << @new_book
       @old_book_group.save
 
-      distribute_coupon #func in coupon_helper.rb
+      # distribute_coupon #func in coupon_helper.rb
 
       #BookMailer.notify_wishers(@old_book_group)
       # if current_user.daiictian?
@@ -51,7 +51,7 @@ class BookGroupsController < ApplicationController
           @new_book.save
         end
 
-        distribute_coupon #func in coupon_helper.rb
+        # distribute_coupon #func in coupon_helper.rb
 
         respond_to do |format|
           format.js { render :template => "/book_groups/final_step"}

@@ -1,3 +1,5 @@
+# TO DO: throws EOF error. 
+# when used doesn't render response in book sell.
 module CouponsHelper
 	def distribute_coupon
         @coupons = Coupon.where(:id => session[:coupons])
