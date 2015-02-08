@@ -9,4 +9,12 @@ ActiveAdmin.register College do
 
 	filter :name
 	filter :city
+
+	form do |f|
+		f.inputs "City Details" do
+			f.input :name
+			f.input :city, as: :select, collection: College.all.map{ |h| ["#{h.city}", "#{h.city}"] }
+			f.actions
+		end
+	end
 end
