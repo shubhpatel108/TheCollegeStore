@@ -23,6 +23,7 @@ ActiveAdmin.register Book do
 
 	filter :id
 	filter :book_group_title, as: :string
+	filter :book_group_author, as: :string
 	filter :edition
 	filter :isbn
 	filter :price
