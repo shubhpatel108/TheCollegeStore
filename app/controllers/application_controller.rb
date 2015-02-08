@@ -8,17 +8,22 @@ class ApplicationController < ActionController::Base
   include GoodreadsHelper
 
 	def select_college
-		c_id = sanitize(params[:college_id])
-		flash.keep
-		@college = College.where(:id => c_id).first
-		c_name = @college.name
-		cookies[:college_id] = c_id
-		cookies[:college_name] = c_name
-		if not current_user.nil?
-			current_user.college = @college
-			current_user.save!
+		if params[:college_id].nil?
+			flash[:error] = "Please select your college."
+			redirect_to :back
+		else
+			c_id = sanitize(params[:college_id])
+			flash.keep
+			@college = College.where(:id => c_id).first
+			c_name = @college.name
+			cookies[:college_id] = c_id
+			cookies[:college_name] = c_name
+			if not current_user.nil?
+				current_user.college = @college
+				current_user.save!
+			end
+			redirect_to :controller => "books", :action => "index"
 		end
-		redirect_to :controller => "books", :action => "index"
 	end
 
 	def check_cookies

@@ -38,7 +38,7 @@
                         <label>City</label>
                     </div>
                     <div class="col-md-4">
-                        <%= select_tag "city", options_for_select(College.all.map(&:city).uniq), :class => "form-control", :id => "city-select", :onchange => "myFunction()" %>
+                        <%= select_tag "city", options_for_select(College.all.map(&:city).uniq), :class => "form-control", :id => "city-select", :onchange => "myFunction()", :prompt => "Please select" %>
                     </div>
                     <div class="col-md-2">
                         <label>College</label>
