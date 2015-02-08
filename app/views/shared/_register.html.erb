@@ -7,24 +7,21 @@
 
     <div class="modal-body">
       <%= form_for(User.new, url: registration_path(:user), :html => {:class=>'form-signin smart-form', :id => "new_user_form"}) do |f| %>
-          <div class="form-group">
-          <label>First Name</label>
-          <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
+          <div class="form-group row">
+            <div class="col-md-6">
+            <%= f.text_field :first_name, autofocus: true, :placeholder => 'First Name', :class=>'form-control' %>
+            </div>
+            <div class="col-md-6">
+            <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'form-control' %>
+            </div>
           </div>
           <div class="form-group">
-          <label>Last Name</label>
-          <%= f.text_field :last_name, :placeholder => 'Last Name', :class=>'form-control' %>
-          </div>
-          <div class="form-group">
-          <label>Email</label>
           <%= f.email_field :email, :placeholder => 'Email', :class=>'form-control' %>
           </div>
           <div class="form-group">
-          <label>Password</label>
           <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off", :class=>'form-control'%>
           </div>
           <div class="form-group">
-          <label>Mobile</label>
           <%= f.text_field :mobile, :placeholder => 'Mobile', :class=>'form-control entered_mobile_class', :id => "entered_mobile" %>
           </div>
           <div class="form-group">
