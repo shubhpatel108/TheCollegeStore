@@ -26,6 +26,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     super
+    college = College.where(:id => params[:college_id]).first
+    if not college.nil?
+      current_user.college = college
+      current_user.save!
+    end
   end
   
   def update_mobile

@@ -2,6 +2,7 @@ var buttons = document.getElementsByClassName("<%=@button%>");
 for(i=0;i<buttons.length;i++)
 {
 	buttons[i].setAttribute('type', 'submit');
+	buttons[i].setAttribute('onclick', "");
 }
 
 var veri_codes = document.getElementsByClassName("verification_code_class");
