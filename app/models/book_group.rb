@@ -53,4 +53,13 @@ class BookGroup < ActiveRecord::Base
   def min_price
     self.books.map(&:price).compact.min
   end
+
+  def last_updated(college_id)
+    books = self.books.where(:college_id => college_id)
+    if not books.empty?
+      books.map(&:updated_at).compact.max
+    else
+      Time.at(0)
+    end
+  end
 end

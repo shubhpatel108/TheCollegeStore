@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     @book_groups = BookGroup.all
     college_id = cookies[:college_id]
 
-    @latest = @book_groups.sort_by {|b| b[:updated_at]}.reverse!.slice(0..3)
+    @latest = @book_groups.sort_by {|b| b.last_updated(college_id)}.reverse!.slice(0..3)
     @popular = @book_groups.sort_by {|b| b.stock(college_id)}.reverse!.slice(0..3)
 
     @book_with_blogs = Blogbook.all.to_a.slice(0..3).map(&:book_group)
