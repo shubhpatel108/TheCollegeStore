@@ -151,7 +151,15 @@ footer
 {
 	height:300px;
 }
-
+.breadcrumb
+{
+	background-color:transparent;
+}
+.breadcrumb > li + li:before {
+    color:inherit;
+    content: "> ";
+    padding: 0 5px;
+}
 /* for back top arrow */ 
 
 #back-top {
