@@ -118,15 +118,23 @@ meta site: "TheCollegeStore",
                 <h3>
                   New Books available from :
                 </h3>
+                <% added_isbn = get_isbn(@book_group.id)%>
+                <% if added_isbn.nil? %>
+                  <% isbn_amazon = @isbn_amazon %>
+                <% else %>
+                  <% isbn_flipkart = added_isbn %>
+                  <% isbn_amazon = added_isbn %>
+                <% end %>
                 <% @flipkart_links.each do |book|%>
-                  <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
+                  <% isbn_flipkart = book[:isbn] if isbn_flipkart.nil? %>
+                  <a href="<%=flipkart_link(isbn_flipkart)%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
                     <button class='btn btn-sm btn-warning'>
                       Buy new book from Flipkart
                     </button>
                   </a>
                 <% end %>
-                <% if not @isbn_amazon.nil? %>
-                  <a href="<%=amazon_link(@isbn_amazon)%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
+                <% if not isbn_amazon.nil? %>
+                  <a href="<%=amazon_link(isbn_amazon)%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
                     <button class='btn btn-sm btn-warning'>
                       Buy new book from Amazon
                     </button>

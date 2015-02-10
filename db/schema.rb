@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20150123091431) do
 
   create_table "blogbooks", :force => true do |t|
     t.integer  "book_group_id", :null => false
-    t.integer  "url",           :null => false
+    t.string   "url",           :null => false
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
