@@ -3,10 +3,14 @@
     <div class="thumbnail">
       <%= image_tag book.image.url, :style => 'width:100px;height:150px;' %>
       <div class="caption">
-        <h5 class="pull-right">&#8377;<%=book.min_price%></h5>
+        <h5 class="pull-right">
+          <% if not book.min_price.nil? %>
+            &#8377;<%=book.min_price%>
+          <% end %>
+        </h5>
         <h5>
-        <b><%=link_to book.title, book_detail_path(book) %></b>
-      </h5>
+          <b><%=link_to book.title, book_detail_path(book) %></b>
+        </h5>
         <p>
           <b>Author: </b>  <%=book.author%>
           <br/>
