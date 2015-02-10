@@ -28,6 +28,7 @@
           <%= f.hidden_field :college_id, :value=> cookies[:college_id], :class => "form-control" %>
           </div>
           <div class="form-group">
+          <label>Select profile picture:</label>
           <%= f.file_field :profile_pic %>
           </div>
           <%= f.text_field :verification_code, :placeholder => "Enter Verification Code", :id => "verification_code", :class => "form-control verification_code_class", :style => "display:none;" %>
