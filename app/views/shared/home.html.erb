@@ -1,6 +1,6 @@
 <!--page wrapper-->
 <style type="text/css">
-    body
+    #book-bg
     {
         background-image: url('<%= image_path("books.jpg") %>');
         background-size: cover;
@@ -22,16 +22,25 @@
         height: 50px;
         text-overflow: ellipsis;
     }
+    .navbar
+    {
+        margin-bottom:0px;
+    }
+    .fix-height
+    {
+        height:100px;
+    }
 </style>
+<div id="book-bg">
 <div class="container center-block">
-<center><h1 class="site-heading">TheCollegeStore</h1></center>
+<center><h1 class="site-heading" style="margin:60px;">TheCollegeStore</h1></center>
     <div class="row">
         <div class="col-md-6 ">
-        <div class="panel">
+        <div class="panel ">
             <div class="panel-heading">
                 <h3>Select Your College</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body fix-height">
             <%= form_tag('/application/select_college', method: "get", :class => "clg-form") do %>
                 <div class="row">
                     <div class="col-md-1">
@@ -60,11 +69,11 @@
         </div>
         </div>
         <div class="col-md-6">
-        <div class="panel">
+        <div class="panel ">
             <div class="panel-heading">
                 <h3>About <b>TheCollegeStore</b></h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body fix-height">
             <p>
             The GenNext eCommerce portal exclusively for college students ! Now buy books used in your own college at unimaginably low prices from several sellers and Sell your books instantly over the largest market place of books ! 
             </p>
@@ -72,6 +81,9 @@
         </div>
         </div>
     </div>
+</div>
+</div>
+<div class="container center-block" style="margin-top:20px;">
     <div class="row">
         <div class="col-md-8">
             <div class="panel">

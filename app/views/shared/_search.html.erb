@@ -6,7 +6,14 @@
 		</div>
 	</div>
 </form>
-
+<style type="text/css">
+	.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 20px;
+}
+</style>
 <script type="text/javascript">	
 	var availableTags = <%= raw BookGroup.all.map(&:title).to_json %>;
 	$( ".autocomplete" ).autocomplete({
