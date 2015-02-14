@@ -126,13 +126,18 @@
     });
     function readBlogPostFeed()
     {
-        $.get('http://localhost/laravelshots/?feed=rss2', function (data) {
+        $.get('http://blog.thecollegestore.in/laravelshots/?feed=rss2',
+            function (data) {
+            var xml = $(data);
             var element = "<div class='list-group'>";
-            $(data).find("item").each(function () {
+            $(xml).find("item").each(function () {
                 var item = $(this);
-                element += '<a href='+ item.link +' class="list-group-item">';
-                element += '<h4 class="list-group-item-heading">'+ item.title +'</h4>';
-                element += '<p class="list-group-item-text">'+ item.description +'</p>';
+                console.log(item.find("link").text())
+                console.log(item.find("title").text())
+                console.log(item.find("description").text())
+                element += '<a href='+ item.find("link").text() +' class="list-group-item">';
+                element += '<h4 class="list-group-item-heading">'+ item.find("title").text() +'</h4>';
+                element += '<p class="list-group-item-text">'+ item.find("description").text() +'</p>';
                 element += '</a>';
             });
             element += '</div>';
