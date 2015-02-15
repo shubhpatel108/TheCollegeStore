@@ -66,7 +66,7 @@ meta site: "TheCollegeStore",
           <div class='row' name='buy'>
             <div class='col-md-6'>
               <h3>
-                Used Books available from <%= @details.count%> sellers
+                Used Books available from <%= @details.count + 2%> sellers
               </h3>
               <table class='table table-striped table-hover sellers'>
                 <tbody>
@@ -118,6 +118,7 @@ meta site: "TheCollegeStore",
                 <% @flipkart_links.each do |book|%>
                   <a href="<%=flipkart_link(book[:isbn])%>" title="Buy <%=@book_group.title%> from Amazon" target="_blank">
                     <button class='btn btn-sm btn-warning'>
+                    <% image_tag "flipkart_logo.jpg"%>
                       Buy new book from Flipkart
                     </button>
                   </a>
