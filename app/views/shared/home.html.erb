@@ -1,6 +1,6 @@
 <!--page wrapper-->
 <style type="text/css">
-    #book-bg
+    .book-bg
     {
         background-image: url('<%= image_path("books.jpg") %>');
         background-size: cover;
@@ -28,19 +28,19 @@
     }
     .fix-height
     {
-        height:100px;
+        min-height:180px;
     }
 </style>
-<div id="book-bg">
+<div class="book-bg">
 <div class="container center-block">
 <center><h1 class="site-heading" style="margin:60px;">TheCollegeStore</h1></center>
     <div class="row">
         <div class="col-md-6 ">
-        <div class="panel ">
+        <div class="panel fix-height">
             <div class="panel-heading">
                 <h3>Select Your College</h3>
             </div>
-            <div class="panel-body fix-height">
+            <div class="panel-body">
             <%= form_tag('/application/select_college', method: "get", :class => "clg-form") do %>
                 <div class="row">
                     <div class="col-md-1">
@@ -69,8 +69,8 @@
         </div>
         </div>
         <div class="col-md-6">
-        <div class="panel ">
-            <div class="panel-body fix-height">
+        <div class="panel fix-height">
+            <div class="panel-body ">
             <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
             </p>
@@ -150,17 +150,20 @@
 <style>
 .eheight
 {
-    height: 70px;
+    height: 120px;
+    padding: 30px;
+    background-color: #eee;
+    border-radius: 10px;
 }
 </style>
-<footer style="margin-bottom:-30px;padding:50px;background-color:#dedede;vertical-align:middle;" class="row">
+<footer style="margin-bottom:-30px;padding:50px;vertical-align:middle;background-position:right bottom;" class="row book-bg">
 <div class="col-md-4 eheight">
-<%= image_tag("google-startup-launch.png") %>
+<%= image_tag("google-startup-launch.png", height: "60px") %>
 </div>
-<div class="col-md-4 eheight">
+<div class="col-md-3 col-md-offset-1 eheight">
 <%= image_tag("sparkup-idea-fund.png" , height: "70px") %>
 </div>
-<div class="col-md-4 eheight">
+<div class="col-md-3 col-md-offset-1 eheight">
 <%= image_tag("makeathon.png" , height: "80px") %>
 </div>
 </footer>

@@ -1,4 +1,4 @@
-<div class="modal-dialog" style="width:800px;">
+<div class="modal-dialog" style="width:80%;">
     <div class="modal-content">
         <div class="modal-header"><h4>My Shopping Cart <i class="fa fa-shopping-cart"></i><i data-dismiss="modal" class="clickable pull-right fa fa-close"></i></h4>
         </div>
@@ -6,7 +6,7 @@
             <div class='row' id='results'>
 				<% if not books.empty? %>
                     <% books.each do |b|%>
-                        <div class="col-sm-3 col-lg-3 col-md-3" id="cart_item_<%=b.id%>">
+                        <div class="col-sm-4 col-lg-3 col-md-3 col-xs-4" id="cart_item_<%=b.id%>">
                             <div class="thumbnail">
                             <%= link_to "<button type='button' class='pull-right btn btn-danger btn-sm'><i class='fa fa-close'></i></button>".html_safe, remove_item_path(b.id), remote: true , :style => 'position:absolute;right:20px;'%>
                                 <%= image_tag b[:group].image.url, {:style=>'width:100%;'} %>
