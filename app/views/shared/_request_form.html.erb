@@ -4,6 +4,12 @@
 <div class="modal-header">
 <h4>Add your college</h4>
 </div>
+<script type="text/javascript">
+	function collegeAddedAlert()
+	{
+		alert("Your college has been added, after approval, you'll be notified with an email");
+	}
+</script>
 <div class="modal-body">
 <div id="request_admin" class="row">
 <div class="col-md-10 col-md-offset-1">
@@ -21,7 +27,7 @@
 	</div>
 	</div>
 	<div class="form-group">
-	<%= submit_tag "Send", :class => 'btn btn-success' %>
+	<%= submit_tag "Send", :class => 'btn btn-success', onclick: 'collegeAddedAlert();' %>
 	</div>			
 	<% end %>
 </div>
