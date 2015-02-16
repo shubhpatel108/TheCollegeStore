@@ -1,26 +1,26 @@
-<a href="<%= book_detail_path(book) %>" title="<%=book.title%>">
-  <div class="col-sm-3 col-lg-3 col-md-3">
-    <div class="thumbnail">
-      <%= image_tag book.image.url, :style => 'width:100px;height:150px;' %>
-      <div class="caption">
-        <h5 class="pull-right">
-          <% if not book.min_price.nil? %>
+<div class="col-sm-3 col-lg-3 col-md-3 book-tile">
+  <div class="thumbnail">
+  <a href="<%= book_detail_path(book) %>" title="<%=book.title%>">
+    <%= image_tag book.image.url, :style => 'width:100px;height:150px;' %>
+    </a>
+    <div class="caption">
+      <h5 class="pull-right">
+        <% if not book.min_price.nil? %>
             &#8377;<%=book.min_price%>
           <% end %>
-        </h5>
-        <h5>
-          <b><%=link_to book.title, book_detail_path(book) %></b>
-        </h5>
-        <p>
-          <b>Author: </b>  <%=book.author%>
-          <br/>
-          <b>Publisher: </b>  <%=book.publisher%>
-          <br/>
-          <%= link_to "#{book.stock(cookies[:college_id])} Sellers", book_detail_path(book) %>
-          <br/>
-          <%= link_to "Details", book_detail_path(book), :class => 'button' %>
-        </p>
-      </div>
+      </h5>
+      <h5>
+        <b><%=link_to book.title, book_detail_path(book) %></b>
+      </h5>
+      <p>
+        <b>Author: </b>  <%=book.author%>
+        <br/>
+        <b>Publisher: </b>  <%=book.publisher%>
+        <br/>
+        <%= link_to "#{book.stock(cookies[:college_id]) + 2} Sellers", book_detail_path(book) %>
+        <br/>
+        <%= link_to "Details", book_detail_path(book), :class => 'button' %>
+      </p>
     </div>
   </div>
-</a>
+</div>

@@ -69,7 +69,9 @@
                             <li><a href="/book_groups/new"><i class="fa fa-plus-square" style="margin-right:3px;"></i>Sell</a></li>
                             <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false" role="button">
-                                    <%= "#{current_user.first_name}" %>
+                                    <%= "#{current_user.first_name}" %> @ 
+                                    <%= "#{current_user.college.name}" %>
+                                    <%= image_tag(current_user.profile_pic.url, {:class => 'img-circle' ,:style=>"height:50px; width:50px;"})%>
                                     <span class="caret"></span>
                                   </a>
                                   <ul class="dropdown-menu" role="menu">
@@ -80,9 +82,6 @@
                                         <a href="/logout">Log Out</a>
                                     </li>
                                   </ul>
-                            </li>
-                            <li>
-                               <%= link_to image_tag(current_user.profile_pic.url, {:class => 'img-circle' ,:style=>"height:50px; width:50px;"}), "/profiles/show/#{current_user.first_name}-#{current_user.last_name}/#{current_user.id}"%>
                             </li>
                         <%end%>
                     </ul>
