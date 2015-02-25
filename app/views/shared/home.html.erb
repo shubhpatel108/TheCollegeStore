@@ -123,7 +123,7 @@
     });
     function readBlogPostFeed()
     {
-        $.get('http://blog.thecollegestore.in/laravelshots/?feed=rss2',
+        $.get('http://blog.thecollegestore.in/?feed=rss2',
             function (data) {
             var xml = $(data);
             var element = "<div class='list-group'>";
