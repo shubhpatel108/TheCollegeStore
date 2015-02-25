@@ -77,6 +77,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def android_register
+    render template: 'shared/_android_register', layout: false
+  end
+
   private
   def check_college
     if cookies[:college_id].nil? || cookies[:college_name].nil?
