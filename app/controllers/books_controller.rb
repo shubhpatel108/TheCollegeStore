@@ -3,11 +3,26 @@ class BooksController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :sell_autofill]
 
   def index
-    @book_groups = BookGroup.all
+    @book_groups = BookGroup.scoped
     college_id = cookies[:college_id]
 
-    @latest = @book_groups.sort_by {|b| b.last_updated(college_id)}.reverse!.slice(0..3)
-    @popular = @book_groups.sort_by {|b| b.stock(college_id)}.reverse!.slice(0..3)
+    college_books = College.where(:id => college_id).first.book_groups
+    @latest = college_books.sort_by {|b| b.last_updated(college_id)}.reverse!.slice(0..3)
+    @popular = college_books.sort_by {|b| b.stock(college_id)}.reverse!.slice(0..3)
+    taken_bookids = (@latest + @popular).map(&:id).compact
+
+    num_remaining = 4 - @latest.length
+    if num_remaining > 0
+      num_remaining -= 1
+      other_books = @book_groups.select do |b|
+        if not taken_bookids.include?(b.id)
+          b
+        end
+      end
+
+      @latest += other_books.sort_by {|b| b.last_updated_on}.reverse!.slice(0..num_remaining)
+      @popular += other_books.sort_by {|b| b.total_stock}.reverse!.slice(0..num_remaining)
+    end
 
     @book_with_blogs = Blogbook.all.to_a.slice(0..3).map(&:book_group)
     if @book_with_blogs.empty?
