@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150123091431) do
+ActiveRecord::Schema.define(:version => 20150304161618) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -127,6 +127,11 @@ ActiveRecord::Schema.define(:version => 20150123091431) do
 
   add_index "city_vendors", ["auth_token"], :name => "index_city_vendors_on_auth_token"
   add_index "city_vendors", ["email"], :name => "index_city_vendors_on_email", :unique => true
+
+  create_table "college_books", :force => true do |t|
+    t.integer "book_group_id", :null => false
+    t.integer "college_id",    :null => false
+  end
 
   create_table "colleges", :force => true do |t|
     t.string   "name",       :null => false

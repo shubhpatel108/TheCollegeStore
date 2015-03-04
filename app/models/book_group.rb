@@ -17,6 +17,7 @@ class BookGroup < ActiveRecord::Base
                        :foreign_key => "book_group_id"
   has_many :wishers, :through => :wishlists, :source => :wisher
   has_one :blogbook
+  has_and_belongs_to_many :college, :join_table => :college_books
 
   def set_image_name
   	if not image_file_name.nil?
@@ -56,6 +57,15 @@ class BookGroup < ActiveRecord::Base
 
   def last_updated(college_id)
     books = self.books.where(:college_id => college_id)
+    if not books.empty?
+      books.map(&:updated_at).compact.max
+    else
+      Time.at(0)
+    end
+  end
+
+  def last_updated_on
+    books = self.books
     if not books.empty?
       books.map(&:updated_at).compact.max
     else
