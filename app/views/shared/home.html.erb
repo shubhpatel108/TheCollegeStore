@@ -129,12 +129,12 @@
             var element = "<div class='list-group'>";
             $(xml).find("item").each(function () {
                 var item = $(this);
-                console.log(item.find("link").text())
-                console.log(item.find("title").text())
-                console.log(item.find("description").text())
+                //console.log(item.find("link").text())
+                //console.log(item.find("title").text())
+                //console.log(item.find("description").text())
                 element += '<a href='+ item.find("link").text() +' class="list-group-item">';
                 element += '<h4 class="list-group-item-heading">'+ item.find("title").text() +'</h4>';
-                element += '<p class="list-group-item-text">'+ item.find("description").text() +'</p>';
+                //element += '<p class="list-group-item-text">'+ item.find("description").text() +'</p>';
                 element += '</a>';
             });
             element += '</div>';
