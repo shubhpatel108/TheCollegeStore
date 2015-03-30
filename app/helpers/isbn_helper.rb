@@ -12,6 +12,8 @@ module IsbnHelper
 			"9780399252518"
 		when 133
 			"9781476731353"
+		when 137
+			"9788189975814"
 		else
 			nil
 		end
